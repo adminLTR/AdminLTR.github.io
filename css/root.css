@@ -3,10 +3,20 @@
     --secondary: #2A3E60;
     --dark: #2b2d3c;
     --light: #E4E4DC;
+    
+    --hover-primary: #f3dac2;
+    --hover-secondary: #4e6286;
+    --hover-dark: #393b4a;
+    --hover-light: #f1f1ed;
+
+    --none: #00000000;
 }
 
 * {
     padding: 0;
     margin: 0;
     font-family: "Lexend", sans-serif;
+    list-style: none;
 }
+
+a { text-decoration: none; }

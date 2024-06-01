@@ -1,0 +1,60 @@
+.link-primary {
+    color: var(--primary);
+    transition: all ease-in-out .2s;
+    font-weight: bold;
+    padding: .5rem 0;
+    border-bottom: 2px solid var(--none)
+} .link-primary:hover {
+    color: var(--hover-primary);
+    border-color: var(--hover-secondary);
+}
+
+.link-secondary {
+    color: var(--secondary);
+    transition: all ease-in-out .2s;
+    font-weight: bold;
+    padding: .5rem 0;
+    border-bottom: 2px solid var(--none)
+} .link-secondary:hover {
+    color: var(--hover-secondary);
+}
+
+.link-dark {
+    color: var(--dark);
+    transition: all ease-in-out .2s;
+    font-weight: bold;
+    padding: .5rem 0;
+    border-bottom: 2px solid var(--none)
+} .link-dark:hover {
+    color: var(--hover-dark);
+}
+
+.link-light {
+    color: var(--light);
+    transition: all ease-in-out .2s;
+    font-weight: bold;
+    padding: .5rem 0;
+    border-bottom: 2px solid var(--none)
+} .link-light:hover {
+    color: var(--hover-light);
+}
+
+
+.nav-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5rem 2rem;
+    box-shadow: 1px 1px 1px var(--secondary);
+}
+.nav-brand {
+    width: 250px;
+}
+.nav-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+.nav-link {
+    font-size: 1.2em;
+}
