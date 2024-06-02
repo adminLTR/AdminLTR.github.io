@@ -58,3 +58,17 @@
 .nav-link {
     font-size: 1.2em;
 }
+
+
+.pill-hability {
+    padding: .5rem 2rem;
+    border-radius: 16px;
+    background-color: #00000029;
+    color: white;
+    transition: background-color ease-in-out .2s;
+}
+.pill-hability:hover {
+    background-color: #30303029;
+}
+
+.col-6 {width: 50%;}
