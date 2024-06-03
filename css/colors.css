@@ -7,3 +7,8 @@
 .text-secondary { color: var(--secondary); }
 .text-dark { color: var(--dark); }
 .text-light { color: var(--light); }
+
+.text-primary-hover { color: var(--hover-primary); }
+.text-secondary-hover { color: var(--hover-secondary); }
+.text-dark-hover { color: var(--hover-dark); }
+.text-light-hover { color: var(--hover-light); }

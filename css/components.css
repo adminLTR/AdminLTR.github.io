@@ -72,3 +72,42 @@
 }
 
 .col-6 {width: 50%;}
+
+
+.sub-title h2 {
+    border-bottom: 2px solid var(--primary);
+}
+
+
+.table-info td {
+    padding: .25rem .5rem;
+}
+
+.education-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    align-items: center;
+}
+
+.about-info {
+    width: 30%;
+}
+.languages {
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-wrap: wrap;
+    gap: 1rem 0;
+}
+.language-item {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: .5rem;
+    color: var(--light);
+    width: 50%;
+}
+.language-item img {
+    width: 30px;
+}

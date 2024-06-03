@@ -1,0 +1,1 @@
+document.getElementById("age").textContent = getAge("05/28/2003");

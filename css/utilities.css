@@ -3,7 +3,13 @@
     height: 100%;
 }
 
+.w-fit {width: fit-content;}
+
 .fs-1 { font-size: 16px; } .fs-2 { font-size: 20px; } .fs-3 { font-size: 24px; }
 .fs-4 { font-size: 28px; } .fs-5 { font-size: 32px; } .fs-6 { font-size: 36px; }
 .fs-7 { font-size: 40px; } .fs-8 { font-size: 44px; } .fs-9 { font-size: 48px; }
 .fs-10 { font-size: 40px; } .fs-11 { font-size: 44px; } .fs-12 { font-size: 60px; }
+
+.bold {font-weight: bold;}
+
+.text-center {text-align: center;}
