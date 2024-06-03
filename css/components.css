@@ -111,3 +111,11 @@
 .language-item img {
     width: 30px;
 }
+
+.project {
+    width: 30%;
+}
+.project img {
+    width: 100%;
+    border-radius: 5px;
+}
