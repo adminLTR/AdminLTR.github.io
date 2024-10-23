@@ -9,7 +9,7 @@
 
 :root {
     --dark: #1A1E20;
-    --main: #0656be;
+    --main: #084799;
     --secondary: #F1CCB2;
 }
 
@@ -124,4 +124,52 @@ header a.active, header a:hover {
 #about .about-info .languages {
     text-align: end;
     margin: 1rem 0;
+}
+
+#experience {
+    background-color: var(--main);
+    padding: 2rem 4rem;
+}
+#experience h2 {
+    color: white;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+#experience .experience {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    gap: 3rem;
+}
+.card {
+    background-color: white;
+    border-radius: 8px;
+}
+.card-img {
+    width: 100%;
+}
+.card-img img{
+    width: 100%;
+    border-radius: 8px 8px 0 0;
+}
+.card-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--main);
+    font-size: 20px;
+}
+.card-body {
+    padding: .5rem 1rem;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+}
+.card-info {
+    color: var(--dark);
+    flex-grow: 1;
+    margin-bottom: 1rem;
+}
+.card-technologies svg{
+    width: 20px;
 }
