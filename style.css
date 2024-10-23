@@ -201,3 +201,18 @@ header a.active, header a:hover {
 #skills .row img {
     width: 150px;
 }
+
+/* ---------- FOOTER ------------- */
+footer {
+    background-color: var(--dark);
+    color: white;
+    padding: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+footer a {
+    color: white;
+    font-size: 30px;
+}
