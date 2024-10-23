@@ -1,0 +1,127 @@
+/* ---------- GENERAL ------------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Lexend", serif;
+}
+
+:root {
+    --dark: #1A1E20;
+    --main: #0656be;
+    --secondary: #F1CCB2;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+/* ---------- HEADER ------------- */
+
+header {
+    position: sticky;
+    width: 100%;
+    top: 0%;
+    left: 0%;
+    background-color: var(--dark);
+    z-index: 1000;
+}
+header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 3rem;
+}
+header nav ul {
+    display: flex;
+    gap: 1.5rem;
+}
+header a {
+    color: var(--secondary);
+    transition: color ease-in-out .2s;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 20px;
+}
+header a.active, header a:hover {
+    color: var(--main);
+}
+
+/* ---------- SECTIONS ------------- */
+
+#home {
+    background-color: var(--dark);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 2rem 1rem;
+}
+#home .presentation h1 {
+    color: var(--main);
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+#home .presentation h3 {
+    color: var(--secondary);
+    font-size: 32px;
+}
+#home .presentation .developer-areas {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    padding: 1rem 0;
+}
+#home .presentation .developer-areas p {
+    background-color: var(--main);
+    color: white;
+    padding: .25rem 1rem;
+    border-radius: 16px;
+}
+#home .profile-photo {
+    position: relative;
+}
+#home .profile-photo img {
+    border-radius: 50%;
+}
+#home .profile-photo #age {
+    background-color: var(--main);
+    color: white;
+    width: fit-content;
+    font-weight: bold;
+    position: absolute;
+    border-radius: 50%;
+    padding: 1rem;
+    bottom: 1rem;
+    right: 2rem;
+    font-size: 20px;
+}
+
+#about {
+    background-color: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: start;
+    padding: 2.5rem 10rem;
+    gap: 5rem;
+}
+#about h2 {
+    color: var(--main);
+    font-size: 24px;
+    text-transform: uppercase;
+    margin-bottom: .5rem;
+}
+#about .about-info .languages {
+    text-align: end;
+    margin: 1rem 0;
+}
