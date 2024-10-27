@@ -12,7 +12,6 @@ window.addEventListener("load", function () {
                 currentSection = section.getAttribute("id");
             } 
         });
-        console.log(currentSection)
         navLinks.forEach((link) => {
             link.classList.remove("active");
             if ((link.getAttribute("href")) === "#"+currentSection) {
