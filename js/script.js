@@ -5,6 +5,7 @@ window.addEventListener("load", function () {
     renderLanguages(languages);
     renderSkills(technologies);
     renderExperience(experience);
+    renderProjects(projects);
 });
 
 function renderAreas(areas) {
@@ -61,4 +62,34 @@ function renderExperience(experience) {
         </div>`
     })
     experienceDiv.innerHTML = html;
+}
+
+function renderProjects(projects) {
+    const projectsDiv = document.querySelector("#projects .row");
+    let html = "";
+    projects.forEach(prj => {
+        html += `<div class="card">
+            <figure class="card-img">
+                <img src="./img/projects/${prj.name.toLowerCase()}.png" alt="${prj.name}">
+            </figure>
+            <div class="card-body">
+                <h4 class="card-title">
+                    ${prj.name}
+                    <div>
+                        <a href="${prj.github}"><img width="25" src="https://img.icons8.com/ios-glyphs/30/github.png" alt="github"/></a>
+                        <a href="${prj.web}"><img width="25" src="https://img.icons8.com/ios/50/domain--v1.png" alt="domain--v1"/></a>
+                    </div>
+                </h4>
+                <div class="card-info">
+                    <p>${prj.description}</p>
+                </div>
+                <div class="card-technologies">
+                    ${prj.technologies.map(tech => {
+                        return `<img width="25" src="./img/technologies/${tech.toLowerCase()}.png"/>`
+                    }).toString().replace(/,/g, '')}
+                </div>
+            </div>
+        </div>`
+    })
+    projectsDiv.innerHTML = html;
 }

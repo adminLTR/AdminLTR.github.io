@@ -26,6 +26,40 @@ const experience = [
         ]
     },
 ]
+const projects = [
+    {
+        name: 'SmartTachito',
+        description: 'Smart trash can capable of classificating kinds of trash',
+        web: "#",
+        github: "#",
+        technologies: [
+            "html",
+            "css",
+            "javascript",
+            "django",
+            "react",
+            "tailwindcss",
+            "tensorflow",
+            "arduino",
+        ]
+    },
+    {
+        name: 'BillyApp',
+        description: 'Smart security system based on image recognition and artificial intelligence',
+        web: "#",
+        github: "#",
+        technologies: [
+            "html",
+            "css",
+            "javascript",
+            "django",
+            "react",
+            "tailwindcss",
+            "tensorflow",
+            "arduino",
+        ]
+    },
+]
 
 const technologies = [
     "HTML",
