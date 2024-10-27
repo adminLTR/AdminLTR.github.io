@@ -1,0 +1,13 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Lexend", serif;
+}
+
+:root {
+    --dark: #1A1E20;
+    --main: #084799;
+    --secondary: #F1CCB2;
+}

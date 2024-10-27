@@ -1,18 +1,5 @@
 /* ---------- GENERAL ------------- */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Lexend", serif;
-}
-
-:root {
-    --dark: #1A1E20;
-    --main: #084799;
-    --secondary: #F1CCB2;
-}
-
 h2 {
     font-size: 24px;
 }
@@ -81,6 +68,7 @@ header a.active, header a:hover {
     gap: 1rem;
     align-items: center;
     padding: 1rem 0;
+    flex-wrap: wrap;
 }
 #home .presentation .developer-areas p {
     background-color: var(--main);
@@ -125,6 +113,9 @@ header a.active, header a:hover {
     text-align: end;
     margin: 1rem 0;
 }
+#about .about-img {
+    width: 500px;
+}
 
 #experience {
     background-color: var(--main);
@@ -146,7 +137,7 @@ header a.active, header a:hover {
 .card {
     background-color: white;
     border-radius: 8px;
-    max-width: 35%;
+    max-width: 500px;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
