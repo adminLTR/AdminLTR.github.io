@@ -3,8 +3,8 @@ window.addEventListener("load", function () {
 
     renderAreas(areas);
     renderLanguages(languages);
-    renderSkills(technologies)
-
+    renderSkills(technologies);
+    renderExperience(experience);
 });
 
 function renderAreas(areas) {
@@ -32,4 +32,33 @@ function renderSkills(technologies) {
         html += `<img src="./img/technologies/${tech.toLowerCase()}.png" alt="${tech}"/>`;
     });
     skillsDiv.innerHTML = html;
+}
+
+function renderExperience(experience) {
+    const experienceDiv = document.querySelector("#experience .row");
+    let html = "";
+    experience.forEach(exp => {
+        html += `<div class="card">
+            <figure class="card-img">
+                <img src="./img/experience/${exp.name.toLowerCase()}.png" alt="${exp.name}">
+            </figure>
+            <div class="card-body">
+                <h4 class="card-title">
+                    ${exp.name}
+                    <a href="${exp.web}" target="_blank">
+                        <img width="25" src="https://img.icons8.com/ios/50/domain--v1.png" alt="domain--v1"/>
+                    </a>
+                </h4>
+                <div class="card-info">
+                    <p>${exp.description}</p>
+                </div>
+                <div class="card-technologies">
+                    ${exp.technologies.map(tech => {
+                        return `<img width="25" src="./img/technologies/${tech.toLowerCase()}.png"/>`
+                    }).toString().replace(/,/g, '')}
+                </div>
+            </div>
+        </div>`
+    })
+    experienceDiv.innerHTML = html;
 }

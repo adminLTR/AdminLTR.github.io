@@ -2,6 +2,7 @@ const experience = [
     {
         name: 'CapitalFork',
         description: 'Junior full stack developer',
+        web: "https://capitalfork.com/",
         technologies: [
             "php",
             "html",
@@ -15,6 +16,7 @@ const experience = [
     {
         name: 'Eneisoft',
         description: 'Frontend developer',
+        web: "https://eneisoft.org/",
         technologies: [
             "html",
             "css",

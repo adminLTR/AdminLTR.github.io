@@ -174,8 +174,10 @@ header a.active, header a:hover {
     flex-grow: 1;
     margin-bottom: 1rem;
 }
-.card-technologies svg{
+.card-technologies img{
     width: 20px;
+    display: inline-block;
+    margin: 0 .125rem;
 }
 
 #projects {
