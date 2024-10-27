@@ -1,4 +1,26 @@
 window.addEventListener("load", function () {
+    const sections = document.querySelectorAll("section"); // Asume que tus secciones son <section>
+    const navLinks = document.querySelectorAll("header nav ul li a");
+    window.addEventListener("scroll", () => {
+        let currentSection = "";
+        
+        sections.forEach((section) => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+
+            if (window.scrollY >= sectionTop - sectionHeight / 3) {
+                currentSection = section.getAttribute("id");
+            } 
+        });
+        console.log(currentSection)
+        navLinks.forEach((link) => {
+            link.classList.remove("active");
+            if ((link.getAttribute("href")) === "#"+currentSection) {
+                link.classList.add("active");
+            }
+        });
+    });
+
     document.getElementById("age").textContent = getAge("2003-05-28");
 
     renderAreas(areas);
@@ -92,4 +114,28 @@ function renderProjects(projects) {
         </div>`
     })
     projectsDiv.innerHTML = html;
+}
+
+function linkSelectionEvent() {
+    const sections = document.querySelectorAll("section"); // Asume que tus secciones son <section>
+    const navLinks = document.querySelectorAll("header nav ul li a");
+    window.addEventListener("scroll", () => {
+        let currentSection = "";
+        
+        sections.forEach((section) => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+
+            if (window.scrollY >= sectionTop - sectionHeight / 3) {
+                currentSection = section.getAttribute("id");
+            } 
+        });
+        console.log(currentSection)
+        navLinks.forEach((link) => {
+            link.classList.remove("active");
+            if ((link.getAttribute("href")) === "#"+currentSection) {
+                link.classList.add("active");
+            }
+        });
+    });
 }
