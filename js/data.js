@@ -1,3 +1,30 @@
+const experience = [
+    {
+        name: 'CapitalFork',
+        description: 'Junior full stack developer',
+        technologies: [
+            "php",
+            "html",
+            "css",
+            "javascript",
+            "jquery",
+            "laravel",
+            "bootstrap",
+        ]
+    },
+    {
+        name: 'Eneisoft',
+        description: 'Frontend developer',
+        technologies: [
+            "html",
+            "css",
+            "javascript",
+            "jquery",
+            "bootstrap",
+        ]
+    },
+]
+
 const technologies = [
     "HTML",
     "CSS",
@@ -10,7 +37,10 @@ const technologies = [
     "Django",
     "Arduino",
     "Figma",
-    "SQL",
+    "MySQL",
+    "PostgreSQL",
+    "Bootstrap",
+    "TailwindCSS",
 ]
 
 const areas = [
