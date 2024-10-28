@@ -43,6 +43,15 @@ header a.active, header a:hover {
     color: var(--main);
 }
 
+#menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+}
+
 /* ---------- SECTIONS ------------- */
 
 #home {

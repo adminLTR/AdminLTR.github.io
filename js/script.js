@@ -20,6 +20,13 @@ window.addEventListener("load", function () {
         });
     });
 
+    const toggleButton = document.getElementById('menu-toggle');
+    const menu = document.getElementById('menu');
+
+    toggleButton.addEventListener('click', function() {
+        menu.classList.toggle("show")
+    });
+
     document.getElementById("age").textContent = getAge("2003-05-28");
 
     renderAreas(areas);

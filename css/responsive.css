@@ -15,11 +15,27 @@
     #home .presentation h1 {
         display: block;
     }
-    header nav ul {
-        display: none;
-    }
     #home .presentation .developer-areas {
         justify-content: center;
+    }
+
+    nav #menu {
+        flex-direction: column;
+        display: none;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: #333;
+        padding: 10px 0;
+    }
+    #menu-toggle {
+        display: block;
+    }
+
+    /* Mostrar el menú cuando el toggle esté activo */
+    nav #menu.show {
+        display: flex;
     }
 }
 @media (max-width: 700px) {
