@@ -2,6 +2,7 @@ const experience = [
     {
         name: 'CapitalFork',
         description: 'Junior full stack developer',
+        extendedDescription: ``,
         web: "https://capitalfork.com/",
         technologies: [
             "php",
