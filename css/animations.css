@@ -1,7 +1,7 @@
 @keyframes fadeInRight {
     from {
         opacity: 0;
-        right: -1000px;
+        right: -100px;
     }
     to {
         opacity: 1;
@@ -11,7 +11,7 @@
 @keyframes fadeInLeft {
     from {
         opacity: 0;
-        left: -1000px;
+        left: -100px;
     }
     to {
         opacity: 1;
@@ -29,7 +29,20 @@
     }
 }
 
+.animate-fade-left {
+    animation-duration: 1.5s;
+    animation-name: fadeInLeft;
+}
+.animate-fade-right {
+    animation-duration: 1.5s;
+    animation-name: fadeInRight;
+}
 .animate-fade-size {
+    animation-duration: 1s;
+    animation-name: fadeInSize;
+}
+
+.animate-fade-scroll {
     view-timeline-name: --fadeInSize;
     view-timeline-axis: block;
 
