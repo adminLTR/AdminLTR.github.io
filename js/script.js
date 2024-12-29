@@ -58,7 +58,7 @@ function renderSkills(technologies) {
     const skillsDiv = document.querySelector("#skills .row");
     let html = ""
     technologies.forEach(tech => {
-        html += `<img src="./img/technologies/${tech.toLowerCase()}.png" alt="${tech}"/>`;
+        html += `<img class="animate-fade-size" src="./img/technologies/${tech.toLowerCase()}.png" alt="${tech}"/>`;
     });
     skillsDiv.innerHTML = html;
 }
@@ -67,7 +67,7 @@ function renderExperience(experience) {
     const experienceDiv = document.querySelector("#experience .row");
     let html = "";
     experience.forEach(exp => {
-        html += `<div class="card">
+        html += `<div class="card animate-fade-size">
             <figure class="card-img">
                 <img src="./img/experience/${exp.name.toLowerCase()}.png" alt="${exp.name}">
             </figure>
@@ -96,7 +96,7 @@ function renderProjects(projects) {
     const projectsDiv = document.querySelector("#projects .row");
     let html = "";
     projects.forEach(prj => {
-        html += `<div class="card">
+        html += `<div class="card animate-fade-size">
             <figure class="card-img">
                 <img src="./img/projects/${prj.name.toLowerCase()}.png" alt="${prj.name}">
             </figure>

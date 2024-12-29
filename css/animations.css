@@ -1,0 +1,41 @@
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        right: -1000px;
+    }
+    to {
+        opacity: 1;
+        right: 0;
+    }
+}
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        left: -1000px;
+    }
+    to {
+        opacity: 1;
+        left: 0;
+    }
+}
+@keyframes fadeInSize {
+    from {
+        opacity: 0;
+        scale: 40%;
+    }
+    to {
+        opacity: 1;
+        scale: 100%;
+    }
+}
+
+.animate-fade-size {
+    view-timeline-name: --fadeInSize;
+    view-timeline-axis: block;
+
+    animation-timeline: --fadeInSize;
+    animation-name: fadeInSize;
+
+    animation-range: entry 25% cover 50%;
+    animation-fill-mode: both;
+}

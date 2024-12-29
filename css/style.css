@@ -61,6 +61,9 @@ header a.active, header a:hover {
     align-items: center;
     padding: 2rem 1rem;
 }
+#home .presentation {
+    position: relative;
+}
 #home .presentation h1 {
     color: var(--main);
     font-size: 40px;
@@ -87,6 +90,7 @@ header a.active, header a:hover {
 }
 #home .profile-photo {
     position: relative;
+    
 }
 #home .profile-photo img {
     border-radius: 50%;
@@ -122,8 +126,11 @@ header a.active, header a:hover {
     text-align: end;
     margin: 1rem 0;
 }
+#about .about-info {
+    position: relative;
+}
 #about .about-img {
-    width: 500px;
+    position: relative;
 }
 
 #experience {
