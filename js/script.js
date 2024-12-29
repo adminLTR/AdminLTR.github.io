@@ -20,23 +20,7 @@ window.addEventListener("load", function () {
         });
     });
 
-    const toggleButton = document.getElementById('menu-toggle');
-    const menu = document.getElementById('menu');
-    const showMenu = false;
-
-    toggleButton.addEventListener('click', function() {
-        menu.classList.toggle("show");
-        if (!showMenu) {
-            menu.classList.remove("animation-navbar-out");
-            menu.classList.add("animation-navbar-in");
-            showMenu = true;
-        } else {
-            menu.classList.remove("animation-navbar-in");
-            menu.classList.add("animation-navbar-out");
-            showMenu = false;
-        }
-        
-    });
+    
 
     document.getElementById("age").textContent = getAge("2003-05-28");
 

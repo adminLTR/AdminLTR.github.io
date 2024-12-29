@@ -21,16 +21,13 @@ header {
     left: 0%;
     background-color: var(--dark);
     z-index: 1000;
-}
-header nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 3rem;
+    padding: 1rem;
 }
-header nav ul {
-    display: flex;
-    gap: 1.5rem;
+header nav {
+    padding: 1rem 3rem;
 }
 header a {
     color: var(--secondary);
@@ -38,9 +35,13 @@ header a {
     text-transform: uppercase;
     font-weight: bold;
     font-size: 20px;
+    margin: 0 1rem;
 }
 header a.active, header a:hover {
     color: var(--main);
+}
+#check-menu {
+    display: none;
 }
 
 #menu-toggle {
@@ -48,8 +49,10 @@ header a.active, header a:hover {
     background: none;
     border: none;
     font-size: 24px;
-    color: white;
+    color: var(--secondary);
     cursor: pointer;
+    position: absolute;
+    right: 1rem;
 }
 
 /* ---------- SECTIONS ------------- */

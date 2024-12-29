@@ -18,23 +18,34 @@
     #home .presentation .developer-areas {
         justify-content: center;
     }
+    header a {
+        display: block;
+        text-align: center;
+        margin: 1rem 0;
+    }
 
-    nav #menu {
-        flex-direction: column;
-        display: none;
+    #menu {
+        /* display: none; */
         position: absolute;
-        top: 60px;
+        top: 100%;
         left: 0;
         width: 100%;
         background-color: #333;
-        padding: 10px 0;
+        padding: 0;
+        height: 0;
+        transition: .3s ease;
+        overflow: hidden;
+    }
+    #check-menu:checked~#menu {
+        height: fit-content;
+        padding: 1rem;
     }
     #menu-toggle {
         display: block;
     }
 
     /* Mostrar el menú cuando el toggle esté activo */
-    nav #menu.show {
+    #menu.show {
         display: flex;
     }
 }
