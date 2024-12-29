@@ -28,6 +28,31 @@
         scale: 100%;
     }
 }
+@keyframes navAnimation {
+    from {
+        top: -300px;
+    }
+    to {
+        top: 60px;
+    }
+}
+@keyframes navAnimationOut {
+    from {
+        top: 60px;
+    }
+    to {
+        top: -300px;
+    }
+}
+
+.animation-navbar-in {
+    animation-name: navAnimation;
+    animation-duration: .5s;
+}
+.animation-navbar-out {
+    animation-name: navAnimationOut;
+    animation-duration: .5s;
+}
 
 .animate-fade-left {
     animation-duration: 1.5s;
