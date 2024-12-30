@@ -1,6 +1,6 @@
 window.addEventListener("load", function () {
     const sections = document.querySelectorAll("section"); // Asume que tus secciones son <section>
-    const navLinks = document.querySelectorAll("header nav ul li a");
+    const navLinks = document.querySelectorAll("header nav a");
     window.addEventListener("scroll", () => {
         let currentSection = "";
         
@@ -20,7 +20,11 @@ window.addEventListener("load", function () {
         });
     });
 
-    
+    navLinks.forEach(link => {
+        link.addEventListener("click", function () {
+            document.getElementById("check-menu").checked = false;
+        })
+    })
 
     document.getElementById("age").textContent = getAge("2003-05-28");
 
