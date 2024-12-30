@@ -21,7 +21,12 @@ window.addEventListener("load", function () {
     });
 
     navLinks.forEach(link => {
-        link.addEventListener("click", function () {
+        link.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
             document.getElementById("check-menu").checked = false;
         })
     })
