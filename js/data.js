@@ -2,7 +2,13 @@ const experience = [
     {
         name: 'Academia VITA',
         date: 'November 2024 - December 2024',
-        description: 'Freelance Frontend Developer. Specializing in design, development, deployment, and SEO.',
+        description: {
+            'great-britain': 'Freelance Frontend Developer. Specializing in design, development, deployment, and SEO.',
+            spain: 'Desarrollador Frontend Freelance. Especializado en diseño, desarrollo, implementación y SEO.',
+            italy: 'Sviluppatore Frontend Freelance. Specializzato in design, sviluppo, implementazione e SEO.',
+            brazil: 'Desenvolvedor Frontend Freelance. Especializado em design, desenvolvimento, implantação e SEO.',
+            germany: 'Freelance Frontend-Entwickler. Spezialisiert auf Design, Entwicklung, Implementierung und SEO.',
+        },
         web: "https://academiapreuniversitariavita.com/",
         technologies: [
             "html",
@@ -15,7 +21,13 @@ const experience = [
     {
         name: 'Eneisoft',
         date: 'October 2024 - November 2024',
-        description: 'Development team lead, freelance full-stack developer. Expertise in designing and developing landing pages, data structuring, deployment, SEO, and process automation.',
+        description: {
+            'great-britain': 'Development team lead, freelance full-stack developer. Expertise in designing and developing landing pages, data structuring, deployment, SEO, and process automation.',
+            spain: 'Líder de equipo de desarrollo y desarrollador full-stack freelance. Experto en diseño y desarrollo de páginas de aterrizaje, estructuración de datos, implementación, SEO y automatización de procesos.',
+            italy: 'Leader del team di sviluppo e sviluppatore full-stack freelance. Esperto nella progettazione e nello sviluppo di landing page, strutturazione dei dati, implementazione, SEO e automazione dei processi.',
+            brazil: 'Líder de equipe de desenvolvimento e desenvolvedor full-stack freelance. Especializado em design e desenvolvimento de landing pages, estruturação de dados, implantação, SEO e automação de processos.',
+            germany: 'Entwicklungs-Teamleiter und Freelance Full-Stack-Entwickler. Spezialisiert auf das Design und die Entwicklung von Landing Pages, Datenstrukturierung, Implementierung, SEO und Prozessautomatisierung.',
+        },
         web: "https://eneisoft.org/",
         technologies: [
             "html",
@@ -28,7 +40,13 @@ const experience = [
     {
         name: 'CapitalFork',
         date: 'July 2024 - August 2024',
-        description: 'Junior Full-stack Developer specializing in bug fixing, maintenance, and feature implementation.',
+        description: {
+            'great-britain': 'Junior Full-stack Developer specializing in bug fixing, maintenance, and feature implementation.',
+            spain: 'Desarrollador Full-stack Junior especializado en corrección de errores, mantenimiento e implementación de nuevas funciones.',
+            italy: 'Sviluppatore Full-stack Junior specializzato nella correzione di bug, manutenzione e implementazione di funzionalità.',
+            brazil: 'Desenvolvedor Full-stack Júnior especializado em correção de bugs, manutenção e implementação de funcionalidades.',
+            germany: 'Junior Full-Stack-Entwickler, spezialisiert auf Fehlerbehebung, Wartung und Implementierung von Funktionen.',
+        },
         web: "https://capitalfork.com/",
         technologies: [
             "php",
@@ -44,7 +62,13 @@ const experience = [
 const projects = [
     {
         name: 'SmartTachito',
-        description: 'Smart trash can capable of classificating kinds of trash',
+        description: {
+            'great-britain': 'Smart trash can capable of classifying kinds of trash.',
+            spain: 'Contenedor de basura inteligente capaz de clasificar tipos de basura.',
+            italy: 'Bidone della spazzatura intelligente in grado di classificare i tipi di rifiuti.',
+            brazil: 'Lixeira inteligente capaz de classificar tipos de lixo.',
+            germany: 'Intelligenter Mülleimer, der in der Lage ist, verschiedene Müllarten zu klassifizieren.',
+        },
         web: "#",
         github: "#",
         technologies: [
@@ -60,7 +84,13 @@ const projects = [
     },
     {
         name: 'BillyApp',
-        description: 'Smart security system based on image recognition and artificial intelligence',
+        description: {
+            'great-britain': 'Smart security system based on image recognition and artificial intelligence.',
+            spain: 'Sistema de seguridad inteligente basado en reconocimiento de imágenes e inteligencia artificial.',
+            italy: 'Sistema di sicurezza intelligente basato sul riconoscimento delle immagini e sull’intelligenza artificiale.',
+            brazil: 'Sistema de segurança inteligente baseado em reconhecimento de imagens e inteligência artificial.',
+            germany: 'Intelligentes Sicherheitssystem basierend auf Bildverarbeitung und künstlicher Intelligenz.',
+        },
         web: "#",
         github: "#",
         technologies: [

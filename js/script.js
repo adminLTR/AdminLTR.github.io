@@ -23,6 +23,9 @@ window.addEventListener("load", function () {
             // UPDATE LINKS
             renderLinks();
             renderInfo();
+
+            renderExperience(experience);
+            renderProjects(projects);
         })
     })
 });
@@ -85,6 +88,8 @@ function renderSkills(technologies) {
 function renderExperience(experience) {
     const experienceDiv = document.querySelector("#experience .row");
     let html = "";
+    const langUser = localStorage.getItem("language");
+    const lang = langUser ? langUser : 'great-britain'
     experience.forEach(exp => {
         html += `<div class="card animate-fade-scroll">
             <figure class="card-img">
@@ -99,7 +104,7 @@ function renderExperience(experience) {
                     <span class="text-dark" style="width: 100%; font-size: 12px;">${exp.date}</span>
                 </h4>
                 <div class="card-info">
-                    <p>${exp.description}</p>
+                    <p>${exp.description[lang]}</p>
                 </div>
                 <div class="card-technologies">
                     ${exp.technologies.map(tech => {
@@ -115,6 +120,8 @@ function renderExperience(experience) {
 function renderProjects(projects) {
     const projectsDiv = document.querySelector("#projects .row");
     let html = "";
+    const langUser = localStorage.getItem("language");
+    const lang = langUser ? langUser : 'great-britain'
     projects.forEach(prj => {
         html += `<div class="card animate-fade-scroll">
             <figure class="card-img">
@@ -129,7 +136,7 @@ function renderProjects(projects) {
                     </div>
                 </h4>
                 <div class="card-info">
-                    <p>${prj.description}</p>
+                    <p>${prj.description[lang]}</p>
                 </div>
                 <div class="card-technologies">
                     ${prj.technologies.map(tech => {
