@@ -11,3 +11,7 @@
     --main: #4789e0;
     --secondary: #f5c9aa;
 }
+
+.text-dark {
+    color: var(--dark);
+}

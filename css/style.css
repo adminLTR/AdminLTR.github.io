@@ -197,6 +197,8 @@ header::before {
     align-items: center;
     color: var(--main);
     font-size: 20px;
+    flex-wrap: wrap;
+    margin-bottom: .5rem;
 }
 .card-info {
     color: var(--dark);

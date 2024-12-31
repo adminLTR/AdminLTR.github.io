@@ -44,7 +44,7 @@ function renderExperience(experience) {
     experience.forEach(exp => {
         html += `<div class="card animate-fade-scroll">
             <figure class="card-img">
-                <img src="./img/experience/${exp.name.toLowerCase()}.png" alt="${exp.name}">
+                <img src="./img/experience/${formatNameForImg(exp.name)}.png" alt="${exp.name}">
             </figure>
             <div class="card-body">
                 <h4 class="card-title">
@@ -52,6 +52,7 @@ function renderExperience(experience) {
                     <a href="${exp.web}" target="_blank">
                         <img width="25" src="https://img.icons8.com/ios/50/domain--v1.png" alt="domain--v1"/>
                     </a>
+                    <span class="text-dark" style="width: 100%; font-size: 12px;">${exp.date}</span>
                 </h4>
                 <div class="card-info">
                     <p>${exp.description}</p>
@@ -73,7 +74,7 @@ function renderProjects(projects) {
     projects.forEach(prj => {
         html += `<div class="card animate-fade-scroll">
             <figure class="card-img">
-                <img src="./img/projects/${prj.name.toLowerCase()}.png" alt="${prj.name}">
+                <img src="./img/projects/${formatNameForImg(prj.name)}.png" alt="${prj.name}">
             </figure>
             <div class="card-body">
                 <h4 class="card-title">

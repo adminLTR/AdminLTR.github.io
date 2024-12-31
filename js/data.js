@@ -27,6 +27,19 @@ const experience = [
             "bootstrap",
         ]
     },
+    {
+        name: 'Academia VITA',
+        date: 'November 2024 - December 2024',
+        description: 'Freelance Frontend Developer. Specializing in design, development, deployment, and SEO.',
+        web: "https://academiapreuniversitariavita.com/",
+        technologies: [
+            "html",
+            "css",
+            "javascript",
+            "jquery",
+            "bootstrap",
+        ]
+    },
 ]
 const projects = [
     {

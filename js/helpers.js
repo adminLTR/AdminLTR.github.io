@@ -8,3 +8,7 @@ function getAge(dateString) {
     }
     return age;
 }
+
+function formatNameForImg(name) {
+    return name.toLowerCase().replace(/ /g, '')
+}
