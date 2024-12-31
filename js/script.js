@@ -55,6 +55,9 @@ function renderInfo() {
     document.getElementById("career-info").textContent = info[lang].career;
     document.getElementById("download-info").textContent = info[lang].download;
     document.getElementById("about-info").textContent = info[lang].about;
+
+    document.getElementById("download-info").setAttribute("href", "./cv/"+lang+".pdf");
+
 }
 
 function renderAreas(areas) {
