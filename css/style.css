@@ -69,7 +69,7 @@ header::before {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding: 2rem 1rem;
+    padding: 4rem 1rem;
 }
 #home .presentation {
     position: relative;
@@ -168,9 +168,21 @@ header::before {
     flex-direction: column;
     flex-grow: 1;
 }
+.card-img {
+    border: 0;
+    background-color: rgba(255, 255, 255, 0);
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 8px 8px 0 0;
+
+}
 .card-img img{
     width: 100%;
     border-radius: 8px 8px 0 0;
+    transition: all ease-in-out .2s;
+}
+.card-img img:hover {
+    transform: scale(1.15);
 }
 .card-body {
     padding: .5rem 1rem;

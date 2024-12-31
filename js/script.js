@@ -72,9 +72,9 @@ function renderExperience(experience) {
     let html = "";
     experience.forEach(exp => {
         html += `<div class="card animate-fade-scroll">
-            <figure class="card-img">
+            <button class="card-img">
                 <img src="./img/experience/${exp.name.toLowerCase()}.png" alt="${exp.name}">
-            </figure>
+            </button>
             <div class="card-body">
                 <h4 class="card-title">
                     ${exp.name}
