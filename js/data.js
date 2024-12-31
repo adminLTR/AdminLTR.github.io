@@ -1,16 +1,14 @@
-const experience = [
+const experience = [       
     {
-        name: 'CapitalFork',
-        date: 'July 2024 - August 2024',
-        description: 'Junior Full-stack Developer specializing in bug fixing, maintenance, and feature implementation.',
-        web: "https://capitalfork.com/",
+        name: 'Academia VITA',
+        date: 'November 2024 - December 2024',
+        description: 'Freelance Frontend Developer. Specializing in design, development, deployment, and SEO.',
+        web: "https://academiapreuniversitariavita.com/",
         technologies: [
-            "php",
             "html",
             "css",
             "javascript",
             "jquery",
-            "laravel",
             "bootstrap",
         ]
     },
@@ -28,18 +26,20 @@ const experience = [
         ]
     },
     {
-        name: 'Academia VITA',
-        date: 'November 2024 - December 2024',
-        description: 'Freelance Frontend Developer. Specializing in design, development, deployment, and SEO.',
-        web: "https://academiapreuniversitariavita.com/",
+        name: 'CapitalFork',
+        date: 'July 2024 - August 2024',
+        description: 'Junior Full-stack Developer specializing in bug fixing, maintenance, and feature implementation.',
+        web: "https://capitalfork.com/",
         technologies: [
+            "php",
             "html",
             "css",
             "javascript",
             "jquery",
+            "laravel",
             "bootstrap",
         ]
-    },
+    }, 
 ]
 const projects = [
     {
