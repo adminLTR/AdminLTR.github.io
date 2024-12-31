@@ -3,13 +3,56 @@ window.addEventListener("load", function () {
 
     document.getElementById("age").textContent = getAge("2003-05-28");
 
+    renderLinks();
+    renderInfo();
+
     renderAreas(areas);
     renderLanguages(languages);
     renderSkills(technologies);
     renderExperience(experience);
     renderProjects(projects);
 
+    // CLICK LANGUAGES
+    this.document.querySelectorAll("#about .languages-div img").forEach(img => {
+        img.addEventListener("click", function () {
+            document.querySelectorAll("#about .languages-div img").forEach(i => {i.classList.remove("active")});
+            img.classList.add("active");
+            const lang = img.dataset.lang;
+            localStorage.setItem("language", lang);
+
+            // UPDATE LINKS
+            renderLinks();
+            renderInfo();
+        })
+    })
 });
+
+function renderLinks() {
+    const langUser = localStorage.getItem("language");
+    const lang = langUser ? langUser : 'great-britain'
+    const links = Object.keys(info[lang].links);
+    links.forEach(link => {
+        try {
+            document.getElementById("link-"+link).textContent = info[lang].links[link];            
+        } catch {
+
+        }
+        try {
+            document.getElementById("subtitle-"+link).textContent = info[lang].links[link]
+        } catch {
+            
+        }
+    })
+}
+
+function renderInfo() {
+    const langUser = localStorage.getItem("language");
+    const lang = langUser ? langUser : 'great-britain';
+
+    document.getElementById("career-info").textContent = info[lang].career;
+    document.getElementById("download-info").textContent = info[lang].download;
+    document.getElementById("about-info").textContent = info[lang].about;
+}
 
 function renderAreas(areas) {
     const areasDiv = document.querySelector(".developer-areas");
@@ -22,9 +65,10 @@ function renderAreas(areas) {
 
 function renderLanguages(languages) {
     const languagesDiv = document.querySelector(".languages-div");
+    const langUser = localStorage.getItem('language');
     let html = "";
     languages.forEach(lang => {
-        html += `<img width="48" height="48" src="https://img.icons8.com/color/48/${lang}-circular.png" alt="${lang}-circular"/>`;        
+        html += `<img data-lang="${lang}" class="${lang===langUser || (!langUser && lang==="great-britain") ?'active' : ''}" width="48" height="48" src="https://img.icons8.com/color/48/${lang}-circular.png" alt="${lang}-circular"/>`;        
     });
     languagesDiv.innerHTML = html
 }

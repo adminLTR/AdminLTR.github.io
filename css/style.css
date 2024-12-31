@@ -155,6 +155,20 @@ header::before {
 #about .about-img {
     position: relative;
 }
+#about .languages-div img {
+    border: 2px solid rgba(255, 255, 255, 0);
+    border-radius: 50%;
+    transition: all ease-in-out .2s;
+    display: inline-block;
+    margin: 0 .125rem;
+    cursor: pointer;
+}
+#about .languages-div img:hover {
+    border: 2px solid var(--secondary);
+}
+#about .languages-div img.active {
+    border: 2px solid var(--main);
+}
 
 #experience {
     background-color: var(--main);
