@@ -9,16 +9,6 @@ window.addEventListener("load", function () {
     renderExperience(experience);
     renderProjects(projects);
 
-    document.querySelectorAll(".card-img").forEach(cardImg => {
-        cardImg.addEventListener("click", function () {
-            document.getElementById("modal").style.display = "block";
-            document.getElementById("modal").style.opacity = 1;
-        })
-    })
-
-    document.querySelector("#close-modal button").addEventListener("click", function () {
-        document.getElementById("modal").style.display = "none";
-    })
 });
 
 function renderAreas(areas) {
@@ -53,9 +43,9 @@ function renderExperience(experience) {
     let html = "";
     experience.forEach(exp => {
         html += `<div class="card animate-fade-scroll">
-            <button class="card-img">
+            <figure class="card-img">
                 <img src="./img/experience/${exp.name.toLowerCase()}.png" alt="${exp.name}">
-            </button>
+            </figure>
             <div class="card-body">
                 <h4 class="card-title">
                     ${exp.name}
@@ -82,9 +72,9 @@ function renderProjects(projects) {
     let html = "";
     projects.forEach(prj => {
         html += `<div class="card animate-fade-scroll">
-            <button class="card-img">
+            <figure class="card-img">
                 <img src="./img/projects/${prj.name.toLowerCase()}.png" alt="${prj.name}">
-            </button>
+            </figure>
             <div class="card-body">
                 <h4 class="card-title">
                     ${prj.name}

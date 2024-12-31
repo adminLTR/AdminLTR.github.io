@@ -1,8 +1,8 @@
 const experience = [
     {
         name: 'CapitalFork',
-        description: 'Junior full stack developer',
-        extendedDescription: ``,
+        date: 'July 2024 - August 2024',
+        description: 'Junior Full-stack Developer specializing in bug fixing, maintenance, and feature implementation.',
         web: "https://capitalfork.com/",
         technologies: [
             "php",
@@ -16,7 +16,8 @@ const experience = [
     },
     {
         name: 'Eneisoft',
-        description: 'Frontend developer',
+        date: 'October 2024 - November 2024',
+        description: 'Development team lead, freelance full-stack developer. Expertise in designing and developing landing pages, data structuring, deployment, SEO, and process automation.',
         web: "https://eneisoft.org/",
         technologies: [
             "html",
