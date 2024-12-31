@@ -1,35 +1,5 @@
 window.addEventListener("load", function () {
-    const sections = document.querySelectorAll("section"); // Asume que tus secciones son <section>
-    const navLinks = document.querySelectorAll("header nav a");
-    window.addEventListener("scroll", () => {
-        let currentSection = "";
-        
-        sections.forEach((section) => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-
-            if (window.scrollY >= sectionTop - sectionHeight / 3) {
-                currentSection = section.getAttribute("id");
-            } 
-        });
-        navLinks.forEach((link) => {
-            link.classList.remove("active");
-            if ((link.getAttribute("href")) === "#"+currentSection) {
-                link.classList.add("active");
-            }
-        });
-    });
-
-    navLinks.forEach(link => {
-        link.addEventListener("click", function (e) {
-            e.preventDefault();
-
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
-            document.getElementById("check-menu").checked = false;
-        })
-    })
+    linkSelectionEvent();
 
     document.getElementById("age").textContent = getAge("2003-05-28");
 
@@ -38,6 +8,17 @@ window.addEventListener("load", function () {
     renderSkills(technologies);
     renderExperience(experience);
     renderProjects(projects);
+
+    document.querySelectorAll(".card-img").forEach(cardImg => {
+        cardImg.addEventListener("click", function () {
+            document.getElementById("modal").style.display = "block";
+            document.getElementById("modal").style.opacity = 1;
+        })
+    })
+
+    document.querySelector("#close-modal button").addEventListener("click", function () {
+        document.getElementById("modal").style.display = "none";
+    })
 });
 
 function renderAreas(areas) {
@@ -101,9 +82,9 @@ function renderProjects(projects) {
     let html = "";
     projects.forEach(prj => {
         html += `<div class="card animate-fade-scroll">
-            <figure class="card-img">
+            <button class="card-img">
                 <img src="./img/projects/${prj.name.toLowerCase()}.png" alt="${prj.name}">
-            </figure>
+            </button>
             <div class="card-body">
                 <h4 class="card-title">
                     ${prj.name}
@@ -128,7 +109,7 @@ function renderProjects(projects) {
 
 function linkSelectionEvent() {
     const sections = document.querySelectorAll("section"); // Asume que tus secciones son <section>
-    const navLinks = document.querySelectorAll("header nav ul li a");
+    const navLinks = document.querySelectorAll("header nav a");
     window.addEventListener("scroll", () => {
         let currentSection = "";
         
@@ -140,7 +121,6 @@ function linkSelectionEvent() {
                 currentSection = section.getAttribute("id");
             } 
         });
-        console.log(currentSection)
         navLinks.forEach((link) => {
             link.classList.remove("active");
             if ((link.getAttribute("href")) === "#"+currentSection) {
@@ -148,4 +128,15 @@ function linkSelectionEvent() {
             }
         });
     });
+
+    navLinks.forEach(link => {
+        link.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+            document.getElementById("check-menu").checked = false;
+        })
+    })
 }
