@@ -69,8 +69,8 @@ const projects = [
             brazil: 'Lixeira inteligente capaz de classificar tipos de lixo.',
             germany: 'Intelligenter Mülleimer, der in der Lage ist, verschiedene Müllarten zu klassifizieren.',
         },
-        web: "#",
-        github: "#",
+        web: "https://adminltr.github.io/SmartTachito-landing/",
+        github: "https://github.com/adminLTR/SmartTachito",
         technologies: [
             "html",
             "css",
