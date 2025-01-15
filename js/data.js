@@ -92,7 +92,7 @@ const projects = [
             germany: 'Intelligentes Sicherheitssystem basierend auf Bildverarbeitung und künstlicher Intelligenz.',
         },
         web: "#",
-        github: "#",
+        github: "https://github.com/adminLTR/Billy-project",
         technologies: [
             "html",
             "css",
