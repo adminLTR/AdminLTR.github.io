@@ -8,7 +8,7 @@ window.addEventListener("load", function () {
 
     renderAreas(areas);
     renderLanguages(languages);
-    renderSkills(technologies);
+    renderSkills(areas);
     renderExperience(experience);
     renderProjects(projects);
 
@@ -63,7 +63,7 @@ function renderInfo() {
 function renderAreas(areas) {
     const areasDiv = document.querySelector(".developer-areas");
     let html = "";
-    areas.forEach(area => {
+    Object.keys(areas).forEach(area => {
         html += `<p>${area}</p>`;        
     });
     areasDiv.innerHTML = html
@@ -79,11 +79,27 @@ function renderLanguages(languages) {
     languagesDiv.innerHTML = html
 }
 
-function renderSkills(technologies) {
-    const skillsDiv = document.querySelector("#skills .row");
+function renderSkills(areas) {
+    const skillsDiv = document.querySelector("#skills .skills-container");
     let html = ""
-    technologies.forEach(tech => {
-        html += `<img class="animate-fade-scroll" src="./img/technologies/${tech.toLowerCase()}.png" alt="${tech}"/>`;
+    Object.keys(areas).forEach(area => {
+        html += `<div class="area-skill">
+            <div class="area-skill-content">
+                <h3>${area}</h3>
+                <div class="area-skills-row">
+                    ${areas[area].map(tech => {
+                        return `
+                            <div class="d-flex tech-container flex-column gap-2 align-items-center">
+                                <img src="./img/technologies/${tech.toLowerCase()}.png" class="w-100" alt="HTML">
+                                <h4 class="text-main fw-bold text-uppercase">${tech}</h4>
+                            </div>
+                        `;
+                    }).join('')}
+                </div>
+                <img class="tech-bg" src="./img/technologies/${area.toLowerCase().replace(' ', '-')}.png" alt="${area}">
+            </div>
+        </div>`;
+        // html += `<img class="animate-fade-scroll" src="./img/technologies/${tech.toLowerCase()}.png" alt="${tech}"/>`;
     });
     skillsDiv.innerHTML = html;
 }

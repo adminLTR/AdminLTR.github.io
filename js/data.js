@@ -106,29 +106,41 @@ const projects = [
     },
 ]
 
-const technologies = [
-    "HTML",
-    "CSS",
-    "JavaScript",
-    "PHP",
-    "Python",
-    "React",
-    "Laravel",
-    "JQuery",
-    "Django",
-    "Arduino",
-    "Figma",
-    "MySQL",
-    "PostgreSQL",
-    "Bootstrap",
-    "TailwindCSS",
-]
-
-const areas = [
-    "Frontend",
-    "Backend",
-    "IoT"
-]
+const areas = {
+    "Frontend" : [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "React",
+        "JQuery",
+        "Figma",
+        "Bootstrap",
+        "TailwindCSS",
+    ],
+    "Backend" : [
+        "PHP",
+        "Python",    
+        "Laravel",    
+        "Django",
+        "MySQL",
+        "PostgreSQL",
+        "Flask",
+        "ExpressJS",
+    ],
+    "Data Science" : [
+        "Keras",
+        "Excel",
+        "Tensorflow",
+        "MySQL",
+        "PostgreSQL",
+    ],
+    "IoT" : [
+        "Arduino", 
+        "ESP32",
+        "C++",
+        "Sensors",
+    ],
+}
 
 const languages = [
     "great-britain",

@@ -52,7 +52,7 @@
     #about .about-img {
         width: 100%;
     }
-    #about, #experience, #projects, #skills {
+    #about, #experience, #projects {
         padding: 2.5rem 3rem;
     }
 }
@@ -60,7 +60,7 @@
     #about .about-img {
         width: 100%;
     }
-    #about, #experience, #projects, #skills {
+    #about, #experience, #projects {
         padding: 2.5rem 1.5rem;
     }
 }
