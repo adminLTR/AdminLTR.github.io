@@ -86,10 +86,10 @@ function renderSkills(areas) {
         html += `<div class="area-skill">
             <div class="area-skill-content">
                 <h3>${area}</h3>
-                <div class="area-skills-row">
+                <div class="area-skills-row animate-fade-size">
                     ${areas[area].map(tech => {
                         return `
-                            <div class="d-flex tech-container flex-column gap-2 align-items-center">
+                            <div class="tech-container animate-fade-scroll">
                                 <img src="./img/technologies/${tech.toLowerCase()}.png" class="w-100" alt="HTML">
                                 <h4 class="text-main fw-bold text-uppercase">${tech}</h4>
                             </div>
