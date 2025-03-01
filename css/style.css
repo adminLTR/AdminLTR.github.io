@@ -164,10 +164,12 @@ header::before {
     cursor: pointer;
 }
 #about .languages-div img:hover {
-    border: 2px solid var(--secondary);
+   border: 2px solid var(--secondary);
+   box-shadow: 2px 2px 5px var(--secondary);
 }
 #about .languages-div img.active {
     border: 2px solid var(--main);
+    box-shadow: 2px 2px 5px var(--main);
 }
 
 #experience {
