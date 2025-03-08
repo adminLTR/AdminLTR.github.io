@@ -2,6 +2,13 @@ const experience = [
     {
         name: 'CRC PERU',
         date: 'January 2024 - Currently working',
+        'job-title' : {
+            'great-britain': 'IT Support and Database',
+            spain: 'Apoyo Informático y Database',
+            italy: 'Supporto IT e Database',
+            brazil: 'Suporte de TI e Banco de Dados',
+            germany: 'IT-Support und Datenbank',
+        }, 
         description: {
             'great-britain': 'IT Support and Database',
             spain: 'Apoyo Informático y Database',
@@ -18,6 +25,13 @@ const experience = [
     {
         name: 'Academia VITA',
         date: 'November 2024 - December 2024',
+        'job-title' : {
+            'great-britain': 'Freelance developer',
+            spain: 'Desarrollador freelance',
+            italy: 'Freelance developer',
+            brazil: 'Freelance developer',
+            germany: 'Freelance developer',
+        },
         description: {
             'great-britain': 'Freelance Frontend Developer. Specializing in design, development, deployment, and SEO.',
             spain: 'Desarrollador Frontend Freelance. Especializado en diseño, desarrollo, implementación y SEO.',
@@ -37,6 +51,13 @@ const experience = [
     {
         name: 'Eneisoft',
         date: 'October 2024 - November 2024',
+        'job-title' : {
+            'great-britain': 'Development team lead',
+            spain: 'Development team lead',
+            italy: 'Development team lead',
+            brazil: 'Development team lead',
+            germany: 'Development team lead',
+        },
         description: {
             'great-britain': 'Development team lead, freelance full-stack developer. Expertise in designing and developing landing pages, data structuring, deployment, SEO, and process automation.',
             spain: 'Líder de equipo de desarrollo y desarrollador full-stack freelance. Experto en diseño y desarrollo de páginas de aterrizaje, estructuración de datos, implementación, SEO y automatización de procesos.',
@@ -56,6 +77,13 @@ const experience = [
     {
         name: 'CapitalFork',
         date: 'July 2024 - August 2024',
+        'job-title' : {
+            'great-britain': 'Freelance developer',
+            spain: 'Freelance developer',
+            italy: 'Freelance developer',
+            brazil: 'Freelance developer',
+            germany: 'Freelance developer',
+        },
         description: {
             'great-britain': 'Junior Full-stack Developer specializing in bug fixing, maintenance, and feature implementation.',
             spain: 'Desarrollador Full-stack Junior especializado en corrección de errores, mantenimiento e implementación de nuevas funciones.',

@@ -110,18 +110,24 @@ function renderExperience(experience) {
     const langUser = localStorage.getItem("language");
     const lang = langUser ? langUser : 'great-britain'
     experience.forEach(exp => {
+        console.log(exp)
         html += `<div class="card animate-fade-scroll">
             <figure class="card-img">
                 <img src="./img/experience/${formatNameForImg(exp.name)}.png" alt="${exp.name}">
             </figure>
             <div class="card-body">
-                <h4 class="card-title">
-                    ${exp.name}
-                    <a href="${exp.web}" target="_blank">
-                        <img width="25" src="https://img.icons8.com/ios/50/domain--v1.png" alt="domain--v1"/>
-                    </a>
-                    <span class="text-dark" style="width: 100%; font-size: 12px;">${exp.date}</span>
-                </h4>
+                <div class="card-header">
+                    <h4 class="card-title">
+                        ${exp.name}
+                        <a href="${exp.web}" target="_blank">
+                            <img width="25" src="https://img.icons8.com/ios/50/domain--v1.png" alt="domain--v1"/>
+                        </a>
+                    </h4>
+                    <h5 class="card-sub-title">
+                        ${exp['job-title'][lang]}
+                    </h5>
+                    <h5 class="text-dark" style="width: 100%; font-size: 12px;">${exp.date}</h5>
+                </div>
                 <div class="card-info">
                     <p>${exp.description[lang]}</p>
                 </div>
