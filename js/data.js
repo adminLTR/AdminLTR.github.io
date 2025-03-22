@@ -1,28 +1,5 @@
 const experience = [       
     {
-        name: 'CRC PERU',
-        date: 'January 2024 - Currently working',
-        'job-title' : {
-            'great-britain': 'IT Support and Database',
-            spain: 'Apoyo Informático y Database',
-            italy: 'Supporto IT e Database',
-            brazil: 'Suporte de TI e Banco de Dados',
-            germany: 'IT-Support und Datenbank',
-        }, 
-        description: {
-            'great-britain': 'IT Support and Database',
-            spain: 'Apoyo Informático y Database',
-            italy: 'Supporto IT e Database',
-            brazil: 'Suporte de TI e Banco de Dados',
-            germany: 'IT-Support und Datenbank',
-        },
-        web: "https://crc-peru.com/",
-        technologies: [
-            "excel",
-            "MySQL",
-        ]
-    },
-    {
         name: 'Academia VITA',
         date: 'November 2024 - December 2024',
         'job-title' : {
