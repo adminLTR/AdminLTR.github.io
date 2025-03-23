@@ -164,9 +164,6 @@ function renderProjects(projects) {
                         <a href="${prj.web}"><img width="25" src="https://img.icons8.com/ios/50/domain--v1.png" alt="domain--v1"/></a>
                     </div>
                 </h4>
-                <h5 class="card-sub-title">
-                        ${prj.title[lang]}
-                    </h5>
                 <div class="card-info">
                     <p>${prj.description[lang]}</p>
                 </div>

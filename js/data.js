@@ -148,13 +148,6 @@ const experience = [
 const projects = [
     {
         name: 'SmartTachito',
-        title: {
-            'great-britain': 'Smart trash can with AI and IoT',
-            spain: 'Tacho inteligente IA e IoT',
-            italy: 'Cestino intelligente con IA e IoT',
-            brazil: 'Lixeira inteligente com IA e IoT',
-            germany: 'Intelligenter Mülleimer mit KI und IoT',
-        },
         description: {
             'great-britain': 'Smart trash can capable of classifying kinds of trash.',
             spain: 'Contenedor de basura inteligente capaz de clasificar tipos de basura.',
@@ -177,13 +170,6 @@ const projects = [
     },
     {
         name: 'BillyApp',
-        title: {
-            'great-britain': 'Multipurpose syntax analyzer',
-            spain: 'Analizador sintáctico multipropósito',
-            italy: 'Analizzatore sintattico multipurpose',
-            brazil: 'Analisador sintático multipropósito',
-            germany: 'Multifunktionaler Syntax-Analysator',
-        },
         description: {
             'great-britain': 'Smart security system based on image recognition and artificial intelligence.',
             spain: 'Sistema de seguridad inteligente basado en reconocimiento de imágenes e inteligencia artificial.',
