@@ -240,6 +240,10 @@ header::before {
     flex-grow: 1;
     margin-bottom: 1rem;
 }
+.card-info ul {
+    list-style:disc;
+    margin-left: 1rem;
+}
 .card-technologies img{
     width: 20px;
     display: inline-block;

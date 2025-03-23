@@ -3,18 +3,38 @@ const experience = [
         name: 'Academia VITA',
         date: 'November 2024 - December 2024',
         'job-title' : {
-            'great-britain': 'Freelance developer',
-            spain: 'Desarrollador freelance',
-            italy: 'Freelance developer',
-            brazil: 'Freelance developer',
-            germany: 'Freelance developer',
+            'great-britain': 'Freelance Fullstack developer',
+            spain: 'Desarrollador Fullstack freelance',
+            italy: 'Sviluppatore FullStack freelance',
+            brazil: 'Desenvolvedor Fullstack freelance',
+            germany: 'Freelance FullStack-Entwickler',
         },
         description: {
-            'great-britain': 'Freelance Frontend Developer. Specializing in design, development, deployment, and SEO.',
-            spain: 'Desarrollador Frontend Freelance. Especializado en diseño, desarrollo, implementación y SEO.',
-            italy: 'Sviluppatore Frontend Freelance. Specializzato in design, sviluppo, implementazione e SEO.',
-            brazil: 'Desenvolvedor Frontend Freelance. Especializado em design, desenvolvimento, implantação e SEO.',
-            germany: 'Freelance Frontend-Entwickler. Spezialisiert auf Design, Entwicklung, Implementierung und SEO.',
+            'great-britain' : [
+                "Design and implementation of landing page",
+                "SEO and web positioning",
+                "Consulting on the company's internal software",
+            ],
+            spain: [
+                "Diseño e implementaciòn de landing page",
+                "SEO y posicionamiento web",
+                "Consultorìa en software interno de la empresa",
+            ],
+            italy: [
+               "Design e implementazione di landing page",
+               "SEO e posizionamento web",
+               "Consulenza sul software interno dell'azienda",
+            ],
+            brazil: [
+                "Design e implementação de landing pages",
+                "SEO e posicionamento web",
+                "Consultoria em software interno da empresa",
+            ],
+            germany: [
+                "Design und Implementierung von Landingpages",
+                "SEO und Web-Positionierung",
+                "Beratung zur internen Unternehmenssoftware",
+            ]
         },
         web: "https://academiapreuniversitariavita.com/",
         technologies: [
@@ -30,17 +50,42 @@ const experience = [
         date: 'October 2024 - November 2024',
         'job-title' : {
             'great-britain': 'Development team lead',
-            spain: 'Development team lead',
-            italy: 'Development team lead',
-            brazil: 'Development team lead',
-            germany: 'Development team lead',
+            spain: 'Lider de equipo de desarrollo',
+            italy: 'Leader del team di sviluppo',
+            brazil: 'Líder da equipe de desenvolvimento',
+            germany: 'Teamleiter der Entwicklung',
         },
         description: {
-            'great-britain': 'Development team lead, freelance full-stack developer. Expertise in designing and developing landing pages, data structuring, deployment, SEO, and process automation.',
-            spain: 'Líder de equipo de desarrollo y desarrollador full-stack freelance. Experto en diseño y desarrollo de páginas de aterrizaje, estructuración de datos, implementación, SEO y automatización de procesos.',
-            italy: 'Leader del team di sviluppo e sviluppatore full-stack freelance. Esperto nella progettazione e nello sviluppo di landing page, strutturazione dei dati, implementazione, SEO e automazione dei processi.',
-            brazil: 'Líder de equipe de desenvolvimento e desenvolvedor full-stack freelance. Especializado em design e desenvolvimento de landing pages, estruturação de dados, implantação, SEO e automação de processos.',
-            germany: 'Entwicklungs-Teamleiter und Freelance Full-Stack-Entwickler. Spezialisiert auf das Design und die Entwicklung von Landing Pages, Datenstrukturierung, Implementierung, SEO und Prozessautomatisierung.',
+            'great-britain': [
+                "Design and implementation of landing pages",
+                "SEO and web positioning",
+                "Process automation",
+                "Data structuring and management",
+            ],
+            spain: [
+                "Diseño e implementación de landing page",
+                "SEO y posicionamiento web",
+                "Automatización de procesos",
+                "Estructuración y administración de los datos",
+            ],
+            italy: [
+                "Design e implementazione di landing page",
+                "SEO e posizionamento web",
+                "Automazione dei processi",
+                "Strutturazione e gestione dei dati",
+            ],
+            brazil: [
+               "Design e implementação de landing pages",
+               "SEO e posicionamento web",
+               "Automatização de processos",
+               "Estruturação e administração de dados",
+            ],
+            germany: [
+                "Design und Implementierung von Landingpages",
+                "SEO und Web-Positionierung",
+                "Prozessautomatisierung",
+                "Strukturierung und Verwaltung von Daten",
+            ],
         },
         web: "https://eneisoft.org/",
         technologies: [
@@ -55,18 +100,38 @@ const experience = [
         name: 'CapitalFork',
         date: 'July 2024 - August 2024',
         'job-title' : {
-            'great-britain': 'Freelance developer',
-            spain: 'Freelance developer',
-            italy: 'Freelance developer',
-            brazil: 'Freelance developer',
-            germany: 'Freelance developer',
+            'great-britain': 'Fullstack developer junior',
+            spain: 'Desarrollador fullstack junior',
+            italy: 'Sviluppatore FullStack freelance',
+            brazil: 'Desenvolvedor fullstack junior',
+            germany: 'Junior FullStack-Entwickler',
         },
         description: {
-            'great-britain': 'Junior Full-stack Developer specializing in bug fixing, maintenance, and feature implementation.',
-            spain: 'Desarrollador Full-stack Junior especializado en corrección de errores, mantenimiento e implementación de nuevas funciones.',
-            italy: 'Sviluppatore Full-stack Junior specializzato nella correzione di bug, manutenzione e implementazione di funzionalità.',
-            brazil: 'Desenvolvedor Full-stack Júnior especializado em correção de bugs, manutenção e implementação de funcionalidades.',
-            germany: 'Junior Full-Stack-Entwickler, spezialisiert auf Fehlerbehebung, Wartung und Implementierung von Funktionen.',
+            'great-britain': [
+                "Feature implementation",
+                "Bug fixing",
+                "Design implementation",
+            ],
+            spain: [
+                "Implementaciòn de features",
+                "Correcciòn de bugs",
+                "Implementación del diseño",
+            ],
+            italy: [
+                "Implementazione di funzionalità",
+                "Correzione di bug",
+                "Implementazione del design",
+            ],
+            brazil: [
+               "Implementação de features",
+               "Correção de bugs",
+               "Implementação do design",
+            ],
+            germany: [
+                "Implementierung von Features",
+                "Fehlerbehebung (Bugfixing)",
+                "Design-Implementierung",
+            ],
         },
         web: "https://capitalfork.com/",
         technologies: [
@@ -83,6 +148,13 @@ const experience = [
 const projects = [
     {
         name: 'SmartTachito',
+        title: {
+            'great-britain': 'Smart trash can with AI and IoT',
+            spain: 'Tacho inteligente IA e IoT',
+            italy: 'Cestino intelligente con IA e IoT',
+            brazil: 'Lixeira inteligente com IA e IoT',
+            germany: 'Intelligenter Mülleimer mit KI und IoT',
+        },
         description: {
             'great-britain': 'Smart trash can capable of classifying kinds of trash.',
             spain: 'Contenedor de basura inteligente capaz de clasificar tipos de basura.',
@@ -105,6 +177,13 @@ const projects = [
     },
     {
         name: 'BillyApp',
+        title: {
+            'great-britain': 'Multipurpose syntax analyzer',
+            spain: 'Analizador sintáctico multipropósito',
+            italy: 'Analizzatore sintattico multipurpose',
+            brazil: 'Analisador sintático multipropósito',
+            germany: 'Multifunktionaler Syntax-Analysator',
+        },
         description: {
             'great-britain': 'Smart security system based on image recognition and artificial intelligence.',
             spain: 'Sistema de seguridad inteligente basado en reconocimiento de imágenes e inteligencia artificial.',

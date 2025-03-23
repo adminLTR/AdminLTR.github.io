@@ -129,7 +129,11 @@ function renderExperience(experience) {
                     <h5 class="text-dark" style="width: 100%; font-size: 12px;">${exp.date}</h5>
                 </div>
                 <div class="card-info">
-                    <p>${exp.description[lang]}</p>
+                    <ul>
+                        ${exp.description[lang].map(d => {
+                            return `<li>${d}</li>`
+                        }).join('')}
+                    </ul>
                 </div>
                 <div class="card-technologies">
                     ${exp.technologies.map(tech => {
@@ -160,6 +164,9 @@ function renderProjects(projects) {
                         <a href="${prj.web}"><img width="25" src="https://img.icons8.com/ios/50/domain--v1.png" alt="domain--v1"/></a>
                     </div>
                 </h4>
+                <h5 class="card-sub-title">
+                        ${prj.title[lang]}
+                    </h5>
                 <div class="card-info">
                     <p>${prj.description[lang]}</p>
                 </div>
