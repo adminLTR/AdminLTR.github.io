@@ -165,7 +165,11 @@ function renderProjects(projects) {
                     </div>
                 </h4>
                 <div class="card-info">
-                    <p>${prj.description[lang]}</p>
+                    <ul>
+                        ${prj.description[lang].map(d => {
+                            return `<li>${d}</li>`
+                        }).join('')}
+                    </ul>
                 </div>
                 <div class="card-technologies">
                     ${prj.technologies.map(tech => {

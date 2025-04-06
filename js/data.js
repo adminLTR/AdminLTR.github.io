@@ -148,13 +148,6 @@ const experience = [
 const projects = [
     {
         name: 'SmartTachito',
-        description: {
-            'great-britain': 'Smart trash can capable of classifying kinds of trash.',
-            spain: 'Contenedor de basura inteligente capaz de clasificar tipos de basura.',
-            italy: 'Bidone della spazzatura intelligente in grado di classificare i tipi di rifiuti.',
-            brazil: 'Lixeira inteligente capaz de classificar tipos de lixo.',
-            germany: 'Intelligenter Mülleimer, der in der Lage ist, verschiedene Müllarten zu klassifizieren.',
-        },
         web: "https://adminltr.github.io/SmartTachito-landing/",
         github: "https://github.com/adminLTR/SmartTachito",
         technologies: [
@@ -166,29 +159,73 @@ const projects = [
             "tailwindcss",
             "tensorflow",
             "arduino",
-        ]
+        ],
+        description: {
+            'great-britain': [
+                "Software and hardware project involving Artificial Intelligence and the Internet of Things.",
+                "Classifies waste according to the type of residue.",
+                "Winner of awards at UNI and UNMSM.",
+            ],
+            spain: [
+                "Proyecto software y hardware que involucra Inteligencia Artificial e Internet de las Cosas",
+                "Clasifica la basura de acuerdo al tipo de residuo",
+                "Ganador de reconocimientos en UNI y UNMSM",
+            ],
+            italy: [
+                "Progetto software e hardware che coinvolge Intelligenza Artificiale e Internet delle Cose.",
+                "Classifica i rifiuti in base al tipo di residuo.",
+                "Vincitore di riconoscimenti presso UNI e UNMSM.",
+            ],
+            brazil: [
+               "Projeto de software e hardware que envolve Inteligência Artificial e Internet das Coisas.",
+               "Classifica o lixo de acordo com o tipo de resíduo.",
+               "Vencedor de prêmios na UNI e UNMSM.",
+            ],
+            germany: [
+                "Software- und Hardwareprojekt mit Künstlicher Intelligenz und Internet der Dinge.",
+                "Sortiert Müll nach Abfallart.",
+                "Gewinner von Auszeichnungen an der UNI und UNMSM.",
+            ],
+        },
     },
     {
-        name: 'BillyApp',
-        description: {
-            'great-britain': 'Smart security system based on image recognition and artificial intelligence.',
-            spain: 'Sistema de seguridad inteligente basado en reconocimiento de imágenes e inteligencia artificial.',
-            italy: 'Sistema di sicurezza intelligente basato sul riconoscimento delle immagini e sull’intelligenza artificiale.',
-            brazil: 'Sistema de segurança inteligente baseado em reconhecimento de imagens e inteligência artificial.',
-            germany: 'Intelligentes Sicherheitssystem basierend auf Bildverarbeitung und künstlicher Intelligenz.',
-        },
-        web: "#",
-        github: "https://github.com/adminLTR/Billy-project",
+        name: 'Teslab',        
+        web: "https://splendid-dodol-d107f1.netlify.app/",
+        github: "https://github.com/adminLTR/Teslab",
         technologies: [
             "html",
             "css",
             "javascript",
-            "django",
             "react",
             "tailwindcss",
-            "tensorflow",
-            "arduino",
-        ]
+        ],
+        description: {
+            'great-britain': [
+                "Multipurpose syntax analyzer",
+                "Application capable of solving complex mathematical operations.",
+                "Utilizes data structures and sophisticated algorithms built from scratch.",
+            ],
+            spain: [
+                "Analizador sintáctico multipropósito",
+                "Aplicación capaz de resolver operaciones matemáticas complejas.",
+                "Uso de estructuras de datos y algoritmos sofisticados construidos desde 0.",
+            ],
+            italy: [
+                "Analizzatore sintattico multipurpose",
+                "Applicazione capace di risolvere operazioni matematiche complesse.",
+                "Utilizzo di strutture dati e algoritmi sofisticati costruiti da zero.",
+            ],
+            brazil: [
+               "Analisador sintático multipropósito",
+               "Aplicação capaz de resolver operações matemáticas complexas.",
+               "Uso de estruturas de dados e algoritmos sofisticados construídos do zero.",
+            ],
+            germany: [
+                "Multifunktionaler Syntax-Analysator",
+                "Anwendung zur Lösung komplexer mathematischer Operationen.",
+                "Verwendung von Datenstrukturen und ausgeklügelten Algorithmen, die von Grund auf entwickelt wurden.",
+            ],
+        },
     },
 ]
 
