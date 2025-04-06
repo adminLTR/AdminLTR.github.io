@@ -160,8 +160,8 @@ function renderProjects(projects) {
                 <h4 class="card-title">
                     ${prj.name}
                     <div>
-                        <a href="${prj.github}"><img width="25" src="https://img.icons8.com/ios-glyphs/30/github.png" alt="github"/></a>
-                        <a href="${prj.web}"><img width="25" src="https://img.icons8.com/ios/50/domain--v1.png" alt="domain--v1"/></a>
+                        <a target="_blank" href="${prj.github}"><img width="25" src="https://img.icons8.com/ios-glyphs/30/github.png" alt="github"/></a>
+                        <a target="_blank" href="${prj.web}"><img width="25" src="https://img.icons8.com/ios/50/domain--v1.png" alt="domain--v1"/></a>
                     </div>
                 </h4>
                 <div class="card-info">
