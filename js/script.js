@@ -124,7 +124,6 @@ function renderExperience(experience) {
     const langUser = localStorage.getItem("language");
     const lang = langUser ? langUser : 'great-britain'
     experience.forEach(exp => {
-        console.log(exp)
         html += `<div class="card animate-fade-scroll">
             <figure class="card-img">
                 <img src="./img/experience/${formatNameForImg(exp.name)}.png" alt="${exp.name}">
