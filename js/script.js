@@ -18,14 +18,28 @@ window.addEventListener("load", function () {
             document.querySelectorAll("#about .languages-div img").forEach(i => {i.classList.remove("active")});
             img.classList.add("active");
             const lang = img.dataset.lang;
-            localStorage.setItem("language", lang);
+            
+            const imgSrc = img.getAttribute("src");
+            const imgNode = document.createElement("img");
+            imgNode.src = imgSrc;
+            imgNode.classList.add('flag-fly');
 
-            // UPDATE LINKS
-            renderLinks();
-            renderInfo();
+            document.body.appendChild(imgNode);
 
-            renderExperience(experience);
-            renderProjects(projects);
+            imgNode.addEventListener('animationend', () => {
+                imgNode.remove();
+                
+                localStorage.setItem("language", lang);
+
+                // UPDATE LINKS
+                renderLinks();
+                renderInfo();
+
+                renderExperience(experience);
+                renderProjects(projects);
+            });
+
+            
         })
     })
 });
