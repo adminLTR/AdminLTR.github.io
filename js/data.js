@@ -281,6 +281,7 @@ const areas = {
         "Figma",
         "Bootstrap",
         "TailwindCSS",
+        "SASS",
     ],
     "Backend" : [
         "PHP",
@@ -298,6 +299,7 @@ const areas = {
         "Tensorflow",
         "MySQL",
         "PostgreSQL",
+        "VBA",
     ],
     "IoT" : [
         "Arduino", 
