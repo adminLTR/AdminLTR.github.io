@@ -36,7 +36,7 @@ const experience = [
                 "Beratung zur internen Unternehmenssoftware",
             ]
         },
-        web: "https://academiapreuniversitariavita.com/",
+        web: "https://adminltr.github.io/Vita-academia/",
         technologies: [
             "html",
             "css",
