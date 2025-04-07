@@ -227,6 +227,48 @@ const projects = [
             ],
         },
     },
+    {
+        name: 'ParisCorp',        
+        web: "https://paris-corp.netlify.app/",
+        github: "https://github.com/adminLTR/test-frontend-dev",
+        technologies: [
+            "html",
+            "css",
+            "javascript",
+            "react",
+            "bootstrap",
+            "sass",
+            "python",
+            "flask",
+        ],
+        description: {
+            'great-britain': [
+                "Responsive interface for a course platform",
+                "Authentication with tokens",
+                "REST API service",
+            ],
+            spain: [
+                "Interfaz responsiva para plataforma de cursos",
+                "Autenticación con tokens",
+                "Consumo de API REST",
+            ],
+            italy: [
+                "Interfaccia responsiva per una piattaforma di corsi",
+                "Autenticazione con token",
+                "Consumo di API REST",
+            ],
+            brazil: [
+                "Interface responsiva para uma plataforma de cursos",
+                "Autenticação com tokens",
+                "Consumo de API REST",
+            ],
+            germany: [
+                "Responsive Benutzeroberfläche für eine Kursplattform",
+                "Authentifizierung mit Tokens",
+                "REST-API-Verbrauch",
+            ],
+        },
+    },
 ]
 
 const areas = {
