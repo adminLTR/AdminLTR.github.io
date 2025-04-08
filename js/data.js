@@ -229,7 +229,7 @@ const projects = [
     },
     {
         name: 'ParisCorp',        
-        web: "https://paris-corp.netlify.app/",
+        web: "https://paris-corp.netlify.app/login",
         github: "https://github.com/adminLTR/test-frontend-dev",
         technologies: [
             "html",
