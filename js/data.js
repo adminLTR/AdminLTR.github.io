@@ -149,7 +149,7 @@ const experience = [
 const projects = [
     {
         name: 'SmartTachito',
-        web: "https://adminltr.github.io/SmartTachito-landing/",
+        web: "https://adminltr.github.io/SmartTachito/",
         github: "https://github.com/adminLTR/SmartTachito",
         technologies: [
             "html",
