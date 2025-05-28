@@ -1,5 +1,55 @@
 const experience = [       
     {
+        name: 'GM Group',
+        date: 'April 2025 - Today',
+        'job-title' : {
+            'great-britain': 'Fullstack developer',
+            spain: 'Desarrollador Fullstack',
+            italy: 'Sviluppatore Fullstack',
+            brazil: 'Desenvolvedor Fullstack',
+            germany: 'Fullstack-Entwickler',
+        },
+        description: {
+            'great-britain': [
+                "Backend logic development for applications.",
+                "Implementation of smart routing.",
+                "Integration of logic with user interface.",
+            ],
+            spain: [
+                "Desarrollo de lógica backend de aplicaciones",
+                "Implementación de rutas inteligentes",
+                "Integración de lógica con interfaz de usuario",
+            ],
+            italy: [
+                "Sviluppo della logica backend per applicazioni.",
+                "Implementazione di routing intelligente.",
+                "Integrazione della logica con l'interfaccia utente.",
+            ],
+            brazil: [
+                "Desenvolvimento de lógica backend para aplicações.",
+                "Implementação de rotas inteligentes.",
+                "Integração da lógica com a interface do usuário.",
+            ],
+            germany: [
+                "Entwicklung der Backend-Logik für Anwendungen.",
+                "Implementierung intelligenter Routenführung.",
+                "Integration der Logik mit der Benutzeroberfläche.",
+            ],
+        },
+        web: "https://solucionesgm.com/",
+        technologies: [
+            "html",
+            "css",
+            "javascript",
+            "react",
+            "tailwindcss",
+            "expressjs",
+            "django",
+            "flask",
+            "mysql",
+        ]
+    },
+    {
         name: 'Academia VITA',
         date: 'November 2024 - December 2024',
         'job-title' : {
