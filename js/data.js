@@ -172,6 +172,7 @@ const projects = [
                 "Clasifica la basura de acuerdo al tipo de residuo",
                 "Ganador de reconocimientos en UNI y UNMSM",
             ],
+            
             italy: [
                 "Progetto software e hardware che coinvolge Intelligenza Artificiale e Internet delle Cose.",
                 "Classifica i rifiuti in base al tipo di residuo.",
@@ -186,6 +187,46 @@ const projects = [
                 "Software- und Hardwareprojekt mit Künstlicher Intelligenz und Internet der Dinge.",
                 "Sortiert Müll nach Abfallart.",
                 "Gewinner von Auszeichnungen an der UNI und UNMSM.",
+            ],
+        },
+    },
+    {
+        name: 'PotAI',
+        web: "https://github.com/adminLTR/PotAI",
+        github: "https://github.com/adminLTR/PotAI",
+        technologies: [
+            "html",
+            "css",
+            "javascript",
+            "django",
+            "bootstrap",
+            "arduino",
+        ],
+        description: {
+            'great-britain': [
+                "Smart planter that precisely measures the amount of water needed for irrigation.",
+                "AI model processes sensor data and plant type to determine watering needs.",
+                "Project involving Artificial Intelligence and the Internet of Things.",
+            ],
+            spain: [
+                "Macetero inteligente que mide exactamente el volumen de agua necesaria para el riego",
+                "Modelo de IA recibe datos de los sensores y el tipo de planta",
+                "Proyecto que involucra IA e IoT",
+            ],
+            italy: [
+                "Vaso intelligente che misura con precisione il volume d'acqua necessario per l'irrigazione.",
+                "Il modello di IA riceve i dati dai sensori e dal tipo di pianta.",
+                "Progetto che coinvolge Intelligenza Artificiale e Internet delle Cose.",
+            ],
+            brazil: [
+                "Vaso inteligente que mede com precisão o volume de água necessário para irrigação.",
+                "Modelo de IA recebe dados dos sensores e do tipo de planta.",
+                "Projeto que envolve Inteligência Artificial e Internet das Coisas.",
+            ],
+            germany: [
+                "Intelligenter Blumentopf, der genau das benötigte Wasservolumen für die Bewässerung misst.",
+                "KI-Modell verarbeitet Sensordaten und den Pflanzentyp.",
+                "Projekt mit Künstlicher Intelligenz und Internet der Dinge.",
             ],
         },
     },
