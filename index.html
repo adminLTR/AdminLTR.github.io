@@ -31,66 +31,290 @@
         </nav>
     </header>
     <section id="home">
-        <div class="presentation animate-fade-left">
-            <h1>
-                LA TORRE ROMERO, JOSE LUIS
-                <img width="50" src="https://img.icons8.com/color/48/peru.png" alt="peru" style="vertical-align: middle;"/>
-            </h1>
-            <h3 id="career-info">Software Engineering Student</h3>
-            <div class="developer-areas">
-                
+        <div class="home-background">
+            <div class="floating-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+                <div class="shape shape-4"></div>
             </div>
-            <a id="download-info" href="./cv/great-britain.pdf" download="CV - La Torre Romero" class="download-cv">
-                Download my CV
-            </a>
         </div>
-        <div class="profile-photo animate-fade-right">
-            <img src="./img/foto.jpeg" width="300" alt="AdminLTR">
-            <p id="age"></p>
+        <div class="home-container">
+            <div class="presentation animate-fade-left">
+                <div class="greeting-text">
+                    <span class="hello-text">Hello, I'm</span>
+                </div>
+                <h1 class="main-name">
+                    <span class="first-name">JOSE LUIS</span>
+                    <span class="last-name">LA TORRE ROMERO</span>
+                    <img width="40" src="https://img.icons8.com/color/48/peru.png" alt="peru" class="country-flag"/>
+                </h1>
+                <div class="career-wrapper">
+                    <h3 id="career-info" class="career-title">Software Engineering Student</h3>
+                    <div class="typing-indicator">
+                        <span class="typing-dot"></span>
+                        <span class="typing-dot"></span>
+                        <span class="typing-dot"></span>
+                    </div>
+                </div>
+                <div class="developer-areas">
+                    
+                </div>
+                <div class="cta-section">
+                    <a id="download-info" href="./cv/great-britain.pdf" download="CV - La Torre Romero" class="download-cv">
+                        <i class="fa-solid fa-download"></i>
+                        Download my CV
+                    </a>
+                    <a href="#projects" class="view-work-btn">
+                        <i class="fa-solid fa-eye"></i>
+                        View My Work
+                    </a>
+                </div>
+                <div class="social-links">
+                    <a href="https://github.com/adminLTR" target="_blank" class="social-link">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                    <a href="www.linkedin.com/in/jose-luis-la-torre-romero-7bb5442a6" target="_blank" class="social-link">
+                        <i class="fa-brands fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="profile-section animate-fade-right">
+                <div class="profile-photo">
+                    <div class="photo-frame">
+                        <img src="./img/foto.jpeg" alt="Jose Luis La Torre Romero">
+                        <div class="photo-overlay"></div>
+                    </div>
+                    <div class="age-badge" id="age"></div>
+                    <div class="status-indicator">
+                        <div class="status-dot"></div>
+                        <span>Available for work</span>
+                    </div>
+                </div>
+                <div class="quick-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">4+</span>
+                        <span class="stat-label">Projects</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">2+</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">20+</span>
+                        <span class="stat-label">Technologies</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow">
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <span>Scroll to explore</span>
         </div>
     </section>
     <section id="about" class="animate-fade-scroll">
-        <img src="./img/unmsm.png" class="about-img animate-fade-left" alt="unmsm">
-        <div class="about-info animate-fade-right">
-            <div class="about">
-                <h2 id="subtitle-about">About me</h2>
-                <p id="about-info">
-                    Hi! I'm a software engineering student from Peru. Passionate about Full Stack Development, IoT, and Mobile Development. I love solving problems and bringing ideas to life through code. Continuously exploring and building innovative solutions that can make a difference. Hope we can create something great together!
-                </p>
+        <div class="about-container">
+            <div class="about-content">
+                <div class="about-header animate-fade-left">
+                    <h2 id="subtitle-about">About me</h2>
+                    <div class="section-divider"></div>
+                </div>
+                
+                <div class="about-main">
+                    <div class="about-text animate-fade-left">
+                        <div class="about-intro">
+                            <p id="about-info">
+                                Hi! I'm a software engineering student from Peru. Passionate about Full Stack Development, IoT, and Mobile Development. I love solving problems and bringing ideas to life through code. Continuously exploring and building innovative solutions that can make a difference. Hope we can create something great together!
+                            </p>
+                        </div>
+                        
+                        <div class="about-details">
+                            <div class="detail-item">
+                                <i class="fa-solid fa-graduation-cap"></i>
+                                <div>
+                                    <h4>Education</h4>
+                                    <p>Software Engineering Student</p>
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fa-solid fa-map-marker-alt"></i>
+                                <div>
+                                    <h4>Location</h4>
+                                    <p>Lima, Peru</p>
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fa-solid fa-code"></i>
+                                <div>
+                                    <h4>Focus Areas</h4>
+                                    <p>Full Stack, IoT, Mobile Dev</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="university-section animate-fade-right">
+                        <div class="university-card">
+                            <img src="./img/unmsm.png" class="university-logo" alt="UNMSM">
+                            <div class="university-info">
+                                <h3>Universidad Nacional Mayor de San Marcos</h3>
+                                <p>Faculty of Mathematical Sciences</p>
+                                <p>Software Engineering</p>
+                                <div class="university-year">2021 - Present</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="languages">
-                <h2 id="subtitle-languages">Languages</h2>
-                <div class="languages-div">
+            
+            <div class="languages-section">
+                <div class="languages-header">
+                    <h2 id="subtitle-languages">Languages</h2>
+                    <div class="section-divider"></div>
+                </div>
+                <div class="languages-grid">
+                    <div class="languages-div">
+                        
+                    </div>
+                    <div class="language-selector-info">
+                        <p>Click on a flag to change the language</p>
+                        <div class="current-language">
+                            <span>Current: </span>
+                            <span id="current-lang-name">English</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="about-background">
+            <div class="bg-shape bg-shape-1"></div>
+            <div class="bg-shape bg-shape-2"></div>
+        </div>
+    </section>
+    <section id="experience">
+        <div class="experience-container">
+            <div class="section-header">
+                <h2 id="subtitle-experience">Experience</h2>
+                <div class="section-divider"></div>
+                <p class="section-description">My professional journey and key achievements</p>
+            </div>
+            
+            <div class="timeline-container">
+                <div class="timeline-line"></div>
+                <div class="experience-timeline animate-fade-size">
                     
                 </div>
             </div>
         </div>
-    </section>
-    <section id="experience">
-        <h2 id="subtitle-experience">Experience</h2>
-        <div class="row animate-fade-size">
-            
+        
+        <div class="experience-background">
+            <div class="exp-bg-shape exp-bg-shape-1"></div>
+            <div class="exp-bg-shape exp-bg-shape-2"></div>
+            <div class="exp-bg-shape exp-bg-shape-3"></div>
         </div>
     </section>
     <section id="projects">
-        <h2 id="subtitle-projects">Projects</h2>
-        <div class="row animate-fade-size">
+        <div class="projects-container">
+            <div class="section-header">
+                <h2 id="subtitle-projects">Projects</h2>
+                <div class="section-divider"></div>
+                <p class="section-description">Showcasing my creative solutions and technical expertise</p>
+            </div>
             
+            <div class="projects-grid animate-fade-size">
+                
+            </div>
+            
+            <div class="projects-cta">
+                <a href="https://github.com/adminLTR" target="_blank" class="github-btn">
+                    <i class="fa-brands fa-github"></i>
+                    View All Projects on GitHub
+                </a>
+            </div>
+        </div>
+        
+        <div class="projects-background">
+            <div class="proj-bg-shape proj-bg-shape-1"></div>
+            <div class="proj-bg-shape proj-bg-shape-2"></div>
         </div>
     </section>
     <section id="skills">
-        <h2 id="subtitle-skills">Skills</h2>
-        <div class="skills-container">
+        <div class="skills-container-wrapper">
+            <div class="section-header">
+                <h2 id="subtitle-skills">Skills</h2>
+                <div class="section-divider"></div>
+                <p class="section-description">Technologies and tools I work with</p>
+            </div>
+            
+            <div class="skills-navigation">
+                <div class="nav-buttons">
+                    
+                </div>
+            </div>
+            
+            <div class="skills-content">
+                <div class="skills-container">
 
+                </div>
+            </div>
+            
+            <div class="skills-summary">
+                <div class="summary-stats">
+                    <div class="stat">
+                        <span class="stat-number" id="total-skills">0</span>
+                        <span class="stat-label">Total Skills</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" id="skill-areas">0</span>
+                        <span class="stat-label">Skill Areas</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">2+</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="skills-background">
+            <div class="skills-bg-shape skills-bg-shape-1"></div>
+            <div class="skills-bg-shape skills-bg-shape-2"></div>
+            <div class="skills-bg-shape skills-bg-shape-3"></div>
         </div>
     </section>
     <footer>
-        <a target="_blank" href="https://github.com/adminLTR"><i class="fa-brands fa-github"></i></a>
-        <a target="_blank" href="www.linkedin.com/in/jose-luis-la-torre-romero-7bb5442a6"><i class="fa-brands fa-linkedin"></i></a>
-        <a target="_blank" href="#"><i class="fa-brands fa-facebook"></i></a>
-        <a target="_blank" href="#"><i class="fa-brands fa-instagram"></i></a>
-        <a target="_blank" href="#"><i class="fa-brands fa-tiktok"></i></a>
-        <a target="_blank" href="#"><i class="fa-brands fa-twitter"></i></a>
+        <div class="footer-content">
+            <div class="footer-social">
+                <a target="_blank" href="https://github.com/adminLTR" title="GitHub">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+                <a target="_blank" href="www.linkedin.com/in/jose-luis-la-torre-romero-7bb5442a6" title="LinkedIn">
+                    <i class="fa-brands fa-linkedin"></i>
+                </a>
+                <a target="_blank" href="#" title="Facebook">
+                    <i class="fa-brands fa-facebook"></i>
+                </a>
+                <a target="_blank" href="#" title="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a target="_blank" href="#" title="TikTok">
+                    <i class="fa-brands fa-tiktok"></i>
+                </a>
+                <a target="_blank" href="#" title="Twitter">
+                    <i class="fa-brands fa-twitter"></i>
+                </a>
+            </div>
+            <div class="footer-info">
+                <p>© 2025 Jose Luis La Torre Romero. All rights reserved.</p>
+                <p>Software Engineering Student | Full Stack Developer</p>
+            </div>
+            <div class="footer-credits">
+                <p>Made with <span class="footer-heart">♥</span> using HTML, CSS & JavaScript</p>
+            </div>
+        </div>
     </footer>
     <script src="./js/data.js"></script>
     <script src="./js/helpers.js"></script>
