@@ -61,6 +61,14 @@
     
     .timeline-marker {
         left: 30px;
+        transform: translateX(0) !important;
+    }
+    
+    .timeline-left .timeline-date,
+    .timeline-right .timeline-date {
+        transform: translateX(0) !important;
+        margin-top: 0.5rem;
+        font-size: 0.75rem;
     }
     
     .timeline-left .experience-card::after,
@@ -316,6 +324,7 @@
     
     .timeline-marker {
         left: 20px;
+        transform: translateX(0) !important;
     }
     
     .timeline-line {
@@ -329,6 +338,13 @@
     .timeline-date {
         font-size: 0.7rem;
         padding: 0.4rem 0.8rem;
+        transform: translateX(0) !important;
+        margin-top: 0.5rem;
+    }
+    
+    .timeline-left .timeline-date,
+    .timeline-right .timeline-date {
+        transform: translateX(0) !important;
     }
     
     /* Projects */

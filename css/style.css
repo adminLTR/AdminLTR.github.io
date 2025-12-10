@@ -911,6 +911,7 @@ header a:hover {
     flex-direction: column;
     align-items: center;
     z-index: 3;
+    pointer-events: none;
 }
 
 .timeline-dot {
@@ -933,6 +934,30 @@ header a:hover {
     margin-top: 0.5rem;
     white-space: nowrap;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Move the date away from the card so it doesn't overlap content.
+   For items on the left side, the date goes to the right
+   For items on the right side, the date goes to the left */
+.timeline-left .timeline-marker {
+    left: 50%;
+    transform: translateX(-50%);
+}
+.timeline-right .timeline-marker {
+    left: 50%;
+    transform: translateX(-50%);
+}
+.timeline-left .timeline-date {
+    transform: translateX(50px);
+}
+.timeline-right .timeline-date {
+    transform: translateX(-50px);
+}
+
+/* Ensure marker and date sit above the cards but do not capture pointer events */
+.timeline-marker, .timeline-date {
+    z-index: 50;
+    pointer-events: none;
 }
 
 .timeline-content {
