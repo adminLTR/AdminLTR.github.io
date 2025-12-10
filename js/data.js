@@ -50,53 +50,6 @@ const experience = [
         ]
     },
     {
-        name: 'Academia VITA',
-        date: 'November 2024 - December 2024',
-        'job-title' : {
-            'great-britain': 'Freelance Fullstack developer',
-            spain: 'Desarrollador Fullstack freelance',
-            italy: 'Sviluppatore FullStack freelance',
-            brazil: 'Desenvolvedor Fullstack freelance',
-            germany: 'Freelance FullStack-Entwickler',
-        },
-        description: {
-            'great-britain' : [
-                "Design and implementation of landing page",
-                "SEO and web positioning",
-                "Consulting on the company's internal software",
-            ],
-            spain: [
-                "Diseño e implementaciòn de landing page",
-                "SEO y posicionamiento web",
-                "Consultorìa en software interno de la empresa",
-            ],
-            italy: [
-               "Design e implementazione di landing page",
-               "SEO e posizionamento web",
-               "Consulenza sul software interno dell'azienda",
-            ],
-            brazil: [
-                "Design e implementação de landing pages",
-                "SEO e posicionamento web",
-                "Consultoria em software interno da empresa",
-            ],
-            germany: [
-                "Design und Implementierung von Landingpages",
-                "SEO und Web-Positionierung",
-                "Beratung zur internen Unternehmenssoftware",
-            ]
-        },
-        web: "https://adminltr.github.io/Vita-academia/",
-        technologies: [
-            "html",
-            "css",
-            "javascript",
-            "jquery",
-            "bootstrap",
-            "expressjs",
-        ]
-    },
-    {
         name: 'Eneisoft',
         date: 'October 2024 - November 2024',
         'job-title' : {
@@ -146,55 +99,7 @@ const experience = [
             "jquery",
             "bootstrap",
         ]
-    },
-    {
-        name: 'CapitalFork',
-        date: 'July 2024 - August 2024',
-        'job-title' : {
-            'great-britain': 'Fullstack developer junior',
-            spain: 'Desarrollador fullstack junior',
-            italy: 'Sviluppatore FullStack freelance',
-            brazil: 'Desenvolvedor fullstack junior',
-            germany: 'Junior FullStack-Entwickler',
-        },
-        description: {
-            'great-britain': [
-                "Feature implementation",
-                "Bug fixing",
-                "Design implementation",
-            ],
-            spain: [
-                "Implementaciòn de features",
-                "Correcciòn de bugs",
-                "Implementación del diseño",
-            ],
-            italy: [
-                "Implementazione di funzionalità",
-                "Correzione di bug",
-                "Implementazione del design",
-            ],
-            brazil: [
-               "Implementação de features",
-               "Correção de bugs",
-               "Implementação do design",
-            ],
-            germany: [
-                "Implementierung von Features",
-                "Fehlerbehebung (Bugfixing)",
-                "Design-Implementierung",
-            ],
-        },
-        web: "https://capitalfork.com/",
-        technologies: [
-            "php",
-            "html",
-            "css",
-            "javascript",
-            "jquery",
-            "laravel",
-            "bootstrap",
-        ]
-    }, 
+    }
 ]
 const projects = [
     {
