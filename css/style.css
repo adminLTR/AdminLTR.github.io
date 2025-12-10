@@ -407,6 +407,7 @@ header a:hover {
     height: 60px;
     border-radius: 50%;
     display: flex;
+    z-index: 2;
     align-items: center;
     justify-content: center;
     font-weight: bold;
