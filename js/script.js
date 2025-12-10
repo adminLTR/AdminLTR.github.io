@@ -13,6 +13,9 @@ window.addEventListener("load", function () {
     renderExperience(experience);
     renderProjects(projects);
 
+    // Initialize scroll-to-top button behavior
+    initScrollTopButton();
+
     // CLICK LANGUAGES
     this.document.querySelectorAll("#about .languages-div img").forEach(img => {
         img.addEventListener("click", function () {
@@ -433,4 +436,38 @@ function linkSelectionEvent() {
             document.getElementById("check-menu").checked = false;
         })
     })
+}
+
+// Scroll-to-top button: show when user scrolls down, smooth-scroll to top on click
+function initScrollTopButton() {
+    const btn = document.getElementById('scroll-top-btn');
+    if (!btn) return;
+
+    // Show/hide based on scroll position
+    const toggleVisibility = () => {
+        if (window.scrollY > 300) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    };
+
+    // initial check
+    toggleVisibility();
+
+    window.addEventListener('scroll', toggleVisibility);
+
+    // click -> smooth scroll to top
+    btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // keyboard accessibility (Enter/Space)
+    btn.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            btn.click();
+        }
+    });
 }

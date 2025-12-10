@@ -1922,3 +1922,50 @@ footer::before {
     0%, 100% { transform: scale(1); }
     50% { transform: scale(1.1); }
 }
+
+/* ---------- SCROLL TO TOP BUTTON ------------- */
+#scroll-top-btn {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--main), #5a9ef0);
+    color: white;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 12px 30px rgba(71,137,224,0.25);
+    cursor: pointer;
+    z-index: 2000;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.28s ease, transform 0.28s ease;
+    pointer-events: none;
+}
+
+#scroll-top-btn.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+#scroll-top-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(71,137,224,0.18);
+}
+
+#scroll-top-btn i {
+    font-size: 1.05rem;
+}
+
+@media (max-width: 480px) {
+    #scroll-top-btn {
+        right: 16px;
+        bottom: 16px;
+        width: 48px;
+        height: 48px;
+    }
+}
