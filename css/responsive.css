@@ -43,6 +43,8 @@
     
     .university-section {
         order: -1;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
     
     /* Experience Timeline */

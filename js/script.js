@@ -10,6 +10,7 @@ window.addEventListener("load", function () {
     renderAreas(areas);
     renderLanguages(languages);
     renderSkills(areas);
+    renderEducation(education);
     renderExperience(experience);
     renderProjects(projects);
 
@@ -39,6 +40,7 @@ window.addEventListener("load", function () {
                 renderLinks();
                 renderInfo();
 
+                renderEducation(education);
                 renderExperience(experience);
                 renderProjects(projects);
             });
@@ -260,6 +262,43 @@ function getSkillLevelText(tech) {
     if (level >= 70) return 'Advanced';
     if (level >= 55) return 'Intermediate';
     return 'Beginner';
+}
+
+function renderEducation(education) {
+    const educationDiv = document.querySelector(".university-section");
+    if (!educationDiv) return;
+    
+    const langUser = localStorage.getItem("language");
+    const lang = langUser ? langUser : 'great-britain';
+    
+    let html = "";
+    education.forEach((edu, index) => {
+        if (edu.type === "degree") {
+            html += `<div class="university-card animate-fade-right" style="animation-delay: ${index * 0.2}s">
+                <img src="./img/${edu.logo}.png" class="university-logo" alt="${edu.acronym}">
+                <div class="university-info">
+                    <h3>${edu.university}</h3>
+                    <p>${edu.faculty[lang]}</p>
+                    <p>${edu.degree[lang]}</p>
+                    <div class="university-year">${edu.period[lang]}</div>
+                </div>
+            </div>`;
+        } else if (edu.type === "exchange") {
+            html += `<div class="university-card exchange-card animate-fade-right" style="animation-delay: ${index * 0.2}s">
+                <img src="./img/${edu.logo}.png" class="university-logo" alt="${edu.acronym}">
+                <div class="university-info">
+                    <h3>${edu.university}</h3>
+                    <p class="exchange-badge">
+                        <i class="fa-solid fa-plane"></i>
+                        ${edu.program[lang]}
+                    </p>
+                    <div class="university-year">${edu.period[lang]}</div>
+                </div>
+            </div>`;
+        }
+    });
+    
+    educationDiv.innerHTML = html;
 }
 
 function renderExperience(experience) {

@@ -631,8 +631,10 @@ header a:hover {
 }
 
 .university-section {
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    justify-items: center;
 }
 
 .university-card {
@@ -643,10 +645,35 @@ header a:hover {
     display: flex;
     align-items: center;
     gap: 1.5rem;
-    max-width: 450px;
+    max-width: 500px;
     width: 100%;
     transition: all 0.3s ease;
     border: 2px solid transparent;
+}
+
+.university-card.exchange-card {
+    background: linear-gradient(135deg, rgba(71, 137, 224, 0.05), rgba(90, 158, 240, 0.05));
+    border-color: rgba(71, 137, 224, 0.2);
+}
+
+.university-card.exchange-card:hover {
+    border-color: var(--main);
+    background: linear-gradient(135deg, rgba(71, 137, 224, 0.08), rgba(90, 158, 240, 0.08));
+}
+
+.exchange-badge {
+    background: linear-gradient(135deg, var(--main), #5a9ef0);
+    color: white !important;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 600 !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.exchange-badge i {
+    font-size: 1rem;
 }
 
 .university-card:hover {

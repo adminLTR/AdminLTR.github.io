@@ -409,6 +409,56 @@ const languages = [
     "germany"
 ]
 
+const education = [
+    {
+        university: "Universidad Nacional Mayor de San Marcos",
+        acronym: "UNMSM",
+        logo: "unmsm",
+        period: {
+            'great-britain': "2022 - Present",
+            spain: "2022 - Presente",
+            italy: "2022 - Presente",
+            brazil: "2022 - Presente",
+            germany: "2022 - Gegenwart"
+        },
+        faculty: {
+            'great-britain': "Faculty of Systems Engineering and Informatics",
+            spain: "Facultad de Ingeniería de Sistemas e Informática",
+            italy: "Facoltà di Ingegneria dei Sistemi e Informatica",
+            brazil: "Faculdade de Engenharia de Sistemas e Informática",
+            germany: "Fakultät für Systemtechnik und Informatik"
+        },
+        degree: {
+            'great-britain': "Software Engineering",
+            spain: "Ingeniería de Software",
+            italy: "Ingegneria del Software",
+            brazil: "Engenharia de Software",
+            germany: "Software-Engineering"
+        },
+        type: "degree"
+    },
+    {
+        university: "Alma Mater - Università di Bologna",
+        acronym: "Unibo",
+        logo: "unibo",
+        period: {
+            'great-britain': "2026",
+            spain: "2026",
+            italy: "2026",
+            brazil: "2026",
+            germany: "2026"
+        },
+        program: {
+            'great-britain': "Student Exchange Program",
+            spain: "Intercambio Estudiantil",
+            italy: "Programma di Scambio Studentesco",
+            brazil: "Programa de Intercâmbio Estudantil",
+            germany: "Studentenaustauschprogramm"
+        },
+        type: "exchange"
+    }
+]
+
 const info = {
     'great-britain': {
         links: {
