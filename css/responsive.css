@@ -11,6 +11,20 @@
     .timeline-container {
         max-width: 900px;
     }
+    
+    /* Adjust timeline image size for medium screens */
+    .timeline-image {
+        width: 280px;
+        height: 220px;
+    }
+    
+    .timeline-left .timeline-image {
+        left: calc(50% + 2rem);
+    }
+    
+    .timeline-right .timeline-image {
+        right: calc(50% + 2rem);
+    }
 }
 
 /* Tablets */
@@ -71,11 +85,30 @@
         font-size: 0.75rem;
     }
     
+    /* Hide timeline images on tablets */
+    .timeline-image {
+        display: none;
+    }
+    
     .timeline-left .experience-card::after,
     .timeline-right .experience-card::after {
         left: -15px;
         border-right-color: white;
         border-left-color: transparent;
+    }
+    
+    /* Volunteer Timeline */
+    .timeline-left .volunteer-card::after,
+    .timeline-right .volunteer-card::after {
+        left: -15px;
+        border-right-color: white;
+        border-left-color: transparent;
+    }
+    
+    /* Achievements Grid */
+    .achievements-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
     }
     
     /* Projects Grid */
@@ -192,6 +225,8 @@
     
     /* Experience */
     .experience-container,
+    .volunteer-container,
+    .achievements-container,
     .projects-container,
     .skills-container-wrapper {
         padding: 1rem;
@@ -214,6 +249,16 @@
     
     .tech-stack {
         justify-content: center;
+    }
+    
+    /* Achievements */
+    .achievements-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .achievement-card {
+        padding: 1.5rem;
     }
     
     /* Projects */
@@ -331,7 +376,8 @@
         left: 20px;
     }
     
-    .experience-card {
+    .experience-card,
+    .volunteer-card {
         padding: 1.5rem;
     }
     
@@ -345,6 +391,17 @@
     .timeline-left .timeline-date,
     .timeline-right .timeline-date {
         transform: translateX(0) !important;
+    }
+    
+    /* Achievements */
+    .achievement-card {
+        padding: 1.5rem;
+    }
+    
+    .achievement-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
     }
     
     /* Projects */
@@ -389,6 +446,8 @@
     .home-container,
     .about-container,
     .experience-container,
+    .volunteer-container,
+    .achievements-container,
     .projects-container,
     .skills-container-wrapper {
         padding: 0.5rem;
@@ -405,5 +464,11 @@
     .photo-frame {
         width: 180px;
         height: 180px;
+    }
+    
+    .achievement-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1rem;
     }
 }

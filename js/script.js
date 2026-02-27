@@ -12,7 +12,9 @@ window.addEventListener("load", function () {
     renderSkills(areas);
     renderEducation(education);
     renderExperience(experience);
+    renderVolunteer(volunteer);
     renderProjects(projects);
+    renderAchievements(achievements);
 
     // Initialize scroll-to-top button behavior
     initScrollTopButton();
@@ -42,7 +44,9 @@ window.addEventListener("load", function () {
 
                 renderEducation(education);
                 renderExperience(experience);
+                renderVolunteer(volunteer);
                 renderProjects(projects);
+                renderAchievements(achievements);
             });
 
             
@@ -303,16 +307,24 @@ function renderEducation(education) {
 
 function renderExperience(experience) {
     const experienceDiv = document.querySelector("#experience .experience-timeline");
+    if (!experienceDiv) return;
+    
     let html = "";
     const langUser = localStorage.getItem("language");
-    const lang = langUser ? langUser : 'great-britain'
+    const lang = langUser ? langUser : 'great-britain';
+    
     experience.forEach((exp, index) => {
         const isEven = index % 2 === 0;
+        const date = typeof exp.date === 'object' ? exp.date[lang] : exp.date;
+        
         html += `<div class="timeline-item ${isEven ? 'timeline-left' : 'timeline-right'}" data-index="${index}">
             <div class="timeline-marker">
                 <div class="timeline-dot"></div>
-                <div class="timeline-date">${exp.date}</div>
+                <div class="timeline-date">${date}</div>
             </div>
+            ${exp.image ? `<div class="timeline-image">
+                <img src="./img/${exp.image}" alt="${exp.name}">
+            </div>` : ''}
             <div class="timeline-content">
                 <div class="experience-card">
                     <div class="card-header">
@@ -323,6 +335,10 @@ function renderExperience(experience) {
                             <div class="company-details">
                                 <h3 class="company-name">${exp.name}</h3>
                                 <h4 class="job-title">${exp['job-title'][lang]}</h4>
+                                ${exp.location ? `<p class="location">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                    ${typeof exp.location === 'object' ? exp.location[lang] : exp.location}
+                                </p>` : ''}
                                 <a href="${exp.web}" target="_blank" class="company-link">
                                     <i class="fa-solid fa-external-link"></i>
                                     Visit Website
@@ -332,13 +348,11 @@ function renderExperience(experience) {
                     </div>
                     <div class="card-content">
                         <div class="job-description">
-                            <h5>Key Responsibilities:</h5>
-                            <ul>
-                                ${exp.description[lang].map(d => `<li>${d}</li>`).join('')}
-                            </ul>
+                            <h5>${info[lang].overview}</h5>
+                            <p>${exp.description[lang]}</p>
                         </div>
                         <div class="technologies-used">
-                            <h5>Technologies:</h5>
+                            <h5>${info[lang].technologies}</h5>
                             <div class="tech-stack">
                                 ${exp.technologies.map(tech => `
                                     <div class="tech-item" title="${tech}">
@@ -352,11 +366,12 @@ function renderExperience(experience) {
                 </div>
             </div>
         </div>`
-    })
+    });
+    
     experienceDiv.innerHTML = html;
     
     // Add intersection observer for timeline animations
-    const timelineItems = document.querySelectorAll('.timeline-item');
+    const timelineItems = document.querySelectorAll('#experience .timeline-item');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -368,13 +383,154 @@ function renderExperience(experience) {
     timelineItems.forEach(item => observer.observe(item));
 }
 
-function renderProjects(projects) {
-    const projectsDiv = document.querySelector("#projects .projects-grid");
+function renderVolunteer(volunteer) {
+    const volunteerDiv = document.querySelector("#volunteer .volunteer-timeline");
+    if (!volunteerDiv) return;
+    
     let html = "";
     const langUser = localStorage.getItem("language");
-    const lang = langUser ? langUser : 'great-britain'
+    const lang = langUser ? langUser : 'great-britain';
+    
+    volunteer.forEach((vol, index) => {
+        const isEven = index % 2 === 0;
+        html += `<div class="timeline-item ${isEven ? 'timeline-left' : 'timeline-right'}" data-index="${index}">
+            <div class="timeline-marker">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">${vol.date[lang]}</div>
+            </div>
+            ${vol.image ? `<div class="timeline-image">
+                <img src="./img/${vol.image}" alt="${vol.name}">
+            </div>` : ''}
+            <div class="timeline-content">
+                <div class="experience-card volunteer-card">
+                    <div class="card-header">
+                        <div class="company-info">
+                            <div class="company-logo">
+                                <img src="./img/experience/${formatNameForImg(vol.name)}.png" alt="${vol.name}">
+                            </div>
+                            <div class="company-details">
+                                <h3 class="company-name">${vol.name}</h3>
+                                <h4 class="job-title">
+                                    ${vol['job-title'][lang]}
+                                </h4>
+                                <p class="location">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                    ${vol.location[lang]}
+                                </p>
+                                <a href="${vol.web}" target="_blank" class="company-link">
+                                    <i class="fa-solid fa-external-link"></i>
+                                    Visit Website
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="job-description">
+                            <h5>${info[lang].overview}</h5>
+                            <p>${vol.description[lang]}</p>
+                        </div>
+                        <div class="technologies-used">
+                            <h5>${info[lang].technologies}</h5>
+                            <div class="tech-stack">
+                                ${vol.technologies.map(tech => `
+                                    <div class="tech-item" title="${tech}">
+                                        <img src="./img/technologies/${tech.toLowerCase()}.png" alt="${tech}"/>
+                                        <span>${tech}</span>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>`
+    });
+    
+    volunteerDiv.innerHTML = html;
+    
+    // Add intersection observer for timeline animations
+    const timelineItems = document.querySelectorAll('#volunteer .timeline-item');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-in');
+            }
+        });
+    }, { threshold: 0.3 });
+    
+    timelineItems.forEach(item => observer.observe(item));
+}
+
+function renderAchievements(achievements) {
+    const achievementsDiv = document.querySelector("#achievements .achievements-grid");
+    if (!achievementsDiv) return;
+    
+    let html = "";
+    const langUser = localStorage.getItem("language");
+    const lang = langUser ? langUser : 'great-britain';
+    
+    achievements.forEach((ach, index) => {
+        const iconClass = ach.icon || 'trophy';
+        const typeClass = ach.type || 'award';
+        
+        html += `<div class="achievement-card animate-fade-scroll" data-index="${index}">
+            ${ach.image ? `<div class="achievement-image">
+                <img src="./img/${ach.image}" alt="${ach.title[lang]}">
+                <div class="achievement-overlay">
+                    <div class="achievement-icon ${typeClass}">
+                        <i class="fa-solid fa-${iconClass}"></i>
+                    </div>
+                </div>
+            </div>` : ''}
+            <div class="achievement-content">
+                <h3 class="achievement-title">${ach.title[lang]}</h3>
+                <div class="achievement-meta">
+                    <span class="achievement-date">
+                        <i class="fa-solid fa-calendar"></i>
+                        ${ach.date[lang]}
+                    </span>
+                    <span class="achievement-location">
+                        <i class="fa-solid fa-location-dot"></i>
+                        ${ach.location[lang]}
+                    </span>
+                </div>
+                <p class="achievement-description">${ach.description[lang]}</p>
+            </div>
+        </div>`
+    });
+    
+    achievementsDiv.innerHTML = html;
+    
+    // Add intersection observer for achievement animations
+    const achievementCards = document.querySelectorAll('.achievement-card');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.classList.add('animate-in');
+                }, parseInt(entry.target.dataset.index) * 150);
+            }
+        });
+    }, { threshold: 0.2 });
+    
+    achievementCards.forEach(card => observer.observe(card));
+}
+
+function renderProjects(projects) {
+    const projectsDiv = document.querySelector("#projects .projects-grid");
+    if (!projectsDiv) return;
+    
+    let html = "";
+    const langUser = localStorage.getItem("language");
+    const lang = langUser ? langUser : 'great-britain';
+    
     projects.forEach((prj, index) => {
-        html += `<div class="project-card animate-fade-scroll" data-index="${index}">
+        const isThesis = prj.type === 'thesis';
+        const statusBadge = isThesis ? 
+            `<span class="status-badge thesis"><i class="fa-solid fa-graduation-cap"></i> Thesis Project</span>` :
+            `<span class="status-badge">Live</span>`;
+            
+        html += `<div class="project-card ${isThesis ? 'thesis-project' : ''} animate-fade-scroll" data-index="${index}">
             <div class="project-image">
                 <img src="./img/projects/${formatNameForImg(prj.name)}.png" alt="${prj.name}">
                 <div class="project-overlay">
@@ -392,13 +548,21 @@ function renderProjects(projects) {
                 <div class="project-header">
                     <h3 class="project-title">${prj.name}</h3>
                     <div class="project-status">
-                        <span class="status-badge">Live</span>
+                        ${statusBadge}
                     </div>
                 </div>
+                ${prj.date || prj.location ? `<div class="project-meta">
+                    ${prj.date ? `<span class="project-date">
+                        <i class="fa-solid fa-calendar"></i>
+                        ${typeof prj.date === 'object' ? prj.date[lang] : prj.date}
+                    </span>` : ''}
+                    ${prj.location ? `<span class="project-location">
+                        <i class="fa-solid fa-location-dot"></i>
+                        ${typeof prj.location === 'object' ? prj.location[lang] : prj.location}
+                    </span>` : ''}
+                </div>` : ''}
                 <div class="project-description">
-                    <ul>
-                        ${prj.description[lang].map(d => `<li>${d}</li>`).join('')}
-                    </ul>
+                    <p>${prj.description[lang]}</p>
                 </div>
                 <div class="project-tech">
                     <div class="tech-header">
@@ -425,7 +589,8 @@ function renderProjects(projects) {
                 </div>
             </div>
         </div>`
-    })
+    });
+    
     projectsDiv.innerHTML = html;
     
     // Add intersection observer for project animations
