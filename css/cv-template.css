@@ -1,0 +1,338 @@
+/* ====================================
+   CV Template Styles - Professional Classic
+   ==================================== */
+
+#cv-template {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+}
+
+#cv-template.generating {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: -9999;
+}
+
+.cv-container {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    max-width: 800px;
+    width: 210mm; /* A4 width */
+    margin: 0 auto;
+    padding: 40px;
+    background: white;
+    color: #333;
+    line-height: 1.6;
+    box-sizing: border-box;
+}
+
+/* Header Styles */
+.cv-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 3px solid #2c3e50;
+}
+
+.cv-name {
+    font-size: 32px;
+    font-weight: bold;
+    color: #2c3e50;
+    margin: 0 0 10px 0;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.cv-title {
+    font-size: 18px;
+    color: #555;
+    font-style: italic;
+    margin-bottom: 15px;
+}
+
+.cv-contact {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    font-size: 12px;
+    color: #666;
+}
+
+.cv-contact span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.cv-contact i {
+    color: #2c3e50;
+    font-size: 11px;
+}
+
+/* Section Styles */
+.cv-section {
+    margin-bottom: 25px;
+    page-break-inside: avoid;
+}
+
+.cv-section-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #2c3e50;
+    margin: 0 0 8px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.cv-divider {
+    height: 2px;
+    background: #bdc3c7;
+    margin-bottom: 15px;
+}
+
+/* About Section */
+.cv-about {
+    font-size: 13px;
+    text-align: justify;
+    line-height: 1.7;
+    color: #444;
+}
+
+/* Experience/Volunteer Items */
+.cv-item {
+    margin-bottom: 20px;
+    page-break-inside: avoid;
+}
+
+.cv-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 5px;
+}
+
+.cv-item-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #2c3e50;
+    margin: 0;
+}
+
+.cv-item-date {
+    font-size: 11px;
+    color: #777;
+    font-style: italic;
+}
+
+.cv-item-company {
+    font-size: 14px;
+    color: #555;
+    font-weight: 600;
+    margin-bottom: 3px;
+}
+
+.cv-item-location {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 8px;
+}
+
+.cv-item-description {
+    font-size: 12px;
+    text-align: justify;
+    line-height: 1.6;
+    color: #444;
+    margin-bottom: 10px;
+}
+
+.cv-item-web {
+    font-size: 11px;
+    color: #3498db;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 8px;
+}
+
+.cv-technologies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+}
+
+.cv-tech-tag {
+    font-size: 10px;
+    padding: 3px 8px;
+    background: #ecf0f1;
+    color: #2c3e50;
+    border-radius: 3px;
+    border: 1px solid #bdc3c7;
+}
+
+/* Skills Section */
+.cv-skills-area {
+    margin-bottom: 15px;
+}
+
+.cv-skills-area-title {
+    font-size: 14px;
+    font-weight: bold;
+    color: #34495e;
+    margin-bottom: 8px;
+}
+
+.cv-skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.cv-skill-item {
+    font-size: 11px;
+    padding: 4px 10px;
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 3px;
+    color: #495057;
+}
+
+/* Education Section */
+.cv-education-item {
+    margin-bottom: 15px;
+}
+
+.cv-education-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.cv-education-degree {
+    font-size: 14px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.cv-education-period {
+    font-size: 11px;
+    color: #777;
+    font-style: italic;
+}
+
+.cv-education-university {
+    font-size: 13px;
+    color: #555;
+    margin-top: 2px;
+}
+
+.cv-education-faculty {
+    font-size: 11px;
+    color: #888;
+    margin-top: 2px;
+}
+
+/* Projects Section */
+.cv-project {
+    margin-bottom: 18px;
+    page-break-inside: avoid;
+}
+
+.cv-project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 5px;
+}
+
+.cv-project-name {
+    font-size: 15px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.cv-project-date {
+    font-size: 11px;
+    color: #777;
+    font-style: italic;
+}
+
+.cv-project-links {
+    font-size: 11px;
+    color: #3498db;
+    margin-bottom: 5px;
+}
+
+.cv-project-links a {
+    color: #3498db;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.cv-project-description {
+    font-size: 12px;
+    text-align: justify;
+    line-height: 1.6;
+    color: #444;
+    margin-bottom: 8px;
+}
+
+/* Achievements Section */
+.cv-achievement {
+    margin-bottom: 18px;
+    page-break-inside: avoid;
+}
+
+.cv-achievement-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 5px;
+}
+
+.cv-achievement-title {
+    font-size: 15px;
+    font-weight: bold;
+    color: #2c3e50;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.cv-achievement-icon {
+    font-size: 14px;
+    color: #f39c12;
+}
+
+.cv-achievement-date {
+    font-size: 11px;
+    color: #777;
+    font-style: italic;
+}
+
+.cv-achievement-location {
+    font-size: 11px;
+    color: #888;
+    margin-bottom: 5px;
+}
+
+.cv-achievement-description {
+    font-size: 12px;
+    text-align: justify;
+    line-height: 1.6;
+    color: #444;
+}
+
+/* Print Optimizations */
+@media print {
+    .cv-container {
+        padding: 20px;
+    }
+    
+    .cv-section {
+        page-break-inside: avoid;
+    }
+}

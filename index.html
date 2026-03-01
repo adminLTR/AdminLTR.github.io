@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="./css/animations.css">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/responsive.css">
+    <link rel="stylesheet" href="./css/cv-template.css">
 </head>
 <body>
     <header>
@@ -328,6 +329,73 @@
             <div class="skills-bg-shape skills-bg-shape-3"></div>
         </div>
     </section>
+    
+    <!-- CV Template (Hidden, used for PDF generation) -->
+    <div id="cv-template" style="display: none;">
+        <div class="cv-container">
+            <!-- Header -->
+            <div class="cv-header">
+                <h1 class="cv-name">Jose Luis La Torre Romero</h1>
+                <div class="cv-title" id="cv-career"></div>
+                <div class="cv-contact">
+                    <span><i class="fa-solid fa-location-dot"></i> Lima, Peru</span>
+                    <span><i class="fa-solid fa-envelope"></i> joselatorre143351@gmail.com</span>
+                    <a href="https://github.com/adminLTR" target="_blank"></a><span><i class="fa-brands fa-github"></i> github.com/adminLTR</span>
+                    <a href="https://www.linkedin.com/in/jose-luis-la-torre-romero" target="_blank"></a><span><i class="fa-brands fa-linkedin"></i> linkedin.com/in/jose-luis-la-torre-romero</span>
+                </div>
+            </div>
+            
+            <!-- About Section -->
+            <div class="cv-section">
+                <h2 class="cv-section-title" id="cv-about-title">About Me</h2>
+                <div class="cv-divider"></div>
+                <p class="cv-about" id="cv-about-text"></p>
+            </div>
+            
+            <!-- Education Section -->
+            <div class="cv-section">
+                <h2 class="cv-section-title" id="cv-education-title">Education</h2>
+                <div class="cv-divider"></div>
+                <div id="cv-education-content"></div>
+            </div>
+            
+            <!-- Experience Section -->
+            <div class="cv-section">
+                <h2 class="cv-section-title" id="cv-experience-title">Experience</h2>
+                <div class="cv-divider"></div>
+                <div id="cv-experience-content"></div>
+            </div>
+            
+            <!-- Volunteer Section -->
+            <div class="cv-section">
+                <h2 class="cv-section-title" id="cv-volunteer-title">Volunteer</h2>
+                <div class="cv-divider"></div>
+                <div id="cv-volunteer-content"></div>
+            </div>
+            
+            <!-- Skills Section -->
+            <div class="cv-section">
+                <h2 class="cv-section-title" id="cv-skills-title">Skills</h2>
+                <div class="cv-divider"></div>
+                <div id="cv-skills-content"></div>
+            </div>
+            
+            <!-- Projects Section -->
+            <div class="cv-section">
+                <h2 class="cv-section-title" id="cv-projects-title">Projects</h2>
+                <div class="cv-divider"></div>
+                <div id="cv-projects-content"></div>
+            </div>
+            
+            <!-- Achievements Section -->
+            <div class="cv-section">
+                <h2 class="cv-section-title" id="cv-achievements-title">Achievements</h2>
+                <div class="cv-divider"></div>
+                <div id="cv-achievements-content"></div>
+            </div>
+        </div>
+    </div>
+    
     <footer>
         <div class="footer-content">
             <div class="footer-social">
@@ -360,6 +428,8 @@
     <button id="scroll-top-btn" aria-label="Scroll to top">
         <i class="fa-solid fa-chevron-up"></i>
     </button>
+    <!-- html2pdf.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script src="./js/data.js"></script>
     <script src="./js/helpers.js"></script>
     <script src="./js/script.js"></script>

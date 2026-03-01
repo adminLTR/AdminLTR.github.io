@@ -60,6 +60,12 @@ window.addEventListener("load", function () {
             behavior: 'smooth'
         });
     });
+    
+    // PDF Generation on download button click
+    document.getElementById('download-info')?.addEventListener('click', function(e) {
+        e.preventDefault();
+        generatePDF();
+    });
 });
 
 function initScrollEffects() {
@@ -111,7 +117,8 @@ function renderInfo() {
     document.getElementById("download-info").textContent = info[lang].download;
     document.getElementById("about-info").textContent = info[lang].about;
 
-    document.getElementById("download-info").setAttribute("href", "./cv/"+lang+".pdf");
+    // No longer needed - PDF is generated dynamically via generatePDF()
+    // document.getElementById("download-info").setAttribute("href", "./cv/"+lang+".pdf");
 
 }
 
