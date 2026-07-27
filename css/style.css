@@ -653,6 +653,10 @@ header a:hover {
     transition: all 0.3s ease;
     border: 2px solid transparent;
 }
+.university-info-content {
+    display: flex;
+    gap: 0.5rem;
+}
 
 .university-card.exchange-card {
     background: linear-gradient(135deg, rgba(71, 137, 224, 0.05), rgba(90, 158, 240, 0.05));

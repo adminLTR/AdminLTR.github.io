@@ -120,6 +120,11 @@ function renderInfo() {
         document.getElementById("download-info").textContent = info[lang].download;
     }
     document.getElementById("about-info").textContent = presentation.web[lang];
+
+    const currentLangName = document.getElementById("current-lang-name");
+    if (currentLangName) {
+        currentLangName.textContent = languageNames[lang] || lang;
+    }
 }
 
 function renderAreas(areas) {
@@ -291,12 +296,16 @@ function renderEducation(education) {
 
         if (edu.type === "degree") {
             html += `<div class="university-card animate-fade-right" style="animation-delay: ${index * 0.2}s">
-                <img src="./img/${edu.logo}.png" class="university-logo" alt="${edu.acronym}">
                 <div class="university-info">
-                    <h3>${edu.university} (${edu.acronym})</h3>
-                    <p>${edu.faculty ? getLocalized(edu.faculty, lang) : ''}</p>
-                    <p>${getLocalized(edu.career, lang)}</p>
-                    <p class="location"><i class="fa-solid fa-location-dot"></i> ${getLocalized(edu.location, lang)}</p>
+                    <div class="university-info-content">
+                        <img src="./img/${edu.logo}.png" class="university-logo" alt="${edu.acronym}">
+                        <div>
+                            <h3>${edu.university} (${edu.acronym})</h3>
+                            <p>${edu.faculty ? getLocalized(edu.faculty, lang) : ''}</p>
+                            <p>${getLocalized(edu.career, lang)}</p>
+                            <p class="location"><i class="fa-solid fa-location-dot"></i> ${getLocalized(edu.location, lang)}</p>
+                        </div>
+                    </div>
                     <div class="university-year">${period}</div>
                     ${desc ? `<p class="edu-description">${desc}</p>` : ''}
                 </div>

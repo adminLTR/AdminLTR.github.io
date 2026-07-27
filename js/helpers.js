@@ -13,8 +13,22 @@ function formatNameForImg(name) {
     return name.toLowerCase().replace(/ /g, '');
 }
 
+const languageNames = {
+    'great-britain': 'English',
+    spain: 'Español',
+    italy: 'Italiano',
+    brazil: 'Português',
+    france: 'Français',
+};
+
 function getCurrentLang() {
-    return localStorage.getItem('language') || 'great-britain';
+    let lang = localStorage.getItem('language') || 'great-britain';
+    // Migrate removed German locale to French
+    if (lang === 'germany') {
+        lang = 'france';
+        localStorage.setItem('language', lang);
+    }
+    return lang;
 }
 
 /** True when item has content for the given area (or web). */
