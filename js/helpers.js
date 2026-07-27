@@ -158,37 +158,10 @@ function initCVModal() {
 // ====================================
 
 function getCvPdfStyles() {
-    // Styles for on-screen host AND html2canvas clone (must travel with the element)
+    // Applied on the CV container itself (.cv-pdf-ready) so html2canvas
+    // does not need a parent wrapper for styles to match.
     return `
-.cv-pdf-capture {
-  position: fixed !important;
-  left: 0 !important;
-  top: 0 !important;
-  width: 794px !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  border: 0 !important;
-  background: #ffffff !important;
-  z-index: 999998 !important;
-  opacity: 1 !important;
-  pointer-events: none !important;
-  transform: none !important;
-  overflow: visible !important;
-  box-sizing: border-box !important;
-  font-family: Arial, Helvetica, sans-serif !important;
-  font-size: 8px !important;
-  color: #333 !important;
-  line-height: 1.3 !important;
-  text-align: left !important;
-}
-.cv-pdf-capture *,
-.cv-pdf-capture *::before,
-.cv-pdf-capture *::after {
-  box-sizing: border-box !important;
-  font-family: Arial, Helvetica, sans-serif !important;
-  transform: none !important;
-}
-.cv-pdf-capture .cv-container {
+.cv-container.cv-pdf-ready {
   width: 794px !important;
   max-width: 794px !important;
   margin: 0 !important;
@@ -199,9 +172,23 @@ function getCvPdfStyles() {
   position: relative !important;
   left: 0 !important;
   top: 0 !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  transform: none !important;
+  box-sizing: border-box !important;
   font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 8px !important;
+  text-align: left !important;
 }
-.cv-pdf-capture a {
+.cv-container.cv-pdf-ready *,
+.cv-container.cv-pdf-ready *::before,
+.cv-container.cv-pdf-ready *::after {
+  box-sizing: border-box !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  transform: none !important;
+}
+.cv-container.cv-pdf-ready a {
   color: inherit !important;
   text-decoration: none !important;
   margin: 0 !important;
@@ -212,25 +199,25 @@ function getCvPdfStyles() {
   letter-spacing: normal !important;
   display: inline !important;
 }
-.cv-pdf-capture ul {
+.cv-container.cv-pdf-ready ul {
   list-style: none !important;
   margin: 0 !important;
   padding: 0 !important;
 }
-.cv-pdf-capture h1,
-.cv-pdf-capture h2 {
+.cv-container.cv-pdf-ready h1,
+.cv-container.cv-pdf-ready h2 {
   margin: 0 !important;
   padding: 0 !important;
   font-weight: bold !important;
   font-family: Arial, Helvetica, sans-serif !important;
 }
-.cv-pdf-capture .cv-header {
+.cv-container.cv-pdf-ready .cv-header {
   margin: 0 0 6px 0 !important;
   padding: 0 0 5px 0 !important;
   border-bottom: 1.5px solid #2c3e50 !important;
   text-align: center !important;
 }
-.cv-pdf-capture .cv-name {
+.cv-container.cv-pdf-ready .cv-name {
   font-size: 16px !important;
   font-weight: bold !important;
   color: #2c3e50 !important;
@@ -240,32 +227,32 @@ function getCvPdfStyles() {
   line-height: 1.15 !important;
   text-align: center !important;
 }
-.cv-pdf-capture .cv-title {
+.cv-container.cv-pdf-ready .cv-title {
   font-size: 9.5px !important;
   color: #555 !important;
   font-style: italic !important;
   margin: 0 0 3px 0 !important;
   text-align: center !important;
 }
-.cv-pdf-capture .cv-contact {
+.cv-container.cv-pdf-ready .cv-contact {
   font-size: 8px !important;
   color: #666 !important;
   line-height: 1.4 !important;
   text-align: center !important;
 }
-.cv-pdf-capture .cv-contact span,
-.cv-pdf-capture .cv-contact a {
+.cv-container.cv-pdf-ready .cv-contact span,
+.cv-container.cv-pdf-ready .cv-contact a {
   color: inherit !important;
   margin: 0 5px !important;
   white-space: nowrap !important;
   font-size: 8px !important;
 }
-.cv-pdf-capture .cv-section {
+.cv-container.cv-pdf-ready .cv-section {
   margin: 0 0 6px 0 !important;
   padding: 0 !important;
   clear: both !important;
 }
-.cv-pdf-capture .cv-section-title {
+.cv-container.cv-pdf-ready .cv-section-title {
   font-size: 10.5px !important;
   font-weight: bold !important;
   color: #2c3e50 !important;
@@ -275,38 +262,38 @@ function getCvPdfStyles() {
   line-height: 1.2 !important;
   text-align: left !important;
 }
-.cv-pdf-capture .cv-divider {
+.cv-container.cv-pdf-ready .cv-divider {
   height: 1px !important;
   background: #bdc3c7 !important;
   margin: 0 0 3px 0 !important;
   border: 0 !important;
 }
-.cv-pdf-capture .cv-about {
+.cv-container.cv-pdf-ready .cv-about {
   font-size: 8px !important;
   text-align: justify !important;
   line-height: 1.35 !important;
   color: #444 !important;
   margin: 0 !important;
 }
-.cv-pdf-capture .cv-item,
-.cv-pdf-capture .cv-education-item,
-.cv-pdf-capture .cv-project,
-.cv-pdf-capture .cv-achievement {
+.cv-container.cv-pdf-ready .cv-item,
+.cv-container.cv-pdf-ready .cv-education-item,
+.cv-container.cv-pdf-ready .cv-project,
+.cv-container.cv-pdf-ready .cv-achievement {
   margin: 0 0 4px 0 !important;
   padding: 0 !important;
   clear: both !important;
   overflow: hidden !important;
 }
-.cv-pdf-capture .cv-item-header,
-.cv-pdf-capture .cv-education-header,
-.cv-pdf-capture .cv-achievement-header {
+.cv-container.cv-pdf-ready .cv-item-header,
+.cv-container.cv-pdf-ready .cv-education-header,
+.cv-container.cv-pdf-ready .cv-achievement-header {
   overflow: hidden !important;
   margin-bottom: 1px !important;
 }
-.cv-pdf-capture .cv-item-title,
-.cv-pdf-capture .cv-education-degree,
-.cv-pdf-capture .cv-achievement-title,
-.cv-pdf-capture .cv-project-name {
+.cv-container.cv-pdf-ready .cv-item-title,
+.cv-container.cv-pdf-ready .cv-education-degree,
+.cv-container.cv-pdf-ready .cv-achievement-title,
+.cv-container.cv-pdf-ready .cv-project-name {
   float: left !important;
   font-size: 9px !important;
   font-weight: bold !important;
@@ -314,9 +301,9 @@ function getCvPdfStyles() {
   margin: 0 !important;
   max-width: 72% !important;
 }
-.cv-pdf-capture .cv-item-date,
-.cv-pdf-capture .cv-education-period,
-.cv-pdf-capture .cv-achievement-date {
+.cv-container.cv-pdf-ready .cv-item-date,
+.cv-container.cv-pdf-ready .cv-education-period,
+.cv-container.cv-pdf-ready .cv-achievement-date {
   float: right !important;
   font-size: 7.5px !important;
   color: #777 !important;
@@ -324,31 +311,31 @@ function getCvPdfStyles() {
   white-space: nowrap !important;
   margin: 0 !important;
 }
-.cv-pdf-capture .cv-item-company {
+.cv-container.cv-pdf-ready .cv-item-company {
   clear: both !important;
   font-size: 8.5px !important;
   color: #555 !important;
   font-weight: 600 !important;
   margin: 0 !important;
 }
-.cv-pdf-capture .cv-item-location,
-.cv-pdf-capture .cv-achievement-location,
-.cv-pdf-capture .cv-education-faculty {
+.cv-container.cv-pdf-ready .cv-item-location,
+.cv-container.cv-pdf-ready .cv-achievement-location,
+.cv-container.cv-pdf-ready .cv-education-faculty {
   clear: both !important;
   font-size: 7.5px !important;
   color: #888 !important;
   margin: 0 0 2px 0 !important;
 }
-.cv-pdf-capture .cv-education-university {
+.cv-container.cv-pdf-ready .cv-education-university {
   clear: both !important;
   font-size: 8px !important;
   color: #555 !important;
   margin: 0 !important;
 }
-.cv-pdf-capture .cv-item-description,
-.cv-pdf-capture .cv-project-description,
-.cv-pdf-capture .cv-achievement-description,
-.cv-pdf-capture .cv-project-subtitle {
+.cv-container.cv-pdf-ready .cv-item-description,
+.cv-container.cv-pdf-ready .cv-project-description,
+.cv-container.cv-pdf-ready .cv-achievement-description,
+.cv-container.cv-pdf-ready .cv-project-subtitle {
   clear: both !important;
   font-size: 8px !important;
   text-align: justify !important;
@@ -356,36 +343,36 @@ function getCvPdfStyles() {
   color: #444 !important;
   margin: 0 !important;
 }
-.cv-pdf-capture .cv-project-subtitle {
+.cv-container.cv-pdf-ready .cv-project-subtitle {
   font-style: italic !important;
   color: #555 !important;
   margin: 0 0 1px 0 !important;
   text-align: left !important;
 }
-.cv-pdf-capture .cv-desc-list {
+.cv-container.cv-pdf-ready .cv-desc-list {
   clear: both !important;
   margin: 1px 0 0 0 !important;
   padding: 0 !important;
 }
-.cv-pdf-capture .cv-bullet-row {
+.cv-container.cv-pdf-ready .cv-bullet-row {
   margin: 0 0 1.5px 0 !important;
   padding: 0 !important;
   overflow: hidden !important;
 }
-.cv-pdf-capture .cv-dot-wrap {
+.cv-container.cv-pdf-ready .cv-dot-wrap {
   float: left !important;
   width: 9px !important;
   padding-top: 3px !important;
   line-height: 0 !important;
 }
-.cv-pdf-capture .cv-dot {
+.cv-container.cv-pdf-ready .cv-dot {
   display: block !important;
   width: 3px !important;
   height: 3px !important;
   background-color: #2c3e50 !important;
   border-radius: 50% !important;
 }
-.cv-pdf-capture .cv-bullet-text {
+.cv-container.cv-pdf-ready .cv-bullet-text {
   display: block !important;
   margin-left: 9px !important;
   font-size: 8px !important;
@@ -409,24 +396,38 @@ function generatePDF(area) {
 
     showLoadingIndicator();
 
+    const cssText = getCvPdfStyles();
+    const styleEl = document.createElement('style');
+    styleEl.id = 'cv-pdf-ready-styles';
+    styleEl.textContent = cssText;
+    document.head.appendChild(styleEl);
+
     const clone = source.cloneNode(true);
+    clone.classList.add('cv-pdf-ready');
     clone.querySelectorAll('.cv-section').forEach((section) => {
         if (section.style.display === 'none') {
             section.remove();
         }
     });
 
-    const cssText = getCvPdfStyles();
-
-    // Style MUST live inside the captured node so html2canvas clone keeps CV CSS
-    const styleEl = document.createElement('style');
-    styleEl.textContent = cssText;
-
+    // Preview host only — we capture the inner .cv-container, not this wrapper
     const host = document.createElement('div');
     host.id = 'cv-pdf-host';
-    host.className = 'cv-pdf-capture';
     host.setAttribute('aria-hidden', 'true');
-    host.appendChild(styleEl);
+    host.style.cssText = [
+        'position:fixed',
+        'left:0',
+        'top:0',
+        'width:794px',
+        'margin:0',
+        'padding:0',
+        'background:#ffffff',
+        'z-index:999998',
+        'opacity:1',
+        'pointer-events:none',
+        'transform:none',
+        'overflow:visible',
+    ].join(';');
     host.appendChild(clone);
     document.body.appendChild(host);
 
@@ -439,6 +440,7 @@ function generatePDF(area) {
 
     const cleanup = () => {
         host.remove();
+        styleEl.remove();
         window.scrollTo(prevScrollX, prevScrollY);
     };
 
@@ -449,37 +451,37 @@ function generatePDF(area) {
         html2canvas: {
             scale: 2,
             useCORS: true,
+            allowTaint: true,
             backgroundColor: '#ffffff',
             logging: false,
             scrollX: 0,
             scrollY: 0,
             windowWidth: 794,
             onclone: (clonedDoc, element) => {
-                const root =
-                    (element && element.classList && element.classList.contains('cv-pdf-capture') && element) ||
-                    clonedDoc.querySelector('.cv-pdf-capture') ||
-                    clonedDoc.getElementById('cv-pdf-host');
+                const target =
+                    element ||
+                    clonedDoc.querySelector('.cv-container.cv-pdf-ready') ||
+                    clonedDoc.querySelector('.cv-container');
 
-                if (root) {
-                    root.classList.add('cv-pdf-capture');
-                    root.style.cssText = [
-                        'position:relative',
-                        'left:0',
-                        'top:0',
-                        'margin:0',
-                        'padding:0',
-                        'transform:none',
-                        'width:794px',
-                        'background:#ffffff',
-                    ].join(';');
+                if (!clonedDoc.getElementById('cv-pdf-ready-styles')) {
+                    const st = clonedDoc.createElement('style');
+                    st.id = 'cv-pdf-ready-styles';
+                    st.textContent = cssText;
+                    clonedDoc.head.appendChild(st);
+                }
 
-                    // Ensure CV CSS exists inside the cloned tree
-                    if (!root.querySelector('style[data-cv-pdf]')) {
-                        const s = clonedDoc.createElement('style');
-                        s.setAttribute('data-cv-pdf', '1');
-                        s.textContent = cssText;
-                        root.insertBefore(s, root.firstChild);
-                    }
+                if (target) {
+                    target.classList.add('cv-pdf-ready', 'cv-container');
+                    target.style.display = 'block';
+                    target.style.visibility = 'visible';
+                    target.style.opacity = '1';
+                    target.style.background = '#ffffff';
+                    target.style.width = '794px';
+                    target.style.margin = '0';
+                    target.style.transform = 'none';
+                    target.style.position = 'relative';
+                    target.style.left = '0';
+                    target.style.top = '0';
                 }
 
                 if (clonedDoc.body) {
@@ -499,10 +501,9 @@ function generatePDF(area) {
 
     requestAnimationFrame(() => {
         setTimeout(() => {
-            // Capture the HOST (preview), not the inner container alone
             html2pdf()
                 .set(opt)
-                .from(host)
+                .from(clone)
                 .save()
                 .then(() => {
                     hideLoadingIndicator();
@@ -514,7 +515,7 @@ function generatePDF(area) {
                     alert('Error al generar PDF. Por favor intenta de nuevo.');
                     cleanup();
                 });
-        }, 300);
+        }, 350);
     });
 }
 
