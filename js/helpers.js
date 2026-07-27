@@ -126,6 +126,10 @@ function openCVModal() {
 function closeCVModal() {
     const modal = document.getElementById('cv-modal');
     if (!modal) return;
+    // Avoid aria-hidden warning while a modal button still has focus
+    if (modal.contains(document.activeElement) && document.activeElement instanceof HTMLElement) {
+        document.activeElement.blur();
+    }
     modal.classList.remove('open');
     modal.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('modal-open');

@@ -184,9 +184,10 @@ function renderSkills(areas) {
             <div class="skills-grid">
                 ${areas[area].map((tech, techIndex) => {
                     const skillLevel = getSkillLevel(tech);
+                    const iconSrc = getTechIconSrc(tech);
                     return `<div class="skill-item" style="animation-delay: ${techIndex * 0.1}s">
                         <div class="skill-icon">
-                            <img src="./img/technologies/${tech.toLowerCase()}.png" alt="${tech}"/>
+                            <img src="${iconSrc}" alt="${tech}" onerror="this.onerror=null;this.src='./img/technologies/javascript.png';"/>
                         </div>
                         <div class="skill-info">
                             <h4>${tech}</h4>
@@ -237,6 +238,13 @@ function renderSkills(areas) {
     }, { threshold: 0.3 });
     
     skillAreas.forEach(area => observer.observe(area));
+}
+
+function getTechIconSrc(tech) {
+    const key = String(tech || '').toLowerCase().trim();
+    const svgIcons = new Set(['flutter', 'fastapi']);
+    const ext = svgIcons.has(key) ? 'svg' : 'png';
+    return `./img/technologies/${key}.${ext}`;
 }
 
 function getAreaIcon(area) {
