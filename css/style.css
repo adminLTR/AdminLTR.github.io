@@ -543,10 +543,9 @@ header a:hover {
 }
 
 .about-main {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: start;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
     margin-bottom: 4rem;
 }
 
@@ -554,6 +553,13 @@ header a:hover {
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    width: 100%;
+}
+
+.about-details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
 }
 
 .about-intro {
@@ -581,12 +587,6 @@ header a:hover {
     line-height: 1.8;
     color: #4a5568;
     margin: 0;
-}
-
-.about-details {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
 }
 
 .detail-item {
@@ -634,10 +634,10 @@ header a:hover {
 }
 
 .university-section {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2rem;
-    justify-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
 }
 
 .university-card {
@@ -648,8 +648,8 @@ header a:hover {
     display: flex;
     align-items: center;
     gap: 1.5rem;
-    max-width: 500px;
     width: 100%;
+    max-width: none;
     transition: all 0.3s ease;
     border: 2px solid transparent;
 }

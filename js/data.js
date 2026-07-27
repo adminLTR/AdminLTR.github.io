@@ -1084,6 +1084,65 @@ const education = [
         },
         type: 'exchange',
     },
+    {
+        university: 'Universidade de São Paulo',
+        acronym: 'USP',
+        logo: 'usp',
+        career: {
+            'great-britain': 'Student Exchange Program',
+            spain: 'Intercambio Estudiantil',
+            italy: 'Programma di Scambio Studentesco',
+            brazil: 'Programa de Intercâmbio Estudantil',
+            france: "Programme d'Échange Étudiant",
+        },
+        location: {
+            'great-britain': 'São Paulo, Brasil',
+            spain: 'São Paulo, Brasil',
+            italy: 'São Paulo, Brasil',
+            brazil: 'São Paulo, Brasil',
+            france: 'São Paulo, Brasil',
+        },
+        from: { year: 2026 },
+        to: { year: 2026 },
+        description: {
+            web: {
+                'great-britain': 'Currently on a one-semester academic exchange, with a focus on Machine Learning, Data Science, and Deep Learning courses.',
+                spain: 'Cursando un intercambio académico por un semestre. Con enfoque en cursos de Machine Learning, Ciencia de datos y Deep learning.',
+                italy: 'Sto svolgendo uno scambio accademico per un semestre, con focus su corsi di Machine Learning, Data Science e Deep Learning.',
+                brazil: 'Cursando um intercâmbio acadêmico por um semestre, com foco em cursos de Machine Learning, Ciência de Dados e Deep Learning.',
+                france: "En cours d'échange académique d'un semestre, avec un accent sur les cours de Machine Learning, Science des données et Deep Learning.",
+            },
+            Frontend: {
+                'great-britain': 'Currently on an academic exchange focused on advanced computing courses, code optimization, interactive systems development, information processing, and software engineering for digital platforms.',
+                spain: 'Cursando un intercambio académico enfocado en materias avanzadas de computación, optimización de código, desarrollo de sistemas interactivos, procesamiento de información e ingeniería de software para plataformas digitales.',
+                italy: 'Sto svolgendo uno scambio accademico focalizzato su materie avanzate di informatica, ottimizzazione del codice, sviluppo di sistemi interattivi, elaborazione delle informazioni e ingegneria del software per piattaforme digitali.',
+                brazil: 'Cursando um intercâmbio acadêmico focado em matérias avançadas de computação, otimização de código, desenvolvimento de sistemas interativos, processamento de informação e engenharia de software para plataformas digitais.',
+                france: "En cours d'échange académique axé sur des matières avancées d'informatique, l'optimisation du code, le développement de systèmes interactifs, le traitement de l'information et l'ingénierie logicielle pour plateformes numériques.",
+            },
+            Backend: {
+                'great-britain': 'Academic exchange in Computer Science, focused on designing efficient algorithms, advanced data structures, server logic optimization, and large-scale data processing, strengthening the ability to build robust, highly concurrent, low-latency backend architectures.',
+                spain: 'Intercambio académico en Ciencias de la Computación. Enfocado en el diseño de algoritmos eficientes, estructuras de datos avanzadas, optimización de lógica de servidor y procesamiento masivo de datos, fortaleciendo la capacidad de construir arquitecturas de backend robustas, altamente concurrentes y de bajo nivel de latencia.',
+                italy: 'Scambio accademico in Informatica, focalizzato sulla progettazione di algoritmi efficienti, strutture dati avanzate, ottimizzazione della logica server e elaborazione massiva dei dati, rafforzando la capacità di costruire architetture backend robuste, altamente concorrenti e a bassa latenza.',
+                brazil: 'Intercâmbio acadêmico em Ciência da Computação, focado no design de algoritmos eficientes, estruturas de dados avançadas, otimização de lógica de servidor e processamento massivo de dados, fortalecendo a capacidade de construir arquiteturas de backend robustas, altamente concorrentes e de baixa latência.',
+                france: "Échange académique en Informatique, axé sur la conception d'algorithmes efficaces, les structures de données avancées, l'optimisation de la logique serveur et le traitement massif de données, renforçant la capacité à construire des architectures backend robustes, hautement concurrentes et à faible latence.",
+            },
+            'Data Science': {
+                'great-britain': 'Currently on a one-semester academic exchange, with a focus on Machine Learning, Data Science, and Deep Learning courses.',
+                spain: 'Cursando un intercambio académico por un semestre. Con enfoque en cursos de Machine Learning, Ciencia de datos y Deep learning.',
+                italy: 'Sto svolgendo uno scambio accademico per un semestre, con focus su corsi di Machine Learning, Data Science e Deep Learning.',
+                brazil: 'Cursando um intercâmbio acadêmico por um semestre, com foco em cursos de Machine Learning, Ciência de Dados e Deep Learning.',
+                france: "En cours d'échange académique d'un semestre, avec un accent sur les cours de Machine Learning, Science des données et Deep Learning.",
+            },
+            Fullstack: {
+                'great-britain': 'Studies focused on large-scale data processing, complex algorithms, and integration of computational techniques for system optimization and software logic, strengthening advanced technical skills applied to full solution development.',
+                spain: 'Estudios enfocados en procesamiento de datos a gran escala, algoritmia compleja e integración de técnicas computacionales para la optimización de sistemas y lógica de software, fortaleciendo competencias técnicas avanzadas aplicadas al desarrollo de soluciones completas.',
+                italy: "Studi focalizzati sull'elaborazione di dati su larga scala, algoritmi complessi e integrazione di tecniche computazionali per l'ottimizzazione dei sistemi e la logica del software, rafforzando competenze tecniche avanzate applicate allo sviluppo di soluzioni complete.",
+                brazil: 'Estudos focados em processamento de dados em larga escala, algoritmia complexa e integração de técnicas computacionais para otimização de sistemas e lógica de software, fortalecendo competências técnicas avançadas aplicadas ao desenvolvimento de soluções completas.',
+                france: "Études axées sur le traitement de données à grande échelle, l'algorithmique complexe et l'intégration de techniques computationnelles pour l'optimisation des systèmes et la logique logicielle, renforçant des compétences techniques avancées appliquées au développement de solutions complètes.",
+            },
+        },
+        type: 'exchange',
+    },
 ];
 
 // ====================================

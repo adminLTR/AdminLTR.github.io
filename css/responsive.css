@@ -51,14 +51,11 @@
     
     /* About Section */
     .about-main {
-        grid-template-columns: 1fr;
-        gap: 3rem;
+        gap: 2.5rem;
     }
-    
-    .university-section {
-        order: -1;
+
+    .about-details {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
     }
     
     /* Experience Timeline */
