@@ -169,18 +169,14 @@ function generatePDF(area) {
 
     showLoadingIndicator();
 
-    // Clone into a fixed on-screen layer (avoids blank top space from left:-9999px)
     const clone = source.cloneNode(true);
-    clone.style.margin = '0';
-    clone.style.paddingTop = '0';
-    clone.style.transform = 'none';
-    clone.style.position = 'static';
     clone.querySelectorAll('.cv-section').forEach((section) => {
         if (section.style.display === 'none') {
             section.remove();
         }
     });
 
+    // Stable on-screen host under the loading overlay (avoids left/top capture shift)
     const renderHost = document.createElement('div');
     renderHost.id = 'cv-pdf-render-host';
     renderHost.setAttribute('aria-hidden', 'true');
@@ -189,14 +185,32 @@ function generatePDF(area) {
         'left:0',
         'top:0',
         'width:794px',
+        'max-width:794px',
         'margin:0',
         'padding:0',
         'background:#ffffff',
-        'z-index:0',
-        'opacity:0.01',
+        'z-index:999998',
+        'opacity:1',
         'pointer-events:none',
-        'overflow:visible',
+        'overflow:hidden',
+        'transform:none',
+        'box-sizing:border-box',
     ].join(';');
+
+    clone.style.cssText = [
+        'position:relative',
+        'left:0',
+        'top:0',
+        'margin:0',
+        'padding:12px 24px 16px 24px',
+        'width:794px',
+        'max-width:794px',
+        'transform:none',
+        'box-sizing:border-box',
+        'background:#ffffff',
+        'font-family:Arial,Helvetica,sans-serif',
+    ].join(';');
+
     renderHost.appendChild(clone);
     document.body.appendChild(renderHost);
 
@@ -207,28 +221,47 @@ function generatePDF(area) {
     const nameSlug = profile.name.replace(/\s+/g, '_');
     const areaSlug = area.replace(/\s+/g, '_');
     const opt = {
-        margin: [3, 8, 5, 8],
+        margin: [8, 10, 8, 10],
         filename: `CV-${nameSlug}-${areaSlug}.pdf`,
         image: { type: 'jpeg', quality: 0.98 },
         html2canvas: {
             scale: 2,
             useCORS: true,
-            letterRendering: true,
             backgroundColor: '#ffffff',
             logging: false,
             scrollX: 0,
             scrollY: 0,
             windowWidth: 794,
-            onclone: (clonedDoc, el) => {
-                const target =
-                    el ||
-                    clonedDoc?.querySelector?.('.cv-container') ||
-                    clonedDoc?.body?.firstElementChild;
-                if (!target?.style) return;
-                target.style.margin = '0';
-                target.style.paddingTop = '0';
-                target.style.transform = 'none';
-                target.style.position = 'static';
+            width: 794,
+            x: 0,
+            y: 0,
+            onclone: (clonedDoc) => {
+                if (clonedDoc?.body) {
+                    clonedDoc.body.style.margin = '0';
+                    clonedDoc.body.style.padding = '0';
+                    clonedDoc.body.style.overflow = 'hidden';
+                }
+                const host = clonedDoc.getElementById('cv-pdf-render-host');
+                if (host) {
+                    host.style.left = '0';
+                    host.style.top = '0';
+                    host.style.margin = '0';
+                    host.style.padding = '0';
+                    host.style.opacity = '1';
+                    host.style.transform = 'none';
+                    host.style.overflow = 'hidden';
+                }
+                const container = host?.querySelector('.cv-container') || clonedDoc.querySelector('.cv-container');
+                if (container) {
+                    container.style.left = '0';
+                    container.style.top = '0';
+                    container.style.margin = '0';
+                    container.style.transform = 'none';
+                    container.style.position = 'relative';
+                    container.style.width = '794px';
+                    container.style.maxWidth = '794px';
+                    container.style.boxSizing = 'border-box';
+                }
             },
         },
         jsPDF: {
@@ -236,7 +269,7 @@ function generatePDF(area) {
             format: 'a4',
             orientation: 'portrait',
         },
-        pagebreak: { mode: ['css'] },
+        pagebreak: { mode: ['avoid-all', 'css', 'legacy'] },
     };
 
     const cleanup = () => {
@@ -260,7 +293,7 @@ function generatePDF(area) {
                     alert('Error al generar PDF. Por favor intenta de nuevo.');
                     cleanup();
                 });
-        }, 250);
+        }, 300);
     });
 }
 

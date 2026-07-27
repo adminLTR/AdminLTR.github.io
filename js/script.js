@@ -20,6 +20,14 @@ window.addEventListener("load", function () {
     initScrollTopButton();
     initCVModal();
 
+    // Close mobile/collapsed nav after clicking a link
+    document.querySelectorAll('#menu a').forEach((link) => {
+        link.addEventListener('click', () => {
+            const check = document.getElementById('check-menu');
+            if (check) check.checked = false;
+        });
+    });
+
     // CLICK LANGUAGES
     this.document.querySelectorAll("#about .languages-div img").forEach(img => {
         img.addEventListener("click", function () {

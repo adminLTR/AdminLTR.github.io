@@ -26,8 +26,9 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
+    padding: 0.85rem 1.5rem;
     transition: all 0.3s ease;
+    box-sizing: border-box;
 }
 
 header.scrolled {
@@ -35,33 +36,44 @@ header.scrolled {
     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
-header a img {
-    height: 40px;
-    width: auto;
-    transition: all 0.3s ease;
+header > a {
+    margin: 0;
+    flex-shrink: 0;
 }
 
-header a img:hover {
-    transform: scale(1.1);
+header > a img {
+    height: 30px;
+    width: auto;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+header > a img:hover {
+    transform: scale(1.05);
 }
 
 header nav {
     padding: 0;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 0;
 }
 
-header a {
+header nav a {
     color: var(--secondary);
     transition: all ease-in-out .3s;
     text-transform: uppercase;
     font-weight: 600;
-    font-size: 16px;
-    margin: 0 1.5rem;
+    font-size: 13px;
+    margin: 0 0.55rem;
     position: relative;
     text-decoration: none;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
 }
 
-header a::before {
+header nav a::before {
     content: '';
     position: absolute;
     bottom: -5px;
@@ -73,13 +85,13 @@ header a::before {
     transition: width 0.3s ease;
 }
 
-header a.active::before,
-header a:hover::before {
+header nav a.active::before,
+header nav a:hover::before {
     width: 100%;
 }
 
-header a.active, 
-header a:hover {
+header nav a.active,
+header nav a:hover {
     color: var(--main);
 }
 
