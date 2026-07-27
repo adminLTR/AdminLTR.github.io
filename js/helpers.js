@@ -43,7 +43,9 @@ function filterByArea(items, area) {
 function getLocalized(value, lang) {
     if (value == null) return '';
     if (typeof value === 'string') return value;
-    return value[lang] || value['great-britain'] || '';
+    if (Array.isArray(value)) return value;
+    const result = value[lang] ?? value['great-britain'] ?? value.spain ?? '';
+    return result;
 }
 
 function formatDatePart(dateObj, lang) {
@@ -157,29 +159,51 @@ function initCVModal() {
 
 function generatePDF(area) {
     const lang = getCurrentLang();
-
     populateCVTemplate(lang, area);
 
-    const element = document.getElementById('cv-template');
-    const container = element?.querySelector('.cv-container');
-
-    if (!element || !container) {
-        console.error('CV template elements not found');
+    const source = document.querySelector('#cv-template .cv-container');
+    if (!source) {
+        console.error('CV template not found');
         return;
     }
 
     showLoadingIndicator();
 
-    element.style.display = 'block';
-    element.style.position = 'absolute';
-    element.style.left = '-9999px';
-    element.style.top = '0';
-    element.style.visibility = 'visible';
+    // Clone into a fixed on-screen layer (avoids blank top space from left:-9999px)
+    const clone = source.cloneNode(true);
+    clone.querySelectorAll('.cv-section').forEach((section) => {
+        if (section.style.display === 'none') {
+            section.remove();
+        }
+    });
+
+    const renderHost = document.createElement('div');
+    renderHost.id = 'cv-pdf-render-host';
+    renderHost.setAttribute('aria-hidden', 'true');
+    renderHost.style.cssText = [
+        'position:fixed',
+        'left:0',
+        'top:0',
+        'width:794px',
+        'margin:0',
+        'padding:0',
+        'background:#ffffff',
+        'z-index:0',
+        'opacity:0.01',
+        'pointer-events:none',
+        'overflow:visible',
+    ].join(';');
+    renderHost.appendChild(clone);
+    document.body.appendChild(renderHost);
+
+    const prevScrollX = window.scrollX;
+    const prevScrollY = window.scrollY;
+    window.scrollTo(0, 0);
 
     const nameSlug = profile.name.replace(/\s+/g, '_');
     const areaSlug = area.replace(/\s+/g, '_');
     const opt = {
-        margin: [4, 8, 6, 8],
+        margin: [3, 8, 5, 8],
         filename: `CV-${nameSlug}-${areaSlug}.pdf`,
         image: { type: 'jpeg', quality: 0.98 },
         html2canvas: {
@@ -188,40 +212,47 @@ function generatePDF(area) {
             letterRendering: true,
             backgroundColor: '#ffffff',
             logging: false,
-            scrollY: 0,
             scrollX: 0,
+            scrollY: 0,
+            windowWidth: 794,
+            onclone: (_doc, el) => {
+                el.style.margin = '0';
+                el.style.paddingTop = '0';
+                el.style.transform = 'none';
+                el.style.position = 'static';
+            },
         },
         jsPDF: {
             unit: 'mm',
             format: 'a4',
             orientation: 'portrait',
         },
-        pagebreak: { mode: ['css', 'legacy'] },
+        pagebreak: { mode: ['css'] },
     };
 
     const cleanup = () => {
-        element.style.display = 'none';
-        element.style.position = 'static';
-        element.style.left = '0';
-        element.style.visibility = 'hidden';
+        renderHost.remove();
+        window.scrollTo(prevScrollX, prevScrollY);
     };
 
-    setTimeout(() => {
-        html2pdf()
-            .set(opt)
-            .from(container)
-            .save()
-            .then(() => {
-                hideLoadingIndicator();
-                cleanup();
-            })
-            .catch((error) => {
-                console.error('Error generating PDF:', error);
-                hideLoadingIndicator();
-                alert('Error al generar PDF. Por favor intenta de nuevo.');
-                cleanup();
-            });
-    }, 400);
+    requestAnimationFrame(() => {
+        setTimeout(() => {
+            html2pdf()
+                .set(opt)
+                .from(clone)
+                .save()
+                .then(() => {
+                    hideLoadingIndicator();
+                    cleanup();
+                })
+                .catch((error) => {
+                    console.error('Error generating PDF:', error);
+                    hideLoadingIndicator();
+                    alert('Error al generar PDF. Por favor intenta de nuevo.');
+                    cleanup();
+                });
+        }, 250);
+    });
 }
 
 function showLoadingIndicator() {
@@ -280,6 +311,7 @@ function populateCVTemplate(lang, area) {
     if (phoneEl) {
         const span = phoneEl.querySelector('span');
         if (span) span.textContent = profile.phone;
+        else phoneEl.textContent = profile.phone;
         phoneEl.href = `tel:${profile.phone}`;
     }
 
@@ -287,6 +319,7 @@ function populateCVTemplate(lang, area) {
     if (emailEl) {
         const span = emailEl.querySelector('span');
         if (span) span.textContent = profile.email;
+        else emailEl.textContent = profile.email;
         emailEl.href = `mailto:${profile.email}`;
     }
 
@@ -352,7 +385,11 @@ function populateCVTemplate(lang, area) {
         .join('');
 
     // Skills (abilities list for area)
-    const skillList = skills.abilities?.[area]?.[lang] || [];
+    const skillList =
+        skills.abilities?.[area]?.[lang] ||
+        skills.abilities?.[area]?.['great-britain'] ||
+        skills.abilities?.[area]?.spain ||
+        [];
     setSectionVisible('cv-section-skills', skillList.length > 0);
     document.getElementById('cv-skills-title').textContent =
         currentInfo.links.skills.toUpperCase();
