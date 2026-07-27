@@ -312,14 +312,16 @@ function renderEducation(education) {
             </div>`;
         } else if (edu.type === "exchange") {
             html += `<div class="university-card exchange-card animate-fade-right" style="animation-delay: ${index * 0.2}s">
-                <img src="./img/${edu.logo}.png" class="university-logo" alt="${edu.acronym}">
                 <div class="university-info">
-                    <h3>${edu.university} (${edu.acronym})</h3>
-                    <p class="exchange-badge">
-                        <i class="fa-solid fa-plane"></i>
-                        ${getLocalized(edu.career, lang)}
-                    </p>
-                    <p class="location"><i class="fa-solid fa-location-dot"></i> ${getLocalized(edu.location, lang)}</p>
+                    <div class="university-info-content">
+                        <img src="./img/${edu.logo}.png" class="university-logo" alt="${edu.acronym}">
+                        <div>
+                            <h3>${edu.university} (${edu.acronym})</h3>
+                            <p>${edu.faculty ? getLocalized(edu.faculty, lang) : ''}</p>
+                            <p>${getLocalized(edu.career, lang)}</p>
+                            <p class="location"><i class="fa-solid fa-location-dot"></i> ${getLocalized(edu.location, lang)}</p>
+                        </div>
+                    </div>
                     <div class="university-year">${period}</div>
                     ${desc ? `<p class="edu-description">${desc}</p>` : ''}
                 </div>
