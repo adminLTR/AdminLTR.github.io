@@ -10,244 +10,389 @@ function getAge(dateString) {
 }
 
 function formatNameForImg(name) {
-    return name.toLowerCase().replace(/ /g, '')
+    return name.toLowerCase().replace(/ /g, '');
+}
+
+function getCurrentLang() {
+    return localStorage.getItem('language') || 'great-britain';
+}
+
+/** True when item has content for the given area (or web). */
+function hasAreaContent(item, area) {
+    return !!(item && item.description && item.description[area] != null);
+}
+
+function filterByArea(items, area) {
+    return (items || []).filter((item) => hasAreaContent(item, area));
+}
+
+function getLocalized(value, lang) {
+    if (value == null) return '';
+    if (typeof value === 'string') return value;
+    return value[lang] || value['great-britain'] || '';
+}
+
+function formatDatePart(dateObj, lang) {
+    if (!dateObj) return '';
+    const months = dateLabels.months[lang] || dateLabels.months['great-britain'];
+    if (dateObj.month) {
+        return `${months[dateObj.month - 1]} ${dateObj.year}`;
+    }
+    return String(dateObj.year);
+}
+
+/** Formats from/to into a localized period string. */
+function formatPeriod(from, to, lang) {
+    if (!from && !to) return '';
+    const fromStr = formatDatePart(from, lang);
+    if (!to) {
+        return `${fromStr} - ${dateLabels.present[lang] || dateLabels.present['great-britain']}`;
+    }
+    const toStr = formatDatePart(to, lang);
+    if (fromStr === toStr) return fromStr;
+    return `${fromStr} - ${toStr}`;
+}
+
+function descriptionToHtml(desc, asList) {
+    if (desc == null || desc === '') return '';
+    if (Array.isArray(desc)) {
+        if (!desc.length) return '';
+        return `<ul class="cv-desc-list">${desc.map((line) => `<li>${line}</li>`).join('')}</ul>`;
+    }
+    if (asList) {
+        return `<ul class="cv-desc-list"><li>${desc}</li></ul>`;
+    }
+    return `<p class="cv-item-description">${desc}</p>`;
+}
+
+function descriptionToPlain(desc) {
+    if (desc == null) return '';
+    if (Array.isArray(desc)) return desc.join(' ');
+    return desc;
 }
 
 // ====================================
-// PDF Generation Function
+// CV Modal
 // ====================================
 
-function generatePDF() {
-    const langUser = localStorage.getItem("language");
-    const lang = langUser ? langUser : 'great-britain';
-    
-    console.log('Generating PDF in language:', lang);
-    
-    // Populate CV template with current language data
-    populateCVTemplate(lang);
-    
-    // Get the CV template element
+function openCVModal() {
+    const modal = document.getElementById('cv-modal');
+    if (!modal) return;
+    const lang = getCurrentLang();
+    const currentInfo = info[lang];
+
+    document.getElementById('cv-modal-title').textContent = currentInfo.modal.title;
+    document.getElementById('cv-modal-subtitle').textContent = currentInfo.modal.subtitle;
+    document.getElementById('cv-modal-cancel').textContent = currentInfo.modal.cancel;
+    document.getElementById('cv-modal-confirm').textContent = currentInfo.modal.confirm;
+
+    const options = document.getElementById('cv-modal-options');
+    options.innerHTML = cvAreas.map((area, index) => `
+        <label class="cv-modal-option">
+            <input type="radio" name="cv-area" value="${area}" ${index === 0 ? 'checked' : ''}>
+            <span>${area}</span>
+        </label>
+    `).join('');
+
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-open');
+}
+
+function closeCVModal() {
+    const modal = document.getElementById('cv-modal');
+    if (!modal) return;
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('modal-open');
+}
+
+function initCVModal() {
+    const modal = document.getElementById('cv-modal');
+    if (!modal) return;
+
+    document.getElementById('cv-modal-cancel')?.addEventListener('click', closeCVModal);
+    modal.querySelector('.cv-modal-backdrop')?.addEventListener('click', closeCVModal);
+    document.getElementById('cv-modal-close')?.addEventListener('click', closeCVModal);
+
+    document.getElementById('cv-modal-confirm')?.addEventListener('click', () => {
+        const selected = modal.querySelector('input[name="cv-area"]:checked');
+        if (!selected) return;
+        closeCVModal();
+        generatePDF(selected.value);
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('open')) {
+            closeCVModal();
+        }
+    });
+}
+
+// ====================================
+// PDF Generation
+// ====================================
+
+function generatePDF(area) {
+    const lang = getCurrentLang();
+
+    populateCVTemplate(lang, area);
+
     const element = document.getElementById('cv-template');
-    
-    if (!element) {
-        console.error('CV template element not found');
+    const container = element?.querySelector('.cv-container');
+
+    if (!element || !container) {
+        console.error('CV template elements not found');
         return;
     }
-    
-    // Get the cv-container inside the template
-    const container = element.querySelector('.cv-container');
-    if (!container) {
-        console.error('CV container not found inside template');
-        return;
-    }
-    
-    // Make the template visible temporarily
-    const originalOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
+
+    showLoadingIndicator();
+
     element.style.display = 'block';
-    element.style.position = 'fixed';
-    element.style.left = '0';
+    element.style.position = 'absolute';
+    element.style.left = '-9999px';
     element.style.top = '0';
-    element.style.width = '100%';
-    element.style.height = '100%';
-    element.style.overflow = 'auto';
-    element.style.zIndex = '999999';
-    element.style.background = 'rgba(255, 255, 255, 0.95)';
-    
-    console.log('Template element content length:', element.innerHTML.length);
-    console.log('Container content length:', container.innerHTML.length);
-    
-    // Configure PDF options
+    element.style.visibility = 'visible';
+
+    const areaSlug = area.replace(/\s+/g, '_');
     const opt = {
-        margin: [10, 10, 10, 10],
-        filename: `CV-La_Torre_Romero-${lang}.pdf`,
+        margin: 10,
+        filename: `CV-La_Torre_Romero-${areaSlug}-${lang}.pdf`,
         image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { 
+        html2canvas: {
             scale: 2,
             useCORS: true,
             letterRendering: true,
             backgroundColor: '#ffffff',
-            logging: true,
-            width: container.scrollWidth,
-            height: container.scrollHeight
+            logging: false,
         },
-        jsPDF: { 
-            unit: 'mm', 
-            format: 'a4', 
-            orientation: 'portrait' 
+        jsPDF: {
+            unit: 'mm',
+            format: 'a4',
+            orientation: 'portrait',
         },
-        pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
     };
-    
-    // Wait for DOM to update and fonts to load, then generate PDF
+
+    const cleanup = () => {
+        element.style.display = 'none';
+        element.style.position = 'static';
+        element.style.left = '0';
+        element.style.visibility = 'hidden';
+    };
+
     setTimeout(() => {
-        console.log('Starting PDF generation...');
-        html2pdf().set(opt).from(container).save().then(() => {
-            console.log('PDF generated successfully');
-            // Hide the template again after generation
-            element.style.display = 'none';
-            element.style.position = 'static';
-            element.style.zIndex = '0';
-            document.body.style.overflow = originalOverflow;
-        }).catch(error => {
-            console.error('Error generating PDF:', error);
-            // Hide the template even if there's an error
-            element.style.display = 'none';
-            element.style.position = 'static';
-            element.style.zIndex = '0';
-            document.body.style.overflow = originalOverflow;
-        });
-    }, 500);
+        html2pdf()
+            .set(opt)
+            .from(container)
+            .save()
+            .then(() => {
+                hideLoadingIndicator();
+                cleanup();
+            })
+            .catch((error) => {
+                console.error('Error generating PDF:', error);
+                hideLoadingIndicator();
+                alert('Error al generar PDF. Por favor intenta de nuevo.');
+                cleanup();
+            });
+    }, 400);
 }
 
-function populateCVTemplate(lang) {
-    console.log('Populating CV template for language:', lang);
-    
+function showLoadingIndicator() {
+    const lang = getCurrentLang();
+    const message = info[lang]?.loadingPdf || 'Generating PDF...';
+    const indicator = document.createElement('div');
+    indicator.id = 'pdf-loading-indicator';
+    indicator.innerHTML = `
+        <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+                    background: rgba(0,0,0,0.8); z-index: 999999;
+                    display: flex; align-items: center; justify-content: center;
+                    flex-direction: column; gap: 20px;">
+            <div style="width: 60px; height: 60px; border: 5px solid #f3f3f3;
+                        border-top: 5px solid #3498db; border-radius: 50%;
+                        animation: spin 1s linear infinite;"></div>
+            <p style="color: white; font-size: 18px; font-family: Arial, sans-serif;">
+                ${message}
+            </p>
+        </div>
+        <style>
+            @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
+        </style>
+    `;
+    document.body.appendChild(indicator);
+}
+
+function hideLoadingIndicator() {
+    document.getElementById('pdf-loading-indicator')?.remove();
+}
+
+function setSectionVisible(sectionId, visible) {
+    const section = document.getElementById(sectionId);
+    if (section) {
+        section.style.display = visible ? 'block' : 'none';
+    }
+}
+
+function populateCVTemplate(lang, area) {
     const currentInfo = info[lang];
-    
-    if (!currentInfo) {
-        console.error('Language info not found for:', lang);
-        return;
-    }
-    
-    // Populate header
+    if (!currentInfo) return;
+
+    // Header / contact
+    const photoEl = document.getElementById('cv-photo');
+    if (photoEl) photoEl.src = profile.photo;
+
+    const nameEl = document.getElementById('cv-name');
+    if (nameEl) nameEl.textContent = profile.name;
+
     const careerEl = document.getElementById('cv-career');
-    if (careerEl) {
-        careerEl.textContent = currentInfo.career;
-        console.log('Career set:', currentInfo.career);
+    if (careerEl) careerEl.textContent = `${currentInfo.career} — ${area}`;
+
+    const locationEl = document.getElementById('cv-location');
+    if (locationEl) locationEl.textContent = getLocalized(profile.location, lang);
+
+    const phoneEl = document.getElementById('cv-phone');
+    if (phoneEl) {
+        const span = phoneEl.querySelector('span');
+        if (span) span.textContent = profile.phone;
+        phoneEl.href = `tel:${profile.phone}`;
     }
-    
-    // Populate About section
-    const aboutTitleEl = document.getElementById('cv-about-title');
-    const aboutTextEl = document.getElementById('cv-about-text');
-    
-    if (aboutTitleEl && aboutTextEl) {
-        aboutTitleEl.textContent = currentInfo.links.about.toUpperCase();
-        aboutTextEl.textContent = currentInfo.about;
-        console.log('About section populated');
+
+    const emailEl = document.getElementById('cv-email');
+    if (emailEl) {
+        const span = emailEl.querySelector('span');
+        if (span) span.textContent = profile.email;
+        emailEl.href = `mailto:${profile.email}`;
     }
-    
-    // Populate Education section
-    document.getElementById('cv-education-title').textContent = 'EDUCATION';
-    const educationContent = document.getElementById('cv-education-content');
-    educationContent.innerHTML = education.map(edu => {
-        if (edu.type === 'degree') {
+
+    const linkedinEl = document.getElementById('cv-linkedin');
+    if (linkedinEl) linkedinEl.href = profile.linkedin;
+
+    const githubEl = document.getElementById('cv-github');
+    if (githubEl) githubEl.href = profile.github;
+
+    const webEl = document.getElementById('cv-website');
+    if (webEl) webEl.href = profile.website;
+
+    // Presentation
+    const aboutText = presentation[area]?.[lang];
+    setSectionVisible('cv-section-presentation', !!aboutText);
+    if (aboutText) {
+        document.getElementById('cv-about-title').textContent =
+            currentInfo.links.presentation.toUpperCase();
+        document.getElementById('cv-about-text').textContent = aboutText;
+    }
+
+    // Experience
+    const expItems = filterByArea(experience, area);
+    setSectionVisible('cv-section-experience', expItems.length > 0);
+    document.getElementById('cv-experience-title').textContent =
+        currentInfo.links.experience.toUpperCase();
+    document.getElementById('cv-experience-content').innerHTML = expItems
+        .map((exp) => {
+            const desc = getLocalized(exp.description[area], lang);
             return `
-                <div class="cv-education-item">
-                    <div class="cv-education-header">
-                        <div class="cv-education-degree">${edu.degree[lang]}</div>
-                        <div class="cv-education-period">${edu.period[lang]}</div>
-                    </div>
-                    <div class="cv-education-university">${edu.university} (${edu.acronym})</div>
-                    <div class="cv-education-faculty">${edu.faculty[lang]}</div>
+            <div class="cv-item">
+                <div class="cv-item-header">
+                    <div class="cv-item-title">${getLocalized(exp.position, lang)}</div>
+                    <div class="cv-item-date">${formatPeriod(exp.from, exp.to, lang)}</div>
                 </div>
-            `;
-        } else if (edu.type === 'exchange') {
+                <div class="cv-item-company">${exp.company}</div>
+                <div class="cv-item-location">${getLocalized(exp.location, lang)}</div>
+                ${descriptionToHtml(desc, true)}
+            </div>`;
+        })
+        .join('');
+
+    // Education
+    const eduItems = filterByArea(education, area);
+    setSectionVisible('cv-section-education', eduItems.length > 0);
+    document.getElementById('cv-education-title').textContent =
+        (currentInfo.links.education || 'Education').toUpperCase();
+    document.getElementById('cv-education-content').innerHTML = eduItems
+        .map((edu) => {
+            const desc = getLocalized(edu.description[area], lang);
             return `
-                <div class="cv-education-item">
-                    <div class="cv-education-header">
-                        <div class="cv-education-degree">${edu.program[lang]}</div>
-                        <div class="cv-education-period">${edu.period[lang]}</div>
-                    </div>
-                    <div class="cv-education-university">${edu.university} (${edu.acronym})</div>
+            <div class="cv-education-item">
+                <div class="cv-education-header">
+                    <div class="cv-education-degree">${getLocalized(edu.career, lang)}</div>
+                    <div class="cv-education-period">${formatPeriod(edu.from, edu.to, lang)}</div>
                 </div>
-            `;
-        }
-    }).join('');
-    
-    // Populate Experience section
-    document.getElementById('cv-experience-title').textContent = currentInfo.links.experience.toUpperCase();
-    const experienceContent = document.getElementById('cv-experience-content');
-    experienceContent.innerHTML = experience.map(exp => `
-        <div class="cv-item">
-            <div class="cv-item-header">
-                <div class="cv-item-title">${exp['job-title'][lang]}</div>
-                <div class="cv-item-date">${exp.date[lang]}</div>
-            </div>
-            <div class="cv-item-company">${exp.name}</div>
-            <div class="cv-item-location"><i class="fa-solid fa-location-dot"></i> ${exp.location[lang]}</div>
-            <div class="cv-item-description">${exp.description[lang]}</div>
-            ${exp.web !== '#' ? `<div class="cv-item-web"><i class="fa-solid fa-globe"></i> ${exp.web}</div>` : ''}
-            <div class="cv-technologies">
-                ${exp.technologies.map(tech => `<span class="cv-tech-tag">${tech}</span>`).join('')}
-            </div>
-        </div>
-    `).join('');
-    
-    // Populate Volunteer section
-    document.getElementById('cv-volunteer-title').textContent = currentInfo.links.volunteer.toUpperCase();
-    const volunteerContent = document.getElementById('cv-volunteer-content');
-    volunteerContent.innerHTML = volunteer.map(vol => `
-        <div class="cv-item">
-            <div class="cv-item-header">
-                <div class="cv-item-title">${vol['job-title'][lang]}</div>
-                <div class="cv-item-date">${vol.date[lang]}</div>
-            </div>
-            <div class="cv-item-company">${vol.name}</div>
-            <div class="cv-item-location"><i class="fa-solid fa-location-dot"></i> ${vol.location[lang]}</div>
-            <div class="cv-item-description">${vol.description[lang]}</div>
-            ${vol.web !== '#' ? `<div class="cv-item-web"><i class="fa-solid fa-globe"></i> ${vol.web}</div>` : ''}
-            <div class="cv-technologies">
-                ${vol.technologies.map(tech => `<span class="cv-tech-tag">${tech}</span>`).join('')}
-            </div>
-        </div>
-    `).join('');
-    
-    // Populate Skills section
-    document.getElementById('cv-skills-title').textContent = currentInfo.links.skills.toUpperCase();
-    const skillsContent = document.getElementById('cv-skills-content');
-    skillsContent.innerHTML = Object.keys(areas).map(area => `
-        <div class="cv-skills-area">
-            <div class="cv-skills-area-title">${area}</div>
-            <div class="cv-skills-list">
-                ${areas[area].map(skill => `<span class="cv-skill-item">${skill}</span>`).join('')}
-            </div>
-        </div>
-    `).join('');
-    
-    // Populate Projects section
-    document.getElementById('cv-projects-title').textContent = currentInfo.links.projects.toUpperCase();
-    const projectsContent = document.getElementById('cv-projects-content');
-    projectsContent.innerHTML = projects.map(proj => `
-        <div class="cv-project">
-            <div class="cv-project-header">
-                <div class="cv-project-name">${proj.name}</div>
-                ${proj.date ? `<div class="cv-project-date">${proj.date[lang]}</div>` : ''}
-            </div>
-            ${(proj.web && proj.web !== '#') || (proj.github && proj.github !== '#') ? `
-                <div class="cv-project-links">
-                    ${proj.web && proj.web !== '#' ? `<a href="${proj.web}"><i class="fa-solid fa-globe"></i> Website</a>` : ''}
-                    ${proj.github && proj.github !== '#' ? `<a href="${proj.github}"><i class="fa-brands fa-github"></i> GitHub</a>` : ''}
+                <div class="cv-education-university">${edu.university} (${edu.acronym})</div>
+                ${edu.faculty ? `<div class="cv-education-faculty">${getLocalized(edu.faculty, lang)}</div>` : ''}
+                <div class="cv-item-location">${getLocalized(edu.location, lang)}</div>
+                ${descriptionToHtml(desc, false)}
+            </div>`;
+        })
+        .join('');
+
+    // Skills (abilities list for area)
+    const skillList = skills.abilities?.[area]?.[lang] || [];
+    setSectionVisible('cv-section-skills', skillList.length > 0);
+    document.getElementById('cv-skills-title').textContent =
+        currentInfo.links.skills.toUpperCase();
+    document.getElementById('cv-skills-content').innerHTML = skillList.length
+        ? `<ul class="cv-desc-list">${skillList.map((s) => `<li>${s}</li>`).join('')}</ul>`
+        : '';
+
+    // Projects
+    const projItems = filterByArea(projects, area);
+    setSectionVisible('cv-section-projects', projItems.length > 0);
+    document.getElementById('cv-projects-title').textContent =
+        currentInfo.links.projects.toUpperCase();
+    document.getElementById('cv-projects-content').innerHTML = projItems
+        .map((proj) => {
+            const desc = getLocalized(proj.description[area], lang);
+            return `
+            <div class="cv-project">
+                <div class="cv-project-header">
+                    <div class="cv-project-name">${proj.name}</div>
                 </div>
-            ` : ''}
-            <div class="cv-project-description">${proj.description[lang]}</div>
-            ${proj.technologies ? `
-                <div class="cv-technologies">
-                    ${proj.technologies.map(tech => `<span class="cv-tech-tag">${tech}</span>`).join('')}
+                ${proj.subtitle ? `<div class="cv-project-subtitle">${getLocalized(proj.subtitle, lang)}</div>` : ''}
+                ${descriptionToHtml(desc, false)}
+            </div>`;
+        })
+        .join('');
+
+    // Volunteer
+    const volItems = filterByArea(volunteer, area);
+    setSectionVisible('cv-section-volunteer', volItems.length > 0);
+    document.getElementById('cv-volunteer-title').textContent =
+        currentInfo.links.volunteer.toUpperCase();
+    document.getElementById('cv-volunteer-content').innerHTML = volItems
+        .map((vol) => {
+            const desc = getLocalized(vol.description[area], lang);
+            return `
+            <div class="cv-item">
+                <div class="cv-item-header">
+                    <div class="cv-item-title">${getLocalized(vol.title, lang)}</div>
+                    <div class="cv-item-date">${formatPeriod(vol.from, vol.to, lang)}</div>
                 </div>
-            ` : ''}
-        </div>
-    `).join('');
-    
-    // Populate Achievements section
-    document.getElementById('cv-achievements-title').textContent = currentInfo.links.achievements.toUpperCase();
-    const achievementsContent = document.getElementById('cv-achievements-content');
-    achievementsContent.innerHTML = achievements.map(ach => `
-        <div class="cv-achievement">
-            <div class="cv-achievement-header">
-                <div class="cv-achievement-title">
-                    <i class="cv-achievement-icon fa-solid fa-${ach.icon}"></i>
-                    ${ach.title[lang]}
+                <div class="cv-item-location">${getLocalized(vol.location, lang)}</div>
+                ${descriptionToHtml(desc, false)}
+            </div>`;
+        })
+        .join('');
+
+    // Achievements
+    const achItems = filterByArea(achievements, area);
+    setSectionVisible('cv-section-achievements', achItems.length > 0);
+    document.getElementById('cv-achievements-title').textContent =
+        currentInfo.links.achievements.toUpperCase();
+    document.getElementById('cv-achievements-content').innerHTML = achItems
+        .map((ach) => {
+            const desc = getLocalized(ach.description[area], lang);
+            return `
+            <div class="cv-achievement">
+                <div class="cv-achievement-header">
+                    <div class="cv-achievement-title">${getLocalized(ach.title, lang)}</div>
+                    <div class="cv-achievement-date">${formatPeriod(ach.from, ach.to, lang)}</div>
                 </div>
-                <div class="cv-achievement-date">${ach.date[lang]}</div>
-            </div>
-            <div class="cv-achievement-location"><i class="fa-solid fa-location-dot"></i> ${ach.location[lang]}</div>
-            <div class="cv-achievement-description">${ach.description[lang]}</div>
-        </div>
-    `).join('');
-    
-    console.log('CV template populated successfully');
-    console.log('Experience items:', experience.length);
-    console.log('Projects items:', projects.length);
-    console.log('Achievements items:', achievements.length);
+                <div class="cv-achievement-location">${getLocalized(ach.location, lang)}</div>
+                ${descriptionToHtml(desc, false)}
+            </div>`;
+        })
+        .join('');
 }

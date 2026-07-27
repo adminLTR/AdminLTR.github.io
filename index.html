@@ -64,10 +64,10 @@
                     
                 </div>
                 <div class="cta-section">
-                    <a id="download-info" href="./cv/great-britain.pdf" download="CV - La Torre Romero" class="download-cv">
+                    <button type="button" id="download-info" class="download-cv">
                         <i class="fa-solid fa-download"></i>
-                        Download my CV
-                    </a>
+                        <span id="download-info-text">Download my CV</span>
+                    </button>
                     <a href="#projects" class="view-work-btn">
                         <i class="fa-solid fa-eye"></i>
                         View My Work
@@ -293,15 +293,23 @@
                 <p class="section-description">Technologies and tools I work with</p>
             </div>
             
-            <div class="skills-navigation">
-                <div class="nav-buttons">
-                    
-                </div>
+            <div class="abilities-block">
+                <h3 id="abilities-title">Abilities</h3>
+                <ul id="abilities-list" class="abilities-list"></ul>
             </div>
-            
-            <div class="skills-content">
-                <div class="skills-container">
 
+            <div class="tools-block">
+                <h3 id="tools-title">Tools</h3>
+                <div class="skills-navigation">
+                    <div class="nav-buttons">
+                        
+                    </div>
+                </div>
+                
+                <div class="skills-content">
+                    <div class="skills-container">
+
+                    </div>
                 </div>
             </div>
             
@@ -330,65 +338,79 @@
         </div>
     </section>
     
+    <!-- CV download modal -->
+    <div id="cv-modal" class="cv-modal" aria-hidden="true" role="dialog" aria-labelledby="cv-modal-title">
+        <div class="cv-modal-backdrop"></div>
+        <div class="cv-modal-dialog">
+            <button type="button" id="cv-modal-close" class="cv-modal-close" aria-label="Close">&times;</button>
+            <h2 id="cv-modal-title">Download CV</h2>
+            <p id="cv-modal-subtitle">Choose the area version of your CV</p>
+            <div id="cv-modal-options" class="cv-modal-options"></div>
+            <div class="cv-modal-actions">
+                <button type="button" id="cv-modal-cancel" class="cv-modal-btn secondary">Cancel</button>
+                <button type="button" id="cv-modal-confirm" class="cv-modal-btn primary">Download PDF</button>
+            </div>
+        </div>
+    </div>
+
     <!-- CV Template (Hidden, used for PDF generation) -->
     <div id="cv-template" style="display: none;">
         <div class="cv-container">
-            <!-- Header -->
             <div class="cv-header">
-                <h1 class="cv-name">Jose Luis La Torre Romero</h1>
-                <div class="cv-title" id="cv-career"></div>
-                <div class="cv-contact">
-                    <span><i class="fa-solid fa-location-dot"></i> Lima, Peru</span>
-                    <span><i class="fa-solid fa-envelope"></i> joselatorre143351@gmail.com</span>
-                    <a href="https://github.com/adminLTR" target="_blank"></a><span><i class="fa-brands fa-github"></i> github.com/adminLTR</span>
-                    <a href="https://www.linkedin.com/in/jose-luis-la-torre-romero" target="_blank"></a><span><i class="fa-brands fa-linkedin"></i> linkedin.com/in/jose-luis-la-torre-romero</span>
+                <div class="cv-header-main">
+                    <img id="cv-photo" class="cv-photo" src="./img/foto.jpeg" alt="Profile photo">
+                    <div class="cv-header-text">
+                        <h1 class="cv-name" id="cv-name">Jose Luis La Torre Romero</h1>
+                        <div class="cv-title" id="cv-career"></div>
+                        <div class="cv-contact">
+                            <span><i class="fa-solid fa-location-dot"></i> <span id="cv-location">Lima, Perú</span></span>
+                            <a id="cv-linkedin" href="#" target="_blank"><i class="fa-brands fa-linkedin"></i> <span>LinkedIn</span></a>
+                            <a id="cv-phone" href="#"><i class="fa-solid fa-phone"></i> <span></span></a>
+                            <a id="cv-email" href="#"><i class="fa-solid fa-envelope"></i> <span></span></a>
+                            <a id="cv-github" href="#" target="_blank"><i class="fa-brands fa-github"></i> <span>GitHub</span></a>
+                            <a id="cv-website" href="#" target="_blank"><i class="fa-solid fa-globe"></i> <span>Web</span></a>
+                        </div>
+                    </div>
                 </div>
             </div>
-            
-            <!-- About Section -->
-            <div class="cv-section">
-                <h2 class="cv-section-title" id="cv-about-title">About Me</h2>
+
+            <div class="cv-section" id="cv-section-presentation">
+                <h2 class="cv-section-title" id="cv-about-title">Presentation</h2>
                 <div class="cv-divider"></div>
                 <p class="cv-about" id="cv-about-text"></p>
             </div>
-            
-            <!-- Education Section -->
-            <div class="cv-section">
-                <h2 class="cv-section-title" id="cv-education-title">Education</h2>
-                <div class="cv-divider"></div>
-                <div id="cv-education-content"></div>
-            </div>
-            
-            <!-- Experience Section -->
-            <div class="cv-section">
+
+            <div class="cv-section" id="cv-section-experience">
                 <h2 class="cv-section-title" id="cv-experience-title">Experience</h2>
                 <div class="cv-divider"></div>
                 <div id="cv-experience-content"></div>
             </div>
-            
-            <!-- Volunteer Section -->
-            <div class="cv-section">
-                <h2 class="cv-section-title" id="cv-volunteer-title">Volunteer</h2>
+
+            <div class="cv-section" id="cv-section-education">
+                <h2 class="cv-section-title" id="cv-education-title">Education</h2>
                 <div class="cv-divider"></div>
-                <div id="cv-volunteer-content"></div>
+                <div id="cv-education-content"></div>
             </div>
-            
-            <!-- Skills Section -->
-            <div class="cv-section">
+
+            <div class="cv-section" id="cv-section-skills">
                 <h2 class="cv-section-title" id="cv-skills-title">Skills</h2>
                 <div class="cv-divider"></div>
                 <div id="cv-skills-content"></div>
             </div>
-            
-            <!-- Projects Section -->
-            <div class="cv-section">
+
+            <div class="cv-section" id="cv-section-projects">
                 <h2 class="cv-section-title" id="cv-projects-title">Projects</h2>
                 <div class="cv-divider"></div>
                 <div id="cv-projects-content"></div>
             </div>
-            
-            <!-- Achievements Section -->
-            <div class="cv-section">
+
+            <div class="cv-section" id="cv-section-volunteer">
+                <h2 class="cv-section-title" id="cv-volunteer-title">Volunteer</h2>
+                <div class="cv-divider"></div>
+                <div id="cv-volunteer-content"></div>
+            </div>
+
+            <div class="cv-section" id="cv-section-achievements">
                 <h2 class="cv-section-title" id="cv-achievements-title">Achievements</h2>
                 <div class="cv-divider"></div>
                 <div id="cv-achievements-content"></div>

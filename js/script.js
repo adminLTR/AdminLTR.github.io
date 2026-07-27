@@ -18,6 +18,7 @@ window.addEventListener("load", function () {
 
     // Initialize scroll-to-top button behavior
     initScrollTopButton();
+    initCVModal();
 
     // CLICK LANGUAGES
     this.document.querySelectorAll("#about .languages-div img").forEach(img => {
@@ -38,9 +39,9 @@ window.addEventListener("load", function () {
                 
                 localStorage.setItem("language", lang);
 
-                // UPDATE LINKS
                 renderLinks();
                 renderInfo();
+                renderSkills(areas);
 
                 renderEducation(education);
                 renderExperience(experience);
@@ -61,10 +62,10 @@ window.addEventListener("load", function () {
         });
     });
     
-    // PDF Generation on download button click
+    // Open CV area selection modal
     document.getElementById('download-info')?.addEventListener('click', function(e) {
         e.preventDefault();
-        generatePDF();
+        openCVModal();
     });
 });
 
@@ -92,8 +93,7 @@ function initScrollEffects() {
 }
 
 function renderLinks() {
-    const langUser = localStorage.getItem("language");
-    const lang = langUser ? langUser : 'great-britain'
+    const lang = getCurrentLang();
     const links = Object.keys(info[lang].links);
     links.forEach(link => {
         try {
@@ -110,16 +110,16 @@ function renderLinks() {
 }
 
 function renderInfo() {
-    const langUser = localStorage.getItem("language");
-    const lang = langUser ? langUser : 'great-britain';
+    const lang = getCurrentLang();
 
     document.getElementById("career-info").textContent = info[lang].career;
-    document.getElementById("download-info").textContent = info[lang].download;
-    document.getElementById("about-info").textContent = info[lang].about;
-
-    // No longer needed - PDF is generated dynamically via generatePDF()
-    // document.getElementById("download-info").setAttribute("href", "./cv/"+lang+".pdf");
-
+    const downloadText = document.getElementById("download-info-text");
+    if (downloadText) {
+        downloadText.textContent = info[lang].download;
+    } else {
+        document.getElementById("download-info").textContent = info[lang].download;
+    }
+    document.getElementById("about-info").textContent = presentation.web[lang];
 }
 
 function renderAreas(areas) {
@@ -142,10 +142,21 @@ function renderLanguages(languages) {
 }
 
 function renderSkills(areas) {
+    const lang = getCurrentLang();
     const skillsDiv = document.querySelector("#skills .skills-container");
     const navDiv = document.querySelector("#skills .nav-buttons");
+    const abilitiesTitle = document.getElementById('abilities-title');
+    const toolsTitle = document.getElementById('tools-title');
+    const abilitiesList = document.getElementById('abilities-list');
+
+    if (abilitiesTitle) abilitiesTitle.textContent = info[lang].abilities;
+    if (toolsTitle) toolsTitle.textContent = info[lang].tools;
+
+    if (abilitiesList) {
+        const abilities = skills.abilities?.web?.[lang] || [];
+        abilitiesList.innerHTML = abilities.map((item) => `<li>${item}</li>`).join('');
+    }
     
-    // Create navigation buttons
     let navHtml = "";
     const areaKeys = Object.keys(areas);
     areaKeys.forEach((area, index) => {
@@ -156,7 +167,6 @@ function renderSkills(areas) {
     });
     navDiv.innerHTML = navHtml;
     
-    // Create skills content
     let html = "";
     areaKeys.forEach((area, index) => {
         html += `<div class="skill-area ${index === 0 ? 'active' : ''}" data-area="${area}">
@@ -192,30 +202,23 @@ function renderSkills(areas) {
     });
     skillsDiv.innerHTML = html;
     
-    // Update stats
     const totalSkills = Object.values(areas).flat().length;
     document.getElementById('total-skills').textContent = totalSkills;
     document.getElementById('skill-areas').textContent = areaKeys.length;
     
-    // Add navigation functionality
     const navButtons = document.querySelectorAll('.nav-btn');
     const skillAreas = document.querySelectorAll('.skill-area');
     
     navButtons.forEach(btn => {
         btn.addEventListener('click', () => {
             const targetArea = btn.dataset.area;
-            
-            // Remove active class from all buttons and areas
             navButtons.forEach(b => b.classList.remove('active'));
             skillAreas.forEach(area => area.classList.remove('active'));
-            
-            // Add active class to clicked button and corresponding area
             btn.classList.add('active');
             document.querySelector(`.skill-area[data-area="${targetArea}"]`).classList.add('active');
         });
     });
     
-    // Animate skill bars when section comes into view
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -279,31 +282,37 @@ function renderEducation(education) {
     const educationDiv = document.querySelector(".university-section");
     if (!educationDiv) return;
     
-    const langUser = localStorage.getItem("language");
-    const lang = langUser ? langUser : 'great-britain';
+    const lang = getCurrentLang();
     
     let html = "";
     education.forEach((edu, index) => {
+        const period = formatPeriod(edu.from, edu.to, lang);
+        const desc = edu.description?.web ? getLocalized(edu.description.web, lang) : '';
+
         if (edu.type === "degree") {
             html += `<div class="university-card animate-fade-right" style="animation-delay: ${index * 0.2}s">
                 <img src="./img/${edu.logo}.png" class="university-logo" alt="${edu.acronym}">
                 <div class="university-info">
-                    <h3>${edu.university}</h3>
-                    <p>${edu.faculty[lang]}</p>
-                    <p>${edu.degree[lang]}</p>
-                    <div class="university-year">${edu.period[lang]}</div>
+                    <h3>${edu.university} (${edu.acronym})</h3>
+                    <p>${edu.faculty ? getLocalized(edu.faculty, lang) : ''}</p>
+                    <p>${getLocalized(edu.career, lang)}</p>
+                    <p class="location"><i class="fa-solid fa-location-dot"></i> ${getLocalized(edu.location, lang)}</p>
+                    <div class="university-year">${period}</div>
+                    ${desc ? `<p class="edu-description">${desc}</p>` : ''}
                 </div>
             </div>`;
         } else if (edu.type === "exchange") {
             html += `<div class="university-card exchange-card animate-fade-right" style="animation-delay: ${index * 0.2}s">
                 <img src="./img/${edu.logo}.png" class="university-logo" alt="${edu.acronym}">
                 <div class="university-info">
-                    <h3>${edu.university}</h3>
+                    <h3>${edu.university} (${edu.acronym})</h3>
                     <p class="exchange-badge">
                         <i class="fa-solid fa-plane"></i>
-                        ${edu.program[lang]}
+                        ${getLocalized(edu.career, lang)}
                     </p>
-                    <div class="university-year">${edu.period[lang]}</div>
+                    <p class="location"><i class="fa-solid fa-location-dot"></i> ${getLocalized(edu.location, lang)}</p>
+                    <div class="university-year">${period}</div>
+                    ${desc ? `<p class="edu-description">${desc}</p>` : ''}
                 </div>
             </div>`;
         }
@@ -317,12 +326,13 @@ function renderExperience(experience) {
     if (!experienceDiv) return;
     
     let html = "";
-    const langUser = localStorage.getItem("language");
-    const lang = langUser ? langUser : 'great-britain';
+    const lang = getCurrentLang();
     
     experience.forEach((exp, index) => {
         const isEven = index % 2 === 0;
-        const date = typeof exp.date === 'object' ? exp.date[lang] : exp.date;
+        const date = formatPeriod(exp.from, exp.to, lang);
+        const desc = descriptionToPlain(getLocalized(exp.description?.web, lang));
+        const site = exp.website || exp.web || '#';
         
         html += `<div class="timeline-item ${isEven ? 'timeline-left' : 'timeline-right'}" data-index="${index}">
             <div class="timeline-marker">
@@ -330,23 +340,23 @@ function renderExperience(experience) {
                 <div class="timeline-date">${date}</div>
             </div>
             ${exp.image ? `<div class="timeline-image">
-                <img src="./img/${exp.image}" alt="${exp.name}">
+                <img src="./img/${exp.image}" alt="${exp.company}">
             </div>` : ''}
             <div class="timeline-content">
                 <div class="experience-card">
                     <div class="card-header">
                         <div class="company-info">
                             <div class="company-logo">
-                                <img src="./img/experience/${formatNameForImg(exp.name)}.png" alt="${exp.name}">
+                                <img src="./img/experience/${formatNameForImg(exp.company)}.png" alt="${exp.company}">
                             </div>
                             <div class="company-details">
-                                <h3 class="company-name">${exp.name}</h3>
-                                <h4 class="job-title">${exp['job-title'][lang]}</h4>
+                                <h3 class="company-name">${exp.company}</h3>
+                                <h4 class="job-title">${getLocalized(exp.position, lang)}</h4>
                                 ${exp.location ? `<p class="location">
                                     <i class="fa-solid fa-location-dot"></i>
-                                    ${typeof exp.location === 'object' ? exp.location[lang] : exp.location}
+                                    ${getLocalized(exp.location, lang)}
                                 </p>` : ''}
-                                <a href="${exp.web}" target="_blank" class="company-link">
+                                <a href="${site}" target="_blank" class="company-link">
                                     <i class="fa-solid fa-external-link"></i>
                                     Visit Website
                                 </a>
@@ -356,12 +366,12 @@ function renderExperience(experience) {
                     <div class="card-content">
                         <div class="job-description">
                             <h5>${info[lang].overview}</h5>
-                            <p>${exp.description[lang]}</p>
+                            <p>${desc}</p>
                         </div>
                         <div class="technologies-used">
                             <h5>${info[lang].technologies}</h5>
                             <div class="tech-stack">
-                                ${exp.technologies.map(tech => `
+                                ${(exp.technologies || []).map(tech => `
                                     <div class="tech-item" title="${tech}">
                                         <img src="./img/technologies/${tech.toLowerCase()}.png" alt="${tech}"/>
                                         <span>${tech}</span>
@@ -377,7 +387,6 @@ function renderExperience(experience) {
     
     experienceDiv.innerHTML = html;
     
-    // Add intersection observer for timeline animations
     const timelineItems = document.querySelectorAll('#experience .timeline-item');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -395,36 +404,39 @@ function renderVolunteer(volunteer) {
     if (!volunteerDiv) return;
     
     let html = "";
-    const langUser = localStorage.getItem("language");
-    const lang = langUser ? langUser : 'great-britain';
+    const lang = getCurrentLang();
     
     volunteer.forEach((vol, index) => {
         const isEven = index % 2 === 0;
+        const org = vol.organization || vol.name || '';
+        const desc = descriptionToPlain(getLocalized(vol.description?.web, lang));
+        const site = vol.website || vol.web || '#';
+
         html += `<div class="timeline-item ${isEven ? 'timeline-left' : 'timeline-right'}" data-index="${index}">
             <div class="timeline-marker">
                 <div class="timeline-dot"></div>
-                <div class="timeline-date">${vol.date[lang]}</div>
+                <div class="timeline-date">${formatPeriod(vol.from, vol.to, lang)}</div>
             </div>
             ${vol.image ? `<div class="timeline-image">
-                <img src="./img/${vol.image}" alt="${vol.name}">
+                <img src="./img/${vol.image}" alt="${org}">
             </div>` : ''}
             <div class="timeline-content">
                 <div class="experience-card volunteer-card">
                     <div class="card-header">
                         <div class="company-info">
                             <div class="company-logo">
-                                <img src="./img/experience/${formatNameForImg(vol.name)}.png" alt="${vol.name}">
+                                <img src="./img/experience/${formatNameForImg(org)}.png" alt="${org}">
                             </div>
                             <div class="company-details">
-                                <h3 class="company-name">${vol.name}</h3>
+                                <h3 class="company-name">${org}</h3>
                                 <h4 class="job-title">
-                                    ${vol['job-title'][lang]}
+                                    ${getLocalized(vol.title, lang)}
                                 </h4>
                                 <p class="location">
                                     <i class="fa-solid fa-location-dot"></i>
-                                    ${vol.location[lang]}
+                                    ${getLocalized(vol.location, lang)}
                                 </p>
-                                <a href="${vol.web}" target="_blank" class="company-link">
+                                <a href="${site}" target="_blank" class="company-link">
                                     <i class="fa-solid fa-external-link"></i>
                                     Visit Website
                                 </a>
@@ -434,12 +446,12 @@ function renderVolunteer(volunteer) {
                     <div class="card-content">
                         <div class="job-description">
                             <h5>${info[lang].overview}</h5>
-                            <p>${vol.description[lang]}</p>
+                            <p>${desc}</p>
                         </div>
                         <div class="technologies-used">
                             <h5>${info[lang].technologies}</h5>
                             <div class="tech-stack">
-                                ${vol.technologies.map(tech => `
+                                ${(vol.technologies || []).map(tech => `
                                     <div class="tech-item" title="${tech}">
                                         <img src="./img/technologies/${tech.toLowerCase()}.png" alt="${tech}"/>
                                         <span>${tech}</span>
@@ -455,7 +467,6 @@ function renderVolunteer(volunteer) {
     
     volunteerDiv.innerHTML = html;
     
-    // Add intersection observer for timeline animations
     const timelineItems = document.querySelectorAll('#volunteer .timeline-item');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -473,16 +484,16 @@ function renderAchievements(achievements) {
     if (!achievementsDiv) return;
     
     let html = "";
-    const langUser = localStorage.getItem("language");
-    const lang = langUser ? langUser : 'great-britain';
+    const lang = getCurrentLang();
     
     achievements.forEach((ach, index) => {
         const iconClass = ach.icon || 'trophy';
         const typeClass = ach.type || 'award';
+        const desc = descriptionToPlain(getLocalized(ach.description?.web, lang));
         
         html += `<div class="achievement-card animate-fade-scroll" data-index="${index}">
             ${ach.image ? `<div class="achievement-image">
-                <img src="./img/${ach.image}" alt="${ach.title[lang]}">
+                <img src="./img/${ach.image}" alt="${getLocalized(ach.title, lang)}">
                 <div class="achievement-overlay">
                     <div class="achievement-icon ${typeClass}">
                         <i class="fa-solid fa-${iconClass}"></i>
@@ -490,25 +501,24 @@ function renderAchievements(achievements) {
                 </div>
             </div>` : ''}
             <div class="achievement-content">
-                <h3 class="achievement-title">${ach.title[lang]}</h3>
+                <h3 class="achievement-title">${getLocalized(ach.title, lang)}</h3>
                 <div class="achievement-meta">
                     <span class="achievement-date">
                         <i class="fa-solid fa-calendar"></i>
-                        ${ach.date[lang]}
+                        ${formatPeriod(ach.from, ach.to, lang)}
                     </span>
                     <span class="achievement-location">
                         <i class="fa-solid fa-location-dot"></i>
-                        ${ach.location[lang]}
+                        ${getLocalized(ach.location, lang)}
                     </span>
                 </div>
-                <p class="achievement-description">${ach.description[lang]}</p>
+                <p class="achievement-description">${desc}</p>
             </div>
         </div>`
     });
     
     achievementsDiv.innerHTML = html;
     
-    // Add intersection observer for achievement animations
     const achievementCards = document.querySelectorAll('.achievement-card');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -528,14 +538,16 @@ function renderProjects(projects) {
     if (!projectsDiv) return;
     
     let html = "";
-    const langUser = localStorage.getItem("language");
-    const lang = langUser ? langUser : 'great-britain';
+    const lang = getCurrentLang();
     
     projects.forEach((prj, index) => {
         const isThesis = prj.type === 'thesis';
         const statusBadge = isThesis ? 
             `<span class="status-badge thesis"><i class="fa-solid fa-graduation-cap"></i> Thesis Project</span>` :
             `<span class="status-badge">Live</span>`;
+        const desc = descriptionToPlain(getLocalized(prj.description?.web, lang));
+        const site = prj.website || prj.web || '#';
+        const period = (prj.from || prj.to) ? formatPeriod(prj.from, prj.to, lang) : '';
             
         html += `<div class="project-card ${isThesis ? 'thesis-project' : ''} animate-fade-scroll" data-index="${index}">
             <div class="project-image">
@@ -545,7 +557,7 @@ function renderProjects(projects) {
                         <a href="${prj.github}" target="_blank" class="project-link github-link" title="View Code">
                             <i class="fa-brands fa-github"></i>
                         </a>
-                        <a href="${prj.web}" target="_blank" class="project-link demo-link" title="Live Demo">
+                        <a href="${site}" target="_blank" class="project-link demo-link" title="Live Demo">
                             <i class="fa-solid fa-external-link"></i>
                         </a>
                     </div>
@@ -558,25 +570,26 @@ function renderProjects(projects) {
                         ${statusBadge}
                     </div>
                 </div>
-                ${prj.date || prj.location ? `<div class="project-meta">
-                    ${prj.date ? `<span class="project-date">
+                ${prj.subtitle ? `<p class="project-subtitle">${getLocalized(prj.subtitle, lang)}</p>` : ''}
+                ${period || prj.location ? `<div class="project-meta">
+                    ${period ? `<span class="project-date">
                         <i class="fa-solid fa-calendar"></i>
-                        ${typeof prj.date === 'object' ? prj.date[lang] : prj.date}
+                        ${period}
                     </span>` : ''}
                     ${prj.location ? `<span class="project-location">
                         <i class="fa-solid fa-location-dot"></i>
-                        ${typeof prj.location === 'object' ? prj.location[lang] : prj.location}
+                        ${getLocalized(prj.location, lang)}
                     </span>` : ''}
                 </div>` : ''}
                 <div class="project-description">
-                    <p>${prj.description[lang]}</p>
+                    <p>${desc}</p>
                 </div>
                 <div class="project-tech">
                     <div class="tech-header">
                         <span>Built with:</span>
                     </div>
                     <div class="tech-list">
-                        ${prj.technologies.map(tech => `
+                        ${(prj.technologies || []).map(tech => `
                             <div class="tech-badge" title="${tech}">
                                 <img src="./img/technologies/${tech.toLowerCase()}.png" alt="${tech}"/>
                                 <span>${tech}</span>
@@ -589,7 +602,7 @@ function renderProjects(projects) {
                         <i class="fa-brands fa-github"></i>
                         Source Code
                     </a>
-                    <a href="${prj.web}" target="_blank" class="action-btn secondary">
+                    <a href="${site}" target="_blank" class="action-btn secondary">
                         <i class="fa-solid fa-rocket"></i>
                         Live Demo
                     </a>
@@ -600,7 +613,6 @@ function renderProjects(projects) {
     
     projectsDiv.innerHTML = html;
     
-    // Add intersection observer for project animations
     const projectCards = document.querySelectorAll('.project-card');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
