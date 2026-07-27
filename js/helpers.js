@@ -69,12 +69,20 @@ function formatPeriod(from, to, lang) {
 
 function descriptionToHtml(desc, asList) {
     if (desc == null || desc === '') return '';
+    const toRows = (lines) =>
+        lines
+            .map(
+                (line) =>
+                    `<div class="cv-bullet-row"><span class="cv-dot-wrap"><span class="cv-dot"></span></span><span class="cv-bullet-text">${line}</span></div>`
+            )
+            .join('');
+
     if (Array.isArray(desc)) {
         if (!desc.length) return '';
-        return `<ul class="cv-desc-list">${desc.map((line) => `<li><span class="cv-bullet">•</span><span class="cv-bullet-text">${line}</span></li>`).join('')}</ul>`;
+        return `<div class="cv-desc-list">${toRows(desc)}</div>`;
     }
     if (asList) {
-        return `<ul class="cv-desc-list"><li><span class="cv-bullet">•</span><span class="cv-bullet-text">${desc}</span></li></ul>`;
+        return `<div class="cv-desc-list">${toRows([desc])}</div>`;
     }
     return `<p class="cv-item-description">${desc}</p>`;
 }
@@ -171,7 +179,7 @@ function generatePDF(area) {
     const nameSlug = profile.name.replace(/\s+/g, '_');
     const areaSlug = area.replace(/\s+/g, '_');
     const opt = {
-        margin: [5, 8, 8, 8],
+        margin: [4, 8, 6, 8],
         filename: `CV-${nameSlug}-${areaSlug}.pdf`,
         image: { type: 'jpeg', quality: 0.98 },
         html2canvas: {
@@ -259,9 +267,6 @@ function populateCVTemplate(lang, area) {
     if (!currentInfo) return;
 
     // Header / contact
-    const photoEl = document.getElementById('cv-photo');
-    if (photoEl) photoEl.src = profile.photo;
-
     const nameEl = document.getElementById('cv-name');
     if (nameEl) nameEl.textContent = profile.name;
 
@@ -352,7 +357,12 @@ function populateCVTemplate(lang, area) {
     document.getElementById('cv-skills-title').textContent =
         currentInfo.links.skills.toUpperCase();
     document.getElementById('cv-skills-content').innerHTML = skillList.length
-        ? `<ul class="cv-desc-list">${skillList.map((s) => `<li><span class="cv-bullet">•</span><span class="cv-bullet-text">${s}</span></li>`).join('')}</ul>`
+        ? `<div class="cv-desc-list">${skillList
+              .map(
+                  (s) =>
+                      `<div class="cv-bullet-row"><span class="cv-dot-wrap"><span class="cv-dot"></span></span><span class="cv-bullet-text">${s}</span></div>`
+              )
+              .join('')}</div>`
         : '';
 
     // Projects
