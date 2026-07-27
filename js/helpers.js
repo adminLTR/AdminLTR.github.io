@@ -71,10 +71,10 @@ function descriptionToHtml(desc, asList) {
     if (desc == null || desc === '') return '';
     if (Array.isArray(desc)) {
         if (!desc.length) return '';
-        return `<ul class="cv-desc-list">${desc.map((line) => `<li>${line}</li>`).join('')}</ul>`;
+        return `<ul class="cv-desc-list">${desc.map((line) => `<li><span class="cv-bullet">•</span><span class="cv-bullet-text">${line}</span></li>`).join('')}</ul>`;
     }
     if (asList) {
-        return `<ul class="cv-desc-list"><li>${desc}</li></ul>`;
+        return `<ul class="cv-desc-list"><li><span class="cv-bullet">•</span><span class="cv-bullet-text">${desc}</span></li></ul>`;
     }
     return `<p class="cv-item-description">${desc}</p>`;
 }
@@ -168,10 +168,11 @@ function generatePDF(area) {
     element.style.top = '0';
     element.style.visibility = 'visible';
 
+    const nameSlug = profile.name.replace(/\s+/g, '_');
     const areaSlug = area.replace(/\s+/g, '_');
     const opt = {
-        margin: 10,
-        filename: `CV-La_Torre_Romero-${areaSlug}-${lang}.pdf`,
+        margin: [5, 8, 8, 8],
+        filename: `CV-${nameSlug}-${areaSlug}.pdf`,
         image: { type: 'jpeg', quality: 0.98 },
         html2canvas: {
             scale: 2,
@@ -179,12 +180,15 @@ function generatePDF(area) {
             letterRendering: true,
             backgroundColor: '#ffffff',
             logging: false,
+            scrollY: 0,
+            scrollX: 0,
         },
         jsPDF: {
             unit: 'mm',
             format: 'a4',
             orientation: 'portrait',
         },
+        pagebreak: { mode: ['css', 'legacy'] },
     };
 
     const cleanup = () => {
@@ -348,7 +352,7 @@ function populateCVTemplate(lang, area) {
     document.getElementById('cv-skills-title').textContent =
         currentInfo.links.skills.toUpperCase();
     document.getElementById('cv-skills-content').innerHTML = skillList.length
-        ? `<ul class="cv-desc-list">${skillList.map((s) => `<li>${s}</li>`).join('')}</ul>`
+        ? `<ul class="cv-desc-list">${skillList.map((s) => `<li><span class="cv-bullet">•</span><span class="cv-bullet-text">${s}</span></li>`).join('')}</ul>`
         : '';
 
     // Projects
@@ -379,7 +383,7 @@ function populateCVTemplate(lang, area) {
         .map((vol) => {
             const desc = getLocalized(vol.description[area], lang);
             return `
-            <div class="cv-item">
+            <div class="cv-item cv-volunteer-item">
                 <div class="cv-item-header">
                     <div class="cv-item-title">${getLocalized(vol.title, lang)}</div>
                     <div class="cv-item-date">${formatPeriod(vol.from, vol.to, lang)}</div>
