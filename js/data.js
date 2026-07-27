@@ -19,7 +19,7 @@ const profile = {
 };
 
 // CV area versions (web is only for the website, not a downloadable CV)
-const cvAreas = ['Frontend', 'Backend', 'Data Science', 'IoT'];
+const cvAreas = ['Frontend', 'Backend', 'Data Science', 'Fullstack'];
 
 const languages = [
     'great-britain',
@@ -54,38 +54,38 @@ const dateLabels = {
 const presentation = {
     web: {
         'great-britain': "I'm a young 9th semester Software Engineering student at UNMSM, with experience in Full Stack development and focus on building IoT solutions and embedded systems with Artificial Intelligence. Passionate about innovation, I enjoy transforming ideas into functional products that generate real impact for the benefit of the community. I speak 6 languages and have been winner of 3 hackathons. I am characterized by my leadership and self-taught attitude.",
-        spain: 'Soy un joven estudiante de 9no ciclo de Ingeniería de Software en la UNMSM, con experiencia en desarrollo Full Stack y enfoque en la construcción de soluciones IoT y sistemas embebidos con Inteligencia Artificial. Apasionado por la innovación, disfruto transformar ideas en productos funcionales que generen impacto real en beneficio de la comunidad. Hablo 6 idiomas y he sido ganador de 3 hackathons. Me caracterizo por mi liderazgo y actitud autodidacta.',
+        spain: 'Soy un joven estudiante de último año de Ingeniería de Software de la UNMSM (Decana de América), con  casi 1 año y medio de experiencia en desarrollo de software  y enfoque en la construcción de soluciones IoT y sistemas embebidos con Inteligencia Artificial. Apasionado por la innovación, investigación y me enfoco en el impacto real en beneficio de la comunidad. Hablo 6 idiomas y he realizado 2 intercambios académicos en Italia y Brasil. Me caracterizo por mi liderazgo y actitud autodidacta.',
         italy: "Sono un giovane studente del 9° semestre di Ingegneria del Software presso l'UNMSM, con esperienza nello sviluppo Full Stack e focus sulla costruzione di soluzioni IoT e sistemi embedded con Intelligenza Artificiale. Appassionato di innovazione, mi piace trasformare idee in prodotti funzionali che generano un impatto reale a beneficio della comunità. Parlo 6 lingue e sono stato vincitore di 3 hackathon. Mi caratterizzo per la mia leadership e attitudine autodidatta.",
         brazil: 'Sou um jovem estudante do 9º período de Engenharia de Software na UNMSM, com experiência em desenvolvimento Full Stack e foco na construção de soluções IoT e sistemas embarcados com Inteligência Artificial. Apaixonado por inovação, gosto de transformar ideias em produtos funcionais que geram impacto real para o benefício da comunidade. Falo 6 idiomas e fui vencedor de 3 hackathons. Me caracterizo pela minha liderança e atitude autodidata.',
         germany: 'Ich bin ein junger Student im 9. Semester des Software-Engineering an der UNMSM, mit Erfahrung in der Full-Stack-Entwicklung und Fokus auf den Aufbau von IoT-Lösungen und eingebetteten Systemen mit Künstlicher Intelligenz. Leidenschaftlich für Innovation, genieße ich es, Ideen in funktionale Produkte zu verwandeln, die echte Auswirkungen zum Wohle der Gemeinschaft erzeugen. Ich spreche 6 Sprachen und war Gewinner von 3 Hackathons. Ich zeichne mich durch meine Führungsqualitäten und autodidaktische Einstellung aus.',
     },
     Frontend: {
         'great-britain': 'Software Engineering student specialized in building modern, responsive user interfaces with React, JavaScript and CSS frameworks. Focused on clean UX and accessible web experiences.',
-        spain: 'Estudiante de Ingeniería de Software especializado en interfaces modernas y responsivas con React, JavaScript y frameworks CSS. Enfocado en UX limpia y experiencias web accesibles.',
+        spain: 'Desarrollador Frontend y estudiante de último año de Ingeniería de Software en la UNMSM, con más de un año de experiencia en la construcción de interfaces dinámicas, responsivas y de alto rendimiento utilizando ReactJS, JQuery, JavaScript y Flutter. Cuento con sólida experiencia integrando aplicaciones con APIs RESTful y Webhooks, optimizando el ciclo de desarrollo y la experiencia de usuario. Mi formación internacional en Italia y Brasil, sumada a mi fluidez en 6 idiomas, me otorga una perspectiva global y una alta capacidad de aprendizaje e innovación técnica.',
         italy: 'Studente di Ingegneria del Software specializzato in interfacce moderne e responsive con React, JavaScript e framework CSS. Orientato a UX pulita ed esperienze web accessibili.',
         brazil: 'Estudante de Engenharia de Software especializado em interfaces modernas e responsivas com React, JavaScript e frameworks CSS. Focado em UX limpa e experiências web acessíveis.',
         germany: 'Software-Engineering-Student mit Fokus auf moderne, responsive Oberflächen mit React, JavaScript und CSS-Frameworks. Orientiert an klarer UX und barrierefreien Web-Erlebnissen.',
     },
     Backend: {
         'great-britain': 'Software Engineering student with experience designing APIs, databases and scalable server-side architectures using Python, Django, Flask and Node.js.',
-        spain: 'Estudiante de Ingeniería de Software con experiencia diseñando APIs, bases de datos y arquitecturas escalables con Python, Django, Flask y Node.js.',
+        spain: 'Desarrollador Backend y estudiante de último año de Ingeniería de Software en la UNMSM, con más de 1 año de experiencia en el diseño e implementación de arquitecturas de software escalables, microservicios y APIs RESTful. Especializado en Python, JavaScript/Node.js, PHP (Laravel) y gestión de bases de datos relacionales y no relacionales. Cuento con un sólido trasfondo en automatización de procesos, web scraping, desarrollo de algoritmos de optimización e integración de modelos de Machine Learning/Deep Learning en entornos de producción. Mi formación académica internacional en Italia (UNIBO) y Brasil (USP), junto a mi dominio de 6 idiomas, potencian mi capacidad para resolver problemas complejos y colaborar en equipos globales de alto rendimiento.',
         italy: 'Studente di Ingegneria del Software con esperienza nella progettazione di API, database e architetture scalabili con Python, Django, Flask e Node.js.',
         brazil: 'Estudante de Engenharia de Software com experiência no design de APIs, bancos de dados e arquiteturas escaláveis com Python, Django, Flask e Node.js.',
         germany: 'Software-Engineering-Student mit Erfahrung in APIs, Datenbanken und skalierbaren Server-Architekturen mit Python, Django, Flask und Node.js.',
     },
     'Data Science': {
         'great-britain': 'Software Engineering student applying machine learning and data analysis to real products, with experience in TensorFlow, Keras and data-driven decision systems.',
-        spain: 'Estudiante de Ingeniería de Software aplicando machine learning y análisis de datos a productos reales, con experiencia en TensorFlow, Keras y sistemas basados en datos.',
+        spain: 'Estudiante de ingeniería de Software especializado en Machine Learning y Deep Learning, con experiencia en el diseño, entrenamiento y optimización de redes neuronales aplicadas a Visión Computacional y Edge AI. Especializado en el ciclo de vida completo de modelos de IA, desde la preparación de datos y ajuste de hiperparámetros hasta la cuantización y despliegue on-device. Mi formación académica internacional en Italia (UNIBO) y Brasil (USP), junto a mi dominio de 6 idiomas, potencian mi capacidad para resolver problemas complejos y colaborar en equipos globales de alto rendimiento.',
         italy: 'Studente di Ingegneria del Software che applica machine learning e analisi dei dati a prodotti reali, con esperienza in TensorFlow, Keras e sistemi data-driven.',
         brazil: 'Estudante de Engenharia de Software aplicando machine learning e análise de dados a produtos reais, com experiência em TensorFlow, Keras e sistemas baseados em dados.',
         germany: 'Software-Engineering-Student mit Fokus auf Machine Learning und Datenanalyse in realen Produkten, Erfahrung mit TensorFlow, Keras und datenbasierten Systemen.',
     },
-    IoT: {
-        'great-britain': 'Software Engineering student focused on IoT and embedded systems with AI, building connected devices with Arduino, ESP32 and sensor-driven automation.',
-        spain: 'Estudiante de Ingeniería de Software enfocado en IoT y sistemas embebidos con IA, construyendo dispositivos conectados con Arduino, ESP32 y automatización basada en sensores.',
-        italy: 'Studente di Ingegneria del Software focalizzato su IoT e sistemi embedded con IA, costruendo dispositivi connessi con Arduino, ESP32 e automazione basata su sensori.',
-        brazil: 'Estudante de Engenharia de Software focado em IoT e sistemas embarcados com IA, construindo dispositivos conectados com Arduino, ESP32 e automação baseada em sensores.',
-        germany: 'Software-Engineering-Student mit Fokus auf IoT und Embedded Systems mit KI, Entwicklung vernetzter Geräte mit Arduino, ESP32 und sensorgesteuerter Automatisierung.',
+    Fullstack: {
+        'great-britain': 'Software Engineering student with full-stack experience building end-to-end web applications, from React interfaces to scalable APIs and databases with Python, Django, Flask and Node.js.',
+        spain: 'Desarrollador Fullstack y estudiante de último año de Ingeniería de Software en la UNMSM, con más de un año de experiencia en la construcción de sistemas web, arquitecturas de microservicios e integración de software. Dominio en el desarrollo backend con Python y Javascript, así como en la creación de interfaces dinámicas con ReactJS e integración de APIs RESTful. Cuento con sólida experiencia optimizando procesos mediante automatización, pipelines de CI/CD y gestión de bases de datos. Mi formación internacional en Italia y Brasil, sumada a mi fluidez en 6 idiomas, me otorga una perspectiva global y una alta capacidad de aprendizaje e innovación técnica.',
+        italy: 'Studente di Ingegneria del Software con esperienza full-stack nella costruzione di applicazioni web end-to-end, da interfacce React ad API e database scalabili con Python, Django, Flask e Node.js.',
+        brazil: 'Estudante de Engenharia de Software com experiência full-stack construindo aplicações web de ponta a ponta, de interfaces React a APIs e bancos de dados escaláveis com Python, Django, Flask e Node.js.',
+        germany: 'Software-Engineering-Student mit Full-Stack-Erfahrung beim Aufbau von End-to-End-Webanwendungen, von React-Oberflächen bis zu skalierbaren APIs und Datenbanken mit Python, Django, Flask und Node.js.',
     },
 };
 
@@ -193,6 +193,33 @@ const experience = [
                     'Mit MySQL-Datenmodellen für interne Tools und Dashboards gearbeitet',
                 ],
             },
+            Fullstack: {
+                'great-britain': [
+                    'Built full-stack web solutions with React, TailwindCSS, Express, Django and Flask',
+                    'Designed databases and deployed production systems with automated pipelines',
+                    'Provided IT support improving performance, security and staff efficiency',
+                ],
+                spain: [
+                    'Construí soluciones web full-stack con React, TailwindCSS, Express, Django y Flask',
+                    'Diseñé bases de datos y desplegué sistemas en producción con pipelines automatizados',
+                    'Brindé soporte TI mejorando rendimiento, seguridad y eficiencia del personal',
+                ],
+                italy: [
+                    'Ho costruito soluzioni web full-stack con React, TailwindCSS, Express, Django e Flask',
+                    'Ho progettato database e distribuito sistemi in produzione con pipeline automatizzate',
+                    'Ho fornito supporto IT migliorando prestazioni, sicurezza ed efficienza del personale',
+                ],
+                brazil: [
+                    'Construí soluções web full-stack com React, TailwindCSS, Express, Django e Flask',
+                    'Projetei bancos de dados e implantei sistemas em produção com pipelines automatizados',
+                    'Prestei suporte TI melhorando desempenho, segurança e eficiência da equipe',
+                ],
+                germany: [
+                    'Full-Stack-Weblösungen mit React, TailwindCSS, Express, Django und Flask gebaut',
+                    'Datenbanken entworfen und Produktionssysteme mit automatisierten Pipelines bereitgestellt',
+                    'IT-Support zur Verbesserung von Leistung, Sicherheit und Mitarbeitereffizienz geleistet',
+                ],
+            },
         },
         website: 'https://solucionesgm.com/',
         technologies: [
@@ -247,6 +274,13 @@ const volunteer = [
                 brazil: 'Gerenciei e centralizei informações críticas do evento por meio de scripts automatizados que apoiaram a logística em escala nacional.',
                 germany: 'Verwaltete und zentralisierte kritische Event-Informationen durch automatisierte Skripte zur Unterstützung der landesweiten Logistik.',
             },
+            Fullstack: {
+                'great-britain': 'Led the development team that built and deployed the official event landing page and automated scripts to centralize critical event information.',
+                spain: 'Lideré el equipo que construyó y publicó la landing page oficial del evento y scripts automatizados para centralizar información crítica.',
+                italy: "Ho guidato il team che ha realizzato e pubblicato la landing page ufficiale dell'evento e script automatizzati per centralizzare informazioni critiche.",
+                brazil: 'Liderei a equipe que construiu e publicou a landing page oficial do evento e scripts automatizados para centralizar informações críticas.',
+                germany: 'Leitete das Team, das die offizielle Event-Landingpage und automatisierte Skripte zur Zentralisierung kritischer Informationen umsetzte.',
+            },
         },
         website: 'https://eneisoft.org/',
         technologies: ['html', 'css', 'javascript', 'jquery', 'bootstrap'],
@@ -290,7 +324,7 @@ const achievements = [
                 brazil: 'Apresentei o POT-AI no DataPower (DSRP), compartilhando como IA e IoT se combinam em soluções ambientais.',
                 germany: 'Präsentierte POT-AI bei DataPower (DSRP) und zeigte, wie KI und IoT Umweltlösungen ermöglichen.',
             },
-            IoT: {
+            Fullstack: {
                 'great-britain': 'Presented POT-AI at DataPower (DSRP), highlighting IoT sensing and AI-driven irrigation for sustainability.',
                 spain: 'Presenté POT-AI en DataPower (DSRP), destacando sensado IoT y riego con IA para sostenibilidad.',
                 italy: 'Ho presentato POT-AI a DataPower (DSRP), evidenziando sensing IoT e irrigazione con IA per la sostenibilità.',
@@ -341,7 +375,7 @@ const achievements = [
                 brazil: 'Venci o 1º lugar com o Smart Tachito usando IA para classificar resíduos por tipo com metas de economia circular.',
                 germany: '1. Platz mit Smart Tachito durch KI-Klassifikation von Abfällen für Kreislaufwirtschaftsziele.',
             },
-            IoT: {
+            Fullstack: {
                 'great-britain': 'Won 1st place with Smart Tachito, an IoT + AI system for automatic waste classification.',
                 spain: 'Gané el 1er puesto con Smart Tachito, un sistema IoT + IA para clasificación automática de residuos.',
                 italy: 'Ho vinto il 1° posto con Smart Tachito, un sistema IoT + IA per la classificazione automatica dei rifiuti.',
@@ -439,7 +473,7 @@ const projects = [
                 brazil: 'Rede neural LSTM que reconhece gestos estáticos e dinâmicos da Língua de Sinais Peruana a partir de séries temporais de sensores e os converte em voz.',
                 germany: 'LSTM-Netzwerk zur Erkennung statischer und dynamischer Gesten der peruanischen Gebärdensprache aus Sensor-Zeitreihen und Umwandlung in Sprache.',
             },
-            IoT: {
+            Fullstack: {
                 'great-britain': 'Embedded glove with sensors for finger curvature, motion and rotation, streaming data for on-device and edge AI inference.',
                 spain: 'Guante embebido con sensores de curvatura, movimiento y rotación, enviando datos para inferencia de IA en dispositivo y edge.',
                 italy: 'Guanto embedded con sensori di curvatura, movimento e rotazione, che invia dati per inferenza IA su device ed edge.',
@@ -498,7 +532,7 @@ const projects = [
                 brazil: 'Modelo TensorFlow que classifica resíduos por tipo para apoiar metas de economia circular.',
                 germany: 'TensorFlow-Modell zur Abfallklassifikation nach Typ für Kreislaufwirtschaftsziele.',
             },
-            IoT: {
+            Fullstack: {
                 'great-britain': 'Arduino-based sensing and actuation hardware that feeds the AI classifier for automatic waste sorting.',
                 spain: 'Hardware Arduino de sensado y actuación que alimenta el clasificador de IA para el ordenamiento automático de residuos.',
                 italy: 'Hardware Arduino di sensing e attuazione che alimenta il classificatore IA per lo smistamento automatico dei rifiuti.',
@@ -557,7 +591,7 @@ const projects = [
                 brazil: 'Modelo de IA que estima o volume exato de água conforme espécie e ambiente.',
                 germany: 'KI-Modell zur Schätzung der genauen Wassermenge je Pflanzenart und Umgebung.',
             },
-            IoT: {
+            Fullstack: {
                 'great-britain': 'Environmental sensors and software-controlled pump hardware for automated irrigation.',
                 spain: 'Sensores ambientales y bomba controlada por software para riego automatizado.',
                 italy: 'Sensori ambientali e pompa controllata da software per irrigazione automatizzata.',
@@ -779,36 +813,36 @@ const skills = {
                 'Kommunikation von Insights',
             ],
         },
-        IoT: {
+        Fullstack: {
             'great-britain': [
-                'Sensor integration',
-                'Embedded prototyping',
-                'Hardware–software bridging',
-                'Edge data acquisition',
+                'End-to-end web application development',
+                'API design and frontend integration',
+                'Database modeling and deployment',
+                'Cross-layer debugging and delivery',
             ],
             spain: [
-                'Integración de sensores',
-                'Prototipado embebido',
-                'Puente hardware–software',
-                'Adquisición de datos en edge',
+                'Desarrollo de aplicaciones web de punta a punta',
+                'Diseño de APIs e integración frontend',
+                'Modelado de bases de datos y despliegue',
+                'Depuración y entrega entre capas',
             ],
             italy: [
-                'Integrazione di sensori',
-                'Prototipazione embedded',
-                'Bridging hardware–software',
-                'Acquisizione dati edge',
+                'Sviluppo di applicazioni web end-to-end',
+                'Progettazione API e integrazione frontend',
+                'Modellazione database e deployment',
+                'Debug e delivery cross-layer',
             ],
             brazil: [
-                'Integração de sensores',
-                'Prototipagem embarcada',
-                'Ponte hardware–software',
-                'Aquisição de dados em edge',
+                'Desenvolvimento de aplicações web de ponta a ponta',
+                'Design de APIs e integração frontend',
+                'Modelagem de bancos de dados e deploy',
+                'Depuração e entrega entre camadas',
             ],
             germany: [
-                'Sensorintegration',
-                'Embedded-Prototyping',
-                'Hardware–Software-Brücke',
-                'Edge-Datenerfassung',
+                'End-to-End-Webanwendungsentwicklung',
+                'API-Design und Frontend-Integration',
+                'Datenbankmodellierung und Deployment',
+                'Debugging und Delivery über alle Schichten',
             ],
         },
     },
@@ -824,8 +858,9 @@ const skills = {
         'Data Science': [
             'Keras', 'Excel', 'Tensorflow', 'MySQL', 'PostgreSQL', 'VBA',
         ],
-        IoT: [
-            'Arduino', 'ESP32', 'C++', 'Sensors',
+        Fullstack: [
+            'HTML', 'CSS', 'JavaScript', 'React', 'Python',
+            'Django', 'Flask', 'ExpressJS', 'MySQL', 'TailwindCSS',
         ],
     },
 };
@@ -893,7 +928,7 @@ const education = [
                 brazil: 'Estudos de Engenharia de Software aplicando análise de dados e conceitos de ML em projetos acadêmicos e pessoais.',
                 germany: 'Software-Engineering-Studium mit Anwendung von Datenanalyse und ML-Konzepten in akademischen und persönlichen Projekten.',
             },
-            IoT: {
+            Fullstack: {
                 'great-britain': 'Software Engineering studies with applied work on embedded systems, sensors and connected devices.',
                 spain: 'Estudios de Ingeniería de Software con trabajo aplicado en sistemas embebidos, sensores y dispositivos conectados.',
                 italy: 'Studi di Ingegneria del Software con lavoro applicato su sistemi embedded, sensori e dispositivi connessi.',
@@ -952,7 +987,7 @@ const education = [
                 brazil: 'Programa de intercâmbio que fortalece a colaboração internacional e a exposição acadêmica orientada a dados.',
                 germany: 'Austauschprogramm zur Stärkung internationaler Zusammenarbeit und datenorientierter akademischer Erfahrung.',
             },
-            IoT: {
+            Fullstack: {
                 'great-britain': 'Exchange program strengthening international collaboration and embedded/IoT academic exposure.',
                 spain: 'Programa de intercambio que fortalece la colaboración internacional y la exposición académica en embebidos/IoT.',
                 italy: 'Programma di scambio che rafforza la collaborazione internazionale e l’esposizione accademica su embedded/IoT.',

@@ -242,7 +242,7 @@ function getAreaIcon(area) {
         'Frontend': 'palette',
         'Backend': 'server',
         'Data Science': 'chart-line',
-        'IoT': 'microchip'
+        'Fullstack': 'layer-group'
     };
     return icons[area] || 'code';
 }
@@ -252,7 +252,7 @@ function getAreaDescription(area) {
         'Frontend': 'Creating beautiful and responsive user interfaces',
         'Backend': 'Building robust server-side applications and APIs',
         'Data Science': 'Analyzing data and creating machine learning models',
-        'IoT': 'Developing connected devices and embedded systems'
+        'Fullstack': 'Building complete web applications from frontend to backend'
     };
     return descriptions[area] || 'Professional development skills';
 }
