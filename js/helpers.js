@@ -249,6 +249,12 @@ function getCvPdfStyles() {
   white-space: nowrap !important;
   font-size: 9.5px !important;
 }
+.cv-container.cv-pdf-ready .cv-contact a#cv-linkedin,
+.cv-container.cv-pdf-ready .cv-contact a#cv-github,
+.cv-container.cv-pdf-ready .cv-contact a#cv-website {
+  color: #1a56db !important;
+  text-decoration: underline !important;
+}
 .cv-container.cv-pdf-ready .cv-section {
   margin: 0 0 7px 0 !important;
   padding: 0 !important;
@@ -392,6 +398,31 @@ function getJsPdfConstructor() {
     return null;
 }
 
+/** Measure clickable contact links relative to the CV container (CSS px). */
+function collectCvLinkHotspots(container) {
+    const rootRect = container.getBoundingClientRect();
+    const specs = [
+        { sel: '#cv-linkedin', url: profile.linkedin },
+        { sel: '#cv-github', url: profile.github },
+        { sel: '#cv-website', url: profile.website },
+    ];
+
+    return specs
+        .map(({ sel, url }) => {
+            const el = container.querySelector(sel);
+            if (!el || !url) return null;
+            const r = el.getBoundingClientRect();
+            return {
+                url,
+                x: r.left - rootRect.left,
+                y: r.top - rootRect.top,
+                w: Math.max(r.width, 8),
+                h: Math.max(r.height, 8),
+            };
+        })
+        .filter(Boolean);
+}
+
 function generatePDF(area) {
     const lang = getCurrentLang();
     populateCVTemplate(lang, area);
@@ -458,10 +489,9 @@ function generatePDF(area) {
         window.scrollTo(prevScrollX, prevScrollY);
     };
 
-    const addCanvasToPdf = (canvas) => {
+    const addCanvasToPdf = (canvas, hotspots, sourceWidth) => {
         const JsPDF = getJsPdfConstructor();
         if (!JsPDF) {
-            // Fallback to html2pdf if jsPDF global is unavailable
             return html2pdf()
                 .set({
                     margin: [10, 10, 10, 10],
@@ -495,6 +525,17 @@ function generatePDF(area) {
             heightLeft -= pageH - margin * 2;
         }
 
+        // Clickable areas for LinkedIn / GitHub / Web (first page header)
+        const cssPxToMm = imgW / sourceWidth;
+        pdf.setPage(1);
+        (hotspots || []).forEach((spot) => {
+            const x = margin + spot.x * cssPxToMm;
+            const y = margin + spot.y * cssPxToMm;
+            const w = spot.w * cssPxToMm;
+            const h = spot.h * cssPxToMm;
+            pdf.link(x, y, w, h, { url: spot.url });
+        });
+
         pdf.save(filename);
         return Promise.resolve();
     };
@@ -503,6 +544,7 @@ function generatePDF(area) {
         setTimeout(() => {
             const captureWidth = 794;
             const captureHeight = Math.max(clone.scrollHeight, clone.offsetHeight, 1);
+            const hotspots = collectCvLinkHotspots(clone);
 
             html2canvas(clone, {
                 scale: 2,
@@ -559,7 +601,7 @@ html, body {
                     }
                 },
             })
-                .then((canvas) => addCanvasToPdf(canvas))
+                .then((canvas) => addCanvasToPdf(canvas, hotspots, captureWidth))
                 .then(() => {
                     hideLoadingIndicator();
                     cleanup();
@@ -643,13 +685,25 @@ function populateCVTemplate(lang, area) {
     }
 
     const linkedinEl = document.getElementById('cv-linkedin');
-    if (linkedinEl) linkedinEl.href = profile.linkedin;
+    if (linkedinEl) {
+        linkedinEl.href = profile.linkedin;
+        linkedinEl.target = '_blank';
+        linkedinEl.rel = 'noopener noreferrer';
+    }
 
     const githubEl = document.getElementById('cv-github');
-    if (githubEl) githubEl.href = profile.github;
+    if (githubEl) {
+        githubEl.href = profile.github;
+        githubEl.target = '_blank';
+        githubEl.rel = 'noopener noreferrer';
+    }
 
     const webEl = document.getElementById('cv-website');
-    if (webEl) webEl.href = profile.website;
+    if (webEl) {
+        webEl.href = profile.website;
+        webEl.target = '_blank';
+        webEl.rel = 'noopener noreferrer';
+    }
 
     // Presentation
     const aboutText = presentation[area]?.[lang];
