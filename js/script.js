@@ -379,17 +379,6 @@ function renderExperience(experience) {
                             <h5>${info[lang].overview}</h5>
                             <p>${desc}</p>
                         </div>
-                        <div class="technologies-used">
-                            <h5>${info[lang].technologies}</h5>
-                            <div class="tech-stack">
-                                ${(exp.technologies || []).map(tech => `
-                                    <div class="tech-item" title="${tech}">
-                                        <img src="./img/technologies/${tech.toLowerCase()}.png" alt="${tech}"/>
-                                        <span>${tech}</span>
-                                    </div>
-                                `).join('')}
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -458,17 +447,6 @@ function renderVolunteer(volunteer) {
                         <div class="job-description">
                             <h5>${info[lang].overview}</h5>
                             <p>${desc}</p>
-                        </div>
-                        <div class="technologies-used">
-                            <h5>${info[lang].technologies}</h5>
-                            <div class="tech-stack">
-                                ${(vol.technologies || []).map(tech => `
-                                    <div class="tech-item" title="${tech}">
-                                        <img src="./img/technologies/${tech.toLowerCase()}.png" alt="${tech}"/>
-                                        <span>${tech}</span>
-                                    </div>
-                                `).join('')}
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -594,19 +572,6 @@ function renderProjects(projects) {
                 </div>` : ''}
                 <div class="project-description">
                     <p>${desc}</p>
-                </div>
-                <div class="project-tech">
-                    <div class="tech-header">
-                        <span>Built with:</span>
-                    </div>
-                    <div class="tech-list">
-                        ${(prj.technologies || []).map(tech => `
-                            <div class="tech-badge" title="${tech}">
-                                <img src="./img/technologies/${tech.toLowerCase()}.png" alt="${tech}"/>
-                                <span>${tech}</span>
-                            </div>
-                        `).join('')}
-                    </div>
                 </div>
                 <div class="project-actions">
                     <a href="${prj.github}" target="_blank" class="action-btn primary">
