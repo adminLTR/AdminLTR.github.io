@@ -157,9 +157,234 @@ function initCVModal() {
 // PDF Generation
 // ====================================
 
-// ====================================
-// PDF Generation
-// ====================================
+function getCvPdfStyles() {
+    return `
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #ffffff;
+  width: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 8px;
+  color: #333;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+body {
+  display: flex;
+  justify-content: center;
+}
+.cv-container {
+  font-family: Arial, Helvetica, sans-serif;
+  width: 700px;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 8px 18px 10px 18px;
+  background: #ffffff;
+  color: #333;
+  line-height: 1.28;
+}
+h1, h2, p, a, ul, li, div {
+  font-family: Arial, Helvetica, sans-serif;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+  text-transform: none;
+}
+ul { list-style: none; margin: 0; padding: 0; }
+.cv-header {
+  margin: 0 0 5px 0;
+  padding: 0 0 4px 0;
+  border-bottom: 1.5px solid #2c3e50;
+  text-align: center;
+}
+.cv-name {
+  font-size: 15px;
+  font-weight: bold;
+  color: #2c3e50;
+  margin: 0 0 2px 0;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
+  line-height: 1.15;
+}
+.cv-title {
+  font-size: 9px;
+  color: #555;
+  font-style: italic;
+  margin: 0 0 2px 0;
+}
+.cv-contact {
+  font-size: 7.5px;
+  color: #666;
+  line-height: 1.35;
+  text-align: center;
+}
+.cv-contact span,
+.cv-contact a {
+  color: inherit;
+  text-decoration: none;
+  margin: 0 4px;
+  white-space: nowrap;
+  font-size: 7.5px;
+}
+.cv-section { margin: 0 0 5px 0; padding: 0; }
+.cv-section-title {
+  font-size: 9.5px;
+  font-weight: bold;
+  color: #2c3e50;
+  margin: 0 0 2px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.25px;
+  line-height: 1.2;
+}
+.cv-divider {
+  height: 1px;
+  background: #bdc3c7;
+  margin: 0 0 3px 0;
+}
+.cv-about {
+  font-size: 7.5px;
+  text-align: justify;
+  line-height: 1.32;
+  color: #444;
+  margin: 0;
+}
+.cv-item { margin: 0 0 3.5px 0; }
+.cv-item:last-child { margin-bottom: 0; }
+.cv-item-header { overflow: hidden; margin-bottom: 1px; }
+.cv-item-title {
+  float: left;
+  font-size: 8.5px;
+  font-weight: bold;
+  color: #2c3e50;
+  margin: 0;
+  max-width: 70%;
+}
+.cv-item-date {
+  float: right;
+  font-size: 7px;
+  color: #777;
+  font-style: italic;
+  white-space: nowrap;
+}
+.cv-item-company {
+  clear: both;
+  font-size: 8px;
+  color: #555;
+  font-weight: 600;
+  margin: 0;
+}
+.cv-item-location {
+  clear: both;
+  font-size: 7px;
+  color: #888;
+  margin: 0 0 1px 0;
+}
+.cv-item-description {
+  clear: both;
+  font-size: 7.5px;
+  text-align: justify;
+  line-height: 1.32;
+  color: #444;
+  margin: 0;
+}
+.cv-desc-list { clear: both; margin: 1px 0 0 0; padding: 0; }
+.cv-bullet-row { margin: 0 0 1px 0; padding: 0; overflow: hidden; }
+.cv-dot-wrap { float: left; width: 8px; padding-top: 3px; line-height: 0; }
+.cv-dot {
+  display: block;
+  width: 2.5px;
+  height: 2.5px;
+  background-color: #2c3e50;
+  border-radius: 50%;
+}
+.cv-bullet-text {
+  display: block;
+  margin-left: 8px;
+  font-size: 7.5px;
+  line-height: 1.32;
+  color: #444;
+  text-align: justify;
+}
+.cv-education-item { margin: 0 0 3.5px 0; overflow: hidden; }
+.cv-education-item:last-child { margin-bottom: 0; }
+.cv-education-header { overflow: hidden; }
+.cv-education-degree {
+  float: left;
+  font-size: 8.5px;
+  font-weight: bold;
+  color: #2c3e50;
+  max-width: 70%;
+}
+.cv-education-period {
+  float: right;
+  font-size: 7px;
+  color: #777;
+  font-style: italic;
+  white-space: nowrap;
+}
+.cv-education-university {
+  clear: both;
+  font-size: 7.5px;
+  color: #555;
+  margin: 0;
+}
+.cv-education-faculty { font-size: 7px; color: #888; }
+.cv-project { margin: 0 0 3.5px 0; }
+.cv-project:last-child { margin-bottom: 0; }
+.cv-project-header { margin: 0; }
+.cv-project-name { font-size: 8.5px; font-weight: bold; color: #2c3e50; }
+.cv-project-subtitle {
+  font-size: 7.5px;
+  color: #555;
+  font-style: italic;
+  margin: 0 0 1px 0;
+}
+.cv-project-description {
+  font-size: 7.5px;
+  text-align: justify;
+  line-height: 1.32;
+  color: #444;
+  margin: 0;
+}
+.cv-achievement { margin: 0 0 3.5px 0; overflow: hidden; }
+.cv-achievement:last-child { margin-bottom: 0; }
+.cv-achievement-header { overflow: hidden; }
+.cv-achievement-title {
+  float: left;
+  font-size: 8.5px;
+  font-weight: bold;
+  color: #2c3e50;
+  max-width: 70%;
+}
+.cv-achievement-date {
+  float: right;
+  font-size: 7px;
+  color: #777;
+  font-style: italic;
+  white-space: nowrap;
+}
+.cv-achievement-location {
+  clear: both;
+  font-size: 7px;
+  color: #888;
+  margin: 0 0 1px 0;
+}
+.cv-achievement-description {
+  clear: both;
+  font-size: 7.5px;
+  text-align: justify;
+  line-height: 1.32;
+  color: #444;
+  margin: 0;
+}
+`.trim();
+}
 
 function generatePDF(area) {
     const lang = getCurrentLang();
@@ -180,14 +405,14 @@ function generatePDF(area) {
         }
     });
 
-    // Isolated iframe so site CSS (header, h2, etc.) cannot break CV layout
     const frame = document.createElement('iframe');
     frame.id = 'cv-pdf-frame';
     frame.setAttribute('aria-hidden', 'true');
     frame.style.cssText = [
         'position:fixed',
-        'left:0',
+        'left:50%',
         'top:0',
+        'transform:translateX(-50%)',
         'width:794px',
         'height:1123px',
         'border:0',
@@ -201,23 +426,14 @@ function generatePDF(area) {
     document.body.appendChild(frame);
 
     const frameDoc = frame.contentDocument || frame.contentWindow.document;
-    const cssHref = new URL('./css/cv-template.css', window.location.href).href;
     frameDoc.open();
     frameDoc.write(`<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="${cssHref}">
-<style>
-  html, body {
-    margin: 0;
-    padding: 0;
-    background: #ffffff;
-    width: 794px;
-  }
-</style>
+<style>${getCvPdfStyles()}</style>
 </head>
-<body class="cv-pdf-root"></body>
+<body></body>
 </html>`);
     frameDoc.close();
 
@@ -233,11 +449,7 @@ function generatePDF(area) {
         window.scrollTo(prevScrollX, prevScrollY);
     };
 
-    let exported = false;
-    const runExport = () => {
-        if (exported) return;
-        exported = true;
-
+    setTimeout(() => {
         frameDoc.body.innerHTML = clone.outerHTML;
         const target = frameDoc.querySelector('.cv-container');
         if (!target) {
@@ -248,13 +460,12 @@ function generatePDF(area) {
         }
 
         const opt = {
-            margin: [3, 8, 5, 8],
+            margin: [8, 12, 8, 12],
             filename: `CV-${nameSlug}-${areaSlug}.pdf`,
             image: { type: 'jpeg', quality: 0.98 },
             html2canvas: {
                 scale: 2,
                 useCORS: true,
-                letterRendering: true,
                 backgroundColor: '#ffffff',
                 logging: false,
                 scrollX: 0,
@@ -283,15 +494,7 @@ function generatePDF(area) {
                 alert('Error al generar PDF. Por favor intenta de nuevo.');
                 cleanup();
             });
-    };
-
-    // Wait for iframe CSS to load before capturing
-    const stylesheet = frameDoc.querySelector('link[rel="stylesheet"]');
-    if (stylesheet) {
-        stylesheet.onload = () => setTimeout(runExport, 120);
-        stylesheet.onerror = () => setTimeout(runExport, 120);
-    }
-    setTimeout(runExport, 500);
+    }, 200);
 }
 
 function showLoadingIndicator() {
