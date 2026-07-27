@@ -171,6 +171,10 @@ function generatePDF(area) {
 
     // Clone into a fixed on-screen layer (avoids blank top space from left:-9999px)
     const clone = source.cloneNode(true);
+    clone.style.margin = '0';
+    clone.style.paddingTop = '0';
+    clone.style.transform = 'none';
+    clone.style.position = 'static';
     clone.querySelectorAll('.cv-section').forEach((section) => {
         if (section.style.display === 'none') {
             section.remove();
@@ -215,11 +219,16 @@ function generatePDF(area) {
             scrollX: 0,
             scrollY: 0,
             windowWidth: 794,
-            onclone: (_doc, el) => {
-                el.style.margin = '0';
-                el.style.paddingTop = '0';
-                el.style.transform = 'none';
-                el.style.position = 'static';
+            onclone: (clonedDoc, el) => {
+                const target =
+                    el ||
+                    clonedDoc?.querySelector?.('.cv-container') ||
+                    clonedDoc?.body?.firstElementChild;
+                if (!target?.style) return;
+                target.style.margin = '0';
+                target.style.paddingTop = '0';
+                target.style.transform = 'none';
+                target.style.position = 'static';
             },
         },
         jsPDF: {

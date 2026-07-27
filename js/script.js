@@ -150,18 +150,7 @@ function renderSkills(areas) {
     const lang = getCurrentLang();
     const skillsDiv = document.querySelector("#skills .skills-container");
     const navDiv = document.querySelector("#skills .nav-buttons");
-    const abilitiesTitle = document.getElementById('abilities-title');
-    const toolsTitle = document.getElementById('tools-title');
-    const abilitiesList = document.getElementById('abilities-list');
 
-    if (abilitiesTitle) abilitiesTitle.textContent = info[lang].abilities;
-    if (toolsTitle) toolsTitle.textContent = info[lang].tools;
-
-    if (abilitiesList) {
-        const abilities = skills.abilities?.web?.[lang] || [];
-        abilitiesList.innerHTML = abilities.map((item) => `<li>${item}</li>`).join('');
-    }
-    
     let navHtml = "";
     const areaKeys = Object.keys(areas);
     areaKeys.forEach((area, index) => {
