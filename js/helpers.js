@@ -158,8 +158,6 @@ function initCVModal() {
 // ====================================
 
 function getCvPdfStyles() {
-    // Applied on the CV container itself (.cv-pdf-ready) so html2canvas
-    // does not need a parent wrapper for styles to match.
     return `
 .cv-container.cv-pdf-ready {
   width: 794px !important;
@@ -169,9 +167,9 @@ function getCvPdfStyles() {
   background: #ffffff !important;
   color: #333 !important;
   line-height: 1.3 !important;
-  position: relative !important;
-  left: 0 !important;
-  top: 0 !important;
+  position: static !important;
+  left: auto !important;
+  top: auto !important;
   display: block !important;
   visibility: visible !important;
   opacity: 1 !important;
@@ -384,6 +382,12 @@ function getCvPdfStyles() {
 `.trim();
 }
 
+function getJsPdfConstructor() {
+    if (window.jspdf && window.jspdf.jsPDF) return window.jspdf.jsPDF;
+    if (window.jsPDF) return window.jsPDF;
+    return null;
+}
+
 function generatePDF(area) {
     const lang = getCurrentLang();
     populateCVTemplate(lang, area);
@@ -391,6 +395,11 @@ function generatePDF(area) {
     const source = document.querySelector('#cv-template .cv-container');
     if (!source) {
         console.error('CV template not found');
+        return;
+    }
+    if (typeof html2canvas !== 'function') {
+        console.error('html2canvas not available');
+        alert('Error al generar PDF. Por favor intenta de nuevo.');
         return;
     }
 
@@ -410,19 +419,19 @@ function generatePDF(area) {
         }
     });
 
-    // Preview host only — we capture the inner .cv-container, not this wrapper
+    // Absolute (not fixed) at 0,0 — avoids html2canvas left-crop with fixed parents
     const host = document.createElement('div');
     host.id = 'cv-pdf-host';
     host.setAttribute('aria-hidden', 'true');
     host.style.cssText = [
-        'position:fixed',
+        'position:absolute',
         'left:0',
         'top:0',
         'width:794px',
         'margin:0',
         'padding:0',
         'background:#ffffff',
-        'z-index:999998',
+        'z-index:1000001',
         'opacity:1',
         'pointer-events:none',
         'transform:none',
@@ -437,6 +446,7 @@ function generatePDF(area) {
 
     const nameSlug = profile.name.replace(/\s+/g, '_');
     const areaSlug = area.replace(/\s+/g, '_');
+    const filename = `CV-${nameSlug}-${areaSlug}.pdf`;
 
     const cleanup = () => {
         host.remove();
@@ -444,67 +454,108 @@ function generatePDF(area) {
         window.scrollTo(prevScrollX, prevScrollY);
     };
 
-    const opt = {
-        margin: [10, 10, 10, 10],
-        filename: `CV-${nameSlug}-${areaSlug}.pdf`,
-        image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: {
-            scale: 2,
-            useCORS: true,
-            allowTaint: true,
-            backgroundColor: '#ffffff',
-            logging: false,
-            scrollX: 0,
-            scrollY: 0,
-            windowWidth: 794,
-            onclone: (clonedDoc, element) => {
-                const target =
-                    element ||
-                    clonedDoc.querySelector('.cv-container.cv-pdf-ready') ||
-                    clonedDoc.querySelector('.cv-container');
+    const addCanvasToPdf = (canvas) => {
+        const JsPDF = getJsPdfConstructor();
+        if (!JsPDF) {
+            // Fallback to html2pdf if jsPDF global is unavailable
+            return html2pdf()
+                .set({
+                    margin: [10, 10, 10, 10],
+                    filename,
+                    image: { type: 'jpeg', quality: 0.98 },
+                    html2canvas: { scale: 1 },
+                    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+                })
+                .from(canvas)
+                .save();
+        }
 
-                if (!clonedDoc.getElementById('cv-pdf-ready-styles')) {
-                    const st = clonedDoc.createElement('style');
-                    st.id = 'cv-pdf-ready-styles';
-                    st.textContent = cssText;
-                    clonedDoc.head.appendChild(st);
-                }
+        const pdf = new JsPDF({ orientation: 'p', unit: 'mm', format: 'a4' });
+        const pageW = pdf.internal.pageSize.getWidth();
+        const pageH = pdf.internal.pageSize.getHeight();
+        const margin = 10;
+        const imgW = pageW - margin * 2;
+        const imgH = (canvas.height * imgW) / canvas.width;
+        const imgData = canvas.toDataURL('image/jpeg', 0.98);
 
-                if (target) {
-                    target.classList.add('cv-pdf-ready', 'cv-container');
-                    target.style.display = 'block';
-                    target.style.visibility = 'visible';
-                    target.style.opacity = '1';
-                    target.style.background = '#ffffff';
-                    target.style.width = '794px';
-                    target.style.margin = '0';
-                    target.style.transform = 'none';
-                    target.style.position = 'relative';
-                    target.style.left = '0';
-                    target.style.top = '0';
-                }
+        let heightLeft = imgH;
+        let position = margin;
 
-                if (clonedDoc.body) {
-                    clonedDoc.body.style.margin = '0';
-                    clonedDoc.body.style.padding = '0';
-                    clonedDoc.body.style.background = '#ffffff';
-                }
-            },
-        },
-        jsPDF: {
-            unit: 'mm',
-            format: 'a4',
-            orientation: 'portrait',
-        },
-        pagebreak: { mode: ['css'] },
+        pdf.addImage(imgData, 'JPEG', margin, position, imgW, imgH);
+        heightLeft -= pageH - margin * 2;
+
+        while (heightLeft > 0) {
+            position = margin - (imgH - heightLeft);
+            pdf.addPage();
+            pdf.addImage(imgData, 'JPEG', margin, position, imgW, imgH);
+            heightLeft -= pageH - margin * 2;
+        }
+
+        pdf.save(filename);
+        return Promise.resolve();
     };
 
     requestAnimationFrame(() => {
         setTimeout(() => {
-            html2pdf()
-                .set(opt)
-                .from(clone)
-                .save()
+            const captureWidth = 794;
+            const captureHeight = Math.max(clone.scrollHeight, clone.offsetHeight, 1);
+
+            html2canvas(clone, {
+                scale: 2,
+                useCORS: true,
+                allowTaint: true,
+                backgroundColor: '#ffffff',
+                logging: false,
+                scrollX: 0,
+                scrollY: 0,
+                windowWidth: captureWidth,
+                windowHeight: captureHeight,
+                width: captureWidth,
+                height: captureHeight,
+                x: 0,
+                y: 0,
+                onclone: (clonedDoc, element) => {
+                    const st = clonedDoc.createElement('style');
+                    st.id = 'cv-pdf-ready-styles';
+                    st.textContent = `${cssText}
+html, body {
+  margin: 0 !important;
+  padding: 0 !important;
+  background: #ffffff !important;
+  width: ${captureWidth}px !important;
+}
+`;
+                    clonedDoc.head.appendChild(st);
+
+                    const target =
+                        element ||
+                        clonedDoc.querySelector('.cv-container.cv-pdf-ready') ||
+                        clonedDoc.querySelector('.cv-container');
+
+                    if (target) {
+                        target.classList.add('cv-container', 'cv-pdf-ready');
+                        // Move CV to body root (no parent offset), then drop siblings
+                        clonedDoc.body.appendChild(target);
+                        Array.from(clonedDoc.body.children).forEach((child) => {
+                            if (child !== target) child.remove();
+                        });
+                        target.style.cssText = [
+                            'display:block',
+                            'visibility:visible',
+                            'opacity:1',
+                            'position:static',
+                            'left:auto',
+                            'top:auto',
+                            'margin:0',
+                            'transform:none',
+                            'width:794px',
+                            'max-width:794px',
+                            'background:#ffffff',
+                        ].join(';');
+                    }
+                },
+            })
+                .then((canvas) => addCanvasToPdf(canvas))
                 .then(() => {
                     hideLoadingIndicator();
                     cleanup();
@@ -515,7 +566,7 @@ function generatePDF(area) {
                     alert('Error al generar PDF. Por favor intenta de nuevo.');
                     cleanup();
                 });
-        }, 350);
+        }, 400);
     });
 }
 
