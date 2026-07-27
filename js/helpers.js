@@ -180,7 +180,7 @@ function getCvPdfStyles() {
   transform: none !important;
   box-sizing: border-box !important;
   font-family: Arial, Helvetica, sans-serif !important;
-  font-size: 8px !important;
+  font-size: 9.5px !important;
   text-align: left !important;
 }
 .cv-container.cv-pdf-ready *,
@@ -214,30 +214,30 @@ function getCvPdfStyles() {
   font-family: Arial, Helvetica, sans-serif !important;
 }
 .cv-container.cv-pdf-ready .cv-header {
-  margin: 0 0 6px 0 !important;
-  padding: 0 0 5px 0 !important;
+  margin: 0 0 7px 0 !important;
+  padding: 0 0 6px 0 !important;
   border-bottom: 1.5px solid #2c3e50 !important;
   text-align: center !important;
 }
 .cv-container.cv-pdf-ready .cv-name {
-  font-size: 16px !important;
+  font-size: 18px !important;
   font-weight: bold !important;
   color: #2c3e50 !important;
-  margin: 0 0 2px 0 !important;
+  margin: 0 0 3px 0 !important;
   letter-spacing: 0.3px !important;
   text-transform: uppercase !important;
   line-height: 1.15 !important;
   text-align: center !important;
 }
 .cv-container.cv-pdf-ready .cv-title {
-  font-size: 9.5px !important;
+  font-size: 11px !important;
   color: #555 !important;
   font-style: italic !important;
   margin: 0 0 3px 0 !important;
   text-align: center !important;
 }
 .cv-container.cv-pdf-ready .cv-contact {
-  font-size: 8px !important;
+  font-size: 9.5px !important;
   color: #666 !important;
   line-height: 1.4 !important;
   text-align: center !important;
@@ -247,18 +247,18 @@ function getCvPdfStyles() {
   color: inherit !important;
   margin: 0 5px !important;
   white-space: nowrap !important;
-  font-size: 8px !important;
+  font-size: 9.5px !important;
 }
 .cv-container.cv-pdf-ready .cv-section {
-  margin: 0 0 6px 0 !important;
+  margin: 0 0 7px 0 !important;
   padding: 0 !important;
   clear: both !important;
 }
 .cv-container.cv-pdf-ready .cv-section-title {
-  font-size: 10.5px !important;
+  font-size: 12px !important;
   font-weight: bold !important;
   color: #2c3e50 !important;
-  margin: 0 0 2px 0 !important;
+  margin: 0 0 3px 0 !important;
   text-transform: uppercase !important;
   letter-spacing: 0.3px !important;
   line-height: 1.2 !important;
@@ -267,13 +267,13 @@ function getCvPdfStyles() {
 .cv-container.cv-pdf-ready .cv-divider {
   height: 1px !important;
   background: #bdc3c7 !important;
-  margin: 0 0 3px 0 !important;
+  margin: 0 0 4px 0 !important;
   border: 0 !important;
 }
 .cv-container.cv-pdf-ready .cv-about {
-  font-size: 8px !important;
+  font-size: 9.5px !important;
   text-align: justify !important;
-  line-height: 1.35 !important;
+  line-height: 1.4 !important;
   color: #444 !important;
   margin: 0 !important;
 }
@@ -281,7 +281,7 @@ function getCvPdfStyles() {
 .cv-container.cv-pdf-ready .cv-education-item,
 .cv-container.cv-pdf-ready .cv-project,
 .cv-container.cv-pdf-ready .cv-achievement {
-  margin: 0 0 4px 0 !important;
+  margin: 0 0 5px 0 !important;
   padding: 0 !important;
   clear: both !important;
   overflow: hidden !important;
@@ -297,7 +297,7 @@ function getCvPdfStyles() {
 .cv-container.cv-pdf-ready .cv-achievement-title,
 .cv-container.cv-pdf-ready .cv-project-name {
   float: left !important;
-  font-size: 9px !important;
+  font-size: 10.5px !important;
   font-weight: bold !important;
   color: #2c3e50 !important;
   margin: 0 !important;
@@ -307,7 +307,7 @@ function getCvPdfStyles() {
 .cv-container.cv-pdf-ready .cv-education-period,
 .cv-container.cv-pdf-ready .cv-achievement-date {
   float: right !important;
-  font-size: 7.5px !important;
+  font-size: 9px !important;
   color: #777 !important;
   font-style: italic !important;
   white-space: nowrap !important;
@@ -315,7 +315,7 @@ function getCvPdfStyles() {
 }
 .cv-container.cv-pdf-ready .cv-item-company {
   clear: both !important;
-  font-size: 8.5px !important;
+  font-size: 10px !important;
   color: #555 !important;
   font-weight: 600 !important;
   margin: 0 !important;
@@ -324,13 +324,13 @@ function getCvPdfStyles() {
 .cv-container.cv-pdf-ready .cv-achievement-location,
 .cv-container.cv-pdf-ready .cv-education-faculty {
   clear: both !important;
-  font-size: 7.5px !important;
+  font-size: 9px !important;
   color: #888 !important;
   margin: 0 0 2px 0 !important;
 }
 .cv-container.cv-pdf-ready .cv-education-university {
   clear: both !important;
-  font-size: 8px !important;
+  font-size: 9.5px !important;
   color: #555 !important;
   margin: 0 !important;
 }
@@ -339,9 +339,9 @@ function getCvPdfStyles() {
 .cv-container.cv-pdf-ready .cv-achievement-description,
 .cv-container.cv-pdf-ready .cv-project-subtitle {
   clear: both !important;
-  font-size: 8px !important;
+  font-size: 9.5px !important;
   text-align: justify !important;
-  line-height: 1.35 !important;
+  line-height: 1.4 !important;
   color: #444 !important;
   margin: 0 !important;
 }
@@ -357,28 +357,28 @@ function getCvPdfStyles() {
   padding: 0 !important;
 }
 .cv-container.cv-pdf-ready .cv-bullet-row {
-  margin: 0 0 1.5px 0 !important;
+  margin: 0 0 2px 0 !important;
   padding: 0 !important;
   overflow: hidden !important;
 }
 .cv-container.cv-pdf-ready .cv-dot-wrap {
   float: left !important;
-  width: 9px !important;
-  padding-top: 3px !important;
+  width: 10px !important;
+  padding-top: 4px !important;
   line-height: 0 !important;
 }
 .cv-container.cv-pdf-ready .cv-dot {
   display: block !important;
-  width: 3px !important;
-  height: 3px !important;
+  width: 3.5px !important;
+  height: 3.5px !important;
   background-color: #2c3e50 !important;
   border-radius: 50% !important;
 }
 .cv-container.cv-pdf-ready .cv-bullet-text {
   display: block !important;
-  margin-left: 9px !important;
-  font-size: 8px !important;
-  line-height: 1.35 !important;
+  margin-left: 10px !important;
+  font-size: 9.5px !important;
+  line-height: 1.4 !important;
   color: #444 !important;
   text-align: justify !important;
   float: none !important;
