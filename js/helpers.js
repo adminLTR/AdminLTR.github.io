@@ -158,230 +158,240 @@ function initCVModal() {
 // ====================================
 
 function getCvPdfStyles() {
+    // All rules scoped + !important so site CSS cannot leak or shift layout
     return `
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html, body {
-  margin: 0;
-  padding: 0;
-  background: #ffffff;
-  width: 100%;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 8px;
-  color: #333;
-  -webkit-print-color-adjust: exact;
-  print-color-adjust: exact;
+#cv-pdf-host {
+  position: fixed !important;
+  left: 0 !important;
+  top: 0 !important;
+  width: 794px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: #ffffff !important;
+  z-index: 999998 !important;
+  opacity: 1 !important;
+  pointer-events: none !important;
+  transform: none !important;
+  overflow: visible !important;
+  box-sizing: border-box !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-size: 8px !important;
+  color: #333 !important;
+  line-height: 1.3 !important;
+  text-align: left !important;
 }
-body {
-  display: flex;
-  justify-content: center;
+#cv-pdf-host *,
+#cv-pdf-host *::before,
+#cv-pdf-host *::after {
+  box-sizing: border-box !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+  transform: none !important;
+  float: none;
 }
-.cv-container {
-  font-family: Arial, Helvetica, sans-serif;
-  width: 700px;
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 8px 18px 10px 18px;
-  background: #ffffff;
-  color: #333;
-  line-height: 1.28;
+#cv-pdf-host .cv-container {
+  width: 794px !important;
+  max-width: 794px !important;
+  margin: 0 !important;
+  padding: 10px 28px 14px 28px !important;
+  background: #ffffff !important;
+  color: #333 !important;
+  line-height: 1.3 !important;
+  position: relative !important;
+  left: 0 !important;
+  top: 0 !important;
 }
-h1, h2, p, a, ul, li, div {
-  font-family: Arial, Helvetica, sans-serif;
+#cv-pdf-host a {
+  color: inherit !important;
+  text-decoration: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: inherit !important;
+  font-weight: inherit !important;
+  text-transform: none !important;
+  letter-spacing: normal !important;
+  display: inline !important;
 }
-a {
-  color: inherit;
-  text-decoration: none;
-  margin: 0;
-  font-size: inherit;
-  font-weight: inherit;
-  text-transform: none;
+#cv-pdf-host ul {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
-ul { list-style: none; margin: 0; padding: 0; }
-.cv-header {
-  margin: 0 0 5px 0;
-  padding: 0 0 4px 0;
-  border-bottom: 1.5px solid #2c3e50;
-  text-align: center;
+#cv-pdf-host h1,
+#cv-pdf-host h2 {
+  margin: 0 !important;
+  padding: 0 !important;
+  font-weight: bold !important;
 }
-.cv-name {
-  font-size: 15px;
-  font-weight: bold;
-  color: #2c3e50;
-  margin: 0 0 2px 0;
-  letter-spacing: 0.2px;
-  text-transform: uppercase;
-  line-height: 1.15;
+#cv-pdf-host .cv-header {
+  margin: 0 0 6px 0 !important;
+  padding: 0 0 5px 0 !important;
+  border-bottom: 1.5px solid #2c3e50 !important;
+  text-align: center !important;
 }
-.cv-title {
-  font-size: 9px;
-  color: #555;
-  font-style: italic;
-  margin: 0 0 2px 0;
+#cv-pdf-host .cv-name {
+  font-size: 16px !important;
+  font-weight: bold !important;
+  color: #2c3e50 !important;
+  margin: 0 0 2px 0 !important;
+  letter-spacing: 0.3px !important;
+  text-transform: uppercase !important;
+  line-height: 1.15 !important;
+  text-align: center !important;
 }
-.cv-contact {
-  font-size: 7.5px;
-  color: #666;
-  line-height: 1.35;
-  text-align: center;
+#cv-pdf-host .cv-title {
+  font-size: 9.5px !important;
+  color: #555 !important;
+  font-style: italic !important;
+  margin: 0 0 3px 0 !important;
+  text-align: center !important;
 }
-.cv-contact span,
-.cv-contact a {
-  color: inherit;
-  text-decoration: none;
-  margin: 0 4px;
-  white-space: nowrap;
-  font-size: 7.5px;
+#cv-pdf-host .cv-contact {
+  font-size: 8px !important;
+  color: #666 !important;
+  line-height: 1.4 !important;
+  text-align: center !important;
 }
-.cv-section { margin: 0 0 5px 0; padding: 0; }
-.cv-section-title {
-  font-size: 9.5px;
-  font-weight: bold;
-  color: #2c3e50;
-  margin: 0 0 2px 0;
-  text-transform: uppercase;
-  letter-spacing: 0.25px;
-  line-height: 1.2;
+#cv-pdf-host .cv-contact span,
+#cv-pdf-host .cv-contact a {
+  color: inherit !important;
+  margin: 0 5px !important;
+  white-space: nowrap !important;
+  font-size: 8px !important;
 }
-.cv-divider {
-  height: 1px;
-  background: #bdc3c7;
-  margin: 0 0 3px 0;
+#cv-pdf-host .cv-section {
+  margin: 0 0 6px 0 !important;
+  padding: 0 !important;
+  clear: both !important;
 }
-.cv-about {
-  font-size: 7.5px;
-  text-align: justify;
-  line-height: 1.32;
-  color: #444;
-  margin: 0;
+#cv-pdf-host .cv-section-title {
+  font-size: 10.5px !important;
+  font-weight: bold !important;
+  color: #2c3e50 !important;
+  margin: 0 0 2px 0 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.3px !important;
+  line-height: 1.2 !important;
+  text-align: left !important;
 }
-.cv-item { margin: 0 0 3.5px 0; }
-.cv-item:last-child { margin-bottom: 0; }
-.cv-item-header { overflow: hidden; margin-bottom: 1px; }
-.cv-item-title {
-  float: left;
-  font-size: 8.5px;
-  font-weight: bold;
-  color: #2c3e50;
-  margin: 0;
-  max-width: 70%;
+#cv-pdf-host .cv-divider {
+  height: 1px !important;
+  background: #bdc3c7 !important;
+  margin: 0 0 3px 0 !important;
+  border: 0 !important;
 }
-.cv-item-date {
-  float: right;
-  font-size: 7px;
-  color: #777;
-  font-style: italic;
-  white-space: nowrap;
+#cv-pdf-host .cv-about {
+  font-size: 8px !important;
+  text-align: justify !important;
+  line-height: 1.35 !important;
+  color: #444 !important;
+  margin: 0 !important;
 }
-.cv-item-company {
-  clear: both;
-  font-size: 8px;
-  color: #555;
-  font-weight: 600;
-  margin: 0;
+#cv-pdf-host .cv-item,
+#cv-pdf-host .cv-education-item,
+#cv-pdf-host .cv-project,
+#cv-pdf-host .cv-achievement {
+  margin: 0 0 4px 0 !important;
+  padding: 0 !important;
+  clear: both !important;
+  overflow: hidden !important;
 }
-.cv-item-location {
-  clear: both;
-  font-size: 7px;
-  color: #888;
-  margin: 0 0 1px 0;
+#cv-pdf-host .cv-item-header,
+#cv-pdf-host .cv-education-header,
+#cv-pdf-host .cv-achievement-header {
+  overflow: hidden !important;
+  margin-bottom: 1px !important;
 }
-.cv-item-description {
-  clear: both;
-  font-size: 7.5px;
-  text-align: justify;
-  line-height: 1.32;
-  color: #444;
-  margin: 0;
+#cv-pdf-host .cv-item-title,
+#cv-pdf-host .cv-education-degree,
+#cv-pdf-host .cv-achievement-title,
+#cv-pdf-host .cv-project-name {
+  float: left !important;
+  font-size: 9px !important;
+  font-weight: bold !important;
+  color: #2c3e50 !important;
+  margin: 0 !important;
+  max-width: 72% !important;
 }
-.cv-desc-list { clear: both; margin: 1px 0 0 0; padding: 0; }
-.cv-bullet-row { margin: 0 0 1px 0; padding: 0; overflow: hidden; }
-.cv-dot-wrap { float: left; width: 8px; padding-top: 3px; line-height: 0; }
-.cv-dot {
-  display: block;
-  width: 2.5px;
-  height: 2.5px;
-  background-color: #2c3e50;
-  border-radius: 50%;
+#cv-pdf-host .cv-item-date,
+#cv-pdf-host .cv-education-period,
+#cv-pdf-host .cv-achievement-date {
+  float: right !important;
+  font-size: 7.5px !important;
+  color: #777 !important;
+  font-style: italic !important;
+  white-space: nowrap !important;
+  margin: 0 !important;
 }
-.cv-bullet-text {
-  display: block;
-  margin-left: 8px;
-  font-size: 7.5px;
-  line-height: 1.32;
-  color: #444;
-  text-align: justify;
+#cv-pdf-host .cv-item-company {
+  clear: both !important;
+  font-size: 8.5px !important;
+  color: #555 !important;
+  font-weight: 600 !important;
+  margin: 0 !important;
 }
-.cv-education-item { margin: 0 0 3.5px 0; overflow: hidden; }
-.cv-education-item:last-child { margin-bottom: 0; }
-.cv-education-header { overflow: hidden; }
-.cv-education-degree {
-  float: left;
-  font-size: 8.5px;
-  font-weight: bold;
-  color: #2c3e50;
-  max-width: 70%;
+#cv-pdf-host .cv-item-location,
+#cv-pdf-host .cv-achievement-location,
+#cv-pdf-host .cv-education-faculty {
+  clear: both !important;
+  font-size: 7.5px !important;
+  color: #888 !important;
+  margin: 0 0 2px 0 !important;
 }
-.cv-education-period {
-  float: right;
-  font-size: 7px;
-  color: #777;
-  font-style: italic;
-  white-space: nowrap;
+#cv-pdf-host .cv-education-university {
+  clear: both !important;
+  font-size: 8px !important;
+  color: #555 !important;
+  margin: 0 !important;
 }
-.cv-education-university {
-  clear: both;
-  font-size: 7.5px;
-  color: #555;
-  margin: 0;
+#cv-pdf-host .cv-item-description,
+#cv-pdf-host .cv-project-description,
+#cv-pdf-host .cv-achievement-description,
+#cv-pdf-host .cv-project-subtitle {
+  clear: both !important;
+  font-size: 8px !important;
+  text-align: justify !important;
+  line-height: 1.35 !important;
+  color: #444 !important;
+  margin: 0 !important;
 }
-.cv-education-faculty { font-size: 7px; color: #888; }
-.cv-project { margin: 0 0 3.5px 0; }
-.cv-project:last-child { margin-bottom: 0; }
-.cv-project-header { margin: 0; }
-.cv-project-name { font-size: 8.5px; font-weight: bold; color: #2c3e50; }
-.cv-project-subtitle {
-  font-size: 7.5px;
-  color: #555;
-  font-style: italic;
-  margin: 0 0 1px 0;
+#cv-pdf-host .cv-project-subtitle {
+  font-style: italic !important;
+  color: #555 !important;
+  margin: 0 0 1px 0 !important;
+  text-align: left !important;
 }
-.cv-project-description {
-  font-size: 7.5px;
-  text-align: justify;
-  line-height: 1.32;
-  color: #444;
-  margin: 0;
+#cv-pdf-host .cv-desc-list {
+  clear: both !important;
+  margin: 1px 0 0 0 !important;
+  padding: 0 !important;
 }
-.cv-achievement { margin: 0 0 3.5px 0; overflow: hidden; }
-.cv-achievement:last-child { margin-bottom: 0; }
-.cv-achievement-header { overflow: hidden; }
-.cv-achievement-title {
-  float: left;
-  font-size: 8.5px;
-  font-weight: bold;
-  color: #2c3e50;
-  max-width: 70%;
+#cv-pdf-host .cv-bullet-row {
+  margin: 0 0 1.5px 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
 }
-.cv-achievement-date {
-  float: right;
-  font-size: 7px;
-  color: #777;
-  font-style: italic;
-  white-space: nowrap;
+#cv-pdf-host .cv-dot-wrap {
+  float: left !important;
+  width: 9px !important;
+  padding-top: 3px !important;
+  line-height: 0 !important;
 }
-.cv-achievement-location {
-  clear: both;
-  font-size: 7px;
-  color: #888;
-  margin: 0 0 1px 0;
+#cv-pdf-host .cv-dot {
+  display: block !important;
+  width: 3px !important;
+  height: 3px !important;
+  background-color: #2c3e50 !important;
+  border-radius: 50% !important;
 }
-.cv-achievement-description {
-  clear: both;
-  font-size: 7.5px;
-  text-align: justify;
-  line-height: 1.32;
-  color: #444;
-  margin: 0;
+#cv-pdf-host .cv-bullet-text {
+  display: block !important;
+  margin-left: 9px !important;
+  font-size: 8px !important;
+  line-height: 1.35 !important;
+  color: #444 !important;
+  text-align: justify !important;
+  float: none !important;
 }
 `.trim();
 }
@@ -405,37 +415,18 @@ function generatePDF(area) {
         }
     });
 
-    const frame = document.createElement('iframe');
-    frame.id = 'cv-pdf-frame';
-    frame.setAttribute('aria-hidden', 'true');
-    frame.style.cssText = [
-        'position:fixed',
-        'left:50%',
-        'top:0',
-        'transform:translateX(-50%)',
-        'width:794px',
-        'height:1123px',
-        'border:0',
-        'margin:0',
-        'padding:0',
-        'z-index:999998',
-        'opacity:1',
-        'pointer-events:none',
-        'background:#ffffff',
-    ].join(';');
-    document.body.appendChild(frame);
+    // Host in the main document at (0,0) with NO transforms (iframe/transform caused left crop)
+    const styleEl = document.createElement('style');
+    styleEl.id = 'cv-pdf-host-styles';
+    styleEl.textContent = getCvPdfStyles();
 
-    const frameDoc = frame.contentDocument || frame.contentWindow.document;
-    frameDoc.open();
-    frameDoc.write(`<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<style>${getCvPdfStyles()}</style>
-</head>
-<body></body>
-</html>`);
-    frameDoc.close();
+    const host = document.createElement('div');
+    host.id = 'cv-pdf-host';
+    host.setAttribute('aria-hidden', 'true');
+    host.appendChild(clone);
+
+    document.head.appendChild(styleEl);
+    document.body.appendChild(host);
 
     const prevScrollX = window.scrollX;
     const prevScrollY = window.scrollY;
@@ -445,56 +436,66 @@ function generatePDF(area) {
     const areaSlug = area.replace(/\s+/g, '_');
 
     const cleanup = () => {
-        frame.remove();
+        host.remove();
+        styleEl.remove();
         window.scrollTo(prevScrollX, prevScrollY);
     };
 
-    setTimeout(() => {
-        frameDoc.body.innerHTML = clone.outerHTML;
-        const target = frameDoc.querySelector('.cv-container');
-        if (!target) {
-            hideLoadingIndicator();
-            cleanup();
-            alert('Error al generar PDF. Por favor intenta de nuevo.');
-            return;
-        }
-
-        const opt = {
-            margin: [8, 12, 8, 12],
-            filename: `CV-${nameSlug}-${areaSlug}.pdf`,
-            image: { type: 'jpeg', quality: 0.98 },
-            html2canvas: {
-                scale: 2,
-                useCORS: true,
-                backgroundColor: '#ffffff',
-                logging: false,
-                scrollX: 0,
-                scrollY: 0,
-                windowWidth: 794,
+    const opt = {
+        margin: [10, 10, 10, 10],
+        filename: `CV-${nameSlug}-${areaSlug}.pdf`,
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: {
+            scale: 2,
+            useCORS: true,
+            backgroundColor: '#ffffff',
+            logging: false,
+            scrollX: 0,
+            scrollY: 0,
+            windowWidth: 794,
+            x: 0,
+            y: 0,
+            onclone: (clonedDoc) => {
+                const clonedHost = clonedDoc.getElementById('cv-pdf-host');
+                if (clonedHost) {
+                    clonedHost.style.left = '0';
+                    clonedHost.style.top = '0';
+                    clonedHost.style.transform = 'none';
+                    clonedHost.style.margin = '0';
+                    clonedHost.style.position = 'fixed';
+                }
+                if (clonedDoc.body) {
+                    clonedDoc.body.style.margin = '0';
+                    clonedDoc.body.style.padding = '0';
+                }
             },
-            jsPDF: {
-                unit: 'mm',
-                format: 'a4',
-                orientation: 'portrait',
-            },
-            pagebreak: { mode: ['css'] },
-        };
+        },
+        jsPDF: {
+            unit: 'mm',
+            format: 'a4',
+            orientation: 'portrait',
+        },
+        pagebreak: { mode: ['css'] },
+    };
 
-        html2pdf()
-            .set(opt)
-            .from(target)
-            .save()
-            .then(() => {
-                hideLoadingIndicator();
-                cleanup();
-            })
-            .catch((error) => {
-                console.error('Error generating PDF:', error);
-                hideLoadingIndicator();
-                alert('Error al generar PDF. Por favor intenta de nuevo.');
-                cleanup();
-            });
-    }, 200);
+    requestAnimationFrame(() => {
+        setTimeout(() => {
+            html2pdf()
+                .set(opt)
+                .from(clone)
+                .save()
+                .then(() => {
+                    hideLoadingIndicator();
+                    cleanup();
+                })
+                .catch((error) => {
+                    console.error('Error generating PDF:', error);
+                    hideLoadingIndicator();
+                    alert('Error al generar PDF. Por favor intenta de nuevo.');
+                    cleanup();
+                });
+        }, 250);
+    });
 }
 
 function showLoadingIndicator() {
