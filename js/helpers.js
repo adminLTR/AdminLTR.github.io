@@ -157,6 +157,10 @@ function initCVModal() {
 // PDF Generation
 // ====================================
 
+// ====================================
+// PDF Generation
+// ====================================
+
 function generatePDF(area) {
     const lang = getCurrentLang();
     populateCVTemplate(lang, area);
@@ -176,43 +180,46 @@ function generatePDF(area) {
         }
     });
 
-    // Stable on-screen host under the loading overlay (avoids left/top capture shift)
-    const renderHost = document.createElement('div');
-    renderHost.id = 'cv-pdf-render-host';
-    renderHost.setAttribute('aria-hidden', 'true');
-    renderHost.style.cssText = [
+    // Isolated iframe so site CSS (header, h2, etc.) cannot break CV layout
+    const frame = document.createElement('iframe');
+    frame.id = 'cv-pdf-frame';
+    frame.setAttribute('aria-hidden', 'true');
+    frame.style.cssText = [
         'position:fixed',
         'left:0',
         'top:0',
         'width:794px',
-        'max-width:794px',
+        'height:1123px',
+        'border:0',
         'margin:0',
         'padding:0',
-        'background:#ffffff',
         'z-index:999998',
         'opacity:1',
         'pointer-events:none',
-        'overflow:hidden',
-        'transform:none',
-        'box-sizing:border-box',
-    ].join(';');
-
-    clone.style.cssText = [
-        'position:relative',
-        'left:0',
-        'top:0',
-        'margin:0',
-        'padding:12px 24px 16px 24px',
-        'width:794px',
-        'max-width:794px',
-        'transform:none',
-        'box-sizing:border-box',
         'background:#ffffff',
-        'font-family:Arial,Helvetica,sans-serif',
     ].join(';');
+    document.body.appendChild(frame);
 
-    renderHost.appendChild(clone);
-    document.body.appendChild(renderHost);
+    const frameDoc = frame.contentDocument || frame.contentWindow.document;
+    const cssHref = new URL('./css/cv-template.css', window.location.href).href;
+    frameDoc.open();
+    frameDoc.write(`<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="${cssHref}">
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #ffffff;
+    width: 794px;
+  }
+</style>
+</head>
+<body class="cv-pdf-root"></body>
+</html>`);
+    frameDoc.close();
 
     const prevScrollX = window.scrollX;
     const prevScrollY = window.scrollY;
@@ -220,81 +227,71 @@ function generatePDF(area) {
 
     const nameSlug = profile.name.replace(/\s+/g, '_');
     const areaSlug = area.replace(/\s+/g, '_');
-    const opt = {
-        margin: [8, 10, 8, 10],
-        filename: `CV-${nameSlug}-${areaSlug}.pdf`,
-        image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: {
-            scale: 2,
-            useCORS: true,
-            backgroundColor: '#ffffff',
-            logging: false,
-            scrollX: 0,
-            scrollY: 0,
-            windowWidth: 794,
-            width: 794,
-            x: 0,
-            y: 0,
-            onclone: (clonedDoc) => {
-                if (clonedDoc?.body) {
-                    clonedDoc.body.style.margin = '0';
-                    clonedDoc.body.style.padding = '0';
-                    clonedDoc.body.style.overflow = 'hidden';
-                }
-                const host = clonedDoc.getElementById('cv-pdf-render-host');
-                if (host) {
-                    host.style.left = '0';
-                    host.style.top = '0';
-                    host.style.margin = '0';
-                    host.style.padding = '0';
-                    host.style.opacity = '1';
-                    host.style.transform = 'none';
-                    host.style.overflow = 'hidden';
-                }
-                const container = host?.querySelector('.cv-container') || clonedDoc.querySelector('.cv-container');
-                if (container) {
-                    container.style.left = '0';
-                    container.style.top = '0';
-                    container.style.margin = '0';
-                    container.style.transform = 'none';
-                    container.style.position = 'relative';
-                    container.style.width = '794px';
-                    container.style.maxWidth = '794px';
-                    container.style.boxSizing = 'border-box';
-                }
-            },
-        },
-        jsPDF: {
-            unit: 'mm',
-            format: 'a4',
-            orientation: 'portrait',
-        },
-        pagebreak: { mode: ['avoid-all', 'css', 'legacy'] },
-    };
 
     const cleanup = () => {
-        renderHost.remove();
+        frame.remove();
         window.scrollTo(prevScrollX, prevScrollY);
     };
 
-    requestAnimationFrame(() => {
-        setTimeout(() => {
-            html2pdf()
-                .set(opt)
-                .from(clone)
-                .save()
-                .then(() => {
-                    hideLoadingIndicator();
-                    cleanup();
-                })
-                .catch((error) => {
-                    console.error('Error generating PDF:', error);
-                    hideLoadingIndicator();
-                    alert('Error al generar PDF. Por favor intenta de nuevo.');
-                    cleanup();
-                });
-        }, 300);
-    });
+    let exported = false;
+    const runExport = () => {
+        if (exported) return;
+        exported = true;
+
+        frameDoc.body.innerHTML = clone.outerHTML;
+        const target = frameDoc.querySelector('.cv-container');
+        if (!target) {
+            hideLoadingIndicator();
+            cleanup();
+            alert('Error al generar PDF. Por favor intenta de nuevo.');
+            return;
+        }
+
+        const opt = {
+            margin: [3, 8, 5, 8],
+            filename: `CV-${nameSlug}-${areaSlug}.pdf`,
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: {
+                scale: 2,
+                useCORS: true,
+                letterRendering: true,
+                backgroundColor: '#ffffff',
+                logging: false,
+                scrollX: 0,
+                scrollY: 0,
+                windowWidth: 794,
+            },
+            jsPDF: {
+                unit: 'mm',
+                format: 'a4',
+                orientation: 'portrait',
+            },
+            pagebreak: { mode: ['css'] },
+        };
+
+        html2pdf()
+            .set(opt)
+            .from(target)
+            .save()
+            .then(() => {
+                hideLoadingIndicator();
+                cleanup();
+            })
+            .catch((error) => {
+                console.error('Error generating PDF:', error);
+                hideLoadingIndicator();
+                alert('Error al generar PDF. Por favor intenta de nuevo.');
+                cleanup();
+            });
+    };
+
+    // Wait for iframe CSS to load before capturing
+    const stylesheet = frameDoc.querySelector('link[rel="stylesheet"]');
+    if (stylesheet) {
+        stylesheet.onload = () => setTimeout(runExport, 120);
+        stylesheet.onerror = () => setTimeout(runExport, 120);
+    }
+    setTimeout(runExport, 500);
 }
 
 function showLoadingIndicator() {

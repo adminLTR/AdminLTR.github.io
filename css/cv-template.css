@@ -1,6 +1,7 @@
 /* ====================================
    CV Template Styles - Compact PDF
    (Avoid flex gap / webfont icons — unreliable in html2canvas)
+   Scoped so site CSS cannot leak into the CV.
    ==================================== */
 
 #cv-template {
@@ -11,52 +12,76 @@
     visibility: hidden;
 }
 
-.cv-container {
+#cv-template .cv-container,
+.cv-pdf-root .cv-container {
     font-family: Arial, Helvetica, sans-serif;
     width: 794px;
     max-width: 794px;
-    margin: 0;
-    padding: 12px 24px 16px 24px;
+    margin: 0 auto;
+    padding: 0 20px 12px 20px;
     background: #ffffff;
     color: #333;
     line-height: 1.3;
     box-sizing: border-box;
-    position: relative;
-    left: 0;
-    top: 0;
-    overflow: hidden;
 }
 
-#cv-pdf-render-host {
-    position: fixed !important;
-    left: 0 !important;
-    top: 0 !important;
-    width: 794px !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    transform: none !important;
-    box-sizing: border-box !important;
-}
-
-#cv-pdf-render-host .cv-container,
-#cv-pdf-render-host .cv-container * {
+/* Reset elements that site CSS may override */
+#cv-template h1,
+#cv-template h2,
+#cv-template p,
+#cv-template a,
+#cv-template ul,
+#cv-template li,
+#cv-template div,
+.cv-pdf-root h1,
+.cv-pdf-root h2,
+.cv-pdf-root p,
+.cv-pdf-root a,
+.cv-pdf-root ul,
+.cv-pdf-root li,
+.cv-pdf-root div {
     box-sizing: border-box;
 }
 
-#cv-pdf-render-host a {
-    margin: 0;
+#cv-template h1,
+#cv-template h2,
+.cv-pdf-root h1,
+.cv-pdf-root h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    text-transform: none;
+    letter-spacing: normal;
+}
+
+#cv-template a,
+.cv-pdf-root a {
     color: inherit;
+    text-decoration: none;
+    margin: 0;
+    font-size: inherit;
+    font-weight: inherit;
+    text-transform: none;
+    letter-spacing: normal;
+}
+
+#cv-template ul,
+.cv-pdf-root ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 /* Header */
-.cv-header {
+#cv-template .cv-header,
+.cv-pdf-root .cv-header {
     margin: 0 0 6px 0;
     padding: 0 0 5px 0;
     border-bottom: 1.5px solid #2c3e50;
     text-align: center;
 }
 
-.cv-name {
+#cv-template .cv-name,
+.cv-pdf-root .cv-name {
     font-size: 17px;
     font-weight: bold;
     color: #2c3e50;
@@ -66,54 +91,60 @@
     line-height: 1.15;
 }
 
-.cv-title {
+#cv-template .cv-title,
+.cv-pdf-root .cv-title {
     font-size: 10px;
     color: #555;
     font-style: italic;
     margin: 0 0 3px 0;
 }
 
-.cv-contact {
+#cv-template .cv-contact,
+.cv-pdf-root .cv-contact {
     font-size: 8.5px;
     color: #666;
     line-height: 1.4;
     text-align: center;
 }
 
-.cv-contact span,
-.cv-contact a {
+#cv-template .cv-contact span,
+#cv-template .cv-contact a,
+.cv-pdf-root .cv-contact span,
+.cv-pdf-root .cv-contact a {
     color: inherit;
     text-decoration: none;
     margin: 0 5px;
     white-space: nowrap;
-}
-
-.cv-contact a:hover {
-    text-decoration: underline;
+    font-size: 8.5px;
 }
 
 /* Sections */
-.cv-section {
+#cv-template .cv-section,
+.cv-pdf-root .cv-section {
     margin: 0 0 6px 0;
     padding: 0;
 }
 
-.cv-section-title {
+#cv-template .cv-section-title,
+.cv-pdf-root .cv-section-title {
     font-size: 11px;
     font-weight: bold;
     color: #2c3e50;
     margin: 0 0 2px 0;
     text-transform: uppercase;
     letter-spacing: 0.3px;
+    line-height: 1.2;
 }
 
-.cv-divider {
+#cv-template .cv-divider,
+.cv-pdf-root .cv-divider {
     height: 1px;
     background: #bdc3c7;
     margin: 0 0 3px 0;
 }
 
-.cv-about {
+#cv-template .cv-about,
+.cv-pdf-root .cv-about {
     font-size: 8.5px;
     text-align: justify;
     line-height: 1.35;
@@ -122,20 +153,24 @@
 }
 
 /* Items */
-.cv-item {
+#cv-template .cv-item,
+.cv-pdf-root .cv-item {
     margin: 0 0 4px 0;
 }
 
-.cv-item:last-child {
+#cv-template .cv-item:last-child,
+.cv-pdf-root .cv-item:last-child {
     margin-bottom: 0;
 }
 
-.cv-item-header {
+#cv-template .cv-item-header,
+.cv-pdf-root .cv-item-header {
     overflow: hidden;
     margin-bottom: 1px;
 }
 
-.cv-item-title {
+#cv-template .cv-item-title,
+.cv-pdf-root .cv-item-title {
     float: left;
     font-size: 9.5px;
     font-weight: bold;
@@ -144,7 +179,8 @@
     max-width: 72%;
 }
 
-.cv-item-date {
+#cv-template .cv-item-date,
+.cv-pdf-root .cv-item-date {
     float: right;
     font-size: 8px;
     color: #777;
@@ -152,7 +188,8 @@
     white-space: nowrap;
 }
 
-.cv-item-company {
+#cv-template .cv-item-company,
+.cv-pdf-root .cv-item-company {
     clear: both;
     font-size: 9px;
     color: #555;
@@ -160,14 +197,16 @@
     margin: 0;
 }
 
-.cv-item-location {
+#cv-template .cv-item-location,
+.cv-pdf-root .cv-item-location {
     clear: both;
     font-size: 8px;
     color: #888;
     margin: 0 0 2px 0;
 }
 
-.cv-item-description {
+#cv-template .cv-item-description,
+.cv-pdf-root .cv-item-description {
     clear: both;
     font-size: 8.5px;
     text-align: justify;
@@ -177,26 +216,30 @@
 }
 
 /* Bullet rows */
-.cv-desc-list {
+#cv-template .cv-desc-list,
+.cv-pdf-root .cv-desc-list {
     clear: both;
     margin: 1px 0 0 0;
     padding: 0;
 }
 
-.cv-bullet-row {
+#cv-template .cv-bullet-row,
+.cv-pdf-root .cv-bullet-row {
     margin: 0 0 1.5px 0;
     padding: 0;
     overflow: hidden;
 }
 
-.cv-dot-wrap {
+#cv-template .cv-dot-wrap,
+.cv-pdf-root .cv-dot-wrap {
     float: left;
     width: 9px;
     padding-top: 3px;
     line-height: 0;
 }
 
-.cv-dot {
+#cv-template .cv-dot,
+.cv-pdf-root .cv-dot {
     display: block;
     width: 3px;
     height: 3px;
@@ -204,7 +247,8 @@
     border-radius: 50%;
 }
 
-.cv-bullet-text {
+#cv-template .cv-bullet-text,
+.cv-pdf-root .cv-bullet-text {
     display: block;
     margin-left: 9px;
     font-size: 8.5px;
@@ -214,20 +258,24 @@
 }
 
 /* Education */
-.cv-education-item {
+#cv-template .cv-education-item,
+.cv-pdf-root .cv-education-item {
     margin: 0 0 4px 0;
     overflow: hidden;
 }
 
-.cv-education-item:last-child {
+#cv-template .cv-education-item:last-child,
+.cv-pdf-root .cv-education-item:last-child {
     margin-bottom: 0;
 }
 
-.cv-education-header {
+#cv-template .cv-education-header,
+.cv-pdf-root .cv-education-header {
     overflow: hidden;
 }
 
-.cv-education-degree {
+#cv-template .cv-education-degree,
+.cv-pdf-root .cv-education-degree {
     float: left;
     font-size: 9.5px;
     font-weight: bold;
@@ -235,7 +283,8 @@
     max-width: 72%;
 }
 
-.cv-education-period {
+#cv-template .cv-education-period,
+.cv-pdf-root .cv-education-period {
     float: right;
     font-size: 8px;
     color: #777;
@@ -243,45 +292,53 @@
     white-space: nowrap;
 }
 
-.cv-education-university {
+#cv-template .cv-education-university,
+.cv-pdf-root .cv-education-university {
     clear: both;
     font-size: 8.5px;
     color: #555;
     margin: 0;
 }
 
-.cv-education-faculty {
+#cv-template .cv-education-faculty,
+.cv-pdf-root .cv-education-faculty {
     font-size: 8px;
     color: #888;
 }
 
 /* Projects */
-.cv-project {
+#cv-template .cv-project,
+.cv-pdf-root .cv-project {
     margin: 0 0 4px 0;
 }
 
-.cv-project:last-child {
+#cv-template .cv-project:last-child,
+.cv-pdf-root .cv-project:last-child {
     margin-bottom: 0;
 }
 
-.cv-project-header {
+#cv-template .cv-project-header,
+.cv-pdf-root .cv-project-header {
     margin: 0;
 }
 
-.cv-project-name {
+#cv-template .cv-project-name,
+.cv-pdf-root .cv-project-name {
     font-size: 9.5px;
     font-weight: bold;
     color: #2c3e50;
 }
 
-.cv-project-subtitle {
+#cv-template .cv-project-subtitle,
+.cv-pdf-root .cv-project-subtitle {
     font-size: 8.5px;
     color: #555;
     font-style: italic;
     margin: 0 0 1px 0;
 }
 
-.cv-project-description {
+#cv-template .cv-project-description,
+.cv-pdf-root .cv-project-description {
     font-size: 8.5px;
     text-align: justify;
     line-height: 1.35;
@@ -290,20 +347,24 @@
 }
 
 /* Achievements */
-.cv-achievement {
+#cv-template .cv-achievement,
+.cv-pdf-root .cv-achievement {
     margin: 0 0 4px 0;
     overflow: hidden;
 }
 
-.cv-achievement:last-child {
+#cv-template .cv-achievement:last-child,
+.cv-pdf-root .cv-achievement:last-child {
     margin-bottom: 0;
 }
 
-.cv-achievement-header {
+#cv-template .cv-achievement-header,
+.cv-pdf-root .cv-achievement-header {
     overflow: hidden;
 }
 
-.cv-achievement-title {
+#cv-template .cv-achievement-title,
+.cv-pdf-root .cv-achievement-title {
     float: left;
     font-size: 9.5px;
     font-weight: bold;
@@ -311,7 +372,8 @@
     max-width: 72%;
 }
 
-.cv-achievement-date {
+#cv-template .cv-achievement-date,
+.cv-pdf-root .cv-achievement-date {
     float: right;
     font-size: 8px;
     color: #777;
@@ -319,14 +381,16 @@
     white-space: nowrap;
 }
 
-.cv-achievement-location {
+#cv-template .cv-achievement-location,
+.cv-pdf-root .cv-achievement-location {
     clear: both;
     font-size: 8px;
     color: #888;
     margin: 0 0 1px 0;
 }
 
-.cv-achievement-description {
+#cv-template .cv-achievement-description,
+.cv-pdf-root .cv-achievement-description {
     clear: both;
     font-size: 8.5px;
     text-align: justify;
