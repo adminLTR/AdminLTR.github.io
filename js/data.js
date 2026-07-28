@@ -29,6 +29,101 @@ const languages = [
     'france',
 ];
 
+// Spoken languages for CV (compact section). Items with cvOnly:true are not shown on the website.
+const languageSkills = [
+    {
+        name: {
+            'great-britain': 'Spanish',
+            spain: 'Español',
+            italy: 'Spagnolo',
+            brazil: 'Espanhol',
+            france: 'Espagnol',
+        },
+        level: {
+            'great-britain': 'Native',
+            spain: 'Nativo',
+            italy: 'Madrelingua',
+            brazil: 'Nativo',
+            france: 'Langue maternelle',
+        },
+    },
+    {
+        name: {
+            'great-britain': 'English',
+            spain: 'Inglés',
+            italy: 'Inglese',
+            brazil: 'Inglês',
+            france: 'Anglais',
+        },
+        level: {
+            'great-britain': 'B2',
+            spain: 'B2',
+            italy: 'B2',
+            brazil: 'B2',
+            france: 'B2',
+        },
+    },
+    {
+        name: {
+            'great-britain': 'Italian',
+            spain: 'Italiano',
+            italy: 'Italiano',
+            brazil: 'Italiano',
+            france: 'Italien',
+        },
+        level: {
+            'great-britain': 'B2',
+            spain: 'B2',
+            italy: 'B2',
+            brazil: 'B2',
+            france: 'B2',
+        },
+    },
+    {
+        name: {
+            'great-britain': 'Portuguese',
+            spain: 'Portugués',
+            italy: 'Portoghese',
+            brazil: 'Português',
+            france: 'Portugais',
+        },
+        level: {
+            'great-britain': 'B2',
+            spain: 'B2',
+            italy: 'B2',
+            brazil: 'B2',
+            france: 'B2',
+        },
+    },
+    {
+        name: {
+            'great-britain': 'French',
+            spain: 'Francés',
+            italy: 'Francese',
+            brazil: 'Francês',
+            france: 'Français',
+        },
+        level: {
+            'great-britain': 'A2',
+            spain: 'A2',
+            italy: 'A2',
+            brazil: 'A2',
+            france: 'A2',
+        },
+    },
+    {
+        name: {
+            'great-britain': 'Peruvian Sign Language',
+            spain: 'Lengua de Señas Peruana',
+            italy: 'Lingua dei Segni Peruviana',
+            brazil: 'Língua de Sinais Peruana',
+            france: 'Langue des Signes Péruvienne',
+        },
+        level: null,
+        cvOnly: true,
+    },
+];
+
 // Labels for "Present" / month names when formatting from–to dates
 const dateLabels = {
     present: {

@@ -389,6 +389,28 @@ function getCvPdfStyles() {
   text-align: justify !important;
   float: none !important;
 }
+.cv-container.cv-pdf-ready .cv-languages-line {
+  font-size: 9.5px !important;
+  line-height: 1.45 !important;
+  color: #444 !important;
+  margin: 0 !important;
+  text-align: left !important;
+}
+.cv-container.cv-pdf-ready .cv-lang-item {
+  white-space: nowrap !important;
+  font-size: 9.5px !important;
+  color: #444 !important;
+}
+.cv-container.cv-pdf-ready .cv-lang-item strong {
+  font-weight: bold !important;
+  color: #2c3e50 !important;
+  font-size: 9.5px !important;
+}
+.cv-container.cv-pdf-ready .cv-lang-sep {
+  color: #999 !important;
+  margin: 0 1px !important;
+  font-size: 9.5px !important;
+}
 `.trim();
 }
 
@@ -756,6 +778,26 @@ function populateCVTemplate(lang, area) {
             </div>`;
         })
         .join('');
+
+    // Languages (compact one-line section; includes CV-only entries)
+    const langItems = typeof languageSkills !== 'undefined' ? languageSkills : [];
+    setSectionVisible('cv-section-languages', langItems.length > 0);
+    const langTitleEl = document.getElementById('cv-languages-title');
+    if (langTitleEl) {
+        langTitleEl.textContent = (currentInfo.links.languages || 'Languages').toUpperCase();
+    }
+    const langContentEl = document.getElementById('cv-languages-content');
+    if (langContentEl) {
+        langContentEl.innerHTML = langItems
+            .map((item) => {
+                const name = getLocalized(item.name, lang);
+                const level = item.level ? getLocalized(item.level, lang) : '';
+                return level
+                    ? `<span class="cv-lang-item"><strong>${name}</strong> (${level})</span>`
+                    : `<span class="cv-lang-item"><strong>${name}</strong></span>`;
+            })
+            .join('<span class="cv-lang-sep"> · </span>');
+    }
 
     // Skills (abilities list for area)
     const skillList =
