@@ -18,9 +18,6 @@ const profile = {
     },
 };
 
-// CV area versions (web is only for the website, not a downloadable CV)
-const cvAreas = ['Frontend', 'Backend', 'Data Science', 'Fullstack'];
-
 const languages = [
     'great-britain',
     'spain',
@@ -148,11 +145,11 @@ const dateLabels = {
 // ====================================
 const presentation = {
     web: {
-        'great-britain': "I'm a young final-year Software Engineering student at UNMSM (the oldest university in the Americas), with almost a year and a half of experience in software development and a focus on building IoT solutions and embedded systems with Artificial Intelligence. Passionate about innovation and research, I focus on real impact for the benefit of the community. I speak 6 languages and have completed 2 academic exchanges in Italy and Brazil. I am characterized by my leadership and self-taught attitude.",
-        spain: 'Soy un joven estudiante de último año de Ingeniería de Software de la UNMSM (Decana de América), con  casi 1 año y medio de experiencia en desarrollo de software  y enfoque en la construcción de soluciones IoT y sistemas embebidos con Inteligencia Artificial. Apasionado por la innovación, investigación y me enfoco en el impacto real en beneficio de la comunidad. Hablo 6 idiomas y he realizado 2 intercambios académicos en Italia y Brasil. Me caracterizo por mi liderazgo y actitud autodidacta.',
-        italy: "Sono un giovane studente dell'ultimo anno di Ingegneria del Software presso l'UNMSM (la più antica università delle Americhe), con quasi un anno e mezzo di esperienza nello sviluppo software e con focus sulla costruzione di soluzioni IoT e sistemi embedded con Intelligenza Artificiale. Appassionato di innovazione e ricerca, mi concentro sull'impatto reale a beneficio della comunità. Parlo 6 lingue e ho svolto 2 scambi accademici in Italia e Brasile. Mi caratterizzo per la mia leadership e attitudine autodidatta.",
-        brazil: 'Sou um jovem estudante do último ano de Engenharia de Software da UNMSM (a universidade mais antiga das Américas), com quase um ano e meio de experiência em desenvolvimento de software e foco na construção de soluções IoT e sistemas embarcados com Inteligência Artificial. Apaixonado por inovação e pesquisa, concentro-me no impacto real em benefício da comunidade. Falo 6 idiomas e realizei 2 intercâmbios acadêmicos na Itália e no Brasil. Caracterizo-me pela minha liderança e atitude autodidata.',
-        france: "Je suis un jeune étudiant en dernière année d'Ingénierie Logicielle à l'UNMSM (la plus ancienne université des Amériques), avec près d'un an et demi d'expérience en développement logiciel et une orientation vers la construction de solutions IoT et de systèmes embarqués avec de l'Intelligence Artificielle. Passionné par l'innovation et la recherche, je me concentre sur l'impact réel au bénéfice de la communauté. Je parle 6 langues et j'ai réalisé 2 échanges académiques en Italie et au Brésil. Je me caractérise par mon leadership et mon attitude autodidacte.",
+        'great-britain': 'Full Stack Developer with 1.5 years of experience, specialized in React, Node.js, Python and REST API development. Experience building web applications, microservice architectures, API integration, process automation and relational databases. Final-year Software Engineering student at UNMSM, with international experience in Italy and Brazil.',
+        spain: 'Desarrollador Full Stack con 1.5 años de experiencia, especializado en React, Node.js, Python y desarrollo de APIs REST. Experiencia construyendo aplicaciones web, arquitecturas de microservicios, integración de APIs, automatización de procesos y bases de datos relacionales. Estudiante de último año de Ingeniería de Software en la UNMSM, con experiencia internacional en Italia y Brasil.',
+        italy: "Sviluppatore Full Stack con 1,5 anni di esperienza, specializzato in React, Node.js, Python e sviluppo di API REST. Esperienza nella costruzione di applicazioni web, architetture a microservizi, integrazione di API, automazione dei processi e database relazionali. Studente dell'ultimo anno di Ingegneria del Software presso l'UNMSM, con esperienza internazionale in Italia e Brasile.",
+        brazil: 'Desenvolvedor Full Stack com 1,5 anos de experiência, especializado em React, Node.js, Python e desenvolvimento de APIs REST. Experiência na construção de aplicações web, arquiteturas de microsserviços, integração de APIs, automação de processos e bancos de dados relacionais. Estudante do último ano de Engenharia de Software na UNMSM, com experiência internacional na Itália e no Brasil.',
+        france: "Développeur Full Stack avec 1,5 an d'expérience, spécialisé en React, Node.js, Python et développement d'API REST. Expérience dans la construction d'applications web, d'architectures microservices, l'intégration d'API, l'automatisation de processus et les bases de données relationnelles. Étudiant en dernière année d'Ingénierie Logicielle à l'UNMSM, avec une expérience internationale en Italie et au Brésil.",
     },
     Frontend: {
         'great-britain': 'Frontend Developer and final-year Software Engineering student at UNMSM, with over a year of experience building dynamic, responsive and high-performance interfaces using ReactJS, JQuery, JavaScript and Flutter. I have solid experience integrating applications with RESTful APIs and Webhooks, optimizing the development cycle and the user experience. My international education in Italy and Brazil, along with my fluency in 6 languages, gives me a global perspective and a high capacity for learning and technical innovation.',
@@ -191,6 +188,65 @@ const presentation = {
 // ====================================
 const experience = [
     {
+        company: 'Motoworld',
+        location: {
+            'great-britain': 'Lima, Peru',
+            spain: 'Lima, Perú',
+            italy: 'Lima, Perù',
+            brazil: 'Lima, Peru',
+            france: 'Lima, Pérou',
+        },
+        from: { year: 2026, month: 6 },
+        to: { year: 2026, month: 8 },
+        position: {
+            'great-britain': 'Freelance Developer — Ecommerce',
+            spain: 'Desarrollador freelance — Ecommerce',
+            italy: 'Sviluppatore freelance — Ecommerce',
+            brazil: 'Desenvolvedor freelance — Ecommerce',
+            france: 'Développeur freelance — Ecommerce',
+        },
+        description: {
+            web: {
+                'great-britain': [
+                    'Developed a web application using Laravel under an MVC architecture, implementing frontend and backend features.',
+                    'Designed and implemented responsive web interfaces using Blade and Tailwind CSS.',
+                    'Integrated a payment gateway through REST APIs and Webhooks.',
+                    'Collaborated directly with the client on requirements definition and user stories under Scrum.',
+                    'Implemented Docker to standardize the development environment with PHP 8.3.',
+                ],
+                spain: [
+                    'Desarrollé una aplicación web utilizando Laravel bajo arquitectura MVC, implementando funcionalidades de frontend y backend.',
+                    'Diseñé e implementé interfaces web responsivas utilizando Blade y Tailwind CSS.',
+                    'Integré una pasarela de pagos mediante APIs REST y Webhooks.',
+                    'Colaboré directamente con el cliente en la definición de requerimientos e historias de usuario bajo Scrum.',
+                    'Implementé Docker para estandarizar el entorno de desarrollo con PHP 8.3.',
+                ],
+                italy: [
+                    "Ho sviluppato un'applicazione web utilizzando Laravel con architettura MVC, implementando funzionalità frontend e backend.",
+                    'Ho progettato e implementato interfacce web responsive utilizzando Blade e Tailwind CSS.',
+                    'Ho integrato un gateway di pagamento tramite API REST e Webhook.',
+                    'Ho collaborato direttamente con il cliente nella definizione dei requisiti e delle user stories secondo Scrum.',
+                    "Ho implementato Docker per standardizzare l'ambiente di sviluppo con PHP 8.3.",
+                ],
+                brazil: [
+                    'Desenvolvi uma aplicação web utilizando Laravel sob arquitetura MVC, implementando funcionalidades de frontend e backend.',
+                    'Projetei e implementei interfaces web responsivas utilizando Blade e Tailwind CSS.',
+                    'Integrei um gateway de pagamentos por meio de APIs REST e Webhooks.',
+                    'Colaborei diretamente com o cliente na definição de requisitos e histórias de usuário sob Scrum.',
+                    'Implementei Docker para padronizar o ambiente de desenvolvimento com PHP 8.3.',
+                ],
+                france: [
+                    "J'ai développé une application web avec Laravel sous architecture MVC, en implémentant des fonctionnalités frontend et backend.",
+                    "J'ai conçu et implémenté des interfaces web responsives avec Blade et Tailwind CSS.",
+                    "J'ai intégré une passerelle de paiement via des API REST et des Webhooks.",
+                    "J'ai collaboré directement avec le client sur la définition des exigences et des user stories selon Scrum.",
+                    "J'ai mis en place Docker pour standardiser l'environnement de développement avec PHP 8.3.",
+                ],
+            },
+        },
+        website: 'https://motoworld.pe',
+    },
+    {
         company: 'GM Group',
         image: 'experience/gmgroup-side.png',
         location: {
@@ -211,11 +267,51 @@ const experience = [
         },
         description: {
             web: {
-                'great-britain': 'Full-stack developer specializing in modern web solutions, database design and scalable architectures. I deployed production systems with processes automated through web scraping, providing continuous technical support that significantly improved staff efficiency, system performance and operational security.',
-                spain: 'Desarrollador full-stack especializado en soluciones web modernas, diseño de bases de datos y arquitecturas escalables. Desplegué sistemas en producción con procesos automatizados mediante web scraping, brindando soporte técnico continuo que mejoró significativamente la eficiencia del personal, el rendimiento de los sistemas y la seguridad operativa.',
-                italy: "Sviluppatore full-stack specializzato in soluzioni web moderne, progettazione di database e architetture scalabili. Ho distribuito sistemi in produzione con processi automatizzati tramite web scraping, fornendo supporto tecnico continuo che ha migliorato significativamente l'efficienza del personale, le prestazioni dei sistemi e la sicurezza operativa.",
-                brazil: 'Desenvolvedor full-stack especializado em soluções web modernas, design de bancos de dados e arquiteturas escaláveis. Implantei sistemas em produção com processos automatizados através de web scraping, fornecendo suporte técnico contínuo que melhorou significativamente a eficiência da equipe, o desempenho dos sistemas e a segurança operacional.',
-                france: "Développeur full-stack spécialisé dans les solutions web modernes, la conception de bases de données et les architectures évolutives. J'ai déployé des systèmes en production avec des processus automatisés par web scraping, en fournissant un support technique continu qui a nettement amélioré l'efficacité du personnel, les performances des systèmes et la sécurité opérationnelle.",
+                'great-britain': [
+                    'Migrated from a monolithic architecture to one with 22 microservices. This enabled agile, modular scaling of 6 different systems.',
+                    'Automated business processes through Artificial Intelligence (Claude) and Web Scraping, reducing manual work by more than 50%.',
+                    'Integrated external WhatsApp, SMS and email services through REST APIs and Webhooks.',
+                    'Implemented modular and responsive web interfaces using ReactJS and Tailwind CSS.',
+                    'Restructured and optimized the database, eliminating duplicate records and redundant tables to improve data integrity.',
+                    'Implemented Docker to standardize and simplify development environment setup.',
+                    'Worked with Cursor and Copilot using Claude models to enable AI-assisted development.',
+                ],
+                spain: [
+                    'Migré de una arquitectura monolítica a una en 22 microservicios. Esto permitió el escalado ágil y modularizado de 6 sistemas diferentes.',
+                    'Automaticé procesos del negocio mediante Inteligencia Artificial (Claude) y Web Scraping, reduciendo el trabajo manual en más del 50%.',
+                    'Integré servicios externos de WhatsApp, SMS y correo electrónico mediante APIs REST y Webhooks.',
+                    'Implementé interfaces web modulares y responsivas utilizando ReactJS y Tailwind CSS.',
+                    'Reestructuré y optimicé la base de datos, eliminando registros duplicados y tablas redundantes para mejorar la integridad de los datos.',
+                    'Implementé Docker para estandarizar y facilitar la configuración del entorno de desarrollo.',
+                    'Trabajé con Cursor y Copilot con modelos de Claude para facilitar el desarrollo con IA asistida.',
+                ],
+                italy: [
+                    "Ho migrato da un'architettura monolitica a una con 22 microservizi. Ciò ha consentito lo scaling agile e modularizzato di 6 sistemi diversi.",
+                    "Ho automatizzato processi aziendali mediante Intelligenza Artificiale (Claude) e Web Scraping, riducendo il lavoro manuale di oltre il 50%.",
+                    'Ho integrato servizi esterni di WhatsApp, SMS e posta elettronica tramite API REST e Webhook.',
+                    'Ho implementato interfacce web modulari e responsive utilizzando ReactJS e Tailwind CSS.',
+                    "Ho ristrutturato e ottimizzato il database, eliminando record duplicati e tabelle ridondanti per migliorare l'integrità dei dati.",
+                    "Ho implementato Docker per standardizzare e semplificare la configurazione dell'ambiente di sviluppo.",
+                    "Ho lavorato con Cursor e Copilot con modelli Claude per facilitare lo sviluppo assistito dall'IA.",
+                ],
+                brazil: [
+                    'Migrei de uma arquitetura monolítica para uma com 22 microsserviços. Isso permitiu o escalonamento ágil e modularizado de 6 sistemas diferentes.',
+                    'Automatizei processos de negócio por meio de Inteligência Artificial (Claude) e Web Scraping, reduzindo o trabalho manual em mais de 50%.',
+                    'Integrei serviços externos de WhatsApp, SMS e e-mail por meio de APIs REST e Webhooks.',
+                    'Implementei interfaces web modulares e responsivas utilizando ReactJS e Tailwind CSS.',
+                    'Reestruturei e otimizei o banco de dados, eliminando registros duplicados e tabelas redundantes para melhorar a integridade dos dados.',
+                    'Implementei Docker para padronizar e facilitar a configuração do ambiente de desenvolvimento.',
+                    'Trabalhei com Cursor e Copilot com modelos Claude para facilitar o desenvolvimento com IA assistida.',
+                ],
+                france: [
+                    "J'ai migré d'une architecture monolithique vers une architecture en 22 microservices. Cela a permis une mise à l'échelle agile et modularisée de 6 systèmes différents.",
+                    "J'ai automatisé des processus métier grâce à l'Intelligence Artificielle (Claude) et au Web Scraping, réduisant le travail manuel de plus de 50 %.",
+                    "J'ai intégré des services externes WhatsApp, SMS et e-mail via des API REST et des Webhooks.",
+                    "J'ai implémenté des interfaces web modulaires et responsives avec ReactJS et Tailwind CSS.",
+                    "J'ai restructuré et optimisé la base de données, en éliminant les enregistrements en double et les tables redondantes pour améliorer l'intégrité des données.",
+                    "J'ai mis en place Docker pour standardiser et faciliter la configuration de l'environnement de développement.",
+                    "J'ai travaillé avec Cursor et Copilot avec des modèles Claude pour faciliter le développement assisté par l'IA.",
+                ],
             },
             Frontend: {
                 'great-britain': [
@@ -390,11 +486,31 @@ const volunteer = [
         to: { year: 2024, month: 11 },
         description: {
             web: {
-                'great-britain': 'I led a development team in the creation and deployment of the official event landing page, managing and centralizing critical information through automated scripts. I actively contributed to the logistical planning and execution, playing a key role in the success of this technology event at a national level.',
-                spain: 'Lideré un equipo de desarrollo en la creación y despliegue de la landing page oficial del evento, gestionando y centralizando información crítica mediante scripts automatizados. Contribuí activamente en la planificación y ejecución logística, desempeñando un rol clave en el éxito de este evento tecnológico a nivel nacional.',
-                italy: "Ho guidato un team di sviluppo nella creazione e distribuzione della landing page ufficiale dell'evento, gestendo e centralizzando informazioni critiche tramite script automatizzati. Ho contribuito attivamente alla pianificazione ed esecuzione logistica, svolgendo un ruolo chiave nel successo di questo evento tecnologico su scala nazionale.",
-                brazil: 'Liderei uma equipe de desenvolvimento na criação e implantação da landing page oficial do evento, gerenciando e centralizando informações críticas através de scripts automatizados. Contribuí ativamente no planejamento e execução logística, desempenhando um papel fundamental no sucesso deste evento tecnológico em escala nacional.',
-                france: "J'ai dirigé une équipe de développement dans la création et le déploiement de la landing page officielle de l'événement, en gérant et en centralisant des informations critiques au moyen de scripts automatisés. J'ai contribué activement à la planification et à l'exécution logistique, jouant un rôle clé dans le succès de cet événement technologique à l'échelle nationale.",
+                'great-britain': [
+                    'Designed and developed the official ENEISOFT 2024 website, implementing a responsive interface with HTML, CSS, JavaScript, Bootstrap and jQuery.',
+                    'Implemented SEO and site optimization strategies, contributing to an increase in registered participation compared to previous editions.',
+                    'Optimized performance and the browsing experience on mobile devices, improving site accessibility.',
+                ],
+                spain: [
+                    'Diseñé y desarrollé el sitio web oficial de ENEISOFT 2024, implementando una interfaz responsiva con HTML, CSS, JavaScript, Bootstrap y jQuery.',
+                    'Implementé estrategias de SEO y optimización del sitio, contribuyendo a un incremento en la participación registrada respecto a ediciones anteriores.',
+                    'Optimicé el rendimiento y la experiencia de navegación en dispositivos móviles, mejorando la accesibilidad del sitio.',
+                ],
+                italy: [
+                    'Ho progettato e sviluppato il sito web ufficiale di ENEISOFT 2024, implementando un’interfaccia responsive con HTML, CSS, JavaScript, Bootstrap e jQuery.',
+                    'Ho implementato strategie di SEO e ottimizzazione del sito, contribuendo a un aumento della partecipazione registrata rispetto alle edizioni precedenti.',
+                    'Ho ottimizzato le prestazioni e l’esperienza di navigazione su dispositivi mobili, migliorando l’accessibilità del sito.',
+                ],
+                brazil: [
+                    'Projetei e desenvolvi o site oficial do ENEISOFT 2024, implementando uma interface responsiva com HTML, CSS, JavaScript, Bootstrap e jQuery.',
+                    'Implementei estratégias de SEO e otimização do site, contribuindo para um aumento na participação registrada em relação às edições anteriores.',
+                    'Otimizei o desempenho e a experiência de navegação em dispositivos móveis, melhorando a acessibilidade do site.',
+                ],
+                france: [
+                    'J’ai conçu et développé le site web officiel d’ENEISOFT 2024, en implémentant une interface responsive avec HTML, CSS, JavaScript, Bootstrap et jQuery.',
+                    'J’ai mis en place des stratégies de SEO et d’optimisation du site, contribuant à une hausse de la participation enregistrée par rapport aux éditions précédentes.',
+                    'J’ai optimisé les performances et l’expérience de navigation sur mobile, améliorant l’accessibilité du site.',
+                ],
             },
             Frontend: {
                 'great-britain': "Led the design and development of the official website of the National Meeting of Software Engineering Students (ENEISOFT 2024). I built a dynamic and fully responsive interface using Bootstrap and jQuery, applied SEO strategies to maximize the event's reach in search engines and managed the deployment on Vercel, ensuring a smooth, high-performance browsing experience for hundreds of users.",
@@ -587,11 +703,31 @@ const projects = [
         github: '#',
         description: {
             web: {
-                'great-britain': 'Research and development of a glove that translates Peruvian Sign Language into voice with Artificial Intelligence and Embedded Systems. The device captures finger curvature, position, movement and hand rotation data to recognize static and dynamic signs, using a neural network to convert the signals into voice and improve communication accessibility for the deaf community.',
-                spain: 'Investigación y desarrollo de un guante traductor de Lengua de Señas Peruana a voz con Inteligencia Artificial y Sistemas Embebidos. El dispositivo captura datos de curvatura de dedos, posición, movimiento y giro de mano para reconocer señas estáticas y dinámicas, utilizando una red neuronal para convertir las señales a voz y mejorar la accesibilidad de comunicación para la comunidad sorda.',
-                italy: "Ricerca e sviluppo di un guanto che traduce la Lingua dei Segni Peruviana in voce con Intelligenza Artificiale e Sistemi Embedded. Il dispositivo cattura dati di curvatura delle dita, posizione, movimento e rotazione della mano per riconoscere segni statici e dinamici, utilizzando una rete neurale per convertire i segnali in voce e migliorare l'accessibilità della comunicazione per la comunità sorda.",
-                brazil: 'Pesquisa e desenvolvimento de uma luva tradutora da Língua de Sinais Peruana para voz com Inteligência Artificial e Sistemas Embarcados. O dispositivo captura dados de curvatura dos dedos, posição, movimento e rotação da mão para reconhecer sinais estáticos e dinâmicos, utilizando uma rede neural para converter os sinais em voz e melhorar a acessibilidade de comunicação para a comunidade surda.',
-                france: "Recherche et développement d'un gant traducteur de la Langue des Signes Péruvienne en voix avec de l'Intelligence Artificielle et des Systèmes Embarqués. Le dispositif capte les données de courbure des doigts, de position, de mouvement et de rotation de la main pour reconnaître les signes statiques et dynamiques, en utilisant un réseau de neurones pour convertir les signaux en voix et améliorer l'accessibilité de la communication pour la communauté sourde.",
+                'great-britain': [
+                    'Research and development of a glove that translates Peruvian Sign Language into voice using Artificial Intelligence and Embedded Systems.',
+                    'The device captures finger curvature, position, movement and hand rotation to recognize static and dynamic signs.',
+                    'A neural network converts the signals into voice to improve communication accessibility for the deaf community.',
+                ],
+                spain: [
+                    'Investigación y desarrollo de un guante traductor de Lengua de Señas Peruana a voz con Inteligencia Artificial y Sistemas Embebidos.',
+                    'El dispositivo captura datos de curvatura de dedos, posición, movimiento y giro de mano para reconocer señas estáticas y dinámicas.',
+                    'Una red neuronal convierte las señales a voz para mejorar la accesibilidad de comunicación de la comunidad sorda.',
+                ],
+                italy: [
+                    'Ricerca e sviluppo di un guanto che traduce la Lingua dei Segni Peruviana in voce con Intelligenza Artificiale e Sistemi Embedded.',
+                    'Il dispositivo cattura dati di curvatura delle dita, posizione, movimento e rotazione della mano per riconoscere segni statici e dinamici.',
+                    "Una rete neurale converte i segnali in voce per migliorare l'accessibilità della comunicazione per la comunità sorda.",
+                ],
+                brazil: [
+                    'Pesquisa e desenvolvimento de uma luva tradutora da Língua de Sinais Peruana para voz com Inteligência Artificial e Sistemas Embarcados.',
+                    'O dispositivo captura dados de curvatura dos dedos, posição, movimento e rotação da mão para reconhecer sinais estáticos e dinâmicos.',
+                    'Uma rede neural converte os sinais em voz para melhorar a acessibilidade de comunicação da comunidade surda.',
+                ],
+                france: [
+                    "Recherche et développement d'un gant traducteur de la Langue des Signes Péruvienne en voix avec Intelligence Artificielle et Systèmes Embarqués.",
+                    'Le dispositif capte la courbure des doigts, la position, le mouvement et la rotation de la main pour reconnaître les signes statiques et dynamiques.',
+                    "Un réseau de neurones convertit les signaux en voix pour améliorer l'accessibilité de la communication pour la communauté sourde.",
+                ],
             },
             'Data Science': {
                 'great-britain': 'Research and development of a glove that translates Peruvian Sign Language into voice with Artificial Intelligence and Embedded Systems. The device captures finger curvature, position, movement and hand rotation data to recognize static and dynamic signs, using a neural network to convert the signals into voice and improve communication accessibility for the deaf community.',
@@ -624,11 +760,41 @@ const projects = [
         github: 'https://github.com/adminLTR/CacaoLens',
         description: {
             web: {
-                'great-britain': 'Mobile application that enables cacao producers and farmers to identify crop diseases early and accessibly, directly from the field. With a simple photo of the fruit, the app provides an immediate diagnosis that helps make timely decisions, reduce harvest losses, and improve crop care—bringing artificial intelligence tools to the agricultural sector in a practical way, without requiring a constant internet connection.',
-                spain: 'Aplicación móvil que permite a productores y agricultores identificar enfermedades del cacao de forma temprana y accesible, directamente desde el campo. Con una simple fotografía del fruto, la app ofrece un diagnóstico inmediato que ayuda a tomar decisiones a tiempo, reducir pérdidas de cosecha y mejorar el cuidado de las plantaciones, llevando herramientas de inteligencia artificial al sector agrícola de manera práctica y sin depender de conexión constante a internet.',
-                italy: "Applicazione mobile che permette a produttori e agricoltori di identificare precocemente le malattie del cacao in modo accessibile, direttamente dal campo. Con una semplice fotografia del frutto, l'app offre una diagnosi immediata che aiuta a prendere decisioni tempestive, ridurre le perdite di raccolto e migliorare la cura delle piantagioni, portando strumenti di intelligenza artificiale al settore agricolo in modo pratico e senza dipendere da una connessione internet costante.",
-                brazil: 'Aplicativo móvel que permite a produtores e agricultores identificar doenças do cacau de forma precoce e acessível, diretamente no campo. Com uma simples fotografia do fruto, o app oferece um diagnóstico imediato que ajuda a tomar decisões a tempo, reduzir perdas de safra e melhorar o cuidado das plantações, levando ferramentas de inteligência artificial ao setor agrícola de forma prática e sem depender de conexão constante com a internet.',
-                france: "Application mobile qui permet aux producteurs et agriculteurs d'identifier précocement les maladies du cacao de manière accessible, directement sur le terrain. Avec une simple photo du fruit, l'application fournit un diagnostic immédiat qui aide à prendre des décisions opportunes, réduire les pertes de récolte et améliorer l'entretien des plantations, en apportant des outils d'intelligence artificielle au secteur agricole de façon pratique, sans dépendre d'une connexion internet constante.",
+                'great-britain': [
+                    'Developed a mobile application in Flutter for visual classification of cacao fruits into 3 categories.',
+                    'Built and integrated a Deep Learning model with TensorFlow Lite, running fully on-device for offline inference and reduced connectivity dependence.',
+                    'Developed a REST API with Node.js and Express for user management, authentication and predictions.',
+                    'Implemented data persistence using PostgreSQL and Prisma ORM.',
+                    'Achieved 93% accuracy in classification, with an approximate inference time of 300 ms on device.',
+                ],
+                spain: [
+                    'Desarrollé una aplicación móvil en Flutter para la clasificación visual de frutos de cacao en 3 categorías.',
+                    'Construí e integré un modelo de Deep Learning mediante TensorFlow Lite, ejecutado completamente en el dispositivo para realizar inferencias offline y reducir la dependencia de conectividad.',
+                    'Desarrollé una API REST con Node.js y Express para la gestión de usuarios, autenticación y predicciones.',
+                    'Implementé la persistencia de datos utilizando PostgreSQL y Prisma ORM.',
+                    'Alcancé un 93% de accuracy en la clasificación, con un tiempo de inferencia aproximado de 300 ms en dispositivo.',
+                ],
+                italy: [
+                    "Ho sviluppato un'applicazione mobile in Flutter per la classificazione visiva dei frutti di cacao in 3 categorie.",
+                    'Ho costruito e integrato un modello di Deep Learning con TensorFlow Lite, eseguito completamente sul dispositivo per inferenze offline e minore dipendenza dalla connettività.',
+                    "Ho sviluppato un'API REST con Node.js ed Express per la gestione utenti, autenticazione e predizioni.",
+                    'Ho implementato la persistenza dei dati utilizzando PostgreSQL e Prisma ORM.',
+                    "Ho raggiunto il 93% di accuracy nella classificazione, con un tempo di inferenza di circa 300 ms sul dispositivo.",
+                ],
+                brazil: [
+                    'Desenvolvi um aplicativo móvel em Flutter para a classificação visual de frutos de cacau em 3 categorias.',
+                    'Construí e integrei um modelo de Deep Learning com TensorFlow Lite, executado completamente no dispositivo para inferências offline e menor dependência de conectividade.',
+                    'Desenvolvi uma API REST com Node.js e Express para gestão de usuários, autenticação e predições.',
+                    'Implementei a persistência de dados utilizando PostgreSQL e Prisma ORM.',
+                    'Alcancei 93% de accuracy na classificação, com tempo de inferência aproximado de 300 ms no dispositivo.',
+                ],
+                france: [
+                    "J'ai développé une application mobile en Flutter pour la classification visuelle des fruits de cacao en 3 catégories.",
+                    "J'ai construit et intégré un modèle de Deep Learning avec TensorFlow Lite, exécuté entièrement sur l'appareil pour des inférences hors ligne et une moindre dépendance à la connectivité.",
+                    "J'ai développé une API REST avec Node.js et Express pour la gestion des utilisateurs, l'authentification et les prédictions.",
+                    "J'ai implémenté la persistance des données avec PostgreSQL et Prisma ORM.",
+                    "J'ai atteint 93 % d'accuracy en classification, avec un temps d'inférence d'environ 300 ms sur l'appareil.",
+                ],
             },
             Frontend: {
                 'great-britain': 'I developed a mobile application with Flutter focused on visual classification of cacao diseases. I led the graphical interface design and integration of real-time camera features, connecting the app with a local inference engine (TFLite) to process images directly on the user\'s device with high performance and zero network latency.',
@@ -682,11 +848,36 @@ const projects = [
         github: 'https://github.com/adminLTR/Jigsaw_Model',
         description: {
             web: {
-                'great-britain': 'Final Deep Learning project developed during my academic exchange at the University of Bologna, focused on the design and implementation of a model capable of reconstructing RGB images from scrambled and partially eroded fragments, combining jigsaw puzzle solving and inpainting techniques to recover structure and visual content coherently. The model kept a total parameter count below 6M, and the metric used to measure reconstruction quality was MAE, achieving a result of 0.4.',
-                spain: 'Proyecto final de Deep Learning desarrollado durante mi intercambio académico en la Universidad de Bologna, enfocado en el diseño e implementación de un modelo capaz de reconstruir imágenes RGB a partir de fragmentos desordenados y parcialmente erosionados, combinando técnicas de resolución de rompecabezas e inpainting para recuperar la estructura y el contenido visual de forma coherente. El modelo mantuvo un número total de parámetros menor a 6M y la métrica utilizada para medir la calidad de la reconstrucción fue el MAE, obteniendo un resultado de 0.4.',
-                italy: "Progetto finale di Deep Learning sviluppato durante il mio scambio accademico all'Università di Bologna, focalizzato sulla progettazione e implementazione di un modello capace di ricostruire immagini RGB da frammenti disordinati e parzialmente erosi, combinando tecniche di risoluzione di puzzle e inpainting per recuperare struttura e contenuto visivo in modo coerente. Il modello ha mantenuto un numero totale di parametri inferiore a 6M e la metrica utilizzata per misurare la qualità della ricostruzione è stata il MAE, ottenendo un risultato di 0.4.",
-                brazil: 'Projeto final de Deep Learning desenvolvido durante meu intercâmbio acadêmico na Universidade de Bolonha, focado no design e implementação de um modelo capaz de reconstruir imagens RGB a partir de fragmentos desordenados e parcialmente erodidos, combinando técnicas de resolução de quebra-cabeça e inpainting para recuperar a estrutura e o conteúdo visual de forma coerente. O modelo manteve um número total de parâmetros inferior a 6M e a métrica utilizada para medir a qualidade da reconstrução foi o MAE, obtendo um resultado de 0.4.',
-                france: "Projet final de Deep Learning développé pendant mon échange académique à l'Université de Bologne, axé sur la conception et l'implémentation d'un modèle capable de reconstruire des images RGB à partir de fragments mélangés et partiellement érodés, en combinant des techniques de résolution de puzzle et d'inpainting pour récupérer la structure et le contenu visuel de manière cohérente. Le modèle a conservé un nombre total de paramètres inférieur à 6M et la métrique utilisée pour mesurer la qualité de la reconstruction était le MAE, avec un résultat de 0.4.",
+                'great-britain': [
+                    'Final Deep Learning project developed during my academic exchange at the University of Bologna.',
+                    'Designed and implemented a model that reconstructs RGB images from scrambled and partially eroded fragments.',
+                    'Combined jigsaw puzzle solving and inpainting techniques to recover structure and visual content coherently.',
+                    'Kept the model under 6M parameters and achieved a reconstruction MAE of 0.4.',
+                ],
+                spain: [
+                    'Proyecto final de Deep Learning desarrollado durante mi intercambio académico en la Universidad de Bologna.',
+                    'Diseñé e implementé un modelo capaz de reconstruir imágenes RGB a partir de fragmentos desordenados y parcialmente erosionados.',
+                    'Combiné técnicas de resolución de rompecabezas e inpainting para recuperar la estructura y el contenido visual de forma coherente.',
+                    'Mantuve el modelo por debajo de 6M de parámetros y obtuve un MAE de reconstrucción de 0.4.',
+                ],
+                italy: [
+                    "Progetto finale di Deep Learning sviluppato durante il mio scambio accademico all'Università di Bologna.",
+                    'Ho progettato e implementato un modello capace di ricostruire immagini RGB da frammenti disordinati e parzialmente erosi.',
+                    'Ho combinato tecniche di risoluzione di puzzle e inpainting per recuperare struttura e contenuto visivo in modo coerente.',
+                    'Ho mantenuto il modello sotto i 6M di parametri e ottenuto un MAE di ricostruzione di 0.4.',
+                ],
+                brazil: [
+                    'Projeto final de Deep Learning desenvolvido durante meu intercâmbio acadêmico na Universidade de Bolonha.',
+                    'Projetei e implementei um modelo capaz de reconstruir imagens RGB a partir de fragmentos desordenados e parcialmente erodidos.',
+                    'Combinei técnicas de resolução de quebra-cabeça e inpainting para recuperar a estrutura e o conteúdo visual de forma coerente.',
+                    'Mantive o modelo abaixo de 6M de parâmetros e obtive um MAE de reconstrução de 0.4.',
+                ],
+                france: [
+                    "Projet final de Deep Learning développé pendant mon échange académique à l'Université de Bologne.",
+                    "J'ai conçu et implémenté un modèle capable de reconstruire des images RGB à partir de fragments mélangés et partiellement érodés.",
+                    "J'ai combiné des techniques de résolution de puzzle et d'inpainting pour récupérer structure et contenu visuel de façon cohérente.",
+                    "J'ai maintenu le modèle sous 6M de paramètres et obtenu un MAE de reconstruction de 0.4.",
+                ],
             },
             'Data Science': {
                 'great-britain': 'Final Deep Learning project developed during my academic exchange at the University of Bologna, focused on the design and implementation of a model capable of reconstructing RGB images from scrambled and partially eroded fragments, combining jigsaw puzzle solving and inpainting techniques to recover structure and visual content coherently. The model kept a total parameter count below 6M, and the metric used to measure reconstruction quality was MAE, achieving a result of 0.4.',
@@ -720,11 +911,36 @@ const projects = [
         technologies: ['html', 'css', 'javascript', 'django', 'bootstrap', 'arduino', 'python'],
         description: {
             web: {
-                'great-britain': 'Intelligent automated irrigation system that uses environmental sensors and an AI model to calculate the exact amount of water each plant needs. The system optimizes water consumption according to the plant species and the environmental conditions, integrating IoT hardware and a software-controlled water pump to reduce waste and promote efficient resource care, with a user application for monitoring and control.',
-                spain: 'Sistema inteligente de riego automatizado que utiliza sensores ambientales y un modelo de IA para calcular la cantidad exacta de agua que cada planta necesita. El sistema optimiza el consumo hídrico según la especie de planta y las condiciones del entorno, integrando hardware IoT y una bomba de agua controlada por software para reducir el desperdicio y promover el cuidado eficiente de recursos, con una aplicación de usuario para monitoreo y control.',
-                italy: "Sistema intelligente di irrigazione automatizzato che utilizza sensori ambientali e un modello di IA per calcolare la quantità esatta di acqua di cui ogni pianta ha bisogno. Il sistema ottimizza il consumo idrico in base alla specie di pianta e alle condizioni ambientali, integrando hardware IoT e una pompa dell'acqua controllata da software per ridurre gli sprechi e promuovere la cura efficiente delle risorse, con un'applicazione utente per monitoraggio e controllo.",
-                brazil: 'Sistema inteligente de irrigação automatizado que utiliza sensores ambientais e um modelo de IA para calcular a quantidade exata de água que cada planta precisa. O sistema otimiza o consumo de água de acordo com a espécie da planta e as condições do ambiente, integrando hardware IoT e uma bomba de água controlada por software para reduzir o desperdício e promover o cuidado eficiente de recursos, com uma aplicação de usuário para monitoramento e controle.',
-                france: "Système intelligent d'irrigation automatisée qui utilise des capteurs environnementaux et un modèle d'IA pour calculer la quantité exacte d'eau dont chaque plante a besoin. Le système optimise la consommation d'eau selon l'espèce de la plante et les conditions de l'environnement, en intégrant du matériel IoT et une pompe à eau contrôlée par logiciel pour réduire le gaspillage et promouvoir une gestion efficace des ressources, avec une application utilisateur pour le suivi et le contrôle.",
+                'great-britain': [
+                    'Intelligent automated irrigation system that uses environmental sensors and an AI model to calculate the exact amount of water each plant needs.',
+                    'Optimizes water consumption according to plant species and environmental conditions.',
+                    'Integrates IoT hardware and a software-controlled water pump to reduce waste.',
+                    'Includes a user application for monitoring and control.',
+                ],
+                spain: [
+                    'Sistema inteligente de riego automatizado que utiliza sensores ambientales y un modelo de IA para calcular la cantidad exacta de agua que cada planta necesita.',
+                    'Optimiza el consumo hídrico según la especie de planta y las condiciones del entorno.',
+                    'Integra hardware IoT y una bomba de agua controlada por software para reducir el desperdicio.',
+                    'Incluye una aplicación de usuario para monitoreo y control.',
+                ],
+                italy: [
+                    'Sistema intelligente di irrigazione automatizzato che utilizza sensori ambientali e un modello di IA per calcolare la quantità esatta di acqua di cui ogni pianta ha bisogno.',
+                    'Ottimizza il consumo idrico in base alla specie di pianta e alle condizioni ambientali.',
+                    "Integra hardware IoT e una pompa dell'acqua controllata da software per ridurre gli sprechi.",
+                    "Include un'applicazione utente per monitoraggio e controllo.",
+                ],
+                brazil: [
+                    'Sistema inteligente de irrigação automatizado que utiliza sensores ambientais e um modelo de IA para calcular a quantidade exata de água que cada planta precisa.',
+                    'Otimiza o consumo hídrico de acordo com a espécie da planta e as condições do ambiente.',
+                    'Integra hardware IoT e uma bomba de água controlada por software para reduzir o desperdício.',
+                    'Inclui uma aplicação de usuário para monitoramento e controle.',
+                ],
+                france: [
+                    "Système intelligent d'irrigation automatisée qui utilise des capteurs environnementaux et un modèle d'IA pour calculer la quantité exacte d'eau dont chaque plante a besoin.",
+                    "Optimise la consommation d'eau selon l'espèce de plante et les conditions de l'environnement.",
+                    "Intègre du matériel IoT et une pompe à eau contrôlée par logiciel pour réduire le gaspillage.",
+                    'Inclut une application utilisateur pour le suivi et le contrôle.',
+                ],
             },
             'Data Science': {
                 'great-britain': 'RandomForest regression model trained on humidity, temperature, water volume (ml), and plant species data to predict optimal irrigation amounts. The model achieved an R² of 0.96 and an MAE of 0.02, accurately estimating water needs based on environmental conditions and plant type.',
@@ -1037,20 +1253,72 @@ const skills = {
     },
     tools: {
         Frontend: [
-            'HTML', 'CSS', 'JavaScript', 'React', 'JQuery',
-            'Figma', 'Bootstrap', 'TailwindCSS', 'SASS',
+            'ReactJS', 'JavaScript', 'Typescript', 'HTML5', 'CSS3',
+            'Tailwind CSS', 'SASS', 'JQuery', 'Flutter',
         ],
         Backend: [
-            'PHP', 'Python', 'Laravel', 'Django',
-            'MySQL', 'PostgreSQL', 'Flask', 'ExpressJS', 'FastAPI'
+            'Node.js', 'ExpressJS', 'Python', 'Flask', 'FastAPI',
+            'Django', 'PHP', 'Laravel',
         ],
-        'Data Science': [
-            'Keras', 'Excel', 'Tensorflow', 'MySQL', 'PostgreSQL', 'VBA', 'Sqlite'
+        Databases: [
+            'PostgreSQL', 'MySQL', 'SQLite', 'MongoDB',
         ],
-        Fullstack: [
-            'HTML', 'CSS', 'JavaScript', 'React', 'Python',
-            'Django', 'Flask', 'ExpressJS', 'MySQL', 'TailwindCSS', 'FastAPI', 'Sqlite', 'PHP', 'Flutter'
+        Architecture: [
+            'Microservicios', 'MVC', 'API REST', 'Webhooks',
         ],
+        Tools: [
+            'Jira', 'Git', 'Docker', 'Selenium', 'Web Scraping',
+            'Postman', 'Cursor', 'Copilot', 'Figma',
+        ],
+        AI: [
+            'Tensorflow/Keras', "LLM's", 'Scikit-learn', 'ML', 'DL',
+        ],
+    },
+};
+
+// Localized labels for skill categories (nav + area headers)
+const skillAreaLabels = {
+    Frontend: {
+        'great-britain': 'Frontend',
+        spain: 'Frontend',
+        italy: 'Frontend',
+        brazil: 'Frontend',
+        france: 'Frontend',
+    },
+    Backend: {
+        'great-britain': 'Backend',
+        spain: 'Backend',
+        italy: 'Backend',
+        brazil: 'Backend',
+        france: 'Backend',
+    },
+    Databases: {
+        'great-britain': 'Databases',
+        spain: 'Bases de datos',
+        italy: 'Database',
+        brazil: 'Bancos de dados',
+        france: 'Bases de données',
+    },
+    Architecture: {
+        'great-britain': 'Architecture & APIs',
+        spain: 'Arquitectura y APIs',
+        italy: 'Architettura e API',
+        brazil: 'Arquitetura e APIs',
+        france: 'Architecture et API',
+    },
+    Tools: {
+        'great-britain': 'Tools',
+        spain: 'Herramientas',
+        italy: 'Strumenti',
+        brazil: 'Ferramentas',
+        france: 'Outils',
+    },
+    AI: {
+        'great-britain': 'Artificial Intelligence',
+        spain: 'Inteligencia Artificial',
+        italy: 'Intelligenza Artificiale',
+        brazil: 'Inteligência Artificial',
+        france: 'Intelligence Artificielle',
     },
 };
 
@@ -1081,42 +1349,12 @@ const education = [
         },
         from: { year: 2022 },
         to: null,
-        description: {
-            web: {
-                'great-britain': 'Currently in the 9th semester of the program. Throughout my university career I have maintained a solid performance and have taken part in the development of several projects focused on Deep Learning, Machine Learning and the Internet of Things.',
-                spain: 'Cursando actualmente el 9no ciclo de la carrera. A lo largo de mi trayectoria universitaria, he mantenido un sólido desempeño y he participado en el desarrollo de diversos proyectos enfocados en Deep Learning, Machine Learning e Internet de las Cosas.',
-                italy: 'Attualmente al 9° semestre del corso di laurea. Durante il mio percorso universitario ho mantenuto un solido rendimento e ho partecipato allo sviluppo di diversi progetti incentrati su Deep Learning, Machine Learning e Internet delle Cose.',
-                brazil: 'Atualmente cursando o 9º ciclo da graduação. Ao longo da minha trajetória universitária, mantive um sólido desempenho e participei do desenvolvimento de diversos projetos focados em Deep Learning, Machine Learning e Internet das Coisas.',
-                france: "Actuellement en 9e semestre de la formation. Tout au long de mon parcours universitaire, j'ai maintenu de solides résultats et participé au développement de divers projets axés sur le Deep Learning, le Machine Learning et l'Internet des Objets.",
-            },
-            Frontend: {
-                'great-britain': 'Currently in the 9th semester. Education focused on the software development life cycle, web architecture, requirements engineering and user interfaces. Participation in the development of scalable web and mobile applications, applying agile methodologies (Scrum), frontend design patterns and good coding practices.',
-                spain: 'Cursando actualmente el 9no ciclo. Formación centrada en el ciclo de vida del desarrollo de software, arquitectura web, ingeniería de requerimientos e interfaces de usuario. Participación en el desarrollo de aplicaciones web y móviles escalables, aplicando metodologías ágiles (Scrum), patrones de diseño frontend y buenas prácticas de código.',
-                italy: 'Attualmente al 9° semestre. Formazione incentrata sul ciclo di vita dello sviluppo software, architettura web, ingegneria dei requisiti e interfacce utente. Partecipazione allo sviluppo di applicazioni web e mobili scalabili, applicando metodologie agili (Scrum), pattern di design frontend e buone pratiche di codice.',
-                brazil: 'Atualmente cursando o 9º ciclo. Formação centrada no ciclo de vida do desenvolvimento de software, arquitetura web, engenharia de requisitos e interfaces de usuário. Participação no desenvolvimento de aplicações web e móveis escaláveis, aplicando metodologias ágeis (Scrum), padrões de design frontend e boas práticas de código.',
-                france: "Actuellement en 9e semestre. Formation centrée sur le cycle de vie du développement logiciel, l'architecture web, l'ingénierie des exigences et les interfaces utilisateur. Participation au développement d'applications web et mobiles évolutives, en appliquant des méthodologies agiles (Scrum), des patrons de conception frontend et de bonnes pratiques de code.",
-            },
-            Backend: {
-                'great-britain': 'Currently in the 9th semester of the program. Solid education in systems architecture, design and implementation of relational and non-relational databases, algorithms, and the software development life cycle. Development of projects oriented to the integration of Machine Learning models, data optimization and client-server communication.',
-                spain: 'Cursando el 9no ciclo de la carrera. Formación sólida en arquitectura de sistemas, diseño e implementación de bases de datos relacionales y no relacionales, algoritmos, y ciclo de vida de desarrollo de software. Desarrollo de proyectos orientados a la integración de modelos de Machine Learning, optimización de datos y comunicación cliente-servidor.',
-                italy: "Attualmente al 9° semestre del corso di laurea. Solida formazione in architettura dei sistemi, progettazione e implementazione di database relazionali e non relazionali, algoritmi e ciclo di vita dello sviluppo software. Sviluppo di progetti orientati all'integrazione di modelli di Machine Learning, ottimizzazione dei dati e comunicazione client-server.",
-                brazil: 'Cursando o 9º ciclo da graduação. Formação sólida em arquitetura de sistemas, design e implementação de bancos de dados relacionais e não relacionais, algoritmos e ciclo de vida do desenvolvimento de software. Desenvolvimento de projetos orientados à integração de modelos de Machine Learning, otimização de dados e comunicação cliente-servidor.',
-                france: "Actuellement en 9e semestre de la formation. Solide formation en architecture des systèmes, conception et implémentation de bases de données relationnelles et non relationnelles, algorithmes et cycle de vie du développement logiciel. Développement de projets orientés vers l'intégration de modèles de Machine Learning, l'optimisation des données et la communication client-serveur.",
-            },
-            'Data Science': {
-                'great-britain': 'Currently in the 9th semester of the program. Throughout my university career I have maintained a solid performance and have taken part in the development of several projects focused on Deep Learning, Machine Learning and the Internet of Things.',
-                spain: 'Cursando actualmente el 9no ciclo de la carrera. A lo largo de mi trayectoria universitaria, he mantenido un sólido desempeño y he participado en el desarrollo de diversos proyectos enfocados en Deep Learning, Machine Learning e Internet de las Cosas.',
-                italy: 'Attualmente al 9° semestre del corso di laurea. Durante il mio percorso universitario ho mantenuto un solido rendimento e ho partecipato allo sviluppo di diversi progetti incentrati su Deep Learning, Machine Learning e Internet delle Cose.',
-                brazil: 'Atualmente cursando o 9º ciclo da graduação. Ao longo da minha trajetória universitária, mantive um sólido desempenho e participei do desenvolvimento de diversos projetos focados em Deep Learning, Machine Learning e Internet das Coisas.',
-                france: "Actuellement en 9e semestre de la formation. Tout au long de mon parcours universitaire, j'ai maintenu de solides résultats et participé au développement de divers projets axés sur le Deep Learning, le Machine Learning et l'Internet des Objets.",
-            },
-            Fullstack: {
-                'great-britain': 'Currently in the 9th semester. Comprehensive education oriented to the software development life cycle, covering requirements engineering, architecture and design patterns, web/mobile application development and database management. Practical application of agile methodologies and good programming practices in building scalable and efficient software projects.',
-                spain: 'Cursando actualmente el 9no ciclo. Formación integral orientada al ciclo de vida del desarrollo de software, abarcando ingeniería de requerimientos, arquitectura y patrones de diseño, desarrollo de aplicaciones web/móviles y gestión de bases de datos. Aplicación práctica de metodologías ágiles y buenas prácticas de programación en la construcción de proyectos de software escalables y eficientes.',
-                italy: 'Attualmente al 9° semestre. Formazione completa orientata al ciclo di vita dello sviluppo software, che comprende ingegneria dei requisiti, architettura e pattern di design, sviluppo di applicazioni web/mobili e gestione di database. Applicazione pratica di metodologie agili e buone pratiche di programmazione nella costruzione di progetti software scalabili ed efficienti.',
-                brazil: 'Atualmente cursando o 9º ciclo. Formação integral orientada ao ciclo de vida do desenvolvimento de software, abrangendo engenharia de requisitos, arquitetura e padrões de design, desenvolvimento de aplicações web/móveis e gestão de bancos de dados. Aplicação prática de metodologias ágeis e boas práticas de programação na construção de projetos de software escaláveis e eficientes.',
-                france: "Actuellement en 9e semestre. Formation complète orientée vers le cycle de vie du développement logiciel, couvrant l'ingénierie des exigences, l'architecture et les patrons de conception, le développement d'applications web/mobiles et la gestion de bases de données. Application pratique des méthodologies agiles et des bonnes pratiques de programmation dans la construction de projets logiciels évolutifs et efficaces.",
-            },
+        highlight: {
+            'great-britain': 'Top Third — Tercio Superior',
+            spain: 'Tercio Superior',
+            italy: 'Terzo superiore — Tercio Superior',
+            brazil: 'Terço superior — Tercio Superior',
+            france: 'Tiers supérieur — Tercio Superior',
         },
         type: 'degree',
     },
@@ -1140,43 +1378,6 @@ const education = [
         },
         from: { year: 2026 },
         to: { year: 2026 },
-        description: {
-            web: {
-                'great-britain': 'I completed a semester-long academic exchange, where I took Deep Learning, Optimization and Machine Learning, and Hardware-Software Design for IoT Systems. During this experience I obtained excellent academic results and developed projects of high technical complexity, strengthening my skills in artificial intelligence, machine learning and IoT systems design.',
-                spain: 'Realicé un intercambio académico semestral,  donde cursé Deep Learning, Optimization and Machine Learning y Hardware-Software Design for IoT Systems. Durante esta experiencia, obtuve resultados académicos óptimos y desarrollé proyectos de alta complejidad técnica, fortaleciendo mis competencias en inteligencia artificial, aprendizaje automático y diseño de sistemas IoT.',
-                italy: 'Ho svolto uno scambio accademico semestrale, durante il quale ho seguito i corsi di Deep Learning, Optimization and Machine Learning e Hardware-Software Design for IoT Systems. Durante questa esperienza ho ottenuto ottimi risultati accademici e ho sviluppato progetti di elevata complessità tecnica, rafforzando le mie competenze in intelligenza artificiale, apprendimento automatico e progettazione di sistemi IoT.',
-                brazil: 'Realizei um intercâmbio acadêmico semestral, no qual cursei Deep Learning, Optimization and Machine Learning e Hardware-Software Design for IoT Systems. Durante essa experiência, obtive ótimos resultados acadêmicos e desenvolvi projetos de alta complexidade técnica, fortalecendo minhas competências em inteligência artificial, aprendizado de máquina e design de sistemas IoT.',
-                france: "J'ai effectué un échange académique d'un semestre, au cours duquel j'ai suivi les cours Deep Learning, Optimization and Machine Learning et Hardware-Software Design for IoT Systems. Durant cette expérience, j'ai obtenu d'excellents résultats académiques et développé des projets d'une grande complexité technique, renforçant mes compétences en intelligence artificielle, apprentissage automatique et conception de systèmes IoT.",
-            },
-            Frontend: {
-                'great-britain': 'I completed a semester-long academic exchange with emphasis on code optimization, intelligent software development and integration of complex systems. Consolidation of skills in client-server architecture design and development of high-performance integrated applications.',
-                spain: 'Realicé un intercambio académico semestral con énfasis en optimización de código, desarrollo de software inteligente e integración de sistemas complejos. Consolidación de competencias en diseño de arquitectura cliente-servidor y desarrollo de aplicaciones integradas de alto rendimiento.',
-                italy: "Ho svolto uno scambio accademico semestrale con enfasi sull'ottimizzazione del codice, lo sviluppo di software intelligente e l'integrazione di sistemi complessi. Consolidamento delle competenze nella progettazione di architetture client-server e nello sviluppo di applicazioni integrate ad alte prestazioni.",
-                brazil: 'Realizei um intercâmbio acadêmico semestral com ênfase em otimização de código, desenvolvimento de software inteligente e integração de sistemas complexos. Consolidação de competências em design de arquitetura cliente-servidor e desenvolvimento de aplicações integradas de alto desempenho.',
-                france: "J'ai effectué un échange académique d'un semestre axé sur l'optimisation du code, le développement de logiciels intelligents et l'intégration de systèmes complexes. Consolidation des compétences en conception d'architecture client-serveur et en développement d'applications intégrées à hautes performances.",
-            },
-            Backend: {
-                'great-britain': 'Semester-long academic exchange at a high technical level. Advanced courses completed: Optimization and Machine Learning, Hardware-Software Design for IoT Systems and Deep Learning. Development of highly complex projects focused on algorithmic efficiency, data processing and system logic design.',
-                spain: 'Intercambio académico semestral de alto nivel técnico. Cursos avanzados completados: Optimization and Machine Learning, Hardware-Software Design for IoT Systems y Deep Learning. Desarrollo de proyectos de alta complejidad enfocado en la eficiencia algorítmica, procesamiento de datos y diseño de lógica de sistemas.',
-                italy: "Scambio accademico semestrale di alto livello tecnico. Corsi avanzati completati: Optimization and Machine Learning, Hardware-Software Design for IoT Systems e Deep Learning. Sviluppo di progetti di elevata complessità incentrati sull'efficienza algoritmica, l'elaborazione dei dati e la progettazione della logica dei sistemi.",
-                brazil: 'Intercâmbio acadêmico semestral de alto nível técnico. Cursos avançados concluídos: Optimization and Machine Learning, Hardware-Software Design for IoT Systems e Deep Learning. Desenvolvimento de projetos de alta complexidade focados na eficiência algorítmica, processamento de dados e design da lógica de sistemas.',
-                france: "Échange académique d'un semestre de haut niveau technique. Cours avancés suivis : Optimization and Machine Learning, Hardware-Software Design for IoT Systems et Deep Learning. Développement de projets d'une grande complexité axés sur l'efficacité algorithmique, le traitement des données et la conception de la logique des systèmes.",
-            },
-            'Data Science': {
-                'great-britain': 'I completed a semester-long academic exchange, where I took Deep Learning, Optimization and Machine Learning, and Hardware-Software Design for IoT Systems. During this experience I obtained excellent academic results and developed projects of high technical complexity, strengthening my skills in artificial intelligence, machine learning and IoT systems design.',
-                spain: 'Realicé un intercambio académico semestral,  donde cursé Deep Learning, Optimization and Machine Learning y Hardware-Software Design for IoT Systems. Durante esta experiencia, obtuve resultados académicos óptimos y desarrollé proyectos de alta complejidad técnica, fortaleciendo mis competencias en inteligencia artificial, aprendizaje automático y diseño de sistemas IoT.',
-                italy: 'Ho svolto uno scambio accademico semestrale, durante il quale ho seguito i corsi di Deep Learning, Optimization and Machine Learning e Hardware-Software Design for IoT Systems. Durante questa esperienza ho ottenuto ottimi risultati accademici e ho sviluppato progetti di elevata complessità tecnica, rafforzando le mie competenze in intelligenza artificiale, apprendimento automatico e progettazione di sistemi IoT.',
-                brazil: 'Realizei um intercâmbio acadêmico semestral, no qual cursei Deep Learning, Optimization and Machine Learning e Hardware-Software Design for IoT Systems. Durante essa experiência, obtive ótimos resultados acadêmicos e desenvolvi projetos de alta complexidade técnica, fortalecendo minhas competências em inteligência artificial, aprendizado de máquina e design de sistemas IoT.',
-                france: "J'ai effectué un échange académique d'un semestre, au cours duquel j'ai suivi les cours Deep Learning, Optimization and Machine Learning et Hardware-Software Design for IoT Systems. Durant cette expérience, j'ai obtenu d'excellents résultats académiques et développé des projets d'une grande complexité technique, renforçant mes compétences en intelligence artificielle, apprentissage automatique et conception de systèmes IoT.",
-            },
-            Fullstack: {
-                'great-britain': 'Specialization in the design and integration of hardware-software systems, algorithm optimization and efficient data consumption, developing complex projects with high technical demands that strengthened structured thinking and problem solving in international environments.',
-                spain: 'Especialización en diseño e integración de sistemas hardware-software, optimización de algoritmos y consumo eficiente de datos, desarrollando proyectos complejos de alta exigencia técnica que reforzaron el pensamiento estructurado y la resolución de problemas en entornos internacionales.',
-                italy: 'Specializzazione nella progettazione e integrazione di sistemi hardware-software, ottimizzazione degli algoritmi e consumo efficiente dei dati, sviluppando progetti complessi ad alta esigenza tecnica che hanno rafforzato il pensiero strutturato e la risoluzione dei problemi in contesti internazionali.',
-                brazil: 'Especialização em design e integração de sistemas hardware-software, otimização de algoritmos e consumo eficiente de dados, desenvolvendo projetos complexos de alta exigência técnica que reforçaram o pensamento estruturado e a resolução de problemas em ambientes internacionais.',
-                france: "Spécialisation dans la conception et l'intégration de systèmes matériel-logiciel, l'optimisation des algorithmes et la consommation efficace des données, avec le développement de projets complexes à forte exigence technique qui ont renforcé la pensée structurée et la résolution de problèmes dans des environnements internationaux.",
-            },
-        },
         type: 'exchange',
     },
     {
@@ -1199,49 +1400,12 @@ const education = [
         },
         from: { year: 2026 },
         to: { year: 2026 },
-        description: {
-            web: {
-                'great-britain': 'Currently on a one-semester academic exchange, with a focus on Machine Learning, Data Science, and Deep Learning courses.',
-                spain: 'Cursando un intercambio académico por un semestre. Con enfoque en cursos de Machine Learning, Ciencia de datos y Deep learning.',
-                italy: 'Sto svolgendo uno scambio accademico per un semestre, con focus su corsi di Machine Learning, Data Science e Deep Learning.',
-                brazil: 'Cursando um intercâmbio acadêmico por um semestre, com foco em cursos de Machine Learning, Ciência de Dados e Deep Learning.',
-                france: "En cours d'échange académique d'un semestre, avec un accent sur les cours de Machine Learning, Science des données et Deep Learning.",
-            },
-            Frontend: {
-                'great-britain': 'Currently on an academic exchange focused on advanced computing courses, code optimization, interactive systems development, information processing, and software engineering for digital platforms.',
-                spain: 'Cursando un intercambio académico enfocado en materias avanzadas de computación, optimización de código, desarrollo de sistemas interactivos, procesamiento de información e ingeniería de software para plataformas digitales.',
-                italy: 'Sto svolgendo uno scambio accademico focalizzato su materie avanzate di informatica, ottimizzazione del codice, sviluppo di sistemi interattivi, elaborazione delle informazioni e ingegneria del software per piattaforme digitali.',
-                brazil: 'Cursando um intercâmbio acadêmico focado em matérias avançadas de computação, otimização de código, desenvolvimento de sistemas interativos, processamento de informação e engenharia de software para plataformas digitais.',
-                france: "En cours d'échange académique axé sur des matières avancées d'informatique, l'optimisation du code, le développement de systèmes interactifs, le traitement de l'information et l'ingénierie logicielle pour plateformes numériques.",
-            },
-            Backend: {
-                'great-britain': 'Academic exchange in Computer Science, focused on designing efficient algorithms, advanced data structures, server logic optimization, and large-scale data processing, strengthening the ability to build robust, highly concurrent, low-latency backend architectures.',
-                spain: 'Intercambio académico en Ciencias de la Computación. Enfocado en el diseño de algoritmos eficientes, estructuras de datos avanzadas, optimización de lógica de servidor y procesamiento masivo de datos, fortaleciendo la capacidad de construir arquitecturas de backend robustas, altamente concurrentes y de bajo nivel de latencia.',
-                italy: 'Scambio accademico in Informatica, focalizzato sulla progettazione di algoritmi efficienti, strutture dati avanzate, ottimizzazione della logica server e elaborazione massiva dei dati, rafforzando la capacità di costruire architetture backend robuste, altamente concorrenti e a bassa latenza.',
-                brazil: 'Intercâmbio acadêmico em Ciência da Computação, focado no design de algoritmos eficientes, estruturas de dados avançadas, otimização de lógica de servidor e processamento massivo de dados, fortalecendo a capacidade de construir arquiteturas de backend robustas, altamente concorrentes e de baixa latência.',
-                france: "Échange académique en Informatique, axé sur la conception d'algorithmes efficaces, les structures de données avancées, l'optimisation de la logique serveur et le traitement massif de données, renforçant la capacité à construire des architectures backend robustes, hautement concurrentes et à faible latence.",
-            },
-            'Data Science': {
-                'great-britain': 'Currently on a one-semester academic exchange, with a focus on Machine Learning, Data Science, and Deep Learning courses.',
-                spain: 'Cursando un intercambio académico por un semestre. Con enfoque en cursos de Machine Learning, Ciencia de datos y Deep learning.',
-                italy: 'Sto svolgendo uno scambio accademico per un semestre, con focus su corsi di Machine Learning, Data Science e Deep Learning.',
-                brazil: 'Cursando um intercâmbio acadêmico por um semestre, com foco em cursos de Machine Learning, Ciência de Dados e Deep Learning.',
-                france: "En cours d'échange académique d'un semestre, avec un accent sur les cours de Machine Learning, Science des données et Deep Learning.",
-            },
-            Fullstack: {
-                'great-britain': 'Studies focused on large-scale data processing, complex algorithms, and integration of computational techniques for system optimization and software logic, strengthening advanced technical skills applied to full solution development.',
-                spain: 'Estudios enfocados en procesamiento de datos a gran escala, algoritmia compleja e integración de técnicas computacionales para la optimización de sistemas y lógica de software, fortaleciendo competencias técnicas avanzadas aplicadas al desarrollo de soluciones completas.',
-                italy: "Studi focalizzati sull'elaborazione di dati su larga scala, algoritmi complessi e integrazione di tecniche computazionali per l'ottimizzazione dei sistemi e la logica del software, rafforzando competenze tecniche avanzate applicate allo sviluppo di soluzioni complete.",
-                brazil: 'Estudos focados em processamento de dados em larga escala, algoritmia complexa e integração de técnicas computacionais para otimização de sistemas e lógica de software, fortalecendo competências técnicas avançadas aplicadas ao desenvolvimento de soluções completas.',
-                france: "Études axées sur le traitement de données à grande échelle, l'algorithmique complexe et l'intégration de techniques computationnelles pour l'optimisation des systèmes et la logique logicielle, renforçant des compétences techniques avancées appliquées au développement de solutions complètes.",
-            },
-        },
         type: 'exchange',
     },
 ];
 
 // ====================================
-// UI copy (navigation, labels, modal)
+// UI copy (navigation, labels)
 // ====================================
 const info = {
     'great-britain': {
@@ -1263,13 +1427,6 @@ const info = {
         technologies: 'Technologies:',
         tools: 'Tools',
         abilities: 'Abilities',
-        modal: {
-            title: 'Download CV',
-            subtitle: 'Choose the area version of your CV',
-            cancel: 'Cancel',
-            confirm: 'Download PDF',
-        },
-        loadingPdf: 'Generating PDF... Please wait',
     },
     spain: {
         links: {
@@ -1290,13 +1447,6 @@ const info = {
         technologies: 'Tecnologías:',
         tools: 'Herramientas',
         abilities: 'Habilidades',
-        modal: {
-            title: 'Descargar CV',
-            subtitle: 'Elige la versión del CV por área',
-            cancel: 'Cancelar',
-            confirm: 'Descargar PDF',
-        },
-        loadingPdf: 'Generando PDF... Por favor espera',
     },
     brazil: {
         links: {
@@ -1317,13 +1467,6 @@ const info = {
         technologies: 'Tecnologias:',
         tools: 'Ferramentas',
         abilities: 'Habilidades',
-        modal: {
-            title: 'Baixar CV',
-            subtitle: 'Escolha a versão do CV por área',
-            cancel: 'Cancelar',
-            confirm: 'Baixar PDF',
-        },
-        loadingPdf: 'Gerando PDF... Por favor aguarde',
     },
     italy: {
         links: {
@@ -1344,13 +1487,6 @@ const info = {
         technologies: 'Tecnologie:',
         tools: 'Strumenti',
         abilities: 'Competenze',
-        modal: {
-            title: 'Scarica CV',
-            subtitle: 'Scegli la versione del CV per area',
-            cancel: 'Annulla',
-            confirm: 'Scarica PDF',
-        },
-        loadingPdf: 'Generazione PDF... Attendere',
     },
     france: {
         links: {
@@ -1371,12 +1507,5 @@ const info = {
         technologies: 'Technologies :',
         tools: 'Outils',
         abilities: 'Compétences',
-        modal: {
-            title: 'Télécharger le CV',
-            subtitle: 'Choisis la version du CV par domaine',
-            cancel: 'Annuler',
-            confirm: 'Télécharger le PDF',
-        },
-        loadingPdf: 'Génération du PDF... Veuillez patienter',
     },
 };

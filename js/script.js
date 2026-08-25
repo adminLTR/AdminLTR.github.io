@@ -18,7 +18,6 @@ window.addEventListener("load", function () {
 
     // Initialize scroll-to-top button behavior
     initScrollTopButton();
-    initCVModal();
 
     // Close mobile/collapsed nav after clicking a link
     document.querySelectorAll('#menu a').forEach((link) => {
@@ -69,12 +68,6 @@ window.addEventListener("load", function () {
             behavior: 'smooth'
         });
     });
-    
-    // Open CV area selection modal
-    document.getElementById('download-info')?.addEventListener('click', function(e) {
-        e.preventDefault();
-        openCVModal();
-    });
 });
 
 function initScrollEffects() {
@@ -121,13 +114,17 @@ function renderInfo() {
     const lang = getCurrentLang();
 
     document.getElementById("career-info").textContent = info[lang].career;
+    document.getElementById("about-info").textContent = presentation.web[lang];
+
+    const downloadBtn = document.getElementById("download-info");
     const downloadText = document.getElementById("download-info-text");
+    if (downloadBtn) {
+        downloadBtn.href = `./cv/${lang}.pdf`;
+        downloadBtn.setAttribute('download', `CV-JoseLuisLaTorre-${lang}.pdf`);
+    }
     if (downloadText) {
         downloadText.textContent = info[lang].download;
-    } else {
-        document.getElementById("download-info").textContent = info[lang].download;
     }
-    document.getElementById("about-info").textContent = presentation.web[lang];
 
     const currentLangName = document.getElementById("current-lang-name");
     if (currentLangName) {
@@ -137,9 +134,13 @@ function renderInfo() {
 
 function renderAreas(areas) {
     const areasDiv = document.querySelector(".developer-areas");
+    const lang = getCurrentLang();
     let html = "";
     Object.keys(areas).forEach(area => {
-        html += `<p>${area}</p>`;        
+        const label = skillAreaLabels[area]
+            ? getLocalized(skillAreaLabels[area], lang)
+            : area;
+        html += `<p>${label}</p>`;
     });
     areasDiv.innerHTML = html
 }
@@ -162,23 +163,29 @@ function renderSkills(areas) {
     let navHtml = "";
     const areaKeys = Object.keys(areas);
     areaKeys.forEach((area, index) => {
+        const label = skillAreaLabels[area]
+            ? getLocalized(skillAreaLabels[area], lang)
+            : area;
         navHtml += `<button class="nav-btn ${index === 0 ? 'active' : ''}" data-area="${area}">
             <i class="fa-solid fa-${getAreaIcon(area)}"></i>
-            <span>${area}</span>
+            <span>${label}</span>
         </button>`;
     });
     navDiv.innerHTML = navHtml;
     
     let html = "";
     areaKeys.forEach((area, index) => {
+        const label = skillAreaLabels[area]
+            ? getLocalized(skillAreaLabels[area], lang)
+            : area;
         html += `<div class="skill-area ${index === 0 ? 'active' : ''}" data-area="${area}">
             <div class="area-header">
                 <div class="area-icon">
                     <i class="fa-solid fa-${getAreaIcon(area)}"></i>
                 </div>
                 <div class="area-info">
-                    <h3>${area}</h3>
-                    <p>${getAreaDescription(area)}</p>
+                    <h3>${label}</h3>
+                    <p>${getAreaDescription(area, lang)}</p>
                 </div>
             </div>
             <div class="skills-grid">
@@ -241,7 +248,24 @@ function renderSkills(areas) {
 }
 
 function getTechIconSrc(tech) {
-    const key = String(tech || '').toLowerCase().trim();
+    const raw = String(tech || '').toLowerCase().trim();
+    const aliases = {
+        reactjs: 'react',
+        html5: 'html',
+        css3: 'css',
+        'tailwind css': 'tailwindcss',
+        'node.js': 'nodejs',
+        expressjs: 'expressjs',
+        'tensorflow/keras': 'tensorflow',
+        "llm's": 'llms',
+        llms: 'llms',
+        'scikit-learn': 'scikitlearn',
+        'api rest': 'apirest',
+        'web scraping': 'webscraping',
+        microservicios: 'microservicios',
+        sqlite: 'sqlite',
+    };
+    const key = aliases[raw] || raw.replace(/[^a-z0-9]+/g, '');
     const svgIcons = new Set(['flutter', 'fastapi']);
     const ext = svgIcons.has(key) ? 'svg' : 'png';
     return `./img/technologies/${key}.${ext}`;
@@ -249,22 +273,62 @@ function getTechIconSrc(tech) {
 
 function getAreaIcon(area) {
     const icons = {
-        'Frontend': 'palette',
-        'Backend': 'server',
-        'Data Science': 'chart-line',
-        'Fullstack': 'layer-group'
+        Frontend: 'palette',
+        Backend: 'server',
+        Databases: 'database',
+        Architecture: 'diagram-project',
+        Tools: 'wrench',
+        AI: 'brain',
     };
     return icons[area] || 'code';
 }
 
-function getAreaDescription(area) {
+function getAreaDescription(area, lang) {
     const descriptions = {
-        'Frontend': 'Creating beautiful and responsive user interfaces',
-        'Backend': 'Building robust server-side applications and APIs',
-        'Data Science': 'Analyzing data and creating machine learning models',
-        'Fullstack': 'Building complete web applications from frontend to backend'
+        Frontend: {
+            'great-britain': 'Interfaces and client-side development',
+            spain: 'Interfaces y desarrollo del lado del cliente',
+            italy: 'Interfacce e sviluppo lato client',
+            brazil: 'Interfaces e desenvolvimento client-side',
+            france: 'Interfaces et développement côté client',
+        },
+        Backend: {
+            'great-britain': 'Server logic, APIs and services',
+            spain: 'Lógica de servidor, APIs y servicios',
+            italy: 'Logica server, API e servizi',
+            brazil: 'Lógica de servidor, APIs e serviços',
+            france: 'Logique serveur, API et services',
+        },
+        Databases: {
+            'great-britain': 'Relational and non-relational data storage',
+            spain: 'Almacenamiento de datos relacional y no relacional',
+            italy: 'Archiviazione dati relazionale e non relazionale',
+            brazil: 'Armazenamento de dados relacional e não relacional',
+            france: 'Stockage de données relationnel et non relationnel',
+        },
+        Architecture: {
+            'great-britain': 'System design patterns and integrations',
+            spain: 'Patrones de diseño de sistemas e integraciones',
+            italy: 'Pattern di progettazione e integrazioni',
+            brazil: 'Padrões de design de sistemas e integrações',
+            france: 'Modèles d’architecture et intégrations',
+        },
+        Tools: {
+            'great-britain': 'Development, collaboration and delivery tools',
+            spain: 'Herramientas de desarrollo, colaboración y entrega',
+            italy: 'Strumenti di sviluppo, collaborazione e delivery',
+            brazil: 'Ferramentas de desenvolvimento, colaboração e entrega',
+            france: 'Outils de développement, collaboration et livraison',
+        },
+        AI: {
+            'great-britain': 'Machine learning and generative AI',
+            spain: 'Machine learning e inteligencia artificial generativa',
+            italy: 'Machine learning e intelligenza artificiale generativa',
+            brazil: 'Machine learning e inteligência artificial generativa',
+            france: 'Machine learning et intelligence artificielle générative',
+        },
     };
-    return descriptions[area] || 'Professional development skills';
+    return getLocalized(descriptions[area] || {}, lang) || 'Professional development skills';
 }
 
 function getSkillLevel(tech) {
@@ -297,41 +361,23 @@ function renderEducation(education) {
     let html = "";
     education.forEach((edu, index) => {
         const period = formatPeriod(edu.from, edu.to, lang);
-        const desc = edu.description?.web ? getLocalized(edu.description.web, lang) : '';
+        const highlight = edu.highlight ? getLocalized(edu.highlight, lang) : '';
+        const cardClass = edu.type === 'exchange' ? 'university-card exchange-card' : 'university-card';
 
-        if (edu.type === "degree") {
-            html += `<div class="university-card animate-fade-right" style="animation-delay: ${index * 0.2}s">
-                <div class="university-info">
-                    <div class="university-info-content">
-                        <img src="./img/${edu.logo}.png" class="university-logo" alt="${edu.acronym}">
-                        <div>
-                            <h3>${edu.university} (${edu.acronym})</h3>
-                            <p>${edu.faculty ? getLocalized(edu.faculty, lang) : ''}</p>
-                            <p>${getLocalized(edu.career, lang)}</p>
-                            <p class="location"><i class="fa-solid fa-location-dot"></i> ${getLocalized(edu.location, lang)}</p>
-                        </div>
+        html += `<div class="${cardClass} animate-fade-right" style="animation-delay: ${index * 0.2}s">
+            <div class="university-info">
+                <div class="university-info-content">
+                    <img src="./img/${edu.logo}.png" class="university-logo" alt="${edu.acronym}">
+                    <div>
+                        <h3>${edu.university} (${edu.acronym})</h3>
+                        <p>${getLocalized(edu.career, lang)}</p>
+                        <p class="location"><i class="fa-solid fa-location-dot"></i> ${getLocalized(edu.location, lang)}</p>
+                        ${highlight ? `<p class="edu-highlight">${highlight}</p>` : ''}
                     </div>
-                    <div class="university-year">${period}</div>
-                    ${desc ? `<p class="edu-description">${desc}</p>` : ''}
                 </div>
-            </div>`;
-        } else if (edu.type === "exchange") {
-            html += `<div class="university-card exchange-card animate-fade-right" style="animation-delay: ${index * 0.2}s">
-                <div class="university-info">
-                    <div class="university-info-content">
-                        <img src="./img/${edu.logo}.png" class="university-logo" alt="${edu.acronym}">
-                        <div>
-                            <h3>${edu.university} (${edu.acronym})</h3>
-                            <p>${edu.faculty ? getLocalized(edu.faculty, lang) : ''}</p>
-                            <p>${getLocalized(edu.career, lang)}</p>
-                            <p class="location"><i class="fa-solid fa-location-dot"></i> ${getLocalized(edu.location, lang)}</p>
-                        </div>
-                    </div>
-                    <div class="university-year">${period}</div>
-                    ${desc ? `<p class="edu-description">${desc}</p>` : ''}
-                </div>
-            </div>`;
-        }
+                <div class="university-year">${period}</div>
+            </div>
+        </div>`;
     });
     
     educationDiv.innerHTML = html;
@@ -347,7 +393,7 @@ function renderExperience(experience) {
     experience.forEach((exp, index) => {
         const isEven = index % 2 === 0;
         const date = formatPeriod(exp.from, exp.to, lang);
-        const desc = descriptionToPlain(getLocalized(exp.description?.web, lang));
+        const descHtml = descriptionToDisplayHtml(getLocalized(exp.description?.web, lang));
         const site = exp.website || exp.web || '#';
         
         html += `<div class="timeline-item ${isEven ? 'timeline-left' : 'timeline-right'}" data-index="${index}">
@@ -382,7 +428,7 @@ function renderExperience(experience) {
                     <div class="card-content">
                         <div class="job-description">
                             <h5>${info[lang].overview}</h5>
-                            <p>${desc}</p>
+                            ${descHtml}
                         </div>
                     </div>
                 </div>
@@ -414,7 +460,7 @@ function renderVolunteer(volunteer) {
     volunteer.forEach((vol, index) => {
         const isEven = index % 2 === 0;
         const org = vol.organization || vol.name || '';
-        const desc = descriptionToPlain(getLocalized(vol.description?.web, lang));
+        const descHtml = descriptionToDisplayHtml(getLocalized(vol.description?.web, lang));
         const site = vol.website || vol.web || '#';
 
         html += `<div class="timeline-item ${isEven ? 'timeline-left' : 'timeline-right'}" data-index="${index}">
@@ -451,7 +497,7 @@ function renderVolunteer(volunteer) {
                     <div class="card-content">
                         <div class="job-description">
                             <h5>${info[lang].overview}</h5>
-                            <p>${desc}</p>
+                            ${descHtml}
                         </div>
                     </div>
                 </div>
@@ -539,7 +585,7 @@ function renderProjects(projects) {
         const statusBadge = isThesis ? 
             `<span class="status-badge thesis"><i class="fa-solid fa-graduation-cap"></i> Thesis Project</span>` :
             `<span class="status-badge">Live</span>`;
-        const desc = descriptionToPlain(getLocalized(prj.description?.web, lang));
+        const descHtml = descriptionToDisplayHtml(getLocalized(prj.description?.web, lang));
         const site = prj.website || prj.web || '#';
         const period = (prj.from || prj.to) ? formatPeriod(prj.from, prj.to, lang) : '';
             
@@ -576,7 +622,7 @@ function renderProjects(projects) {
                     </span>` : ''}
                 </div>` : ''}
                 <div class="project-description">
-                    <p>${desc}</p>
+                    ${descHtml}
                 </div>
                 <div class="project-actions">
                     <a href="${prj.github}" target="_blank" class="action-btn primary">

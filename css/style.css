@@ -1,4 +1,4 @@
-/* ---------- GENERAL ------------- */
+﻿/* ---------- GENERAL ------------- */
 
 h2 {
     font-size: 24px;
@@ -300,7 +300,8 @@ header nav a:hover {
     flex-wrap: wrap;
 }
 
-.download-cv, .view-work-btn {
+.download-cv,
+.view-work-btn {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
@@ -1152,7 +1153,7 @@ header nav a:hover {
 }
 
 .job-description h5::before {
-    content: '✓';
+    content: 'âœ“';
     background: var(--main);
     color: white;
     width: 20px;
@@ -1165,7 +1166,7 @@ header nav a:hover {
 }
 
 .technologies-used h5::before {
-    content: '⚡';
+    content: 'âš¡';
     background: var(--main);
     color: white;
     width: 20px;
@@ -1194,7 +1195,7 @@ header nav a:hover {
 }
 
 .job-description li::before {
-    content: '▶';
+    content: 'â–¶';
     position: absolute;
     left: 0;
     color: var(--main);
@@ -1517,6 +1518,36 @@ header nav a:hover {
     font-size: 0.95rem;
     margin: 0;
     text-align: justify;
+}
+
+.project-description ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.project-description li {
+    position: relative;
+    padding-left: 1.1rem;
+    margin-bottom: 0.55rem;
+    color: var(--secondary);
+    line-height: 1.6;
+    font-size: 0.92rem;
+}
+
+.project-description li:last-child {
+    margin-bottom: 0;
+}
+
+.project-description li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--main);
 }
 
 .project-tech {
@@ -2493,127 +2524,15 @@ footer::before {
     margin: 0 0 0.75rem;
 }
 
-.edu-description {
-    margin-top: 0.75rem;
-    font-size: 0.9rem;
-    color: #4a5568;
-    line-height: 1.5;
-}
-
-/* ---------- CV DOWNLOAD MODAL ------------- */
-
-body.modal-open {
-    overflow: hidden;
-}
-
-.cv-modal {
-    position: fixed;
-    inset: 0;
-    z-index: 100000;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 1.5rem;
-}
-
-.cv-modal.open {
-    display: flex;
-}
-
-.cv-modal-backdrop {
-    position: absolute;
-    inset: 0;
-    background: rgba(15, 23, 42, 0.65);
-}
-
-.cv-modal-dialog {
-    position: relative;
-    width: min(440px, 100%);
-    background: #fff;
-    border-radius: 16px;
-    padding: 1.75rem 1.5rem 1.5rem;
-    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
-    z-index: 1;
-}
-
-.cv-modal-close {
-    position: absolute;
-    top: 0.6rem;
-    right: 0.75rem;
-    border: none;
-    background: transparent;
-    font-size: 1.6rem;
-    line-height: 1;
-    cursor: pointer;
-    color: #64748b;
-}
-
-.cv-modal-dialog h2 {
-    margin: 0 0 0.4rem;
-    color: var(--main);
-    font-size: 1.4rem;
-}
-
-.cv-modal-dialog p {
-    margin: 0 0 1.25rem;
-    color: #64748b;
-    font-size: 0.95rem;
-}
-
-.cv-modal-options {
-    display: grid;
-    gap: 0.65rem;
-    margin-bottom: 1.5rem;
-}
-
-.cv-modal-option {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.8rem 1rem;
-    border: 1px solid #e2e8f0;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: border-color 0.2s ease, background 0.2s ease;
-}
-
-.cv-modal-option:hover,
-.cv-modal-option:has(input:checked) {
-    border-color: var(--main);
-    background: rgba(71, 137, 224, 0.08);
-}
-
-.cv-modal-option input {
-    accent-color: var(--main);
-}
-
-.cv-modal-option span {
-    font-weight: 600;
-    color: #1e293b;
-}
-
-.cv-modal-actions {
-    display: flex;
-    gap: 0.75rem;
-    justify-content: flex-end;
-}
-
-.cv-modal-btn {
-    border: none;
+.edu-highlight {
+    display: inline-block;
+    margin-top: 0.65rem;
+    padding: 0.35rem 0.75rem;
     border-radius: 999px;
-    padding: 0.65rem 1.2rem;
-    font-weight: 600;
-    font-family: inherit;
-    cursor: pointer;
-    font-size: 0.95rem;
-}
-
-.cv-modal-btn.secondary {
-    background: #e2e8f0;
-    color: #334155;
-}
-
-.cv-modal-btn.primary {
-    background: linear-gradient(135deg, var(--main), #2b6cb0);
-    color: #fff;
+    background: linear-gradient(135deg, rgba(71, 137, 224, 0.12), rgba(90, 158, 240, 0.18));
+    color: var(--main);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
 }
