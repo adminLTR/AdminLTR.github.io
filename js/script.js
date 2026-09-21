@@ -316,16 +316,18 @@ function getTechIconSrc(tech) {
         'node.js': 'nodejs',
         expressjs: 'expressjs',
         'tensorflow/keras': 'tensorflow',
-        "llm's": 'llms',
-        llms: 'llms',
+        "llm's": 'huggingface',
+        llms: 'huggingface',
         'scikit-learn': 'scikitlearn',
+        ml: 'data-science',
+        dl: 'pytorch',
         'api rest': 'apirest',
         'web scraping': 'webscraping',
         microservicios: 'microservicios',
         sqlite: 'sqlite',
     };
     const key = aliases[raw] || raw.replace(/[^a-z0-9]+/g, '');
-    const svgIcons = new Set(['flutter', 'fastapi', 'typescript']);
+    const svgIcons = new Set(['flutter', 'fastapi', 'typescript', 'scikitlearn', 'huggingface', 'pytorch']);
     const ext = svgIcons.has(key) ? 'svg' : 'png';
     return `./img/technologies/${key}.${ext}`;
 }

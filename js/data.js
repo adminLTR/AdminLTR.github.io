@@ -348,6 +348,7 @@ const projects = [
             },
         },
         website: 'https://motoworld.pe',
+        github: 'https://github.com/dhumtechnology/Motorsworld-Ecommerce',
     },
     {
         role: {
@@ -360,7 +361,7 @@ const projects = [
         name: 'Eneisoft',
 
         category: 'community',
-        image: 'experience/eneisoft-side.webp',
+        image: 'projects/eneisoft.png',
         location: {
             'great-britain': 'Lima, Peru',
             spain: 'Lima, Perú',
@@ -487,8 +488,8 @@ const projects = [
             brazil: 'Bolonha, Itália',
             france: 'Bologne, Italie',
         },
-        website: 'https://github.com/adminLTR/Jigsaw_Model',
-        github: 'https://github.com/adminLTR/Jigsaw_Model',
+        website: 'https://adminltr.github.io/Patches-To-Images/',
+        github: 'https://github.com/adminLTR/Patches-To-Images',
         description: {
             web: {
                 'great-britain': 'Deep Learning model for computer vision that rebuilds a full image from nine scrambled, eroded puzzle pieces using jigsaw-solving and inpainting techniques.',
@@ -1045,7 +1046,7 @@ const info = {
             presentation: 'presentation',
         },
         projectsDescription: 'Professional work, personal builds, and community contributions',
-        career: 'Software Engineering Student',
+        career: 'Software Engineer',
         download: 'Download my CV',
         overview: 'Overview:',
         technologies: 'Technologies:',
@@ -1064,7 +1065,7 @@ const info = {
             presentation: 'presentación',
         },
         projectsDescription: 'Trabajo profesional, proyectos personales y contribuciones a la comunidad',
-        career: 'Estudiante de Ingeniería de Software',
+        career: 'Ingeniero de Software',
         download: 'Descarga mi CV',
         overview: 'Descripción:',
         technologies: 'Tecnologías:',
@@ -1083,7 +1084,7 @@ const info = {
             presentation: 'apresentação',
         },
         projectsDescription: 'Trabalho profissional, projetos pessoais e contribuições comunitárias',
-        career: 'Estudante de Engenharia de Software',
+        career: 'Engenheiro de Software',
         download: 'Baixe meu CV',
         overview: 'Descrição:',
         technologies: 'Tecnologias:',
@@ -1102,7 +1103,7 @@ const info = {
             presentation: 'presentazione',
         },
         projectsDescription: 'Lavoro professionale, progetti personali e contributi alla comunità',
-        career: 'Studente di Ingegneria del Software',
+        career: 'Ingegnere del Software',
         download: 'Scarica il mio CV',
         overview: 'Descrizione:',
         technologies: 'Tecnologie:',
@@ -1121,7 +1122,7 @@ const info = {
             presentation: 'présentation',
         },
         projectsDescription: 'Travail professionnel, projets personnels et contributions communautaires',
-        career: 'Étudiant en Ingénierie Logicielle',
+        career: 'Ingénieur en Informatique',
         download: 'Télécharge mon CV',
         overview: 'Description :',
         technologies: 'Technologies :',
