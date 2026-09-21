@@ -9,14 +9,13 @@ window.addEventListener("load", function () {
 
     renderAreas(areas);
     renderLanguages(languages);
+    renderHeaderLanguageSelect(languages);
     renderSkills(areas);
     renderEducation(education);
-    renderExperience(experience);
-    renderVolunteer(volunteer);
     renderProjects(projects);
     renderAchievements(achievements);
 
-    // Initialize scroll-to-top button behavior
+    bindLanguageSelectors();
     initScrollTopButton();
 
     // Close mobile/collapsed nav after clicking a link
@@ -27,40 +26,6 @@ window.addEventListener("load", function () {
         });
     });
 
-    // CLICK LANGUAGES
-    this.document.querySelectorAll("#about .languages-div img").forEach(img => {
-        img.addEventListener("click", function () {
-            document.querySelectorAll("#about .languages-div img").forEach(i => {i.classList.remove("active")});
-            img.classList.add("active");
-            const lang = img.dataset.lang;
-            
-            const imgSrc = img.getAttribute("src");
-            const imgNode = document.createElement("img");
-            imgNode.src = imgSrc;
-            imgNode.classList.add('flag-fly');
-
-            document.body.appendChild(imgNode);
-
-            imgNode.addEventListener('animationend', () => {
-                imgNode.remove();
-                
-                localStorage.setItem("language", lang);
-
-                renderLinks();
-                renderInfo();
-                renderSkills(areas);
-
-                renderEducation(education);
-                renderExperience(experience);
-                renderVolunteer(volunteer);
-                renderProjects(projects);
-                renderAchievements(achievements);
-            });
-
-            
-        })
-    })
-    
     // Add smooth scroll for CTA button
     document.querySelector('.view-work-btn')?.addEventListener('click', function(e) {
         e.preventDefault();
@@ -130,6 +95,11 @@ function renderInfo() {
     if (currentLangName) {
         currentLangName.textContent = languageNames[lang] || lang;
     }
+
+    const projectsDesc = document.getElementById('projects-section-description');
+    if (projectsDesc && info[lang].projectsDescription) {
+        projectsDesc.textContent = info[lang].projectsDescription;
+    }
 }
 
 function renderAreas(areas) {
@@ -145,14 +115,102 @@ function renderAreas(areas) {
     areasDiv.innerHTML = html
 }
 
-function renderLanguages(languages) {
-    const languagesDiv = document.querySelector(".languages-div");
-    const langUser = localStorage.getItem('language');
-    let html = "";
-    languages.forEach(lang => {
-        html += `<img data-lang="${lang}" class="${lang===langUser || (!langUser && lang==="great-britain") ?'active' : ''}" width="48" height="48" src="https://img.icons8.com/color/48/${lang}-circular.png" alt="${lang}-circular"/>`;        
+function renderLanguages(languagesList) {
+    const languagesDiv = document.querySelector('#about .languages-div');
+    if (!languagesDiv) return;
+
+    const langUser = getCurrentLang();
+    let html = '';
+    languagesList.forEach((lang) => {
+        const isActive = lang === langUser;
+        html += `<img data-lang="${lang}" class="${isActive ? 'active' : ''}" width="48" height="48" src="https://img.icons8.com/color/48/${lang}-circular.png" alt="${languageNames[lang] || lang}" title="${languageNames[lang] || lang}"/>`;
     });
-    languagesDiv.innerHTML = html
+    languagesDiv.innerHTML = html;
+}
+
+function renderHeaderLanguageSelect(languagesList) {
+    const select = document.getElementById('header-lang-select');
+    if (!select) return;
+
+    const langUser = getCurrentLang();
+    select.innerHTML = languagesList
+        .map(
+            (lang) =>
+                `<option value="${lang}"${lang === langUser ? ' selected' : ''}>${languageNames[lang] || lang}</option>`
+        )
+        .join('');
+}
+
+function setActiveLanguageFlags(lang) {
+    document.querySelectorAll('#about .languages-div img[data-lang]').forEach((img) => {
+        img.classList.toggle('active', img.dataset.lang === lang);
+    });
+    const select = document.getElementById('header-lang-select');
+    if (select && select.value !== lang) {
+        select.value = lang;
+    }
+}
+
+function refreshLocalizedContent() {
+    renderLinks();
+    renderInfo();
+    renderAreas(areas);
+    renderLanguages(languages);
+    renderHeaderLanguageSelect(languages);
+    renderSkills(areas);
+    renderEducation(education);
+    renderProjects(projects);
+    renderAchievements(achievements);
+}
+
+function switchLanguage(lang, sourceImg) {
+    if (!lang || lang === getCurrentLang()) return;
+
+    setActiveLanguageFlags(lang);
+
+    const check = document.getElementById('check-menu');
+    if (check) check.checked = false;
+
+    const applyLanguage = () => {
+        localStorage.setItem('language', lang);
+        refreshLocalizedContent();
+    };
+
+    if (!sourceImg) {
+        applyLanguage();
+        return;
+    }
+
+    const imgSrc = sourceImg.getAttribute('src');
+    const imgNode = document.createElement('img');
+    imgNode.src = imgSrc;
+    imgNode.classList.add('flag-fly');
+    document.body.appendChild(imgNode);
+
+    imgNode.addEventListener('animationend', () => {
+        imgNode.remove();
+        applyLanguage();
+    });
+}
+
+function bindLanguageSelectors() {
+    const aboutLanguages = document.querySelector('#about .languages-div');
+    if (aboutLanguages && !aboutLanguages.dataset.bound) {
+        aboutLanguages.dataset.bound = 'true';
+        aboutLanguages.addEventListener('click', (event) => {
+            const img = event.target.closest('img[data-lang]');
+            if (!img) return;
+            switchLanguage(img.dataset.lang, img);
+        });
+    }
+
+    const select = document.getElementById('header-lang-select');
+    if (select && !select.dataset.bound) {
+        select.dataset.bound = 'true';
+        select.addEventListener('change', () => {
+            switchLanguage(select.value, null);
+        });
+    }
 }
 
 function renderSkills(areas) {
@@ -251,6 +309,7 @@ function getTechIconSrc(tech) {
     const raw = String(tech || '').toLowerCase().trim();
     const aliases = {
         reactjs: 'react',
+        typescript: 'typescript',
         html5: 'html',
         css3: 'css',
         'tailwind css': 'tailwindcss',
@@ -266,7 +325,7 @@ function getTechIconSrc(tech) {
         sqlite: 'sqlite',
     };
     const key = aliases[raw] || raw.replace(/[^a-z0-9]+/g, '');
-    const svgIcons = new Set(['flutter', 'fastapi']);
+    const svgIcons = new Set(['flutter', 'fastapi', 'typescript']);
     const ext = svgIcons.has(key) ? 'svg' : 'png';
     return `./img/technologies/${key}.${ext}`;
 }
@@ -383,140 +442,118 @@ function renderEducation(education) {
     educationDiv.innerHTML = html;
 }
 
-function renderExperience(experience) {
-    const experienceDiv = document.querySelector("#experience .experience-timeline");
-    if (!experienceDiv) return;
-    
-    let html = "";
-    const lang = getCurrentLang();
-    
-    experience.forEach((exp, index) => {
-        const isEven = index % 2 === 0;
-        const date = formatPeriod(exp.from, exp.to, lang);
-        const descHtml = descriptionToDisplayHtml(getLocalized(exp.description?.web, lang));
-        const site = exp.website || exp.web || '#';
-        
-        html += `<div class="timeline-item ${isEven ? 'timeline-left' : 'timeline-right'}" data-index="${index}">
-            <div class="timeline-marker">
-                <div class="timeline-dot"></div>
-                <div class="timeline-date">${date}</div>
-            </div>
-            ${exp.image ? `<div class="timeline-image">
-                <img src="./img/${exp.image}" alt="${exp.company}">
-            </div>` : ''}
-            <div class="timeline-content">
-                <div class="experience-card">
-                    <div class="card-header">
-                        <div class="company-info">
-                            <div class="company-logo">
-                                <img src="./img/experience/${formatNameForImg(exp.company)}.png" alt="${exp.company}">
-                            </div>
-                            <div class="company-details">
-                                <h3 class="company-name">${exp.company}</h3>
-                                <h4 class="job-title">${getLocalized(exp.position, lang)}</h4>
-                                ${exp.location ? `<p class="location">
-                                    <i class="fa-solid fa-location-dot"></i>
-                                    ${getLocalized(exp.location, lang)}
-                                </p>` : ''}
-                                <a href="${site}" target="_blank" class="company-link">
-                                    <i class="fa-solid fa-external-link"></i>
-                                    Visit Website
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <div class="job-description">
-                            <h5>${info[lang].overview}</h5>
-                            ${descHtml}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>`
+function sortProjectsByDate(list) {
+    return [...list].sort((a, b) => {
+        const aKey = (a.from?.year ?? 0) * 12 + (a.from?.month ?? 0);
+        const bKey = (b.from?.year ?? 0) * 12 + (b.from?.month ?? 0);
+        return bKey - aKey;
     });
-    
-    experienceDiv.innerHTML = html;
-    
-    const timelineItems = document.querySelectorAll('#experience .timeline-item');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate-in');
-            }
-        });
-    }, { threshold: 0.3 });
-    
-    timelineItems.forEach(item => observer.observe(item));
 }
 
-function renderVolunteer(volunteer) {
-    const volunteerDiv = document.querySelector("#volunteer .volunteer-timeline");
-    if (!volunteerDiv) return;
-    
-    let html = "";
-    const lang = getCurrentLang();
-    
-    volunteer.forEach((vol, index) => {
-        const isEven = index % 2 === 0;
-        const org = vol.organization || vol.name || '';
-        const descHtml = descriptionToDisplayHtml(getLocalized(vol.description?.web, lang));
-        const site = vol.website || vol.web || '#';
+function getProjectCardImage(prj) {
+    if (prj.image) return `./img/${prj.image}`;
+    return `./img/projects/${formatNameForImg(prj.name)}.png`;
+}
 
-        html += `<div class="timeline-item ${isEven ? 'timeline-left' : 'timeline-right'}" data-index="${index}">
-            <div class="timeline-marker">
-                <div class="timeline-dot"></div>
-                <div class="timeline-date">${formatPeriod(vol.from, vol.to, lang)}</div>
-            </div>
-            ${vol.image ? `<div class="timeline-image">
-                <img src="./img/${vol.image}" alt="${org}">
-            </div>` : ''}
-            <div class="timeline-content">
-                <div class="experience-card volunteer-card">
-                    <div class="card-header">
-                        <div class="company-info">
-                            <div class="company-logo">
-                                <img src="./img/experience/${formatNameForImg(org)}.png" alt="${org}">
-                            </div>
-                            <div class="company-details">
-                                <h3 class="company-name">${org}</h3>
-                                <h4 class="job-title">
-                                    ${getLocalized(vol.title, lang)}
-                                </h4>
-                                <p class="location">
-                                    <i class="fa-solid fa-location-dot"></i>
-                                    ${getLocalized(vol.location, lang)}
-                                </p>
-                                <a href="${site}" target="_blank" class="company-link">
-                                    <i class="fa-solid fa-external-link"></i>
-                                    Visit Website
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <div class="job-description">
-                            <h5>${info[lang].overview}</h5>
-                            ${descHtml}
-                        </div>
+function isValidProjectLink(url) {
+    return url && url !== '#';
+}
+
+function renderProjects(projectsList) {
+    const projectsDiv = document.querySelector('#projects .projects-grid');
+    if (!projectsDiv) return;
+
+    const lang = getCurrentLang();
+    const sorted = sortProjectsByDate(projectsList);
+    let html = '';
+
+    sorted.forEach((prj, index) => {
+        const isThesis = prj.type === 'thesis';
+        const category = prj.category || (isThesis ? 'academic' : 'product');
+        const categoryLabel = getLocalized(projectCategoryLabels[category], lang) || category;
+        let statusBadge;
+        if (isThesis) {
+            statusBadge = `<span class="status-badge thesis"><i class="fa-solid fa-graduation-cap"></i> Thesis Project</span>`;
+        } else if (category !== 'product') {
+            statusBadge = `<span class="status-badge category-${category}">${categoryLabel}</span>`;
+        } else {
+            statusBadge = `<span class="status-badge">Live</span>`;
+        }
+
+        const descHtml = descriptionToDisplayHtml(getLocalized(prj.description?.web, lang));
+        const site = prj.website || prj.web || '#';
+        const github = prj.github || '#';
+        const period = (prj.from || prj.to) ? formatPeriod(prj.from, prj.to, lang) : '';
+        const subtitleText = prj.subtitle
+            ? getLocalized(prj.subtitle, lang)
+            : (prj.role ? getLocalized(prj.role, lang) : '');
+        const imgSrc = getProjectCardImage(prj);
+        const showGithubLink = isValidProjectLink(github);
+        const showSiteLink = isValidProjectLink(site);
+
+        html += `<div class="project-card ${isThesis ? 'thesis-project' : ''} animate-fade-scroll" data-index="${index}">
+            <div class="project-image">
+                <img src="${imgSrc}" alt="${prj.name}">
+                <div class="project-overlay">
+                    <div class="project-links">
+                        ${showGithubLink ? `<a href="${github}" target="_blank" rel="noopener noreferrer" class="project-link github-link" title="View Code">
+                            <i class="fa-brands fa-github"></i>
+                        </a>` : ''}
+                        ${showSiteLink ? `<a href="${site}" target="_blank" rel="noopener noreferrer" class="project-link demo-link" title="Live Demo">
+                            <i class="fa-solid fa-external-link"></i>
+                        </a>` : ''}
                     </div>
                 </div>
             </div>
-        </div>`
+            <div class="project-content">
+                <div class="project-header">
+                    <h3 class="project-title">${prj.name}</h3>
+                    <div class="project-status">
+                        ${statusBadge}
+                    </div>
+                </div>
+                ${subtitleText ? `<p class="project-subtitle">${subtitleText}</p>` : ''}
+                ${period || prj.location ? `<div class="project-meta">
+                    ${period ? `<span class="project-date">
+                        <i class="fa-solid fa-calendar"></i>
+                        ${period}
+                    </span>` : ''}
+                    ${prj.location ? `<span class="project-location">
+                        <i class="fa-solid fa-location-dot"></i>
+                        ${getLocalized(prj.location, lang)}
+                    </span>` : ''}
+                </div>` : ''}
+                <div class="project-description">
+                    ${descHtml}
+                </div>
+                ${showGithubLink || showSiteLink ? `<div class="project-actions">
+                    ${showGithubLink ? `<a href="${github}" target="_blank" rel="noopener noreferrer" class="action-btn primary">
+                        <i class="fa-brands fa-github"></i>
+                        Source Code
+                    </a>` : ''}
+                    ${showSiteLink ? `<a href="${site}" target="_blank" rel="noopener noreferrer" class="action-btn secondary">
+                        <i class="fa-solid fa-rocket"></i>
+                        Live Demo
+                    </a>` : ''}
+                </div>` : ''}
+            </div>
+        </div>`;
     });
-    
-    volunteerDiv.innerHTML = html;
-    
-    const timelineItems = document.querySelectorAll('#volunteer .timeline-item');
+
+    projectsDiv.innerHTML = html;
+
+    const projectCards = document.querySelectorAll('.project-card');
     const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
+        entries.forEach((entry) => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('animate-in');
+                setTimeout(() => {
+                    entry.target.classList.add('animate-in');
+                }, parseInt(entry.target.dataset.index, 10) * 200);
             }
         });
-    }, { threshold: 0.3 });
-    
-    timelineItems.forEach(item => observer.observe(item));
+    }, { threshold: 0.2 });
+
+    projectCards.forEach((card) => observer.observe(card));
 }
 
 function renderAchievements(achievements) {
@@ -571,87 +608,6 @@ function renderAchievements(achievements) {
     }, { threshold: 0.2 });
     
     achievementCards.forEach(card => observer.observe(card));
-}
-
-function renderProjects(projects) {
-    const projectsDiv = document.querySelector("#projects .projects-grid");
-    if (!projectsDiv) return;
-    
-    let html = "";
-    const lang = getCurrentLang();
-    
-    projects.forEach((prj, index) => {
-        const isThesis = prj.type === 'thesis';
-        const statusBadge = isThesis ? 
-            `<span class="status-badge thesis"><i class="fa-solid fa-graduation-cap"></i> Thesis Project</span>` :
-            `<span class="status-badge">Live</span>`;
-        const descHtml = descriptionToDisplayHtml(getLocalized(prj.description?.web, lang));
-        const site = prj.website || prj.web || '#';
-        const period = (prj.from || prj.to) ? formatPeriod(prj.from, prj.to, lang) : '';
-            
-        html += `<div class="project-card ${isThesis ? 'thesis-project' : ''} animate-fade-scroll" data-index="${index}">
-            <div class="project-image">
-                <img src="./img/projects/${formatNameForImg(prj.name)}.png" alt="${prj.name}">
-                <div class="project-overlay">
-                    <div class="project-links">
-                        <a href="${prj.github}" target="_blank" class="project-link github-link" title="View Code">
-                            <i class="fa-brands fa-github"></i>
-                        </a>
-                        <a href="${site}" target="_blank" class="project-link demo-link" title="Live Demo">
-                            <i class="fa-solid fa-external-link"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="project-content">
-                <div class="project-header">
-                    <h3 class="project-title">${prj.name}</h3>
-                    <div class="project-status">
-                        ${statusBadge}
-                    </div>
-                </div>
-                ${prj.subtitle ? `<p class="project-subtitle">${getLocalized(prj.subtitle, lang)}</p>` : ''}
-                ${period || prj.location ? `<div class="project-meta">
-                    ${period ? `<span class="project-date">
-                        <i class="fa-solid fa-calendar"></i>
-                        ${period}
-                    </span>` : ''}
-                    ${prj.location ? `<span class="project-location">
-                        <i class="fa-solid fa-location-dot"></i>
-                        ${getLocalized(prj.location, lang)}
-                    </span>` : ''}
-                </div>` : ''}
-                <div class="project-description">
-                    ${descHtml}
-                </div>
-                <div class="project-actions">
-                    <a href="${prj.github}" target="_blank" class="action-btn primary">
-                        <i class="fa-brands fa-github"></i>
-                        Source Code
-                    </a>
-                    <a href="${site}" target="_blank" class="action-btn secondary">
-                        <i class="fa-solid fa-rocket"></i>
-                        Live Demo
-                    </a>
-                </div>
-            </div>
-        </div>`
-    });
-    
-    projectsDiv.innerHTML = html;
-    
-    const projectCards = document.querySelectorAll('.project-card');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                setTimeout(() => {
-                    entry.target.classList.add('animate-in');
-                }, parseInt(entry.target.dataset.index) * 200);
-            }
-        });
-    }, { threshold: 0.2 });
-    
-    projectCards.forEach(card => observer.observe(card));
 }
 
 function linkSelectionEvent() {

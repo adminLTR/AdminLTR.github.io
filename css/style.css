@@ -95,6 +95,54 @@ header nav a:hover {
     color: var(--main);
 }
 
+.header-lang-label {
+    margin: 0 0 0 0.65rem;
+    flex-shrink: 0;
+}
+
+.header-lang-select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: rgba(255, 255, 255, 0.08);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23c1cadb' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.65rem center;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 8px;
+    color: var(--secondary);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.8rem;
+    font-weight: 600;
+    min-width: 7.5rem;
+    padding: 0.45rem 1.75rem 0.45rem 0.65rem;
+    transition: border-color 0.25s ease, background-color 0.25s ease;
+}
+
+.header-lang-select:hover,
+.header-lang-select:focus {
+    background-color: rgba(255, 255, 255, 0.12);
+    border-color: rgba(71, 137, 224, 0.55);
+    outline: none;
+}
+
+.header-lang-select option {
+    background: #1a1e20;
+    color: var(--secondary);
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
 #check-menu {
     display: none;
 }
@@ -556,9 +604,10 @@ header nav a:hover {
 }
 
 .about-main {
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: 2.5rem;
+    align-items: start;
     margin-bottom: 4rem;
 }
 
@@ -567,6 +616,7 @@ header nav a:hover {
     flex-direction: column;
     gap: 2rem;
     width: 100%;
+    min-width: 0;
 }
 
 .about-details {
@@ -649,26 +699,36 @@ header nav a:hover {
 .university-section {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1rem;
     width: 100%;
+    min-width: 0;
 }
 
 .university-card {
     background: white;
-    padding: 2rem;
-    border-radius: 20px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    padding: 1.25rem 1.4rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
     display: flex;
-    align-items: center;
-    gap: 1.5rem;
+    align-items: flex-start;
+    gap: 1rem;
     width: 100%;
     max-width: none;
     transition: all 0.3s ease;
     border: 2px solid transparent;
 }
+
+.university-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    width: 100%;
+}
+
 .university-info-content {
     display: flex;
-    gap: 0.5rem;
+    gap: 0.85rem;
+    align-items: flex-start;
 }
 
 .university-card.exchange-card {
@@ -703,35 +763,36 @@ header nav a:hover {
 }
 
 .university-logo {
-    width: 80px;
-    height: 80px;
+    width: 56px;
+    height: 56px;
     object-fit: contain;
     flex-shrink: 0;
 }
 
 .university-info h3 {
     color: var(--main);
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 700;
-    margin: 0 0 0.5rem 0;
+    margin: 0 0 0.35rem 0;
     line-height: 1.3;
 }
 
 .university-info p {
     color: #718096;
-    margin: 0.2rem 0;
-    font-size: 0.95rem;
+    margin: 0.15rem 0;
+    font-size: 0.88rem;
 }
 
 .university-year {
     background: linear-gradient(135deg, var(--main), #5a9ef0);
     color: white;
-    padding: 0.3rem 0.8rem;
+    padding: 0.25rem 0.7rem;
     border-radius: 20px;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     font-weight: 600;
     display: inline-block;
-    margin-top: 0.5rem;
+    margin-top: 0;
+    align-self: flex-start;
 }
 
 .languages-section {
@@ -846,7 +907,7 @@ header nav a:hover {
 }
 
 .experience-container {
-    max-width: 1200px;
+    max-width: 1180px;
     margin: 0 auto;
     position: relative;
     z-index: 2;
@@ -854,7 +915,7 @@ header nav a:hover {
 
 .section-header {
     text-align: center;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
 }
 
 .section-header h2 {
@@ -879,32 +940,32 @@ header nav a:hover {
 
 .timeline-container {
     position: relative;
-    max-width: 1000px;
+    max-width: 100%;
     margin: 0 auto;
 }
 
 .timeline-line {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 4px;
-    height: 100%;
-    background: linear-gradient(to bottom, white, rgba(255, 255, 255, 0.3));
-    border-radius: 2px;
-    z-index: 1;
+    display: none;
 }
 
-.experience-timeline {
+.experience-timeline,
+.volunteer-timeline {
     position: relative;
     z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
 }
 
 .timeline-item {
     position: relative;
-    margin-bottom: 4rem;
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 1.1rem;
+    align-items: stretch;
     opacity: 0;
-    transform: translateY(50px);
-    transition: all 0.6s ease;
+    transform: translateY(24px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 .timeline-item.animate-in {
@@ -912,270 +973,222 @@ header nav a:hover {
     transform: translateY(0);
 }
 
-.timeline-left {
-    text-align: right;
-    padding-right: calc(50% + 2rem);
-}
-
-.timeline-right {
-    text-align: left;
-    padding-left: calc(50% + 2rem);
-}
-
-.timeline-marker {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+.timeline-rail {
+    position: relative;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    z-index: 3;
-    pointer-events: none;
+    justify-content: center;
+    padding-top: 1.65rem;
+}
+
+.timeline-rail::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: -1.75rem;
+    left: 50%;
+    width: 2px;
+    transform: translateX(-50%);
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.15),
+        rgba(255, 255, 255, 0.75),
+        rgba(255, 255, 255, 0.15)
+    );
+}
+
+.timeline-item:last-child .timeline-rail::before {
+    bottom: 30%;
 }
 
 .timeline-dot {
-    width: 20px;
-    height: 20px;
-    background: white;
-    border: 4px solid var(--secondary);
-    border-radius: 50%;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
-    animation: pulse-dot 2s infinite;
-}
-
-.timeline-date {
-    background: white;
-    color: var(--main);
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    margin-top: 0.5rem;
-    white-space: nowrap;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-/* Move the date away from the card so it doesn't overlap content.
-   For items on the left side, the date goes to the right
-   For items on the right side, the date goes to the left */
-.timeline-left .timeline-marker {
-    left: 50%;
-    transform: translateX(-50%);
-}
-.timeline-right .timeline-marker {
-    left: 50%;
-    transform: translateX(-50%);
-}
-.timeline-left .timeline-date {
-    transform: translateX(50px);
-}
-.timeline-right .timeline-date {
-    transform: translateX(-50px);
-}
-
-/* Ensure marker and date sit above the cards but do not capture pointer events */
-.timeline-marker, .timeline-date {
-    z-index: 50;
-    pointer-events: none;
-}
-
-.timeline-content {
-    width: 100%;
-}
-
-/* Timeline Images */
-.timeline-image {
-    position: absolute;
-    top: 0;
-    width: 360px;
-    height: 280px;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
-    transition: all 0.4s ease;
+    position: relative;
     z-index: 2;
-    border: 4px solid white;
-}
-
-.timeline-left .timeline-image {
-    left: calc(50% + 3rem);
-}
-
-.timeline-right .timeline-image {
-    right: calc(50% + 3rem);
-}
-
-.timeline-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease;
-}
-
-.timeline-item:hover .timeline-image {
-    transform: translateY(-5px);
-    box-shadow: 0 25px 50px rgba(0,0,0,0.3);
-}
-
-.timeline-item:hover .timeline-image img {
-    transform: scale(1.08);
-}
-
-.timeline-image::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(71, 137, 224, 0.25), rgba(193, 202, 219, 0.25));
-    opacity: 0;
-    transition: opacity 0.4s ease;
-}
-
-.timeline-item:hover .timeline-image::after {
-    opacity: 1;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #fff;
+    border: 3px solid rgba(255, 255, 255, 0.35);
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.12);
 }
 
 .experience-card {
-    background: white;
+    background: rgba(255, 255, 255, 0.97);
     border-radius: 20px;
-    padding: 2rem;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
-    border: 2px solid transparent;
-    position: relative;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: minmax(200px, 280px) minmax(0, 1fr);
+    min-height: 240px;
+    box-shadow: 0 16px 40px rgba(15, 23, 42, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.experience-card.no-banner {
+    grid-template-columns: 1fr;
 }
 
 .experience-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 25px 50px rgba(0,0,0,0.15);
-    border-color: var(--secondary);
+    transform: translateY(-3px);
+    box-shadow: 0 22px 48px rgba(15, 23, 42, 0.22);
 }
 
-.timeline-left .experience-card::after {
+.experience-banner {
+    position: relative;
+    min-height: 240px;
+    background: #0f172a;
+    overflow: hidden;
+}
+
+.experience-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.experience-card:hover .experience-banner img {
+    transform: scale(1.04);
+}
+
+.experience-banner::after {
     content: '';
     position: absolute;
-    top: 30px;
-    right: -15px;
-    width: 0;
-    height: 0;
-    border: 15px solid transparent;
-    border-left-color: white;
+    inset: 0;
+    background: linear-gradient(90deg, transparent 55%, rgba(255, 255, 255, 0.08));
+    pointer-events: none;
 }
 
-.timeline-right .experience-card::after {
-    content: '';
-    position: absolute;
-    top: 30px;
-    left: -15px;
-    width: 0;
-    height: 0;
-    border: 15px solid transparent;
-    border-right-color: white;
+.experience-body {
+    padding: 1.4rem 1.5rem 1.45rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    min-width: 0;
+    background:
+        linear-gradient(180deg, rgba(71, 137, 224, 0.04), transparent 42%),
+        #fff;
 }
 
-.card-header {
-    margin-bottom: 1.5rem;
+.experience-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
 }
 
 .company-info {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.85rem;
+    min-width: 0;
 }
 
 .company-logo {
-    width: 60px;
-    height: 60px;
+    width: 52px;
+    height: 52px;
     background: #f8fafc;
-    border-radius: 12px;
+    border-radius: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    border: 2px solid #e2e8f0;
+    border: 1px solid #e2e8f0;
 }
 
 .company-logo img {
-    width: 40px;
-    height: 40px;
+    width: 34px;
+    height: 34px;
     object-fit: contain;
 }
 
 .company-details {
-    flex: 1;
+    min-width: 0;
 }
 
 .company-name {
-    color: var(--main);
-    font-size: 1.3rem;
+    color: #1e293b;
+    font-size: 1.2rem;
     font-weight: 700;
-    margin: 0 0 0.3rem 0;
+    margin: 0 0 0.15rem;
+    line-height: 1.25;
 }
 
 .job-title {
-    color: #718096;
-    font-size: 1rem;
+    color: #64748b;
+    font-size: 0.95rem;
     font-weight: 500;
-    margin: 0 0 0.5rem 0;
+    margin: 0;
+    line-height: 1.35;
 }
 
-.company-link {
+.experience-date {
+    flex-shrink: 0;
+    background: linear-gradient(135deg, var(--main), #3a7bd5);
+    color: #fff;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    box-shadow: 0 8px 18px rgba(71, 137, 224, 0.28);
+}
+
+.volunteer-card .experience-date {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    box-shadow: 0 8px 18px rgba(231, 76, 60, 0.28);
+}
+
+.experience-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1.1rem;
+}
+
+.meta-item,
+.meta-link {
     display: inline-flex;
     align-items: center;
-    gap: 0.3rem;
+    gap: 0.4rem;
+    font-size: 0.84rem;
+    color: #64748b;
+}
+
+.meta-item i,
+.meta-link i {
     color: var(--main);
-    font-size: 0.8rem;
+    font-size: 0.78rem;
+}
+
+.volunteer-card .meta-item i,
+.volunteer-card .meta-link i {
+    color: #e74c3c;
+}
+
+.meta-link {
+    color: var(--main);
+    font-weight: 600;
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: opacity 0.2s ease;
 }
 
-.company-link:hover {
-    color: #3a7bd5;
-    transform: translateX(3px);
+.volunteer-card .meta-link {
+    color: #e74c3c;
 }
 
-.card-content {
-    display: grid;
-    gap: 1.5rem;
+.meta-link:hover {
+    opacity: 0.75;
+}
+
+.job-description {
+    margin-top: 0.15rem;
 }
 
 .job-description h5,
 .technologies-used h5 {
-    color: var(--main);
-    font-size: 1rem;
-    font-weight: 600;
-    margin: 0 0 0.8rem 0;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.job-description h5::before {
-    content: 'âœ“';
-    background: var(--main);
-    color: white;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.7rem;
-}
-
-.technologies-used h5::before {
-    content: 'âš¡';
-    background: var(--main);
-    color: white;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.8rem;
+    display: none;
 }
 
 .job-description ul {
@@ -1183,32 +1196,39 @@ header nav a:hover {
     margin: 0;
     padding: 0;
     text-align: left;
+    display: grid;
+    gap: 0.45rem;
 }
 
 .job-description li {
-    color: #4a5568;
-    margin-bottom: 0.5rem;
-    padding-left: 1.5rem;
+    color: #475569;
+    padding-left: 1rem;
     position: relative;
-    line-height: 1.6;
+    line-height: 1.5;
     text-align: left;
+    font-size: 0.9rem;
 }
 
 .job-description li::before {
-    content: 'â–¶';
+    content: '';
     position: absolute;
     left: 0;
-    color: var(--main);
-    font-size: 0.8rem;
+    top: 0.55em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--main);
+}
+
+.volunteer-card .job-description li::before {
+    background: #e74c3c;
 }
 
 .job-description p {
-    color: #4a5568;
-    line-height: 1.8;
-    text-align: justify;
+    color: #475569;
+    line-height: 1.6;
     margin: 0;
-    padding: 0;
-    font-size: 0.95rem;
+    font-size: 0.92rem;
 }
 
 .tech-stack {
@@ -1506,6 +1526,19 @@ header nav a:hover {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+}
+
+.status-badge.category-professional {
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+}
+
+.status-badge.category-community {
+    background: linear-gradient(135deg, #9b59b6, #8e44ad);
+}
+
+.status-badge.category-academic {
+    background: linear-gradient(135deg, #f1c40f, #f39c12);
+    color: #1a1e20;
 }
 
 .project-description {
@@ -2167,19 +2200,20 @@ footer::before {
 }
 
 .volunteer-container {
-    max-width: 1200px;
+    max-width: 1180px;
     margin: 0 auto;
     position: relative;
     z-index: 2;
 }
 
 .volunteer-card {
-    background: white;
-    border-left: 4px solid #e74c3c !important;
+    border-left: none;
 }
 
-.volunteer-card:hover {
-    border-color: #c0392b !important;
+.volunteer-card .experience-body {
+    background:
+        linear-gradient(180deg, rgba(231, 76, 60, 0.05), transparent 42%),
+        #fff;
 }
 
 .volunteer-background {
@@ -2473,7 +2507,6 @@ footer::before {
 /* ---------- RESPONSIVE STYLES FOR NEW SECTIONS ------------- */
 
 @media (max-width: 768px) {
-    #volunteer,
     #achievements {
         padding: 4rem 1.5rem;
     }

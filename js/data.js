@@ -182,13 +182,146 @@ const presentation = {
 };
 
 // ====================================
-// Experience
-// description[area][lang] = string[] (CV bullets) | string (web paragraph)
-// Missing area key => item excluded from that CV
+// Achievements / recognition
 // ====================================
-const experience = [
+const achievements = [
     {
-        company: 'Motoworld',
+        image: 'achievements/datapower.jpg',
+        title: {
+            'great-britain': 'Official Speaker at DataPower (DSRP)',
+            spain: 'Ponente oficial en DataPower (DSRP)',
+            italy: 'Relatore ufficiale a DataPower (DSRP)',
+            brazil: 'Palestrante oficial no DataPower (DSRP)',
+            france: 'Conférencier officiel à DataPower (DSRP)',
+        },
+        location: {
+            'great-britain': 'Lima, Peru',
+            spain: 'Lima, Perú',
+            italy: 'Lima, Perù',
+            brazil: 'Lima, Peru',
+            france: 'Lima, Pérou',
+        },
+        from: { year: 2025, month: 11 },
+        to: { year: 2025, month: 11 },
+        description: {
+            web: {
+                'great-britain': 'I had the opportunity to present the POT-AI project at the Data Power event organized by Data Science Research Peru (DSRP), sharing ideas and experiences on how artificial intelligence and the Internet of Things can be combined to build environmental solutions.',
+                spain: 'Tuve la oportunidad de presentar el proyecto POT-AI en el evento Data Power organizado por Data Science Research Perú (DSRP), compartir ideas y experiencias de cómo la inteligencia artificial y el internet de las cosas pueden combinarse para construir soluciones medioambientales.',
+                italy: "Ho avuto l'opportunità di presentare il progetto POT-AI all'evento Data Power organizzato da Data Science Research Peru (DSRP), condividendo idee ed esperienze su come l'intelligenza artificiale e l'Internet delle Cose possono essere combinati per costruire soluzioni ambientali.",
+                brazil: 'Tive a oportunidade de apresentar o projeto POT-AI no evento Data Power organizado pela Data Science Research Peru (DSRP), compartilhando ideias e experiências sobre como a inteligência artificial e a Internet das Coisas podem ser combinadas para construir soluções ambientais.',
+                france: "J'ai eu l'opportunité de présenter le projet POT-AI lors de l'événement Data Power organisé par Data Science Research Peru (DSRP), en partageant des idées et des expériences sur la manière dont l'intelligence artificielle et l'Internet des objets peuvent se combiner pour construire des solutions environnementales.",
+            },
+            'Data Science': {
+                'great-britain': 'I had the opportunity to present the POT-AI project at the Data Power event organized by Data Science Research Peru (DSRP), sharing ideas and experiences on how artificial intelligence and the Internet of Things can be combined to build environmental solutions.',
+                spain: 'Tuve la oportunidad de presentar el proyecto POT-IA en el evento Data Power organizado por (Data Science Research Perú (DSRP), compartir ideas y experiencias de cómo la inteligencia artificial y el internet de las cosas pueden combinarse para construir soluciones medioambientales.',
+                italy: "Ho avuto l'opportunità di presentare il progetto POT-AI all'evento Data Power organizzato da Data Science Research Peru (DSRP), condividendo idee ed esperienze su come l'intelligenza artificiale e l'Internet delle Cose possono essere combinati per costruire soluzioni ambientali.",
+                brazil: 'Tive a oportunidade de apresentar o projeto POT-IA no evento Data Power organizado pela Data Science Research Peru (DSRP), compartilhando ideias e experiências sobre como a inteligência artificial e a Internet das Coisas podem ser combinadas para construir soluções ambientais.',
+                france: "J'ai eu l'opportunité de présenter le projet POT-IA lors de l'événement Data Power organisé par Data Science Research Peru (DSRP), en partageant des idées et des expériences sur la manière dont l'intelligence artificielle et l'Internet des objets peuvent se combiner pour construire des solutions environnementales.",
+            },
+        },
+        icon: 'microphone',
+        type: 'speaker',
+    },
+    {
+        image: 'achievements/1551.png',
+        title: {
+            'great-britain': 'Winner at San Marcos Circular Challenge',
+            spain: 'Ganador en el San Marcos Circular Challenge',
+            italy: 'Vincitore della San Marcos Circular Challenge',
+            brazil: 'Vencedor do San Marcos Circular Challenge',
+            france: 'Vainqueur du San Marcos Circular Challenge',
+        },
+        location: {
+            'great-britain': 'Lima, Peru',
+            spain: 'Lima, Perú',
+            italy: 'Lima, Perù',
+            brazil: 'Lima, Peru',
+            france: 'Lima, Pérou',
+        },
+        from: { year: 2023, month: 12 },
+        to: { year: 2023, month: 12 },
+        description: {
+            web: {
+                'great-britain': 'My Smart Tachito project took first place in the San Marcos Circular Challenge hackathon organized by the 1551 business incubator of UNMSM, meeting the expectations of circular economy, innovation and environmental care.',
+                spain: 'Mi proyecto Smart Tachito quedó en primer puesto en la hackathon del San Marcos Circular Challenge organizado por la incubadora de empresas 1551 de la UNMSM, cumpliendo con las expectativas de economía circular, innovación y cuidado del medio ambiente.',
+                italy: "Il mio progetto Smart Tachito ha ottenuto il primo posto nell'hackathon San Marcos Circular Challenge organizzato dall'incubatore di imprese 1551 dell'UNMSM, soddisfacendo le aspettative di economia circolare, innovazione e cura dell'ambiente.",
+                brazil: 'Meu projeto Smart Tachito conquistou o primeiro lugar no hackathon San Marcos Circular Challenge organizado pela incubadora de empresas 1551 da UNMSM, atendendo às expectativas de economia circular, inovação e cuidado ambiental.',
+                france: "Mon projet Smart Tachito a obtenu la première place au hackathon San Marcos Circular Challenge organisé par l'incubateur d'entreprises 1551 de l'UNMSM, répondant aux attentes en matière d'économie circulaire, d'innovation et de protection de l'environnement.",
+            },
+            'Data Science': {
+                'great-britain': 'My Smart Tachito project took first place in the San Marcos Circular Challenge hackathon organized by the 1551 business incubator of UNMSM, meeting the expectations of circular economy, innovation and environmental care.',
+                spain: 'Mi proyecto Smart Tachito quedó en primer puesto en la hackathon del San Marcos Circular Challenge organizado por la incubadora de empresas 1551 de la UNMSM, cumpliendo con las expectativas de economía circular, innovación y cuidado del medio ambiente.',
+                italy: "Il mio progetto Smart Tachito ha ottenuto il primo posto nell'hackathon San Marcos Circular Challenge organizzato dall'incubatore di imprese 1551 dell'UNMSM, soddisfacendo le aspettative di economia circolare, innovazione e cura dell'ambiente.",
+                brazil: 'Meu projeto Smart Tachito conquistou o primeiro lugar no hackathon San Marcos Circular Challenge organizado pela incubadora de empresas 1551 da UNMSM, atendendo às expectativas de economia circular, inovação e cuidado ambiental.',
+                france: "Mon projet Smart Tachito a obtenu la première place au hackathon San Marcos Circular Challenge organisé par l'incubateur d'entreprises 1551 de l'UNMSM, répondant aux attentes en matière d'économie circulaire, d'innovation et de protection de l'environnement.",
+            },
+        },
+        icon: 'trophy',
+        type: 'award',
+    },
+    {
+        image: 'achievements/fisi.png',
+        title: {
+            'great-britain': 'Second Place — FISI Anniversary Hackathon',
+            spain: 'Segundo puesto — Hackathon aniversario FISI',
+            italy: 'Secondo posto — Hackathon anniversario FISI',
+            brazil: 'Segundo lugar — Hackathon aniversário FISI',
+            france: 'Deuxième place — Hackathon anniversaire FISI',
+        },
+        location: {
+            'great-britain': 'Lima, Peru',
+            spain: 'Lima, Perú',
+            italy: 'Lima, Perù',
+            brazil: 'Lima, Peru',
+            france: 'Lima, Pérou',
+        },
+        from: { year: 2023, month: 11 },
+        to: { year: 2023, month: 11 },
+        description: {
+            web: {
+                'great-britain': 'I took 2nd place in the hackathon for the anniversary of the Faculty of Systems Engineering and Informatics of UNMSM with an administrative management project for that same faculty.',
+                spain: 'Quedé en 2do lugar en la hackathon por el aniversario de la Facultad de Ingeniería de Sistemas e Informática de la UNMSM con un proyecto de gestión administrativa para la misma facultad.',
+                italy: "Ho ottenuto il 2° posto nell'hackathon per l'anniversario della Facoltà di Ingegneria dei Sistemi e Informatica dell'UNMSM con un progetto di gestione amministrativa per la stessa facoltà.",
+                brazil: 'Conquistei o 2º lugar no hackathon pelo aniversário da Faculdade de Engenharia de Sistemas e Informática da UNMSM com um projeto de gestão administrativa para a mesma faculdade.',
+                france: "J'ai obtenu la 2e place au hackathon pour l'anniversaire de la Faculté d'Ingénierie des Systèmes et Informatique de l'UNMSM avec un projet de gestion administrative pour cette même faculté.",
+            },
+            Frontend: {
+                'great-britain': 'I took 2nd place in the hackathon for the anniversary of the Faculty of Systems Engineering and Informatics of UNMSM with an administrative management project for that same faculty.',
+                spain: 'Quedé en 2do lugar en la hackathon por el aniversario de la Facultad de Ingeniería de Sistemas e Informática de la UNMSM con un proyecto de gestión administrativa para la misma facultad.',
+                italy: "Ho ottenuto il 2° posto nell'hackathon per l'anniversario della Facoltà di Ingegneria dei Sistemi e Informatica dell'UNMSM con un progetto di gestione amministrativa per la stessa facoltà.",
+                brazil: 'Conquistei o 2º lugar no hackathon pelo aniversário da Faculdade de Engenharia de Sistemas e Informática da UNMSM com um projeto de gestão administrativa para a mesma faculdade.',
+                france: "J'ai obtenu la 2e place au hackathon pour l'anniversaire de la Faculté d'Ingénierie des Systèmes et Informatique de l'UNMSM avec un projet de gestion administrative pour cette même faculté.",
+            },
+            Backend: {
+                'great-britain': 'I took 2nd place in the hackathon for the anniversary of the Faculty of Systems Engineering and Informatics of UNMSM with an administrative management project for that same faculty.',
+                spain: 'Quedé en 2do lugar en la hackathon por el aniversario de la Facultad de Ingeniería de Sistemas e Informática de la UNMSM con un proyecto de gestión administrativa para la misma facultad.',
+                italy: "Ho ottenuto il 2° posto nell'hackathon per l'anniversario della Facoltà di Ingegneria dei Sistemi e Informatica dell'UNMSM con un progetto di gestione amministrativa per la stessa facoltà.",
+                brazil: 'Conquistei o 2º lugar no hackathon pelo aniversário da Faculdade de Engenharia de Sistemas e Informática da UNMSM com um projeto de gestão administrativa para a mesma faculdade.',
+                france: "J'ai obtenu la 2e place au hackathon pour l'anniversaire de la Faculté d'Ingénierie des Systèmes et Informatique de l'UNMSM avec un projet de gestion administrative pour cette même faculté.",
+            },
+            Fullstack: {
+                'great-britain': 'I took 2nd place in the hackathon for the anniversary of the Faculty of Systems Engineering and Informatics of UNMSM with an administrative management project for that same faculty.',
+                spain: 'Quedé en 2do lugar en la hackathon por el aniversario de la Facultad de Ingeniería de Sistemas e Informática de la UNMSM con un proyecto de gestión administrativa para la misma facultad.',
+                italy: "Ho ottenuto il 2° posto nell'hackathon per l'anniversario della Facoltà di Ingegneria dei Sistemi e Informatica dell'UNMSM con un progetto di gestione amministrativa per la stessa facoltà.",
+                brazil: 'Conquistei o 2º lugar no hackathon pelo aniversário da Faculdade de Engenharia de Sistemas e Informática da UNMSM com um projeto de gestão administrativa para a mesma faculdade.',
+                france: "J'ai obtenu la 2e place au hackathon pour l'anniversaire de la Faculté d'Ingénierie des Systèmes et Informatique de l'UNMSM avec un projet de gestion administrative pour cette même faculté.",
+            },
+        },
+        icon: 'medal',
+        type: 'award',
+    },
+];
+
+// ====================================
+// Projects (portfolio: professional, community, products, research)
+// category: professional | community | product | academic
+// description[area|web][lang] = string[] (web) | string (CV)
+// ====================================
+const projects = [
+    {
+        name: 'Motoworld',
+
+        category: 'professional',
         location: {
             'great-britain': 'Lima, Peru',
             spain: 'Lima, Perú',
@@ -198,7 +331,7 @@ const experience = [
         },
         from: { year: 2026, month: 6 },
         to: { year: 2026, month: 8 },
-        position: {
+        role: {
             'great-britain': 'Freelance Developer — Ecommerce',
             spain: 'Desarrollador freelance — Ecommerce',
             italy: 'Sviluppatore freelance — Ecommerce',
@@ -247,7 +380,9 @@ const experience = [
         website: 'https://motoworld.pe',
     },
     {
-        company: 'GM Group',
+        name: 'GM Group',
+
+        category: 'professional',
         image: 'experience/gmgroup-side.png',
         location: {
             'great-britain': 'Salto, Uruguay',
@@ -258,7 +393,7 @@ const experience = [
         },
         from: { year: 2025, month: 4 },
         to: null,
-        position: {
+        role: {
             'great-britain': 'Developer and IT Support',
             spain: 'Desarrollador y soporte TI',
             italy: 'Sviluppatore e supporto IT',
@@ -459,21 +594,17 @@ const experience = [
         },
         website: 'https://solucionesgm.com/',
     },
-];
-
-// ====================================
-// Volunteer
-// ====================================
-const volunteer = [
     {
-        title: {
+        role: {
             'great-britain': 'Development Team Lead — Eneisoft',
             spain: 'Líder de equipo de desarrollo — Eneisoft',
             italy: 'Leader del team di sviluppo — Eneisoft',
             brazil: 'Líder da equipe de desenvolvimento — Eneisoft',
             france: "Chef d'équipe de développement — Eneisoft",
         },
-        organization: 'Eneisoft',
+        name: 'Eneisoft',
+
+        category: 'community',
         image: 'experience/eneisoft-side.webp',
         location: {
             'great-britain': 'Lima, Peru',
@@ -543,145 +674,10 @@ const volunteer = [
         },
         website: 'https://eneisoft.org/',
     },
-];
 
-// ====================================
-// Achievements / recognition
-// ====================================
-const achievements = [
-    {
-        image: 'achievements/datapower.jpg',
-        title: {
-            'great-britain': 'Official Speaker at DataPower (DSRP)',
-            spain: 'Ponente oficial en DataPower (DSRP)',
-            italy: 'Relatore ufficiale a DataPower (DSRP)',
-            brazil: 'Palestrante oficial no DataPower (DSRP)',
-            france: 'Conférencier officiel à DataPower (DSRP)',
-        },
-        location: {
-            'great-britain': 'Lima, Peru',
-            spain: 'Lima, Perú',
-            italy: 'Lima, Perù',
-            brazil: 'Lima, Peru',
-            france: 'Lima, Pérou',
-        },
-        from: { year: 2025, month: 11 },
-        to: { year: 2025, month: 11 },
-        description: {
-            web: {
-                'great-britain': 'I had the opportunity to present the POT-AI project at the Data Power event organized by Data Science Research Peru (DSRP), sharing ideas and experiences on how artificial intelligence and the Internet of Things can be combined to build environmental solutions.',
-                spain: 'Tuve la oportunidad de presentar el proyecto POT-AI en el evento Data Power organizado por Data Science Research Perú (DSRP), compartir ideas y experiencias de cómo la inteligencia artificial y el internet de las cosas pueden combinarse para construir soluciones medioambientales.',
-                italy: "Ho avuto l'opportunità di presentare il progetto POT-AI all'evento Data Power organizzato da Data Science Research Peru (DSRP), condividendo idee ed esperienze su come l'intelligenza artificiale e l'Internet delle Cose possono essere combinati per costruire soluzioni ambientali.",
-                brazil: 'Tive a oportunidade de apresentar o projeto POT-AI no evento Data Power organizado pela Data Science Research Peru (DSRP), compartilhando ideias e experiências sobre como a inteligência artificial e a Internet das Coisas podem ser combinadas para construir soluções ambientais.',
-                france: "J'ai eu l'opportunité de présenter le projet POT-AI lors de l'événement Data Power organisé par Data Science Research Peru (DSRP), en partageant des idées et des expériences sur la manière dont l'intelligence artificielle et l'Internet des objets peuvent se combiner pour construire des solutions environnementales.",
-            },
-            'Data Science': {
-                'great-britain': 'I had the opportunity to present the POT-AI project at the Data Power event organized by Data Science Research Peru (DSRP), sharing ideas and experiences on how artificial intelligence and the Internet of Things can be combined to build environmental solutions.',
-                spain: 'Tuve la oportunidad de presentar el proyecto POT-IA en el evento Data Power organizado por (Data Science Research Perú (DSRP), compartir ideas y experiencias de cómo la inteligencia artificial y el internet de las cosas pueden combinarse para construir soluciones medioambientales.',
-                italy: "Ho avuto l'opportunità di presentare il progetto POT-AI all'evento Data Power organizzato da Data Science Research Peru (DSRP), condividendo idee ed esperienze su come l'intelligenza artificiale e l'Internet delle Cose possono essere combinati per costruire soluzioni ambientali.",
-                brazil: 'Tive a oportunidade de apresentar o projeto POT-IA no evento Data Power organizado pela Data Science Research Peru (DSRP), compartilhando ideias e experiências sobre como a inteligência artificial e a Internet das Coisas podem ser combinadas para construir soluções ambientais.',
-                france: "J'ai eu l'opportunité de présenter le projet POT-IA lors de l'événement Data Power organisé par Data Science Research Peru (DSRP), en partageant des idées et des expériences sur la manière dont l'intelligence artificielle et l'Internet des objets peuvent se combiner pour construire des solutions environnementales.",
-            },
-        },
-        icon: 'microphone',
-        type: 'speaker',
-    },
-    {
-        image: 'achievements/1551.png',
-        title: {
-            'great-britain': 'Winner at San Marcos Circular Challenge',
-            spain: 'Ganador en el San Marcos Circular Challenge',
-            italy: 'Vincitore della San Marcos Circular Challenge',
-            brazil: 'Vencedor do San Marcos Circular Challenge',
-            france: 'Vainqueur du San Marcos Circular Challenge',
-        },
-        location: {
-            'great-britain': 'Lima, Peru',
-            spain: 'Lima, Perú',
-            italy: 'Lima, Perù',
-            brazil: 'Lima, Peru',
-            france: 'Lima, Pérou',
-        },
-        from: { year: 2023, month: 12 },
-        to: { year: 2023, month: 12 },
-        description: {
-            web: {
-                'great-britain': 'My Smart Tachito project took first place in the San Marcos Circular Challenge hackathon organized by the 1551 business incubator of UNMSM, meeting the expectations of circular economy, innovation and environmental care.',
-                spain: 'Mi proyecto Smart Tachito quedó en primer puesto en la hackathon del San Marcos Circular Challenge organizado por la incubadora de empresas 1551 de la UNMSM, cumpliendo con las expectativas de economía circular, innovación y cuidado del medio ambiente.',
-                italy: "Il mio progetto Smart Tachito ha ottenuto il primo posto nell'hackathon San Marcos Circular Challenge organizzato dall'incubatore di imprese 1551 dell'UNMSM, soddisfacendo le aspettative di economia circolare, innovazione e cura dell'ambiente.",
-                brazil: 'Meu projeto Smart Tachito conquistou o primeiro lugar no hackathon San Marcos Circular Challenge organizado pela incubadora de empresas 1551 da UNMSM, atendendo às expectativas de economia circular, inovação e cuidado ambiental.',
-                france: "Mon projet Smart Tachito a obtenu la première place au hackathon San Marcos Circular Challenge organisé par l'incubateur d'entreprises 1551 de l'UNMSM, répondant aux attentes en matière d'économie circulaire, d'innovation et de protection de l'environnement.",
-            },
-            'Data Science': {
-                'great-britain': 'My Smart Tachito project took first place in the San Marcos Circular Challenge hackathon organized by the 1551 business incubator of UNMSM, meeting the expectations of circular economy, innovation and environmental care.',
-                spain: 'Mi proyecto Smart Tachito quedó en primer puesto en la hackathon del San Marcos Circular Challenge organizado por la incubadora de empresas 1551 de la UNMSM, cumpliendo con las expectativas de economía circular, innovación y cuidado del medio ambiente.',
-                italy: "Il mio progetto Smart Tachito ha ottenuto il primo posto nell'hackathon San Marcos Circular Challenge organizzato dall'incubatore di imprese 1551 dell'UNMSM, soddisfacendo le aspettative di economia circolare, innovazione e cura dell'ambiente.",
-                brazil: 'Meu projeto Smart Tachito conquistou o primeiro lugar no hackathon San Marcos Circular Challenge organizado pela incubadora de empresas 1551 da UNMSM, atendendo às expectativas de economia circular, inovação e cuidado ambiental.',
-                france: "Mon projet Smart Tachito a obtenu la première place au hackathon San Marcos Circular Challenge organisé par l'incubateur d'entreprises 1551 de l'UNMSM, répondant aux attentes en matière d'économie circulaire, d'innovation et de protection de l'environnement.",
-            },
-        },
-        icon: 'trophy',
-        type: 'award',
-    },
-    {
-        image: 'achievements/fisi.png',
-        title: {
-            'great-britain': 'Second Place — FISI Anniversary Hackathon',
-            spain: 'Segundo puesto — Hackathon aniversario FISI',
-            italy: 'Secondo posto — Hackathon anniversario FISI',
-            brazil: 'Segundo lugar — Hackathon aniversário FISI',
-            france: 'Deuxième place — Hackathon anniversaire FISI',
-        },
-        location: {
-            'great-britain': 'Lima, Peru',
-            spain: 'Lima, Perú',
-            italy: 'Lima, Perù',
-            brazil: 'Lima, Peru',
-            france: 'Lima, Pérou',
-        },
-        from: { year: 2023, month: 11 },
-        to: { year: 2023, month: 11 },
-        description: {
-            web: {
-                'great-britain': 'I took 2nd place in the hackathon for the anniversary of the Faculty of Systems Engineering and Informatics of UNMSM with an administrative management project for that same faculty.',
-                spain: 'Quedé en 2do lugar en la hackathon por el aniversario de la Facultad de Ingeniería de Sistemas e Informática de la UNMSM con un proyecto de gestión administrativa para la misma facultad.',
-                italy: "Ho ottenuto il 2° posto nell'hackathon per l'anniversario della Facoltà di Ingegneria dei Sistemi e Informatica dell'UNMSM con un progetto di gestione amministrativa per la stessa facoltà.",
-                brazil: 'Conquistei o 2º lugar no hackathon pelo aniversário da Faculdade de Engenharia de Sistemas e Informática da UNMSM com um projeto de gestão administrativa para a mesma faculdade.',
-                france: "J'ai obtenu la 2e place au hackathon pour l'anniversaire de la Faculté d'Ingénierie des Systèmes et Informatique de l'UNMSM avec un projet de gestion administrative pour cette même faculté.",
-            },
-            Frontend: {
-                'great-britain': 'I took 2nd place in the hackathon for the anniversary of the Faculty of Systems Engineering and Informatics of UNMSM with an administrative management project for that same faculty.',
-                spain: 'Quedé en 2do lugar en la hackathon por el aniversario de la Facultad de Ingeniería de Sistemas e Informática de la UNMSM con un proyecto de gestión administrativa para la misma facultad.',
-                italy: "Ho ottenuto il 2° posto nell'hackathon per l'anniversario della Facoltà di Ingegneria dei Sistemi e Informatica dell'UNMSM con un progetto di gestione amministrativa per la stessa facoltà.",
-                brazil: 'Conquistei o 2º lugar no hackathon pelo aniversário da Faculdade de Engenharia de Sistemas e Informática da UNMSM com um projeto de gestão administrativa para a mesma faculdade.',
-                france: "J'ai obtenu la 2e place au hackathon pour l'anniversaire de la Faculté d'Ingénierie des Systèmes et Informatique de l'UNMSM avec un projet de gestion administrative pour cette même faculté.",
-            },
-            Backend: {
-                'great-britain': 'I took 2nd place in the hackathon for the anniversary of the Faculty of Systems Engineering and Informatics of UNMSM with an administrative management project for that same faculty.',
-                spain: 'Quedé en 2do lugar en la hackathon por el aniversario de la Facultad de Ingeniería de Sistemas e Informática de la UNMSM con un proyecto de gestión administrativa para la misma facultad.',
-                italy: "Ho ottenuto il 2° posto nell'hackathon per l'anniversario della Facoltà di Ingegneria dei Sistemi e Informatica dell'UNMSM con un progetto di gestione amministrativa per la stessa facoltà.",
-                brazil: 'Conquistei o 2º lugar no hackathon pelo aniversário da Faculdade de Engenharia de Sistemas e Informática da UNMSM com um projeto de gestão administrativa para a mesma faculdade.',
-                france: "J'ai obtenu la 2e place au hackathon pour l'anniversaire de la Faculté d'Ingénierie des Systèmes et Informatique de l'UNMSM avec un projet de gestion administrative pour cette même faculté.",
-            },
-            Fullstack: {
-                'great-britain': 'I took 2nd place in the hackathon for the anniversary of the Faculty of Systems Engineering and Informatics of UNMSM with an administrative management project for that same faculty.',
-                spain: 'Quedé en 2do lugar en la hackathon por el aniversario de la Facultad de Ingeniería de Sistemas e Informática de la UNMSM con un proyecto de gestión administrativa para la misma facultad.',
-                italy: "Ho ottenuto il 2° posto nell'hackathon per l'anniversario della Facoltà di Ingegneria dei Sistemi e Informatica dell'UNMSM con un progetto di gestione amministrativa per la stessa facoltà.",
-                brazil: 'Conquistei o 2º lugar no hackathon pelo aniversário da Faculdade de Engenharia de Sistemas e Informática da UNMSM com um projeto de gestão administrativa para a mesma faculdade.',
-                france: "J'ai obtenu la 2e place au hackathon pour l'anniversaire de la Faculté d'Ingénierie des Systèmes et Informatique de l'UNMSM avec un projet de gestion administrative pour cette même faculté.",
-            },
-        },
-        icon: 'medal',
-        type: 'award',
-    },
-];
-
-// ====================================
-// Projects
-// ====================================
-const projects = [
     {
         name: 'SpeakUp',
+        category: 'academic',
         subtitle: {
             'great-britain': 'AI glove for Peruvian Sign Language',
             spain: 'Guante IA para Lengua de Señas Peruana',
@@ -740,6 +736,7 @@ const projects = [
     },
     {
         name: 'CacaoLens',
+        category: 'product',
         subtitle: {
             'great-britain': 'Mobile app with embedded Deep Learning',
             spain: 'Aplicación móvil con Deep Learning embebido',
@@ -828,6 +825,7 @@ const projects = [
     },
     {
         name: 'Jigsaw Model',
+        category: 'product',
         subtitle: {
             'great-britain': 'Deep Learning model for computer vision',
             spain: 'Modelo de Deep Learning para visión computacional',
@@ -890,6 +888,7 @@ const projects = [
     },
     {
         name: 'PotAI',
+        category: 'product',
         subtitle: {
             'great-britain': 'AI-powered automated irrigation',
             spain: 'Riego automatizado con IA',
@@ -1407,20 +1406,50 @@ const education = [
 // ====================================
 // UI copy (navigation, labels)
 // ====================================
+const projectCategoryLabels = {
+    professional: {
+        'great-britain': 'Professional',
+        spain: 'Profesional',
+        italy: 'Professionale',
+        brazil: 'Profissional',
+        france: 'Professionnel',
+    },
+    community: {
+        'great-britain': 'Community',
+        spain: 'Comunidad',
+        italy: 'Comunità',
+        brazil: 'Comunidade',
+        france: 'Communauté',
+    },
+    product: {
+        'great-britain': 'Product',
+        spain: 'Producto',
+        italy: 'Prodotto',
+        brazil: 'Produto',
+        france: 'Produit',
+    },
+    academic: {
+        'great-britain': 'Academic',
+        spain: 'Académico',
+        italy: 'Accademico',
+        brazil: 'Acadêmico',
+        france: 'Académique',
+    },
+};
+
 const info = {
     'great-britain': {
         links: {
             home: 'home',
             about: 'about me',
             projects: 'projects',
-            experience: 'experience',
-            volunteer: 'volunteer',
             achievements: 'achievements',
             skills: 'tools',
             languages: 'languages',
             education: 'education',
             presentation: 'presentation',
         },
+        projectsDescription: 'Professional work, personal builds, and community contributions',
         career: 'Software Engineering Student',
         download: 'Download my CV',
         overview: 'Overview:',
@@ -1433,14 +1462,13 @@ const info = {
             home: 'inicio',
             about: 'sobre mi',
             projects: 'proyectos',
-            experience: 'experiencia',
-            volunteer: 'voluntariado',
             achievements: 'reconocimientos',
             skills: 'herramientas',
             languages: 'idiomas',
             education: 'educación',
             presentation: 'presentación',
         },
+        projectsDescription: 'Trabajo profesional, proyectos personales y contribuciones a la comunidad',
         career: 'Estudiante de Ingeniería de Software',
         download: 'Descarga mi CV',
         overview: 'Descripción:',
@@ -1453,14 +1481,13 @@ const info = {
             home: 'início',
             about: 'sobre mim',
             projects: 'projetos',
-            experience: 'experiência',
-            volunteer: 'voluntariado',
             achievements: 'reconhecimentos',
             skills: 'ferramentas',
             languages: 'idiomas',
             education: 'educação',
             presentation: 'apresentação',
         },
+        projectsDescription: 'Trabalho profissional, projetos pessoais e contribuições comunitárias',
         career: 'Estudante de Engenharia de Software',
         download: 'Baixe meu CV',
         overview: 'Descrição:',
@@ -1473,14 +1500,13 @@ const info = {
             home: 'home',
             about: 'su di me',
             projects: 'progetti',
-            experience: 'esperienza',
-            volunteer: 'volontariato',
             achievements: 'riconoscimenti',
             skills: 'strumenti',
             languages: 'lingue',
             education: 'istruzione',
             presentation: 'presentazione',
         },
+        projectsDescription: 'Lavoro professionale, progetti personali e contributi alla comunità',
         career: 'Studente di Ingegneria del Software',
         download: 'Scarica il mio CV',
         overview: 'Descrizione:',
@@ -1493,14 +1519,13 @@ const info = {
             home: 'accueil',
             about: 'à propos',
             projects: 'projets',
-            experience: 'expérience',
-            volunteer: 'bénévolat',
             achievements: 'distinctions',
             skills: 'outils',
             languages: 'langues',
             education: 'formation',
             presentation: 'présentation',
         },
+        projectsDescription: 'Travail professionnel, projets personnels et contributions communautaires',
         career: 'Étudiant en Ingénierie Logicielle',
         download: 'Télécharge mon CV',
         overview: 'Description :',
