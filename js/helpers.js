@@ -66,11 +66,9 @@ function descriptionToPlain(desc) {
     return desc;
 }
 
-/** Renders a localized description as a list or paragraph. */
+/** Renders a localized description as a single paragraph on the website. */
 function descriptionToDisplayHtml(desc) {
     if (desc == null || desc === '') return '';
-    if (Array.isArray(desc)) {
-        return `<ul>${desc.map((item) => `<li>${item}</li>`).join('')}</ul>`;
-    }
-    return `<p>${desc}</p>`;
+    const text = Array.isArray(desc) ? desc.join(' ') : desc;
+    return `<p>${text}</p>`;
 }

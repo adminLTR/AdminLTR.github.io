@@ -315,7 +315,7 @@ const achievements = [
 // ====================================
 // Projects (portfolio: professional, community, products, research)
 // category: professional | community | product | academic
-// description[area|web][lang] = string[] (web) | string (CV)
+// description.web[lang] = short string (portfolio); other areas = string | string[] (CV)
 // ====================================
 const projects = [
     {
@@ -340,259 +340,14 @@ const projects = [
         },
         description: {
             web: {
-                'great-britain': [
-                    'Developed a web application using Laravel under an MVC architecture, implementing frontend and backend features.',
-                    'Designed and implemented responsive web interfaces using Blade and Tailwind CSS.',
-                    'Integrated a payment gateway through REST APIs and Webhooks.',
-                    'Collaborated directly with the client on requirements definition and user stories under Scrum.',
-                    'Implemented Docker to standardize the development environment with PHP 8.3.',
-                ],
-                spain: [
-                    'Desarrollé una aplicación web utilizando Laravel bajo arquitectura MVC, implementando funcionalidades de frontend y backend.',
-                    'Diseñé e implementé interfaces web responsivas utilizando Blade y Tailwind CSS.',
-                    'Integré una pasarela de pagos mediante APIs REST y Webhooks.',
-                    'Colaboré directamente con el cliente en la definición de requerimientos e historias de usuario bajo Scrum.',
-                    'Implementé Docker para estandarizar el entorno de desarrollo con PHP 8.3.',
-                ],
-                italy: [
-                    "Ho sviluppato un'applicazione web utilizzando Laravel con architettura MVC, implementando funzionalità frontend e backend.",
-                    'Ho progettato e implementato interfacce web responsive utilizzando Blade e Tailwind CSS.',
-                    'Ho integrato un gateway di pagamento tramite API REST e Webhook.',
-                    'Ho collaborato direttamente con il cliente nella definizione dei requisiti e delle user stories secondo Scrum.',
-                    "Ho implementato Docker per standardizzare l'ambiente di sviluppo con PHP 8.3.",
-                ],
-                brazil: [
-                    'Desenvolvi uma aplicação web utilizando Laravel sob arquitetura MVC, implementando funcionalidades de frontend e backend.',
-                    'Projetei e implementei interfaces web responsivas utilizando Blade e Tailwind CSS.',
-                    'Integrei um gateway de pagamentos por meio de APIs REST e Webhooks.',
-                    'Colaborei diretamente com o cliente na definição de requisitos e histórias de usuário sob Scrum.',
-                    'Implementei Docker para padronizar o ambiente de desenvolvimento com PHP 8.3.',
-                ],
-                france: [
-                    "J'ai développé une application web avec Laravel sous architecture MVC, en implémentant des fonctionnalités frontend et backend.",
-                    "J'ai conçu et implémenté des interfaces web responsives avec Blade et Tailwind CSS.",
-                    "J'ai intégré une passerelle de paiement via des API REST et des Webhooks.",
-                    "J'ai collaboré directement avec le client sur la définition des exigences et des user stories selon Scrum.",
-                    "J'ai mis en place Docker pour standardiser l'environnement de développement avec PHP 8.3.",
-                ],
+                'great-britain': 'E-commerce platform for a motorcycle and accessories store, built with Laravel and MySQL in an MVC architecture, with an integrated payment gateway.',
+                spain: 'Sistema de ecommerce para una tienda de motocicletas y accesorios, desarrollado con Laravel y MySQL bajo arquitectura MVC. Se integró una pasarela de pagos.',
+                italy: 'Piattaforma e-commerce per un negozio di motociclette e accessori, sviluppata con Laravel e MySQL in architettura MVC, con integrazione di un gateway di pagamento.',
+                brazil: 'Plataforma de e-commerce para uma loja de motocicletas e acessórios, desenvolvida com Laravel e MySQL em arquitetura MVC, com gateway de pagamento integrado.',
+                france: 'Plateforme e-commerce pour un magasin de motos et accessoires, développée avec Laravel et MySQL en architecture MVC, avec une passerelle de paiement intégrée.',
             },
         },
         website: 'https://motoworld.pe',
-    },
-    {
-        name: 'GM Group',
-
-        category: 'professional',
-        image: 'experience/gmgroup-side.png',
-        location: {
-            'great-britain': 'Salto, Uruguay',
-            spain: 'Salto, Uruguay',
-            italy: 'Salto, Uruguay',
-            brazil: 'Salto, Uruguai',
-            france: 'Salto, Uruguay',
-        },
-        from: { year: 2025, month: 4 },
-        to: null,
-        role: {
-            'great-britain': 'Developer and IT Support',
-            spain: 'Desarrollador y soporte TI',
-            italy: 'Sviluppatore e supporto IT',
-            brazil: 'Desenvolvedor e suporte TI',
-            france: 'Développeur et support informatique',
-        },
-        description: {
-            web: {
-                'great-britain': [
-                    'Migrated from a monolithic architecture to one with 22 microservices. This enabled agile, modular scaling of 6 different systems.',
-                    'Automated business processes through Artificial Intelligence (Claude) and Web Scraping, reducing manual work by more than 50%.',
-                    'Integrated external WhatsApp, SMS and email services through REST APIs and Webhooks.',
-                    'Implemented modular and responsive web interfaces using ReactJS and Tailwind CSS.',
-                    'Restructured and optimized the database, eliminating duplicate records and redundant tables to improve data integrity.',
-                    'Implemented Docker to standardize and simplify development environment setup.',
-                    'Worked with Cursor and Copilot using Claude models to enable AI-assisted development.',
-                ],
-                spain: [
-                    'Migré de una arquitectura monolítica a una en 22 microservicios. Esto permitió el escalado ágil y modularizado de 6 sistemas diferentes.',
-                    'Automaticé procesos del negocio mediante Inteligencia Artificial (Claude) y Web Scraping, reduciendo el trabajo manual en más del 50%.',
-                    'Integré servicios externos de WhatsApp, SMS y correo electrónico mediante APIs REST y Webhooks.',
-                    'Implementé interfaces web modulares y responsivas utilizando ReactJS y Tailwind CSS.',
-                    'Reestructuré y optimicé la base de datos, eliminando registros duplicados y tablas redundantes para mejorar la integridad de los datos.',
-                    'Implementé Docker para estandarizar y facilitar la configuración del entorno de desarrollo.',
-                    'Trabajé con Cursor y Copilot con modelos de Claude para facilitar el desarrollo con IA asistida.',
-                ],
-                italy: [
-                    "Ho migrato da un'architettura monolitica a una con 22 microservizi. Ciò ha consentito lo scaling agile e modularizzato di 6 sistemi diversi.",
-                    "Ho automatizzato processi aziendali mediante Intelligenza Artificiale (Claude) e Web Scraping, riducendo il lavoro manuale di oltre il 50%.",
-                    'Ho integrato servizi esterni di WhatsApp, SMS e posta elettronica tramite API REST e Webhook.',
-                    'Ho implementato interfacce web modulari e responsive utilizzando ReactJS e Tailwind CSS.',
-                    "Ho ristrutturato e ottimizzato il database, eliminando record duplicati e tabelle ridondanti per migliorare l'integrità dei dati.",
-                    "Ho implementato Docker per standardizzare e semplificare la configurazione dell'ambiente di sviluppo.",
-                    "Ho lavorato con Cursor e Copilot con modelli Claude per facilitare lo sviluppo assistito dall'IA.",
-                ],
-                brazil: [
-                    'Migrei de uma arquitetura monolítica para uma com 22 microsserviços. Isso permitiu o escalonamento ágil e modularizado de 6 sistemas diferentes.',
-                    'Automatizei processos de negócio por meio de Inteligência Artificial (Claude) e Web Scraping, reduzindo o trabalho manual em mais de 50%.',
-                    'Integrei serviços externos de WhatsApp, SMS e e-mail por meio de APIs REST e Webhooks.',
-                    'Implementei interfaces web modulares e responsivas utilizando ReactJS e Tailwind CSS.',
-                    'Reestruturei e otimizei o banco de dados, eliminando registros duplicados e tabelas redundantes para melhorar a integridade dos dados.',
-                    'Implementei Docker para padronizar e facilitar a configuração do ambiente de desenvolvimento.',
-                    'Trabalhei com Cursor e Copilot com modelos Claude para facilitar o desenvolvimento com IA assistida.',
-                ],
-                france: [
-                    "J'ai migré d'une architecture monolithique vers une architecture en 22 microservices. Cela a permis une mise à l'échelle agile et modularisée de 6 systèmes différents.",
-                    "J'ai automatisé des processus métier grâce à l'Intelligence Artificielle (Claude) et au Web Scraping, réduisant le travail manuel de plus de 50 %.",
-                    "J'ai intégré des services externes WhatsApp, SMS et e-mail via des API REST et des Webhooks.",
-                    "J'ai implémenté des interfaces web modulaires et responsives avec ReactJS et Tailwind CSS.",
-                    "J'ai restructuré et optimisé la base de données, en éliminant les enregistrements en double et les tables redondantes pour améliorer l'intégrité des données.",
-                    "J'ai mis en place Docker pour standardiser et faciliter la configuration de l'environnement de développement.",
-                    "J'ai travaillé avec Cursor et Copilot avec des modèles Claude pour faciliter le développement assisté par l'IA.",
-                ],
-            },
-            Frontend: {
-                'great-britain': [
-                    'Implemented the graphical interface of the systems using ReactJS and JavaScript, structuring an architecture of reusable, modular and easily maintainable components',
-                    'Built and integrated interfaces adaptable to multiple devices using Tailwind CSS, optimizing visual loading performance and ensuring a consistent user experience (UI/UX).',
-                    'Connected client views with external services through RESTful APIs and Webhooks, managing application state and integrating complex real-time functionalities.',
-                    'Took part in the implementation of CI/CD pipelines that accelerated the delivery cycle and continuous integration of new features',
-                ],
-                spain: [
-                    'Implementé la interfaz gráfica de los sistemas utilizando ReactJS y JavaScript, estructurando una arquitectura de componentes reutilizables, modulares y de fácil mantenimiento',
-                    'Maqueté e integré interfaces adaptables a múltiples dispositivos empleando Tailwind CSS, optimizando el rendimiento de carga visual y garantizando una experiencia de usuario (UI/UX) uniforme.',
-                    'Conecté las vistas del cliente con servicios externos mediante APIs RESTful y Webhooks, gestionando el estado de la aplicación e integrando funcionalidades complejas en tiempo real.',
-                    'Participé en la implementación de pipelines de CI/CD que aceleraron el ciclo de entrega e integración continua de nuevas funcionalidades',
-                ],
-                italy: [
-                    "Ho implementato l'interfaccia grafica dei sistemi utilizzando ReactJS e JavaScript, strutturando un'architettura di componenti riutilizzabili, modulari e di facile manutenzione",
-                    "Ho realizzato e integrato interfacce adattabili a più dispositivi utilizzando Tailwind CSS, ottimizzando le prestazioni di caricamento visivo e garantendo un'esperienza utente (UI/UX) uniforme.",
-                    "Ho collegato le viste del client a servizi esterni tramite API RESTful e Webhook, gestendo lo stato dell'applicazione e integrando funzionalità complesse in tempo reale.",
-                    "Ho partecipato all'implementazione di pipeline CI/CD che hanno accelerato il ciclo di consegna e l'integrazione continua di nuove funzionalità",
-                ],
-                brazil: [
-                    'Implementei a interface gráfica dos sistemas utilizando ReactJS e JavaScript, estruturando uma arquitetura de componentes reutilizáveis, modulares e de fácil manutenção',
-                    'Maquetei e integrei interfaces adaptáveis a múltiplos dispositivos empregando Tailwind CSS, otimizando o desempenho de carregamento visual e garantindo uma experiência de usuário (UI/UX) uniforme.',
-                    'Conectei as views do cliente com serviços externos por meio de APIs RESTful e Webhooks, gerenciando o estado da aplicação e integrando funcionalidades complexas em tempo real.',
-                    'Participei da implementação de pipelines de CI/CD que aceleraram o ciclo de entrega e integração contínua de novas funcionalidades',
-                ],
-                france: [
-                    "J'ai implémenté l'interface graphique des systèmes avec ReactJS et JavaScript, en structurant une architecture de composants réutilisables, modulaires et faciles à maintenir",
-                    "J'ai maquetté et intégré des interfaces adaptables à de multiples appareils avec Tailwind CSS, en optimisant les performances de chargement visuel et en garantissant une expérience utilisateur (UI/UX) uniforme.",
-                    "J'ai connecté les vues client à des services externes via des API RESTful et des Webhooks, en gérant l'état de l'application et en intégrant des fonctionnalités complexes en temps réel.",
-                    "J'ai participé à la mise en place de pipelines CI/CD qui ont accéléré le cycle de livraison et l'intégration continue de nouvelles fonctionnalités",
-                ],
-            },
-            Backend: {
-                'great-britain': [
-                    'Designed a microservices-based architecture, optimizing system performance, modularizing business logic and enabling more agile and cost-effective scaling.',
-                    'Integrated web services, APIs and Webhooks (using Python and JavaScript) to interconnect internal systems with third-party services in real time (WhatsApp, SMS, Gmail, Claude).',
-                    "Developed automation bots and massive web scraping scripts in Python (Selenium) for the extraction and processing of critical data, reducing the team's manual effort.",
-                    'Implemented continuous integration and deployment (CI/CD) pipelines to automate tests and server deployments, accelerating delivery cycles.',
-                    'Collaborated on query optimization, server data management and ensuring the availability and security of backend services.',
-                ],
-                spain: [
-                    'Diseñé una arquitectura basada en microservicios, optimizando el rendimiento del sistema, modularizando la lógica de negocio y permitiendo un escalamiento más ágil y rentable.',
-                    'Integré servicios web, APIs y Webhooks (utilizando Python y JavaScript) para interconectar el sistema internas con servicios de terceros en tiempo real (Whatsapp, SMS, Gmail, Claude).',
-                    'Desarrollé bots de automatización y scripts de web scraping masivo en Python (Selenium) para la extracción y procesamiento de datos críticos, reduciendo el esfuerzo manual del equipo.',
-                    'Implementé pipelines de integración y despliegue continuo (CI/CD) para la automatización de tests y despliegues en el servidor, acelerando los ciclos de entrega.',
-                    'Colaboré en la optimización de consultas, gestión de datos del servidor y aseguramiento de la disponibilidad y seguridad de los servicios backend.',
-                ],
-                italy: [
-                    "Ho progettato un'architettura basata su microservizi, ottimizzando le prestazioni del sistema, modularizzando la logica di business e consentendo una scalabilità più agile ed economica.",
-                    'Ho integrato servizi web, API e Webhook (utilizzando Python e JavaScript) per interconnettere i sistemi interni con servizi di terze parti in tempo reale (WhatsApp, SMS, Gmail, Claude).',
-                    "Ho sviluppato bot di automazione e script di web scraping massivo in Python (Selenium) per l'estrazione e l'elaborazione di dati critici, riducendo lo sforzo manuale del team.",
-                    'Ho implementato pipeline di integrazione e distribuzione continua (CI/CD) per automatizzare test e deploy sul server, accelerando i cicli di consegna.',
-                    "Ho collaborato all'ottimizzazione delle query, alla gestione dei dati del server e alla garanzia di disponibilità e sicurezza dei servizi backend.",
-                ],
-                brazil: [
-                    'Projetei uma arquitetura baseada em microsserviços, otimizando o desempenho do sistema, modularizando a lógica de negócio e permitindo um escalonamento mais ágil e rentável.',
-                    'Integrei serviços web, APIs e Webhooks (utilizando Python e JavaScript) para interconectar os sistemas internos com serviços de terceiros em tempo real (WhatsApp, SMS, Gmail, Claude).',
-                    'Desenvolvi bots de automação e scripts de web scraping massivo em Python (Selenium) para a extração e o processamento de dados críticos, reduzindo o esforço manual da equipe.',
-                    'Implementei pipelines de integração e entrega contínua (CI/CD) para a automação de testes e deploys no servidor, acelerando os ciclos de entrega.',
-                    'Colaborei na otimização de consultas, na gestão de dados do servidor e na garantia da disponibilidade e segurança dos serviços backend.',
-                ],
-                france: [
-                    "J'ai conçu une architecture basée sur des microservices, en optimisant les performances du système, en modularisant la logique métier et en permettant une mise à l'échelle plus agile et rentable.",
-                    "J'ai intégré des services web, des API et des Webhooks (avec Python et JavaScript) pour interconnecter les systèmes internes avec des services tiers en temps réel (WhatsApp, SMS, Gmail, Claude).",
-                    "J'ai développé des bots d'automatisation et des scripts de web scraping massif en Python (Selenium) pour l'extraction et le traitement de données critiques, réduisant l'effort manuel de l'équipe.",
-                    "J'ai mis en place des pipelines d'intégration et de déploiement continus (CI/CD) pour automatiser les tests et les déploiements sur le serveur, accélérant les cycles de livraison.",
-                    "J'ai collaboré à l'optimisation des requêtes, à la gestion des données du serveur et à la garantie de la disponibilité et de la sécurité des services backend.",
-                ],
-            },
-            'Data Science': {
-                'great-britain': [
-                    'Designed and integrated an intelligent chatbot powered by a real-time LLM language model, connected through APIs and Webhooks to WhatsApp, Gmail and SMS services for the automation of interaction flows and conversational support.',
-                    'Developed scripts and logic in Python and JavaScript for the processing, formatting and validation of input/output data sent to generative model APIs, ensuring low latency and high accuracy in responses.',
-                    'Designed and implemented a microservices-based architecture to decouple Artificial Intelligence services from the main system, optimizing performance, modularity and efficient token/API consumption',
-                    'Created web scraping bots and automated processes in Python for the extraction, cleaning and ingestion of data required by backend systems and services.',
-                    'Implemented CI/CD pipelines that accelerated the delivery cycle and continuous deployment of microservices and AI-integrated features',
-                ],
-                spain: [
-                    'Diseñé e integré un chatbot inteligente impulsado por un modelo de lenguaje LLM  en tiempo real, conectado mediante APIs y Webhooks a WhatsApp, Gmail y servicios SMS para la automatización de flujos de interacción y soporte conversacional.',
-                    'Desarrollé scripts y lógica en Python y JavaScript para el procesamiento, formateo y validación de datos de entrada/salida enviados hacia APIs de modelos generativos, garantizando baja latencia y alta precisión en las respuestas.',
-                    'Diseñé e implementé una arquitectura basada en microservicios para desacoplar los servicios de Inteligencia Artificial del sistema principal, optimizando el rendimiento, la modularidad y el consumo eficiente de tokens/APIs',
-                    'Creé bots de web scraping y procesos automatizados en Python para la extracción, limpieza e ingesta de datos requeridos por los sistemas y servicios backend.',
-                    'Implementé pipelines de CI/CD que aceleraron el ciclo de entrega y despliegue continuo de microservicios y funciones integradas con IA',
-                ],
-                italy: [
-                    "Ho progettato e integrato un chatbot intelligente basato su un modello linguistico LLM in tempo reale, collegato tramite API e Webhook a WhatsApp, Gmail e servizi SMS per l'automazione dei flussi di interazione e il supporto conversazionale.",
-                    "Ho sviluppato script e logiche in Python e JavaScript per l'elaborazione, la formattazione e la validazione dei dati di input/output inviati alle API di modelli generativi, garantendo bassa latenza e alta precisione nelle risposte.",
-                    "Ho progettato e implementato un'architettura basata su microservizi per disaccoppiare i servizi di Intelligenza Artificiale dal sistema principale, ottimizzando le prestazioni, la modularità e il consumo efficiente di token/API",
-                    "Ho creato bot di web scraping e processi automatizzati in Python per l'estrazione, la pulizia e l'ingestione dei dati richiesti dai sistemi e dai servizi backend.",
-                    'Ho implementato pipeline CI/CD che hanno accelerato il ciclo di consegna e il deployment continuo di microservizi e funzionalità integrate con IA',
-                ],
-                brazil: [
-                    'Projetei e integrei um chatbot inteligente impulsionado por um modelo de linguagem LLM em tempo real, conectado por meio de APIs e Webhooks ao WhatsApp, Gmail e serviços de SMS para a automação de fluxos de interação e suporte conversacional.',
-                    'Desenvolvi scripts e lógica em Python e JavaScript para o processamento, formatação e validação de dados de entrada/saída enviados às APIs de modelos generativos, garantindo baixa latência e alta precisão nas respostas.',
-                    'Projetei e implementei uma arquitetura baseada em microsserviços para desacoplar os serviços de Inteligência Artificial do sistema principal, otimizando o desempenho, a modularidade e o consumo eficiente de tokens/APIs',
-                    'Criei bots de web scraping e processos automatizados em Python para a extração, limpeza e ingestão de dados requeridos pelos sistemas e serviços backend.',
-                    'Implementei pipelines de CI/CD que aceleraram o ciclo de entrega e implantação contínua de microsserviços e funções integradas com IA',
-                ],
-                france: [
-                    "J'ai conçu et intégré un chatbot intelligent propulsé par un modèle de langage LLM en temps réel, connecté via des API et des Webhooks à WhatsApp, Gmail et des services SMS pour l'automatisation des flux d'interaction et le support conversationnel.",
-                    "J'ai développé des scripts et de la logique en Python et JavaScript pour le traitement, le formatage et la validation des données d'entrée/sortie envoyées aux API de modèles génératifs, en garantissant une faible latence et une grande précision des réponses.",
-                    "J'ai conçu et implémenté une architecture basée sur des microservices pour découpler les services d'Intelligence Artificielle du système principal, en optimisant les performances, la modularité et la consommation efficace de tokens/API",
-                    "J'ai créé des bots de web scraping et des processus automatisés en Python pour l'extraction, le nettoyage et l'ingestion des données requises par les systèmes et services backend.",
-                    "J'ai mis en place des pipelines CI/CD qui ont accéléré le cycle de livraison et le déploiement continu des microservices et des fonctionnalités intégrant l'IA",
-                ],
-            },
-            Fullstack: {
-                'great-britain': [
-                    'Implemented the adaptable and responsive graphical interface of the systems using ReactJS and Tailwind CSS, structuring an architecture of reusable, modular and easily maintainable frontend components',
-                    'Designed a microservices-based architecture for the backend, optimizing system performance, modularizing business logic and enabling more agile and cost-effective scaling.',
-                    'Integrated web services, APIs and Webhooks (using Python and JavaScript) to interconnect the client with third-party services in real time (WhatsApp, SMS, Gmail, Claude).',
-                    'Took part in the implementation of CI/CD pipelines that accelerated the delivery cycle and continuous integration of new features.',
-                    'Collaborated on query optimization, server data management and ensuring the availability and security of backend services.',
-                ],
-                spain: [
-                    'Implementé la interfaz gráfica adaptable y responsiva de los sistemas utilizando ReactJS y Tailwind CSS, estructurando una arquitectura de componentes reutilizables, modulares y de fácil mantenimiento para el frontend',
-                    'Diseñé una arquitectura basada en microservicios para el backend, optimizando el rendimiento del sistema, modularizando la lógica de negocio y permitiendo un escalamiento más ágil y rentable.',
-                    'Integré servicios web, APIs y Webhooks (utilizando Python y JavaScript) para interconectar al cliente con servicios de terceros en tiempo real (Whatsapp, SMS, Gmail, Claude).',
-                    'Participé en la implementación de pipelines de CI/CD que aceleraron el ciclo de entrega e integración continua de nuevas funcionalidades.',
-                    'Colaboré en la optimización de consultas, gestión de datos del servidor y aseguramiento de la disponibilidad y seguridad de los servicios backend.'
-                ],
-                italy: [
-                    "Ho implementato l'interfaccia grafica adattabile e responsive dei sistemi utilizzando ReactJS e Tailwind CSS, strutturando un'architettura di componenti frontend riutilizzabili, modulari e di facile manutenzione",
-                    "Ho progettato un'architettura basata su microservizi per il backend, ottimizzando le prestazioni del sistema, modularizzando la logica di business e consentendo una scalabilità più agile ed economica.",
-                    'Ho integrato servizi web, API e Webhook (utilizzando Python e JavaScript) per interconnettere il cliente con servizi di terze parti in tempo reale (WhatsApp, SMS, Gmail, Claude).',
-                    "Ho partecipato all'implementazione di pipeline CI/CD che hanno accelerato il ciclo di consegna e l'integrazione continua di nuove funzionalità.",
-                    "Ho collaborato all'ottimizzazione delle query, alla gestione dei dati del server e alla garanzia di disponibilità e sicurezza dei servizi backend.",
-                ],
-                brazil: [
-                    'Implementei a interface gráfica adaptável e responsiva dos sistemas utilizando ReactJS e Tailwind CSS, estruturando uma arquitetura de componentes reutilizáveis, modulares e de fácil manutenção para o frontend',
-                    'Projetei uma arquitetura baseada em microsserviços para o backend, otimizando o desempenho do sistema, modularizando a lógica de negócio e permitindo um escalonamento mais ágil e rentável.',
-                    'Integrei serviços web, APIs e Webhooks (utilizando Python e JavaScript) para interconectar o cliente com serviços de terceiros em tempo real (WhatsApp, SMS, Gmail, Claude).',
-                    'Participei da implementação de pipelines de CI/CD que aceleraram o ciclo de entrega e integração contínua de novas funcionalidades.',
-                    'Colaborei na otimização de consultas, na gestão de dados do servidor e na garantia da disponibilidade e segurança dos serviços backend.',
-                ],
-                france: [
-                    "J'ai implémenté l'interface graphique adaptable et responsive des systèmes avec ReactJS et Tailwind CSS, en structurant une architecture de composants frontend réutilisables, modulaires et faciles à maintenir",
-                    "J'ai conçu une architecture basée sur des microservices pour le backend, en optimisant les performances du système, en modularisant la logique métier et en permettant une mise à l'échelle plus agile et rentable.",
-                    "J'ai intégré des services web, des API et des Webhooks (avec Python et JavaScript) pour interconnecter le client avec des services tiers en temps réel (WhatsApp, SMS, Gmail, Claude).",
-                    "J'ai participé à la mise en place de pipelines CI/CD qui ont accéléré le cycle de livraison et l'intégration continue de nouvelles fonctionnalités.",
-                    "J'ai collaboré à l'optimisation des requêtes, à la gestion des données du serveur et à la garantie de la disponibilité et de la sécurité des services backend.",
-                ],
-            },
-        },
-        website: 'https://solucionesgm.com/',
     },
     {
         role: {
@@ -617,31 +372,11 @@ const projects = [
         to: { year: 2024, month: 11 },
         description: {
             web: {
-                'great-britain': [
-                    'Designed and developed the official ENEISOFT 2024 website, implementing a responsive interface with HTML, CSS, JavaScript, Bootstrap and jQuery.',
-                    'Implemented SEO and site optimization strategies, contributing to an increase in registered participation compared to previous editions.',
-                    'Optimized performance and the browsing experience on mobile devices, improving site accessibility.',
-                ],
-                spain: [
-                    'Diseñé y desarrollé el sitio web oficial de ENEISOFT 2024, implementando una interfaz responsiva con HTML, CSS, JavaScript, Bootstrap y jQuery.',
-                    'Implementé estrategias de SEO y optimización del sitio, contribuyendo a un incremento en la participación registrada respecto a ediciones anteriores.',
-                    'Optimicé el rendimiento y la experiencia de navegación en dispositivos móviles, mejorando la accesibilidad del sitio.',
-                ],
-                italy: [
-                    'Ho progettato e sviluppato il sito web ufficiale di ENEISOFT 2024, implementando un’interfaccia responsive con HTML, CSS, JavaScript, Bootstrap e jQuery.',
-                    'Ho implementato strategie di SEO e ottimizzazione del sito, contribuendo a un aumento della partecipazione registrata rispetto alle edizioni precedenti.',
-                    'Ho ottimizzato le prestazioni e l’esperienza di navigazione su dispositivi mobili, migliorando l’accessibilità del sito.',
-                ],
-                brazil: [
-                    'Projetei e desenvolvi o site oficial do ENEISOFT 2024, implementando uma interface responsiva com HTML, CSS, JavaScript, Bootstrap e jQuery.',
-                    'Implementei estratégias de SEO e otimização do site, contribuindo para um aumento na participação registrada em relação às edições anteriores.',
-                    'Otimizei o desempenho e a experiência de navegação em dispositivos móveis, melhorando a acessibilidade do site.',
-                ],
-                france: [
-                    'J’ai conçu et développé le site web officiel d’ENEISOFT 2024, en implémentant une interface responsive avec HTML, CSS, JavaScript, Bootstrap et jQuery.',
-                    'J’ai mis en place des stratégies de SEO et d’optimisation du site, contribuant à une hausse de la participation enregistrée par rapport aux éditions précédentes.',
-                    'J’ai optimisé les performances et l’expérience de navigation sur mobile, améliorant l’accessibilité du site.',
-                ],
+                'great-britain': 'Official website for ENEISOFT 2024 (National Meeting of Software Engineering Students).',
+                spain: 'Sitio web oficial de ENEISOFT 2024 (Encuentro Nacional de Estudiantes de Ingeniería de Software).',
+                italy: 'Sito web ufficiale di ENEISOFT 2024 (Incontro Nazionale degli Studenti di Ingegneria del Software).',
+                brazil: 'Site oficial do ENEISOFT 2024 (Encontro Nacional de Estudantes de Engenharia de Software).',
+                france: 'Site web officiel d’ENEISOFT 2024 (Rencontre Nationale des Étudiants en Ingénierie Logicielle).',
             },
             Frontend: {
                 'great-britain': "Led the design and development of the official website of the National Meeting of Software Engineering Students (ENEISOFT 2024). I built a dynamic and fully responsive interface using Bootstrap and jQuery, applied SEO strategies to maximize the event's reach in search engines and managed the deployment on Vercel, ensuring a smooth, high-performance browsing experience for hundreds of users.",
@@ -674,66 +409,6 @@ const projects = [
         },
         website: 'https://eneisoft.org/',
     },
-
-    {
-        name: 'SpeakUp',
-        category: 'academic',
-        subtitle: {
-            'great-britain': 'AI glove for Peruvian Sign Language',
-            spain: 'Guante IA para Lengua de Señas Peruana',
-            italy: 'Guanto IA per la Lingua dei Segni Peruviana',
-            brazil: 'Luva de IA para Língua de Sinais Peruana',
-            france: 'Gant IA pour la Langue des Signes Péruvienne',
-        },
-        from: { year: 2025, month: 8 },
-        to: null,
-        location: {
-            'great-britain': 'Lima, Peru',
-            spain: 'Lima, Perú',
-            italy: 'Lima, Perù',
-            brazil: 'Lima, Peru',
-            france: 'Lima, Pérou',
-        },
-        type: 'thesis',
-        website: '#',
-        github: '#',
-        description: {
-            web: {
-                'great-britain': [
-                    'Research and development of a glove that translates Peruvian Sign Language into voice using Artificial Intelligence and Embedded Systems.',
-                    'The device captures finger curvature, position, movement and hand rotation to recognize static and dynamic signs.',
-                    'A neural network converts the signals into voice to improve communication accessibility for the deaf community.',
-                ],
-                spain: [
-                    'Investigación y desarrollo de un guante traductor de Lengua de Señas Peruana a voz con Inteligencia Artificial y Sistemas Embebidos.',
-                    'El dispositivo captura datos de curvatura de dedos, posición, movimiento y giro de mano para reconocer señas estáticas y dinámicas.',
-                    'Una red neuronal convierte las señales a voz para mejorar la accesibilidad de comunicación de la comunidad sorda.',
-                ],
-                italy: [
-                    'Ricerca e sviluppo di un guanto che traduce la Lingua dei Segni Peruviana in voce con Intelligenza Artificiale e Sistemi Embedded.',
-                    'Il dispositivo cattura dati di curvatura delle dita, posizione, movimento e rotazione della mano per riconoscere segni statici e dinamici.',
-                    "Una rete neurale converte i segnali in voce per migliorare l'accessibilità della comunicazione per la comunità sorda.",
-                ],
-                brazil: [
-                    'Pesquisa e desenvolvimento de uma luva tradutora da Língua de Sinais Peruana para voz com Inteligência Artificial e Sistemas Embarcados.',
-                    'O dispositivo captura dados de curvatura dos dedos, posição, movimento e rotação da mão para reconhecer sinais estáticos e dinâmicos.',
-                    'Uma rede neural converte os sinais em voz para melhorar a acessibilidade de comunicação da comunidade surda.',
-                ],
-                france: [
-                    "Recherche et développement d'un gant traducteur de la Langue des Signes Péruvienne en voix avec Intelligence Artificielle et Systèmes Embarqués.",
-                    'Le dispositif capte la courbure des doigts, la position, le mouvement et la rotation de la main pour reconnaître les signes statiques et dynamiques.',
-                    "Un réseau de neurones convertit les signaux en voix pour améliorer l'accessibilité de la communication pour la communauté sourde.",
-                ],
-            },
-            'Data Science': {
-                'great-britain': 'Research and development of a glove that translates Peruvian Sign Language into voice with Artificial Intelligence and Embedded Systems. The device captures finger curvature, position, movement and hand rotation data to recognize static and dynamic signs, using a neural network to convert the signals into voice and improve communication accessibility for the deaf community.',
-                spain: 'Investigación y desarrollo de un guante traductor de Lengua de Señas Peruana a voz con Inteligencia Artificial y Sistemas Embebidos. El dispositivo captura datos de curvatura de dedos, posición, movimiento y giro de mano para reconocer señas estáticas y dinámicas, utilizando una red neuronal para convertir las señales a voz y mejorar la accesibilidad de comunicación para la comunidad sorda.',
-                italy: "Ricerca e sviluppo di un guanto che traduce la Lingua dei Segni Peruviana in voce con Intelligenza Artificiale e Sistemi Embedded. Il dispositivo cattura dati di curvatura delle dita, posizione, movimento e rotazione della mano per riconoscere segni statici e dinamici, utilizzando una rete neurale per convertire i segnali in voce e migliorare l'accessibilità della comunicazione per la comunità sorda.",
-                brazil: 'Pesquisa e desenvolvimento de uma luva tradutora da Língua de Sinais Peruana para voz com Inteligência Artificial e Sistemas Embarcados. O dispositivo captura dados de curvatura dos dedos, posição, movimento e rotação da mão para reconhecer sinais estáticos e dinâmicos, utilizando uma rede neural para converter os sinais em voz e melhorar a acessibilidade de comunicação para a comunidade surda.',
-                france: "Recherche et développement d'un gant traducteur de la Langue des Signes Péruvienne en voix avec de l'Intelligence Artificielle et des Systèmes Embarqués. Le dispositif capte les données de courbure des doigts, de position, de mouvement et de rotation de la main pour reconnaître les signes statiques et dynamiques, en utilisant un réseau de neurones pour convertir les signaux en voix et améliorer l'accessibilité de la communication pour la communauté sourde.",
-            },
-        },
-    },
     {
         name: 'CacaoLens',
         category: 'product',
@@ -757,41 +432,11 @@ const projects = [
         github: 'https://github.com/adminLTR/CacaoLens',
         description: {
             web: {
-                'great-britain': [
-                    'Developed a mobile application in Flutter for visual classification of cacao fruits into 3 categories.',
-                    'Built and integrated a Deep Learning model with TensorFlow Lite, running fully on-device for offline inference and reduced connectivity dependence.',
-                    'Developed a REST API with Node.js and Express for user management, authentication and predictions.',
-                    'Implemented data persistence using PostgreSQL and Prisma ORM.',
-                    'Achieved 93% accuracy in classification, with an approximate inference time of 300 ms on device.',
-                ],
-                spain: [
-                    'Desarrollé una aplicación móvil en Flutter para la clasificación visual de frutos de cacao en 3 categorías.',
-                    'Construí e integré un modelo de Deep Learning mediante TensorFlow Lite, ejecutado completamente en el dispositivo para realizar inferencias offline y reducir la dependencia de conectividad.',
-                    'Desarrollé una API REST con Node.js y Express para la gestión de usuarios, autenticación y predicciones.',
-                    'Implementé la persistencia de datos utilizando PostgreSQL y Prisma ORM.',
-                    'Alcancé un 93% de accuracy en la clasificación, con un tiempo de inferencia aproximado de 300 ms en dispositivo.',
-                ],
-                italy: [
-                    "Ho sviluppato un'applicazione mobile in Flutter per la classificazione visiva dei frutti di cacao in 3 categorie.",
-                    'Ho costruito e integrato un modello di Deep Learning con TensorFlow Lite, eseguito completamente sul dispositivo per inferenze offline e minore dipendenza dalla connettività.',
-                    "Ho sviluppato un'API REST con Node.js ed Express per la gestione utenti, autenticazione e predizioni.",
-                    'Ho implementato la persistenza dei dati utilizzando PostgreSQL e Prisma ORM.',
-                    "Ho raggiunto il 93% di accuracy nella classificazione, con un tempo di inferenza di circa 300 ms sul dispositivo.",
-                ],
-                brazil: [
-                    'Desenvolvi um aplicativo móvel em Flutter para a classificação visual de frutos de cacau em 3 categorias.',
-                    'Construí e integrei um modelo de Deep Learning com TensorFlow Lite, executado completamente no dispositivo para inferências offline e menor dependência de conectividade.',
-                    'Desenvolvi uma API REST com Node.js e Express para gestão de usuários, autenticação e predições.',
-                    'Implementei a persistência de dados utilizando PostgreSQL e Prisma ORM.',
-                    'Alcancei 93% de accuracy na classificação, com tempo de inferência aproximado de 300 ms no dispositivo.',
-                ],
-                france: [
-                    "J'ai développé une application mobile en Flutter pour la classification visuelle des fruits de cacao en 3 catégories.",
-                    "J'ai construit et intégré un modèle de Deep Learning avec TensorFlow Lite, exécuté entièrement sur l'appareil pour des inférences hors ligne et une moindre dépendance à la connectivité.",
-                    "J'ai développé une API REST avec Node.js et Express pour la gestion des utilisateurs, l'authentification et les prédictions.",
-                    "J'ai implémenté la persistance des données avec PostgreSQL et Prisma ORM.",
-                    "J'ai atteint 93 % d'accuracy en classification, avec un temps d'inférence d'environ 300 ms sur l'appareil.",
-                ],
+                'great-britain': 'Flutter mobile app that visually classifies cacao fruits into three categories, using an embedded InceptionV3-based Deep Learning model for offline inference.',
+                spain: 'Aplicación móvil en Flutter para clasificar visualmente frutos de cacao en 3 categorías, con un modelo Deep Learning basado en InceptionV3 embebido para inferencia offline.',
+                italy: 'App mobile Flutter per classificare visivamente i frutti di cacao in 3 categorie, con un modello Deep Learning basato su InceptionV3 integrato per inferenza offline.',
+                brazil: 'Aplicativo móvel em Flutter para classificar visualmente frutos de cacau em 3 categorias, com modelo Deep Learning baseado em InceptionV3 embarcado para inferência offline.',
+                france: 'Application mobile Flutter pour classer visuellement les fèves de cacao en 3 catégories, avec un modèle Deep Learning basé sur InceptionV3 embarqué pour une inférence hors ligne.',
             },
             Frontend: {
                 'great-britain': 'I developed a mobile application with Flutter focused on visual classification of cacao diseases. I led the graphical interface design and integration of real-time camera features, connecting the app with a local inference engine (TFLite) to process images directly on the user\'s device with high performance and zero network latency.',
@@ -846,36 +491,11 @@ const projects = [
         github: 'https://github.com/adminLTR/Jigsaw_Model',
         description: {
             web: {
-                'great-britain': [
-                    'Final Deep Learning project developed during my academic exchange at the University of Bologna.',
-                    'Designed and implemented a model that reconstructs RGB images from scrambled and partially eroded fragments.',
-                    'Combined jigsaw puzzle solving and inpainting techniques to recover structure and visual content coherently.',
-                    'Kept the model under 6M parameters and achieved a reconstruction MAE of 0.4.',
-                ],
-                spain: [
-                    'Proyecto final de Deep Learning desarrollado durante mi intercambio académico en la Universidad de Bologna.',
-                    'Diseñé e implementé un modelo capaz de reconstruir imágenes RGB a partir de fragmentos desordenados y parcialmente erosionados.',
-                    'Combiné técnicas de resolución de rompecabezas e inpainting para recuperar la estructura y el contenido visual de forma coherente.',
-                    'Mantuve el modelo por debajo de 6M de parámetros y obtuve un MAE de reconstrucción de 0.4.',
-                ],
-                italy: [
-                    "Progetto finale di Deep Learning sviluppato durante il mio scambio accademico all'Università di Bologna.",
-                    'Ho progettato e implementato un modello capace di ricostruire immagini RGB da frammenti disordinati e parzialmente erosi.',
-                    'Ho combinato tecniche di risoluzione di puzzle e inpainting per recuperare struttura e contenuto visivo in modo coerente.',
-                    'Ho mantenuto il modello sotto i 6M di parametri e ottenuto un MAE di ricostruzione di 0.4.',
-                ],
-                brazil: [
-                    'Projeto final de Deep Learning desenvolvido durante meu intercâmbio acadêmico na Universidade de Bolonha.',
-                    'Projetei e implementei um modelo capaz de reconstruir imagens RGB a partir de fragmentos desordenados e parcialmente erodidos.',
-                    'Combinei técnicas de resolução de quebra-cabeça e inpainting para recuperar a estrutura e o conteúdo visual de forma coerente.',
-                    'Mantive o modelo abaixo de 6M de parâmetros e obtive um MAE de reconstrução de 0.4.',
-                ],
-                france: [
-                    "Projet final de Deep Learning développé pendant mon échange académique à l'Université de Bologne.",
-                    "J'ai conçu et implémenté un modèle capable de reconstruire des images RGB à partir de fragments mélangés et partiellement érodés.",
-                    "J'ai combiné des techniques de résolution de puzzle et d'inpainting pour récupérer structure et contenu visuel de façon cohérente.",
-                    "J'ai maintenu le modèle sous 6M de paramètres et obtenu un MAE de reconstruction de 0.4.",
-                ],
+                'great-britain': 'Deep Learning model for computer vision that rebuilds a full image from nine scrambled, eroded puzzle pieces using jigsaw-solving and inpainting techniques.',
+                spain: 'Modelo de Deep Learning para visión por computadora que reconstruye una imagen completa a partir de 9 piezas desordenadas y erosionadas, combinando técnicas de resolución de rompecabezas e inpainting.',
+                italy: 'Modello di Deep Learning per la visione artificiale che ricostruisce un’immagine completa da 9 pezzi disordinati ed erosi, combinando risoluzione di puzzle e inpainting.',
+                brazil: 'Modelo de Deep Learning para visão computacional que reconstrói uma imagem completa a partir de 9 peças embaralhadas e erodidas, combinando técnicas de quebra-cabeça e inpainting.',
+                france: 'Modèle de Deep Learning pour la vision par ordinateur qui reconstruit une image complète à partir de 9 pièces mélangées et érodées, en combinant résolution de puzzle et inpainting.',
             },
             'Data Science': {
                 'great-britain': 'Final Deep Learning project developed during my academic exchange at the University of Bologna, focused on the design and implementation of a model capable of reconstructing RGB images from scrambled and partially eroded fragments, combining jigsaw puzzle solving and inpainting techniques to recover structure and visual content coherently. The model kept a total parameter count below 6M, and the metric used to measure reconstruction quality was MAE, achieving a result of 0.4.',
@@ -910,36 +530,11 @@ const projects = [
         technologies: ['html', 'css', 'javascript', 'django', 'bootstrap', 'arduino', 'python'],
         description: {
             web: {
-                'great-britain': [
-                    'Intelligent automated irrigation system that uses environmental sensors and an AI model to calculate the exact amount of water each plant needs.',
-                    'Optimizes water consumption according to plant species and environmental conditions.',
-                    'Integrates IoT hardware and a software-controlled water pump to reduce waste.',
-                    'Includes a user application for monitoring and control.',
-                ],
-                spain: [
-                    'Sistema inteligente de riego automatizado que utiliza sensores ambientales y un modelo de IA para calcular la cantidad exacta de agua que cada planta necesita.',
-                    'Optimiza el consumo hídrico según la especie de planta y las condiciones del entorno.',
-                    'Integra hardware IoT y una bomba de agua controlada por software para reducir el desperdicio.',
-                    'Incluye una aplicación de usuario para monitoreo y control.',
-                ],
-                italy: [
-                    'Sistema intelligente di irrigazione automatizzato che utilizza sensori ambientali e un modello di IA per calcolare la quantità esatta di acqua di cui ogni pianta ha bisogno.',
-                    'Ottimizza il consumo idrico in base alla specie di pianta e alle condizioni ambientali.',
-                    "Integra hardware IoT e una pompa dell'acqua controllata da software per ridurre gli sprechi.",
-                    "Include un'applicazione utente per monitoraggio e controllo.",
-                ],
-                brazil: [
-                    'Sistema inteligente de irrigação automatizado que utiliza sensores ambientais e um modelo de IA para calcular a quantidade exata de água que cada planta precisa.',
-                    'Otimiza o consumo hídrico de acordo com a espécie da planta e as condições do ambiente.',
-                    'Integra hardware IoT e uma bomba de água controlada por software para reduzir o desperdício.',
-                    'Inclui uma aplicação de usuário para monitoramento e controle.',
-                ],
-                france: [
-                    "Système intelligent d'irrigation automatisée qui utilise des capteurs environnementaux et un modèle d'IA pour calculer la quantité exacte d'eau dont chaque plante a besoin.",
-                    "Optimise la consommation d'eau selon l'espèce de plante et les conditions de l'environnement.",
-                    "Intègre du matériel IoT et une pompe à eau contrôlée par logiciel pour réduire le gaspillage.",
-                    'Inclut une application utilisateur pour le suivi et le contrôle.',
-                ],
+                'great-britain': 'Smart IoT irrigation system with Machine Learning: a RandomForest regression model estimates the exact water each plant needs from environmental readings captured by the pot sensors.',
+                spain: 'Sistema IoT de riego inteligente con Machine Learning: un modelo de regresión RandomForest calcula la cantidad exacta de agua que necesita cada planta según las condiciones ambientales medidas por los sensores de la maceta.',
+                italy: 'Sistema IoT di irrigazione intelligente con Machine Learning: un modello di regressione RandomForest calcola la quantità esatta d’acqua per ogni pianta in base alle condizioni ambientali rilevate dai sensori del vaso.',
+                brazil: 'Sistema IoT de irrigação inteligente com Machine Learning: um modelo de regressão RandomForest calcula a quantidade exata de água que cada planta precisa com base nas condições ambientais captadas pelos sensores do vaso.',
+                france: 'Système IoT d’irrigation intelligente avec Machine Learning : un modèle de régression RandomForest calcule la quantité exacte d’eau dont chaque plante a besoin à partir des conditions environnementales mesurées par les capteurs du pot.',
             },
             'Data Science': {
                 'great-britain': 'RandomForest regression model trained on humidity, temperature, water volume (ml), and plant species data to predict optimal irrigation amounts. The model achieved an R² of 0.96 and an MAE of 0.02, accurately estimating water needs based on environmental conditions and plant type.',
