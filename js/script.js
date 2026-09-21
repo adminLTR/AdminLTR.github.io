@@ -233,19 +233,7 @@ function renderSkills(areas) {
     
     let html = "";
     areaKeys.forEach((area, index) => {
-        const label = skillAreaLabels[area]
-            ? getLocalized(skillAreaLabels[area], lang)
-            : area;
         html += `<div class="skill-area ${index === 0 ? 'active' : ''}" data-area="${area}">
-            <div class="area-header">
-                <div class="area-icon">
-                    <i class="fa-solid fa-${getAreaIcon(area)}"></i>
-                </div>
-                <div class="area-info">
-                    <h3>${label}</h3>
-                    <p>${getAreaDescription(area, lang)}</p>
-                </div>
-            </div>
             <div class="skills-grid">
                 ${areas[area].map((tech, techIndex) => {
                     const skillLevel = getSkillLevel(tech);
@@ -305,8 +293,27 @@ function renderSkills(areas) {
     skillAreas.forEach(area => observer.observe(area));
 }
 
+const TECH_ICON_FILES = {
+    'tensorflow/keras': 'tensorflow.svg',
+    "llm's": 'llms.svg',
+    'scikit-learn': 'scikitlearn.svg',
+    ml: 'ml.svg',
+    dl: 'dl.svg',
+};
+
+function normalizeTechName(tech) {
+    return String(tech || '')
+        .toLowerCase()
+        .trim()
+        .replace(/[\u2018\u2019\u0060]/g, "'");
+}
+
 function getTechIconSrc(tech) {
-    const raw = String(tech || '').toLowerCase().trim();
+    const raw = normalizeTechName(tech);
+    if (TECH_ICON_FILES[raw]) {
+        return `./img/technologies/${TECH_ICON_FILES[raw]}`;
+    }
+
     const aliases = {
         reactjs: 'react',
         typescript: 'typescript',
@@ -315,19 +322,13 @@ function getTechIconSrc(tech) {
         'tailwind css': 'tailwindcss',
         'node.js': 'nodejs',
         expressjs: 'expressjs',
-        'tensorflow/keras': 'tensorflow',
-        "llm's": 'huggingface',
-        llms: 'huggingface',
-        'scikit-learn': 'scikitlearn',
-        ml: 'data-science',
-        dl: 'pytorch',
         'api rest': 'apirest',
         'web scraping': 'webscraping',
         microservicios: 'microservicios',
         sqlite: 'sqlite',
     };
     const key = aliases[raw] || raw.replace(/[^a-z0-9]+/g, '');
-    const svgIcons = new Set(['flutter', 'fastapi', 'typescript', 'scikitlearn', 'huggingface', 'pytorch']);
+    const svgIcons = new Set(['flutter', 'fastapi', 'typescript', 'scikitlearn', 'llms', 'ml', 'dl', 'tensorflow']);
     const ext = svgIcons.has(key) ? 'svg' : 'png';
     return `./img/technologies/${key}.${ext}`;
 }
@@ -342,54 +343,6 @@ function getAreaIcon(area) {
         AI: 'brain',
     };
     return icons[area] || 'code';
-}
-
-function getAreaDescription(area, lang) {
-    const descriptions = {
-        Frontend: {
-            'great-britain': 'Interfaces and client-side development',
-            spain: 'Interfaces y desarrollo del lado del cliente',
-            italy: 'Interfacce e sviluppo lato client',
-            brazil: 'Interfaces e desenvolvimento client-side',
-            france: 'Interfaces et développement côté client',
-        },
-        Backend: {
-            'great-britain': 'Server logic, APIs and services',
-            spain: 'Lógica de servidor, APIs y servicios',
-            italy: 'Logica server, API e servizi',
-            brazil: 'Lógica de servidor, APIs e serviços',
-            france: 'Logique serveur, API et services',
-        },
-        Databases: {
-            'great-britain': 'Relational and non-relational data storage',
-            spain: 'Almacenamiento de datos relacional y no relacional',
-            italy: 'Archiviazione dati relazionale e non relazionale',
-            brazil: 'Armazenamento de dados relacional e não relacional',
-            france: 'Stockage de données relationnel et non relationnel',
-        },
-        Architecture: {
-            'great-britain': 'System design patterns and integrations',
-            spain: 'Patrones de diseño de sistemas e integraciones',
-            italy: 'Pattern di progettazione e integrazioni',
-            brazil: 'Padrões de design de sistemas e integrações',
-            france: 'Modèles d’architecture et intégrations',
-        },
-        Tools: {
-            'great-britain': 'Development, collaboration and delivery tools',
-            spain: 'Herramientas de desarrollo, colaboración y entrega',
-            italy: 'Strumenti di sviluppo, collaborazione e delivery',
-            brazil: 'Ferramentas de desenvolvimento, colaboração e entrega',
-            france: 'Outils de développement, collaboration et livraison',
-        },
-        AI: {
-            'great-britain': 'Machine learning and generative AI',
-            spain: 'Machine learning e inteligencia artificial generativa',
-            italy: 'Machine learning e intelligenza artificiale generativa',
-            brazil: 'Machine learning e inteligência artificial generativa',
-            france: 'Machine learning et intelligence artificielle générative',
-        },
-    };
-    return getLocalized(descriptions[area] || {}, lang) || 'Professional development skills';
 }
 
 function getSkillLevel(tech) {

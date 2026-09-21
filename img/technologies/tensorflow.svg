@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="TensorFlow">
+  <rect width="64" height="64" rx="14" fill="#fff"/>
+  <path fill="#ff6f00" d="M32 10 18 18v16l14 8 14-8V18L32 10zm0 6.5 9.5 5.5v11L32 38.5l-9.5-5.5V22L32 16.5z"/>
+  <path fill="#ffa726" d="M32 38.5v15.5l-14-8V40l14 8 14-8v6l-14 8V38.5z"/>
+  <text x="32" y="58" text-anchor="middle" fill="#e65100" font-family="Arial,sans-serif" font-size="6" font-weight="700">TF/Keras</text>
+</svg>
