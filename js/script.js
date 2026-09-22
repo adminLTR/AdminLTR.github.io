@@ -236,7 +236,6 @@ function renderSkills(areas) {
         html += `<div class="skill-area ${index === 0 ? 'active' : ''}" data-area="${area}">
             <div class="skills-grid">
                 ${areas[area].map((tech, techIndex) => {
-                    const skillLevel = getSkillLevel(tech);
                     const iconSrc = getTechIconSrc(tech);
                     return `<div class="skill-item" style="animation-delay: ${techIndex * 0.1}s">
                         <div class="skill-icon">
@@ -244,12 +243,6 @@ function renderSkills(areas) {
                         </div>
                         <div class="skill-info">
                             <h4>${tech}</h4>
-                            <div class="skill-level">
-                                <div class="level-bar">
-                                    <div class="level-progress" style="--progress-width: ${skillLevel}%"></div>
-                                </div>
-                                <span class="level-text">${getSkillLevelText(tech)}</span>
-                            </div>
                         </div>
                     </div>`;
                 }).join('')}
@@ -282,8 +275,6 @@ function renderSkills(areas) {
                 skillItems.forEach((item, index) => {
                     setTimeout(() => {
                         item.classList.add('animate-in');
-                        const progressBar = item.querySelector('.level-progress');
-                        progressBar.style.animationDelay = '0.3s';
                     }, index * 100);
                 });
             }
@@ -294,9 +285,9 @@ function renderSkills(areas) {
 }
 
 const TECH_ICON_FILES = {
-    'tensorflow/keras': 'tensorflow.svg',
-    "llm's": 'llms.svg',
-    'scikit-learn': 'scikitlearn.svg',
+    'tensorflow/keras': 'tensorflow.png',
+    "llm's": 'llms.png',
+    'scikit-learn': 'scikitlearn.png',
     ml: 'ml.svg',
     dl: 'dl.svg',
 };
@@ -328,7 +319,7 @@ function getTechIconSrc(tech) {
         sqlite: 'sqlite',
     };
     const key = aliases[raw] || raw.replace(/[^a-z0-9]+/g, '');
-    const svgIcons = new Set(['flutter', 'fastapi', 'typescript', 'scikitlearn', 'llms', 'ml', 'dl', 'tensorflow']);
+    const svgIcons = new Set(['flutter', 'fastapi', 'typescript', 'ml', 'dl']);
     const ext = svgIcons.has(key) ? 'svg' : 'png';
     return `./img/technologies/${key}.${ext}`;
 }
@@ -343,27 +334,6 @@ function getAreaIcon(area) {
         AI: 'brain',
     };
     return icons[area] || 'code';
-}
-
-function getSkillLevel(tech) {
-    // Simulate skill levels - you can customize these based on actual experience
-    const levels = {
-        'HTML': 95, 'CSS': 90, 'JavaScript': 85, 'React': 80, 'JQuery': 75,
-        'Figma': 70, 'Bootstrap': 85, 'TailwindCSS': 80, 'SASS': 75,
-        'PHP': 80, 'Python': 85, 'Laravel': 75, 'Django': 80, 'MySQL': 80,
-        'PostgreSQL': 75, 'Flask': 70, 'ExpressJS': 75,
-        'Keras': 70, 'Excel': 85, 'Tensorflow': 65, 'VBA': 60,
-        'Arduino': 80, 'ESP32': 75, 'C++': 70, 'Sensors': 75
-    };
-    return levels[tech] || 60;
-}
-
-function getSkillLevelText(tech) {
-    const level = getSkillLevel(tech);
-    if (level >= 85) return 'Expert';
-    if (level >= 70) return 'Advanced';
-    if (level >= 55) return 'Intermediate';
-    return 'Beginner';
 }
 
 function renderEducation(education) {

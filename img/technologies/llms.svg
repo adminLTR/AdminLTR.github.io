@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="LLM">
-  <rect width="64" height="64" rx="14" fill="#1e293b"/>
-  <path fill="#a855f7" d="M18 22h28a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H26l-8 7v-7h-0a4 4 0 0 1-4-4v-8a4 4 0 0 1 4-4z"/>
-  <circle cx="28" cy="30" r="2.5" fill="#f8fafc"/>
-  <circle cx="36" cy="30" r="2.5" fill="#f8fafc"/>
-  <circle cx="44" cy="30" r="2.5" fill="#f8fafc"/>
-  <text x="32" y="52" text-anchor="middle" fill="#c4b5fd" font-family="Arial,sans-serif" font-size="9" font-weight="700">LLM</text>
-</svg>

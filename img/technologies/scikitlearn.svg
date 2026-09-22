@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Scikit-learn">
-  <rect width="64" height="64" rx="14" fill="#fff7ed"/>
-  <circle cx="32" cy="28" r="14" fill="none" stroke="#f97316" stroke-width="4"/>
-  <circle cx="32" cy="28" r="4" fill="#ea580c"/>
-  <path fill="#fb923c" d="M32 14v6M32 36v6M18 28h6M38 28h6"/>
-  <text x="32" y="54" text-anchor="middle" fill="#9a3412" font-family="Arial,sans-serif" font-size="6.5" font-weight="700">scikit</text>
-</svg>

@@ -1907,13 +1907,16 @@ header nav a:hover {
 
 .skill-item {
     background: white;
-    padding: 2rem;
+    padding: 1.25rem 1.5rem;
     border-radius: 20px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.08);
     transition: all 0.3s ease;
     border: 2px solid transparent;
     opacity: 0;
     transform: translateY(30px);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 .skill-item.animate-in {
@@ -1930,7 +1933,8 @@ header nav a:hover {
 .skill-icon {
     width: 60px;
     height: 60px;
-    margin-bottom: 1rem;
+    margin-bottom: 0;
+    flex-shrink: 0;
     background: #f8fafc;
     border-radius: 15px;
     display: flex;
@@ -1949,41 +1953,7 @@ header nav a:hover {
     color: var(--main);
     font-size: 1.2rem;
     font-weight: 600;
-    margin: 0 0 1rem 0;
-}
-
-.skill-level {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.level-bar {
-    width: 100%;
-    height: 8px;
-    background: #e2e8f0;
-    border-radius: 4px;
-    overflow: hidden;
-}
-
-.level-progress {
-    height: 100%;
-    background: linear-gradient(135deg, var(--main), #5a9ef0);
-    border-radius: 4px;
-    width: 0%;
-    transition: width 1.5s ease-out;
-}
-
-.skill-item.animate-in .level-progress {
-    width: var(--progress-width);
-}
-
-.level-text {
-    font-size: 0.8rem;
-    color: #718096;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    margin: 0;
 }
 
 .skills-summary {
