@@ -93,6 +93,11 @@ function renderInfo() {
         downloadText.textContent = info[lang].download;
     }
 
+    const homeLangStat = document.getElementById('home-stat-languages');
+    if (homeLangStat) {
+        homeLangStat.textContent = String(getPublicLanguageSkillsCount());
+    }
+
     const currentLangName = document.getElementById("current-lang-name");
     if (currentLangName) {
         currentLangName.textContent = languageNames[lang] || lang;

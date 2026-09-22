@@ -72,3 +72,8 @@ function descriptionToDisplayHtml(desc) {
     const text = Array.isArray(desc) ? desc.join(' ') : desc;
     return `<p>${text}</p>`;
 }
+
+/** Spoken languages listed on the site (excludes cvOnly entries). */
+function getPublicLanguageSkillsCount() {
+    return languageSkills.filter((skill) => !skill.cvOnly).length;
+}
