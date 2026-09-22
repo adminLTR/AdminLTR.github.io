@@ -271,6 +271,7 @@ const TECH_ICON_FILES = {
     'esp-idf': 'espidf.svg',
     c: 'c.png',
     'c++': 'c++.png',
+    chromadb: 'chromadb.png',
 };
 
 function normalizeTechName(tech) {

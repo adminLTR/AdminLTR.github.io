@@ -610,7 +610,7 @@ const skills = {
             'Tailwind CSS', 'SASS', 'JQuery', 'Flutter',
         ],
         Databases: [
-            'PostgreSQL', 'MySQL', 'SQLite', 'MongoDB',
+            'PostgreSQL', 'MySQL', 'SQLite', 'MongoDB', 'ChromaDB',
         ],
         Tools: [
             'Jira', 'Git', 'Docker', 'Selenium', 'Web Scraping',
