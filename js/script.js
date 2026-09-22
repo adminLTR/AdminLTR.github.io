@@ -7,7 +7,6 @@ window.addEventListener("load", function () {
     renderLinks();
     renderInfo();
 
-    renderAreas(areas);
     renderLanguages(languages);
     renderHeaderLanguageSelect(languages);
     renderSkills(areas);
@@ -79,7 +78,10 @@ function renderInfo() {
     const lang = getCurrentLang();
 
     document.getElementById("career-info").textContent = info[lang].career;
-    document.getElementById("about-info").textContent = presentation.web[lang];
+    const homeAbout = document.getElementById("home-about-info");
+    if (homeAbout) {
+        homeAbout.textContent = presentation.web[lang];
+    }
 
     const downloadBtn = document.getElementById("download-info");
     const downloadText = document.getElementById("download-info-text");
@@ -102,28 +104,15 @@ function renderInfo() {
     }
 }
 
-function renderAreas(areas) {
-    const areasDiv = document.querySelector(".developer-areas");
-    const lang = getCurrentLang();
-    let html = "";
-    Object.keys(areas).forEach(area => {
-        const label = skillAreaLabels[area]
-            ? getLocalized(skillAreaLabels[area], lang)
-            : area;
-        html += `<p>${label}</p>`;
-    });
-    areasDiv.innerHTML = html
-}
-
 function renderLanguages(languagesList) {
-    const languagesDiv = document.querySelector('#about .languages-div');
+    const languagesDiv = document.querySelector('#home .languages-div');
     if (!languagesDiv) return;
 
     const langUser = getCurrentLang();
     let html = '';
     languagesList.forEach((lang) => {
         const isActive = lang === langUser;
-        html += `<img data-lang="${lang}" class="${isActive ? 'active' : ''}" width="48" height="48" src="https://img.icons8.com/color/48/${lang}-circular.png" alt="${languageNames[lang] || lang}" title="${languageNames[lang] || lang}"/>`;
+        html += `<img data-lang="${lang}" class="${isActive ? 'active' : ''}" width="32" height="32" src="https://img.icons8.com/color/48/${lang}-circular.png" alt="${languageNames[lang] || lang}" title="${languageNames[lang] || lang}"/>`;
     });
     languagesDiv.innerHTML = html;
 }
@@ -142,7 +131,7 @@ function renderHeaderLanguageSelect(languagesList) {
 }
 
 function setActiveLanguageFlags(lang) {
-    document.querySelectorAll('#about .languages-div img[data-lang]').forEach((img) => {
+    document.querySelectorAll('#home .languages-div img[data-lang]').forEach((img) => {
         img.classList.toggle('active', img.dataset.lang === lang);
     });
     const select = document.getElementById('header-lang-select');
@@ -154,7 +143,6 @@ function setActiveLanguageFlags(lang) {
 function refreshLocalizedContent() {
     renderLinks();
     renderInfo();
-    renderAreas(areas);
     renderLanguages(languages);
     renderHeaderLanguageSelect(languages);
     renderSkills(areas);
@@ -163,7 +151,7 @@ function refreshLocalizedContent() {
     renderAchievements(achievements);
 }
 
-function switchLanguage(lang, sourceImg) {
+function switchLanguage(lang) {
     if (!lang || lang === getCurrentLang()) return;
 
     setActiveLanguageFlags(lang);
@@ -171,36 +159,18 @@ function switchLanguage(lang, sourceImg) {
     const check = document.getElementById('check-menu');
     if (check) check.checked = false;
 
-    const applyLanguage = () => {
-        localStorage.setItem('language', lang);
-        refreshLocalizedContent();
-    };
-
-    if (!sourceImg) {
-        applyLanguage();
-        return;
-    }
-
-    const imgSrc = sourceImg.getAttribute('src');
-    const imgNode = document.createElement('img');
-    imgNode.src = imgSrc;
-    imgNode.classList.add('flag-fly');
-    document.body.appendChild(imgNode);
-
-    imgNode.addEventListener('animationend', () => {
-        imgNode.remove();
-        applyLanguage();
-    });
+    localStorage.setItem('language', lang);
+    refreshLocalizedContent();
 }
 
 function bindLanguageSelectors() {
-    const aboutLanguages = document.querySelector('#about .languages-div');
-    if (aboutLanguages && !aboutLanguages.dataset.bound) {
-        aboutLanguages.dataset.bound = 'true';
-        aboutLanguages.addEventListener('click', (event) => {
+    const homeLanguages = document.querySelector('#home .languages-div');
+    if (homeLanguages && !homeLanguages.dataset.bound) {
+        homeLanguages.dataset.bound = 'true';
+        homeLanguages.addEventListener('click', (event) => {
             const img = event.target.closest('img[data-lang]');
             if (!img) return;
-            switchLanguage(img.dataset.lang, img);
+            switchLanguage(img.dataset.lang);
         });
     }
 
@@ -208,7 +178,7 @@ function bindLanguageSelectors() {
     if (select && !select.dataset.bound) {
         select.dataset.bound = 'true';
         select.addEventListener('change', () => {
-            switchLanguage(select.value, null);
+            switchLanguage(select.value);
         });
     }
 }
@@ -343,34 +313,26 @@ function getAreaIcon(area) {
     return icons[area] || 'code';
 }
 
-function renderEducation(education) {
-    const educationDiv = document.querySelector(".university-section");
+function renderEducation(educationList) {
+    const educationDiv = document.querySelector('.home-education-grid');
     if (!educationDiv) return;
-    
-    const lang = getCurrentLang();
-    
-    let html = "";
-    education.forEach((edu, index) => {
-        const period = formatPeriod(edu.from, edu.to, lang);
-        const highlight = edu.highlight ? getLocalized(edu.highlight, lang) : '';
-        const cardClass = edu.type === 'exchange' ? 'university-card exchange-card' : 'university-card';
 
-        html += `<div class="${cardClass} animate-fade-right" style="animation-delay: ${index * 0.2}s">
-            <div class="university-info">
-                <div class="university-info-content">
-                    <img src="./img/${edu.logo}.png" class="university-logo" alt="${edu.acronym}">
-                    <div>
-                        <h3>${edu.university} (${edu.acronym})</h3>
-                        <p>${getLocalized(edu.career, lang)}</p>
-                        <p class="location"><i class="fa-solid fa-location-dot"></i> ${getLocalized(edu.location, lang)}</p>
-                        ${highlight ? `<p class="edu-highlight">${highlight}</p>` : ''}
-                    </div>
-                </div>
-                <div class="university-year">${period}</div>
+    const lang = getCurrentLang();
+
+    let html = '';
+    educationList.forEach((edu) => {
+        const period = formatPeriod(edu.from, edu.to, lang);
+        const cardClass = edu.type === 'exchange' ? 'home-edu-card exchange-card' : 'home-edu-card';
+
+        html += `<div class="${cardClass}">
+            <img src="./img/${edu.logo}.png" class="home-edu-logo" alt="${edu.acronym}">
+            <div class="home-edu-body">
+                <p class="home-edu-title">${edu.acronym} · ${getLocalized(edu.career, lang)}</p>
+                <p class="home-edu-meta">${getLocalized(edu.location, lang)} · ${period}</p>
             </div>
         </div>`;
     });
-    
+
     educationDiv.innerHTML = html;
 }
 

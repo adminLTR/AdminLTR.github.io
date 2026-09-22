@@ -145,11 +145,11 @@ const dateLabels = {
 // ====================================
 const presentation = {
     web: {
-        'great-britain': 'Full Stack Developer with 1.5 years of experience, specialized in React, Node.js, Python and REST API development. Experience building web applications, microservice architectures, API integration, process automation and relational databases. Final-year Software Engineering student at UNMSM, with international experience in Italy and Brazil.',
-        spain: 'Desarrollador Full Stack con 1.5 años de experiencia, especializado en React, Node.js, Python y desarrollo de APIs REST. Experiencia construyendo aplicaciones web, arquitecturas de microservicios, integración de APIs, automatización de procesos y bases de datos relacionales. Estudiante de último año de Ingeniería de Software en la UNMSM, con experiencia internacional en Italia y Brasil.',
-        italy: "Sviluppatore Full Stack con 1,5 anni di esperienza, specializzato in React, Node.js, Python e sviluppo di API REST. Esperienza nella costruzione di applicazioni web, architetture a microservizi, integrazione di API, automazione dei processi e database relazionali. Studente dell'ultimo anno di Ingegneria del Software presso l'UNMSM, con esperienza internazionale in Italia e Brasile.",
-        brazil: 'Desenvolvedor Full Stack com 1,5 anos de experiência, especializado em React, Node.js, Python e desenvolvimento de APIs REST. Experiência na construção de aplicações web, arquiteturas de microsserviços, integração de APIs, automação de processos e bancos de dados relacionais. Estudante do último ano de Engenharia de Software na UNMSM, com experiência internacional na Itália e no Brasil.',
-        france: "Développeur Full Stack avec 1,5 an d'expérience, spécialisé en React, Node.js, Python et développement d'API REST. Expérience dans la construction d'applications web, d'architectures microservices, l'intégration d'API, l'automatisation de processus et les bases de données relationnelles. Étudiant en dernière année d'Ingénierie Logicielle à l'UNMSM, avec une expérience internationale en Italie et au Brésil.",
+        'great-britain': 'Final-year Software Engineering student with experience developing IoT systems and Artificial Intelligence solutions. Hands-on experience building prototypes with ESP32, computer vision, and Machine Learning, integrating physical devices with backend services through REST APIs. Additional experience in Python, C/C++, TensorFlow, and distributed systems development.',
+        spain: 'Estudiante de último año de Ingeniería de Software con experiencia en desarrollo de sistemas IoT y soluciones de Inteligencia Artificial. Experiencia práctica desarrollando prototipos con ESP32, visión computacional y Machine Learning, integrando dispositivos físicos con servicios backend mediante APIs REST. Experiencia adicional en Python, C/C++, TensorFlow y desarrollo de sistemas distribuidos.',
+        italy: "Studente dell'ultimo anno di Ingegneria del Software con esperienza nello sviluppo di sistemi IoT e soluzioni di Intelligenza Artificiale. Esperienza pratica nello sviluppo di prototipi con ESP32, visione artificiale e Machine Learning, integrando dispositivi fisici con servizi backend tramite API REST. Ulteriore esperienza in Python, C/C++, TensorFlow e sviluppo di sistemi distribuiti.",
+        brazil: 'Estudante do último ano de Engenharia de Software com experiência em desenvolvimento de sistemas IoT e soluções de Inteligência Artificial. Experiência prática desenvolvendo protótipos com ESP32, visão computacional e Machine Learning, integrando dispositivos físicos com serviços backend por meio de APIs REST. Experiência adicional em Python, C/C++, TensorFlow e desenvolvimento de sistemas distribuídos.',
+        france: "Étudiant en dernière année d'ingénierie logicielle avec une expérience en développement de systèmes IoT et de solutions d'intelligence artificielle. Expérience pratique dans le développement de prototypes avec ESP32, vision par ordinateur et Machine Learning, intégrant des appareils physiques à des services backend via des API REST. Expérience supplémentaire en Python, C/C++, TensorFlow et développement de systèmes distribués.",
     },
     Frontend: {
         'great-britain': 'Frontend Developer and final-year Software Engineering student at UNMSM, with over a year of experience building dynamic, responsive and high-performance interfaces using ReactJS, JQuery, JavaScript and Flutter. I have solid experience integrating applications with RESTful APIs and Webhooks, optimizing the development cycle and the user experience. My international education in Italy and Brazil, along with my fluency in 6 languages, gives me a global perspective and a high capacity for learning and technical innovation.',
@@ -792,7 +792,6 @@ const info = {
     'great-britain': {
         links: {
             home: 'home',
-            about: 'about me',
             projects: 'projects',
             achievements: 'achievements',
             skills: 'tools',
@@ -811,7 +810,6 @@ const info = {
     spain: {
         links: {
             home: 'inicio',
-            about: 'sobre mi',
             projects: 'proyectos',
             achievements: 'reconocimientos',
             skills: 'herramientas',
@@ -830,7 +828,6 @@ const info = {
     brazil: {
         links: {
             home: 'início',
-            about: 'sobre mim',
             projects: 'projetos',
             achievements: 'reconhecimentos',
             skills: 'ferramentas',
@@ -849,7 +846,6 @@ const info = {
     italy: {
         links: {
             home: 'home',
-            about: 'su di me',
             projects: 'progetti',
             achievements: 'riconoscimenti',
             skills: 'strumenti',
@@ -868,7 +864,6 @@ const info = {
     france: {
         links: {
             home: 'accueil',
-            about: 'à propos',
             projects: 'projets',
             achievements: 'distinctions',
             skills: 'outils',
