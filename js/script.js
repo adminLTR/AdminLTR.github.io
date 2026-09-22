@@ -290,6 +290,12 @@ const TECH_ICON_FILES = {
     'scikit-learn': 'scikitlearn.png',
     ml: 'ml.svg',
     dl: 'dl.svg',
+    esp32: 'esp32.png',
+    arduino: 'arduino.png',
+    raspberry: 'raspberry.png',
+    'esp-idf': 'espidf.svg',
+    c: 'c.png',
+    'c++': 'c++.png',
 };
 
 function normalizeTechName(tech) {
@@ -332,6 +338,7 @@ function getAreaIcon(area) {
         Architecture: 'diagram-project',
         Tools: 'wrench',
         AI: 'brain',
+        IoT: 'microchip',
     };
     return icons[area] || 'code';
 }

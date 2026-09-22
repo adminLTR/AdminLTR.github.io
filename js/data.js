@@ -592,26 +592,29 @@ const projects = [
 // ====================================
 const skills = {
     tools: {
-        Frontend: [
-            'ReactJS', 'JavaScript', 'Typescript', 'HTML5', 'CSS3',
-            'Tailwind CSS', 'SASS', 'JQuery', 'Flutter',
+        IoT: [
+            'ESP32', 'Arduino', 'Raspberry', 'ESP-IDF', 'C', 'C++',
+        ],
+        AI: [
+            'Tensorflow/Keras', "LLM's", 'Scikit-learn', 'ML', 'DL',
+        ],
+        Architecture: [
+            'Microservicios', 'MVC', 'API REST', 'Webhooks',
         ],
         Backend: [
             'Node.js', 'ExpressJS', 'Python', 'Flask', 'FastAPI',
             'Django', 'PHP', 'Laravel',
         ],
+        Frontend: [
+            'ReactJS', 'JavaScript', 'Typescript', 'HTML5', 'CSS3',
+            'Tailwind CSS', 'SASS', 'JQuery', 'Flutter',
+        ],
         Databases: [
             'PostgreSQL', 'MySQL', 'SQLite', 'MongoDB',
-        ],
-        Architecture: [
-            'Microservicios', 'MVC', 'API REST', 'Webhooks',
         ],
         Tools: [
             'Jira', 'Git', 'Docker', 'Selenium', 'Web Scraping',
             'Postman', 'Cursor', 'Copilot', 'Figma',
-        ],
-        AI: [
-            'Tensorflow/Keras', "LLM's", 'Scikit-learn', 'ML', 'DL',
         ],
     },
 };
@@ -659,6 +662,13 @@ const skillAreaLabels = {
         italy: 'Intelligenza Artificiale',
         brazil: 'Inteligência Artificial',
         france: 'Intelligence Artificielle',
+    },
+    IoT: {
+        'great-britain': 'IoT & Embedded Systems',
+        spain: 'IoT y sistemas embebidos',
+        italy: 'IoT e sistemi embedded',
+        brazil: 'IoT e sistemas embarcados',
+        france: 'IoT et systèmes embarqués',
     },
 };
 
