@@ -792,7 +792,7 @@ const info = {
     'great-britain': {
         links: {
             home: 'home',
-            projects: 'projects',
+            projects: 'my job',
             achievements: 'achievements',
             skills: 'tools',
             languages: 'languages',
@@ -801,6 +801,7 @@ const info = {
         },
         projectsDescription: 'Professional work, personal builds, and community contributions',
         career: 'Software Engineer',
+        yearsExperience: 'Years of experience',
         download: 'Download my CV',
         overview: 'Overview:',
         technologies: 'Technologies:',
@@ -810,7 +811,7 @@ const info = {
     spain: {
         links: {
             home: 'inicio',
-            projects: 'proyectos',
+            projects: 'mi trabajo',
             achievements: 'reconocimientos',
             skills: 'herramientas',
             languages: 'idiomas',
@@ -819,6 +820,7 @@ const info = {
         },
         projectsDescription: 'Trabajo profesional, proyectos personales y contribuciones a la comunidad',
         career: 'Ingeniero de Software',
+        yearsExperience: 'Años de experiencia',
         download: 'Descarga mi CV',
         overview: 'Descripción:',
         technologies: 'Tecnologías:',
@@ -828,7 +830,7 @@ const info = {
     brazil: {
         links: {
             home: 'início',
-            projects: 'projetos',
+            projects: 'meu trabalho',
             achievements: 'reconhecimentos',
             skills: 'ferramentas',
             languages: 'idiomas',
@@ -837,6 +839,7 @@ const info = {
         },
         projectsDescription: 'Trabalho profissional, projetos pessoais e contribuições comunitárias',
         career: 'Engenheiro de Software',
+        yearsExperience: 'Anos de experiência',
         download: 'Baixe meu CV',
         overview: 'Descrição:',
         technologies: 'Tecnologias:',
@@ -846,7 +849,7 @@ const info = {
     italy: {
         links: {
             home: 'home',
-            projects: 'progetti',
+            projects: 'il mio lavoro',
             achievements: 'riconoscimenti',
             skills: 'strumenti',
             languages: 'lingue',
@@ -855,6 +858,7 @@ const info = {
         },
         projectsDescription: 'Lavoro professionale, progetti personali e contributi alla comunità',
         career: 'Ingegnere del Software',
+        yearsExperience: 'Anni di esperienza',
         download: 'Scarica il mio CV',
         overview: 'Descrizione:',
         technologies: 'Tecnologie:',
@@ -864,7 +868,7 @@ const info = {
     france: {
         links: {
             home: 'accueil',
-            projects: 'projets',
+            projects: 'mon travail',
             achievements: 'distinctions',
             skills: 'outils',
             languages: 'langues',
@@ -873,6 +877,7 @@ const info = {
         },
         projectsDescription: 'Travail professionnel, projets personnels et contributions communautaires',
         career: 'Ingénieur en Informatique',
+        yearsExperience: "Années d'expérience",
         download: 'Télécharge mon CV',
         overview: 'Description :',
         technologies: 'Technologies :',

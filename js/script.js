@@ -93,9 +93,9 @@ function renderInfo() {
         downloadText.textContent = info[lang].download;
     }
 
-    const homeLangStat = document.getElementById('home-stat-languages');
-    if (homeLangStat) {
-        homeLangStat.textContent = String(getPublicLanguageSkillsCount());
+    const experienceLabel = document.getElementById('home-stat-experience');
+    if (experienceLabel && info[lang].yearsExperience) {
+        experienceLabel.textContent = info[lang].yearsExperience;
     }
 
     const currentLangName = document.getElementById("current-lang-name");
